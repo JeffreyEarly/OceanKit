@@ -15,6 +15,7 @@ mpminstall("distributions")
 ```
 from the list below. The dependent packages will automatically be installed.
 
+### Advanced
 Note that if you intend to make changes to package to be committed back to github, you will need to check out the repo of interest directly. For example, you'd call
 ```
 git clone https://github.com/JeffreyEarly/distributions
