@@ -1,0 +1,170 @@
+name: Release MPM package
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "Version bump type"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      notes:
+        description: "Release notes / changes in this update"
+        required: false
+        default: ""
+        type: string
+      shouldBuildWebsiteDocumentation:
+        description: "Build website documentation?"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - true
+          - false
+      shouldPackageForDistribution:
+        description: "Package for distribution?"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - true
+          - false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    # Needed for tagging, releases, and pushing back to repos
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out wave-vortex-diagnostics
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Check out class-docs
+        uses: actions/checkout@v4
+        with:
+          repository: JeffreyEarly/class-docs
+          path: class-docs
+          fetch-depth: 0
+
+      - name: Check out class-annotations
+        uses: actions/checkout@v4
+        with:
+          repository: JeffreyEarly/class-annotations
+          path: class-annotations
+          fetch-depth: 0
+          
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v2
+
+      - name: Bump version, update changelog, build docs, export MPM package
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("tools");
+            addpath(genpath("class-docs"));
+            addpath(genpath("class-annotations"));
+            opts = struct;
+            opts.rootDir = pwd;
+            opts.bumpType = "${{ github.event.inputs.bump }}";
+            opts.notes = "${{ github.event.inputs.notes }}";
+            opts.shouldBuildWebsiteDocumentation = ${{ github.event.inputs.shouldBuildWebsiteDocumentation }};
+            opts.shouldPackageForDistribution = ${{ github.event.inputs.shouldPackageForDistribution }};
+            options = namedargs2cell(opts);
+            ci_release(options{:});
+
+      - name: Read release metadata from MATLAB
+        id: meta
+        run: |
+          META_FILE="dist/mpm_release_metadata.txt"
+          if [ ! -f "$META_FILE" ]; then
+            echo "Metadata file $META_FILE not found"; exit 1
+          fi
+          cat "$META_FILE"
+          NAME=$(grep '^NAME=' "$META_FILE" | cut -d'=' -f2)
+          VERSION=$(grep '^VERSION=' "$META_FILE" | cut -d'=' -f2)
+          FOLDER=$(grep '^FOLDER=' "$META_FILE" | cut -d'=' -f2)
+          echo "name=$NAME"      >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "folder=$FOLDER"   >> $GITHUB_OUTPUT
+
+      - name: Commit version bump (and docs/changelog) to wave-vortex-diagnostics
+        env:
+          VERSION: ${{ steps.meta.outputs.version }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Stage changes from ci_release: mpackage.json, CHANGELOG, docs, etc.
+          git add resources/mpackage.json CHANGELOG.md docs
+
+          # If nothing changed, skip commit
+          if git diff --cached --quiet; then
+            echo "No changes to commit in wave-vortex-diagnostics."
+            exit 0
+          fi
+
+          git commit -m "Bump version to v${VERSION}"
+          git push origin HEAD
+
+      - name: Create git tag and GitHub release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: v${{ steps.meta.outputs.version }}
+          NOTES: ${{ github.event.inputs.notes }}
+        run: |
+          echo "Creating tag $TAG"
+
+          # Tag the commit we just pushed
+          git tag "$TAG"
+          git push origin "$TAG"
+
+          # Create a GitHub Release with provided notes (or auto-notes if empty)
+          if [ -z "$NOTES" ]; then
+            gh release create "$TAG" \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "$TAG" \
+              --generate-notes
+          else
+            gh release create "$TAG" \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "$TAG" \
+              --notes "$NOTES"
+          fi
+
+      - name: Check out OceanKit-mpm-repo
+        uses: actions/checkout@v4
+        with:
+          repository: JeffreyEarly/OceanKit-mpm-repo
+          path: OceanKit-mpm-repo
+          token: ${{ secrets.MPM_REPO_PAT }}
+          fetch-depth: 0
+
+      - name: Copy package into OceanKit-mpm-repo
+        run: |
+          echo "Copying dist/${{ steps.meta.outputs.folder }} -> OceanKit-mpm-repo/"
+          rsync -av "dist/${{ steps.meta.outputs.folder }}/" "OceanKit-mpm-repo/${{ steps.meta.outputs.folder }}/"
+
+      - name: Commit and push to OceanKit-mpm-repo
+        working-directory: OceanKit-mpm-repo
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add .
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit in OceanKit-mpm-repo."
+            exit 0
+          fi
+
+          git commit -m "Add ${{ steps.meta.outputs.folder }} (from $GITHUB_REPOSITORY@$GITHUB_SHA)"
+          git push
