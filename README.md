@@ -1,20 +1,29 @@
 # OceanKit-mpm-repo
-A MATLAB package repository for a wide variety of oceanography related tools
+A MATLAB package repository for a wide variety of oceanography related tools.
 
-Clone this repository,
+Clone this repository, e.g., execute
 ```
 git clone https://github.com/JeffreyEarly/OceanKit-mpm-repo.git
 ```
-
-within Matlab, add this folder as an MPM repository,
+from the command-line. Within Matlab, add this folder as an MPM repository,
 ```matlab
 mpmAddRepository("OceanKit","path/to/folder/OceanKit-mpm-repo.git")
 ```
-
-and then install whatever you need,
+and then install any package you need,
 ```matlab
 mpminstall("distributions")
 ```
+from the list below. The dependent packages will automatically be installed.
+
+Note that if you intend to make changes to package to be committed back to github, you will need to check out the repo of interest directly. For example, you'd call
+```
+git clone https://github.com/JeffreyEarly/distributions
+```
+to clone the repo, and then directly install package
+```matlab
+mpminstall("local/path/to/distributions", Authoring=true); 
+```
+with authoring enabled.
 
 # Packages in this repository
 
