@@ -1,38 +1,38 @@
 {
-  "name": "WaveVortexModelDiagnostics",
-  "version": "1.0.2",
-  "id": "844771ca-f542-4a29-85fa-4e250d8de6aa",
-  "formerNames": [],
-  "displayName": "WaveVortexModel Diagnostics",
-  "summary": "Analyze output from the WaveVortexModel",
-  "description": "A class for quickly analyzing output from the wave-vortex model, with a focus on examining the energy fluxes from forcing and triads.",
-  "provider": {
-    "name": "Jeffrey J. Early",
-    "organization": "NorthWest Research Associates",
-    "email": "jearly@nwra.com",
-    "url": "https://github.com/Energy-Pathways-Group/wave-vortex-model-diagnostics"
-  },
-  "folders": [
-    {
-      "path": "BoxDiagram",
-      "languages": [
-        "matlab"
-      ]
+    "name": "WaveVortexModelDiagnostics",
+    "version": "1.0.2",
+    "id": "844771ca-f542-4a29-85fa-4e250d8de6aa",
+    "formerNames": [],
+    "displayName": "WaveVortexModel Diagnostics",
+    "summary": "Analyze output from the WaveVortexModel",
+    "description": "A class for quickly analyzing output from the wave-vortex model, with a focus on examining the energy fluxes from forcing and triads.",
+    "provider": {
+        "name": "Jeffrey J. Early",
+        "organization": "NorthWest Research Associates",
+        "email": "jearly@nwra.com",
+        "url": "https://github.com/Energy-Pathways-Group/wave-vortex-model-diagnostics"
     },
-    {
-      "path": "Examples",
-      "languages": [
-        "matlab"
-      ]
-    },
-    {
-      "path": "UnitTests",
-      "languages": [
-        "matlab"
-      ]
-    }
-  ],
-  "dependencies": [],
-  "releaseCompatibility": ">=R2024b",
-  "schemaVersion": "1.1.0"
+    "folders": [
+        {
+            "path": "BoxDiagram",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Examples",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "UnitTests",
+            "languages": [
+                "matlab"
+            ]
+        }
+    ],
+    "dependencies": [],
+    "releaseCompatibility": ">=R2024b",
+    "schemaVersion": "1.1.0"
 }
