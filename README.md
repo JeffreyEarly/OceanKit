@@ -30,8 +30,8 @@ with authoring enabled.
 
 - [class-docs](https://github.com/JeffreyEarly/class-annotations) Builds better website documentation for Matlab classes
 - [class-annotations](https://github.com/JeffreyEarly/class-annotations) Annotates Matlab class properties and methods to enable writing to NetCDF files and better class documentation
-- [core-spline](https://github.com/JeffreyEarly/spline-core) Core b-spline classes.
 - [distributions](https://github.com/JeffreyEarly/distributions) Class for distributions and stochastic modeling
 - [geographic-projection](https://github.com/JeffreyEarly/geographic-projection) Tools for projecting geographic coordinates (latitude, longitude) onto transverse Mercator (x,y).
 - [internal-modes](https://github.com/JeffreyEarly/internal-modes) Quickly and accurately compute the vertical modes for arbitrary stratification.
+- [spline-core](https://github.com/JeffreyEarly/spline-core) Core b-spline classes.
 - [wave-vortex-model-diagnostics](https://github.com/Energy-Pathways-Group/wave-vortex-model-diagnostics) Diagnostic tools for the WaveVortexModel
