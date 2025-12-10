@@ -1,0 +1,26 @@
+{
+    "name": "Distributions",
+    "version": "1.0.0",
+    "id": "c543ab89-e5a2-4697-830f-12cf8ed03694",
+    "formerNames": [],
+    "displayName": "Distributions",
+    "summary": "Classes for modeling distributions and stochastic processes.",
+    "description": "Classes for modeling distributions and stochastic processes.",
+    "provider": {
+        "name": "Jeffrey J. Early",
+        "organization": "NorthWest Research Associates",
+        "email": "jearly@nwra.com",
+        "url": "https://github.com/JeffreyEarly/distributions"
+    },
+    "folders": [
+        {
+            "path": "UnitTests",
+            "languages": [
+                "matlab"
+            ]
+        }
+    ],
+    "dependencies": [],
+    "releaseCompatibility": ">=R2024b",
+    "schemaVersion": "1.1.0"
+}
