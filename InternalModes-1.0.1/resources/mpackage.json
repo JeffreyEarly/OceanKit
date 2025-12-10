@@ -1,48 +1,50 @@
 {
-  "name": "InternalModes",
-  "version": "1.0.1",
-  "id": "d671f7d7-4215-4319-a7cc-d4c25efc725a",
-  "formerNames": [],
-  "displayName": "InternalModes",
-  "summary": "Quickly and accurately compute the vertical modes",
-  "description": "Quickly and accurately compute the vertical modes for arbitrary stratification.",
-  "provider": {
-    "name": "Jeffrey J. Early",
-    "organization": "NorthWest Research Associates",
-    "email": "jearly@nwra.com",
-    "url": "https://github.com/JeffreyEarly/internal-modes"
-  },
-  "folders": [
-    {
-      "path": "Extras",
-      "languages": [
-        "matlab"
-      ]
+    "name": "InternalModes",
+    "version": "1.0.1",
+    "id": "d671f7d7-4215-4319-a7cc-d4c25efc725a",
+    "formerNames": [],
+    "displayName": "InternalModes",
+    "summary": "Quickly and accurately compute the vertical modes",
+    "description": "Quickly and accurately compute the vertical modes for arbitrary stratification.",
+    "provider": {
+        "name": "Jeffrey J. Early",
+        "organization": "NorthWest Research Associates",
+        "email": "jearly@nwra.com",
+        "url": "https://github.com/JeffreyEarly/internal-modes"
     },
-    {
-      "path": "Extras/ExponentialStratificationAnalyticalSolution",
-      "languages": [
-        "matlab"
-      ]
-    },
-    {
-      "path": "Extras/InitializationAlgorithm.graffle",
-      "languages": [
-        "matlab"
-      ]
-    },
-    {
-      "path": "UnitTests",
-      "languages": [
-        "matlab"
-      ]
-    }
-  ],
-  "dependencies": {
-    "name": "SplineCore",
-    "compatibleVersions": "^1.0",
-    "id": "f723c088-397a-43e5-a0ad-e19422cc3c2a"
-  },
-  "releaseCompatibility": ">=R2024b",
-  "schemaVersion": "1.1.0"
+    "folders": [
+        {
+            "path": "Extras",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Extras/ExponentialStratificationAnalyticalSolution",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Extras/InitializationAlgorithm.graffle",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "UnitTests",
+            "languages": [
+                "matlab"
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "SplineCore",
+            "compatibleVersions": "^1.0",
+            "id": "f723c088-397a-43e5-a0ad-e19422cc3c2a"
+        }
+    ],
+    "releaseCompatibility": ">=R2024b",
+    "schemaVersion": "1.1.0"
 }
