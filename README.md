@@ -33,5 +33,7 @@ with authoring enabled.
 - [distributions](https://github.com/JeffreyEarly/distributions) Class for distributions and stochastic modeling
 - [geographic-projection](https://github.com/JeffreyEarly/geographic-projection) Tools for projecting geographic coordinates (latitude, longitude) onto transverse Mercator (x,y).
 - [internal-modes](https://github.com/JeffreyEarly/internal-modes) Quickly and accurately compute the vertical modes for arbitrary stratification.
+- [netcdf](https://github.com/JeffreyEarly/netcdf) A better NetCDF interface for Matlab
 - [spline-core](https://github.com/JeffreyEarly/spline-core) Core b-spline classes.
+- [wave-vortex-model](https://github.com/JeffreyEarly/wave-vortex-model) Solve the stratified nonhydrostatic equations of motion and decompose into wave-vortex components
 - [wave-vortex-model-diagnostics](https://github.com/Energy-Pathways-Group/wave-vortex-model-diagnostics) Diagnostic tools for the WaveVortexModel
