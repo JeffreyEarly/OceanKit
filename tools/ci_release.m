@@ -50,22 +50,39 @@ switch bumpType
         newVerObj = currentVerObj;
 end
 
-% If we are actually bumping, assign back to the package so that
-% mpackage.json is rewritten by MATLAB Package Manager.
-%
-% This fails in CI, but works locally. I filed a bug report.
-%
-% if bumpType == "major" || bumpType == "minor" || bumpType == "patch"
-%     pkg.Version = newVerObj;
-%     fprintf('Bumping version: %s -> %s (%s)\n', oldVer, string(newVerObj), bumpType);
-% else
-%     fprintf('Not bumping version (current version %s)\n', oldVer);
-% end
+% If we are actually bumping, assign back to the package
+% so that mpackage.json is rewritten by MATLAB Package Manager.
+if bumpType == "major" || bumpType == "minor" || bumpType == "patch"
+    try
+        pkg.Version = newVerObj;
+        fprintf('Bumping version: %s -> %s (%s)\n', oldVer, string(newVerObj), bumpType);
+    catch ME
+        % Dump extended info to the Action log
+        fprintf(2, '*** Error setting pkg.Version in ci_release.m ***\n');
+        fprintf(2, 'Identifier: %s\n', ME.identifier);
+        fprintf(2, '%s\n', getReport(ME, "extended", "hyperlinks", "off"));
+
+        % Optionally also dump some environment info:
+        fprintf(2, '\n--- License in use ---\n');
+        try
+            li = license("inuse");
+            disp(li);
+        catch
+        end
+
+        fprintf(2, '\n--- MATLAB version ---\n');
+        try
+            ver
+        catch
+        end
+
+        rethrow(ME);  % keep failing the build, but with a lot more detail
+    end
+else
+    fprintf('Not bumping version (current version %s)\n', oldVer);
+end
 
 newVer = string(newVerObj);
-
-fprintf('::set-output name=old_version::%s\n', oldVer);
-fprintf('::set-output name=new_version::%s\n', newVer);
 
 % If we bumped the version and have release notes, update the changelog.
 if (bumpType == "major" || bumpType == "minor" || bumpType == "patch") && strlength(strtrim(options.notes)) > 0

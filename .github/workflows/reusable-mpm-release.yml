@@ -93,18 +93,7 @@ jobs:
 
             options = namedargs2cell(opts);
             ci_release(options{:});
-            
-    - name: Bump version in mpackage.json
-        if: ${{ steps.ci_release.outputs.bump_type != 'none' }}
-        run: |
-          old="${{ steps.ci_release.outputs.old_version }}"
-          new="${{ steps.ci_release.outputs.new_version }}"
-          
-          # Overwrite the version field using jq
-          tmp=$(mktemp)
-          jq --arg ver "$new" '.version = $ver' resources/mpackage.json > "$tmp"
-          mv "$tmp" resources/mpackage.json
-          
+
       - name: Read release metadata from MATLAB
         id: meta
         run: |
