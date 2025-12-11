@@ -50,16 +50,35 @@ switch bumpType
         newVerObj = currentVerObj;
 end
 
+newVer = string(newVerObj);
+
 % If we are actually bumping, assign back to the package so that
 % mpackage.json is rewritten by MATLAB Package Manager.
 if bumpType == "major" || bumpType == "minor" || bumpType == "patch"
-    pkg.Version = newVerObj;
+    
+    % ideally we use this one command and all is good, but there's a bug!
+    % pkg.Version = newVerObj;
+    
+    mpkgPath = fullfile(options.rootDir, "resources", "mpackage.json");
+    rawJson = fileread(mpkgPath);
+    mpkg = jsondecode(rawJson);
+    mpkg.version = char(newVer);  % keep it JSON-friendly
+    mpkg = ensureArrayOfStructs(mpkg, ["folders","dependencies"]);
+    jsonText = jsonencode(mpkg, PrettyPrint=true);
+    fid = fopen(mpkgPath, "w");
+    if fid < 0
+        error("ci_release:cannotWrite", ...
+            "Could not open %s for writing.", mpkgPath);
+    end
+    cleaner = onCleanup(@() fclose(fid));
+    fprintf(fid, "%s\n", jsonText);
+
     fprintf('Bumping version: %s -> %s (%s)\n', oldVer, string(newVerObj), bumpType);
 else
     fprintf('Not bumping version (current version %s)\n', oldVer);
 end
 
-newVer = string(newVerObj);
+
 
 % If we bumped the version and have release notes, update the changelog.
 if (bumpType == "major" || bumpType == "minor" || bumpType == "patch") && strlength(strtrim(options.notes)) > 0
