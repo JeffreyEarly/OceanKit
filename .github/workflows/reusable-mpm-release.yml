@@ -60,23 +60,22 @@ jobs:
 
       - name: Bump version, update changelog, build docs, export MPM package
         uses: matlab-actions/run-command@v2
-        working-directory: my-repo
         with:
           command: |
             % install the documentation classes
-            mpmAddRepository("OceanKit","../OceanKit")
+            mpmAddRepository("OceanKit","OceanKit")
             mpminstall("ClassAnnotations",Prompt=false);
             mpminstall("ClassDocumentation",Prompt=false);
             
             % install this repo and its dependencies
-            pkg = matlab.mpm.Package(".");
+            pkg = matlab.mpm.Package("my-repo");
             mpminstall(pkg,Prompt=false,Authoring=true);
             
-            addpath("../OceanKit/tools"); % Add OceanKit tools (e.g. ci_release.m)
-            addpath("tools"); % Add calling-repo tools (e.g. build_website_documentation.m)
+            addpath("OceanKit/tools"); % Add OceanKit tools (e.g. ci_release.m)
+            addpath("my-repo/tools"); % Add calling-repo tools (e.g. build_website_documentation.m)
 
             opts = struct;
-            opts.rootDir = pwd;  % root of the calling repo
+            opts.rootDir = "my-repo";  % root of the calling repo
             opts.bumpType = "${{ inputs.bump }}";
             opts.notes = "${{ inputs.notes }}";
             opts.shouldBuildWebsiteDocumentation = ${{ inputs.shouldBuildWebsiteDocumentation }};
@@ -84,6 +83,7 @@ jobs:
 
             options = namedargs2cell(opts);
             ci_release(options{:});
+            
       - name: Debug dist locations
         run: |
           echo "== root dist =="
