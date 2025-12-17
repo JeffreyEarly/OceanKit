@@ -1,0 +1,19 @@
+{
+    "name": "chebfun",
+    "version": "5.7.0",
+    "id": "809af0b0-0175-4c98-97d0-1537925cf2d5",
+    "formerNames": [],
+    "displayName": "chebfun",
+    "summary": "Numerical computing with functions.",
+    "description": "Numerical computing with functions.",
+    "provider": {
+        "name": "",
+        "organization": "",
+        "email": "",
+        "url": ""
+    },
+    "folders": [],
+    "dependencies": [],
+    "releaseCompatibility": ">=R2024b",
+    "schemaVersion": "1.1.0"
+}
