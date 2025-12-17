@@ -43,6 +43,11 @@
             "name": "SplineCore",
             "compatibleVersions": "^1.0",
             "id": "f723c088-397a-43e5-a0ad-e19422cc3c2a"
+        },
+        {
+            "name": "chebfun",
+            "compatibleVersions": "",
+            "id": "809af0b0-0175-4c98-97d0-1537925cf2d5"
         }
     ],
     "releaseCompatibility": ">=R2024b",
