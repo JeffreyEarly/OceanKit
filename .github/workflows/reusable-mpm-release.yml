@@ -64,8 +64,8 @@ jobs:
           command: |
             % install the documentation classes
             mpmAddRepository("OceanKit","OceanKit")
-            mpminstall("class-annotations",Prompt=false);
-            mpminstall("class-docs",Prompt=false);
+            mpminstall("ClassAnnotations",Prompt=false);
+            mpminstall("ClassDocumentation",Prompt=false);
             
             % install this repo and its dependencies
             pkg = matlab.mpm.Package("my-repo",Authoring=true);
