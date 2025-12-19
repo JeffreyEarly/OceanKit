@@ -9,11 +9,29 @@ from the command-line. Within Matlab, add this folder as an MPM repository,
 ```matlab
 mpmAddRepository("OceanKit","path/to/folder/OceanKit")
 ```
-and then install any package you need,
+and then install any package you need, e.g.,
 ```matlab
 mpminstall("WaveVortexModel")
 ```
-from the list below. The dependent packages will automatically be installed.
+will install the [WaveVortexModel](https://wavevortexmodel.org) and its dependencies.
+
+Use
+```matlab
+mpmsearch(Repository="OceanKit")
+```
+to list all the available packages and
+```matlab
+mpmlist
+```
+to list all the packages you've already installed. To uninstall a package
+```matlab
+mpmuninstall("WaveVortexModel")
+```
+or to uninstall *all* packages,
+```matlab
+pkgs = mpmlist;
+mpmuninstall([pkgs.Name])
+```
 
 ### Advanced
 Note that if you intend to make changes to package to be committed back to github, you will need to check out the repo of interest directly. For example, you'd call
