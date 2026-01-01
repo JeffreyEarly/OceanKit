@@ -62,15 +62,23 @@ jobs:
         uses: matlab-actions/run-command@v2
         with:
           command: |
-            % install the documentation classes
-            mpmAddRepository("OceanKit","OceanKit")
-            mpminstall("ClassAnnotations",Prompt=false);
-            mpminstall("ClassDocumentation",Prompt=false);
+            % add our primary mpm repo 
+            mpmAddRepository("OceanKit","OceanKit");
             
-            % install this repo and its dependencies
+            % install this package from its github repo and its dependencies
             pkg = matlab.mpm.Package("my-repo");
             mpminstall(pkg,Prompt=false,Authoring=true);
-            
+
+            % if not already installed, install the documentation classes
+            % this order and checking is necessary
+            pkgList = mpmlist;
+            if ~any(contains([pkgList.Name],"ClassAnnotations"))
+                mpminstall("ClassAnnotations",Prompt=false);
+            end
+            if ~any(contains([pkgList.Name],"ClassDocumentation"))
+                mpminstall("ClassDocumentation",Prompt=false);
+            end
+
             addpath("OceanKit/tools"); % Add OceanKit tools (e.g. ci_release.m)
             addpath("my-repo/tools"); % Add calling-repo tools (e.g. build_website_documentation.m)
 
