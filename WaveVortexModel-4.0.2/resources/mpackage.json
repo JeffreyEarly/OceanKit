@@ -1,0 +1,89 @@
+{
+    "name": "WaveVortexModel",
+    "version": "4.0.2",
+    "id": "5b1d512f-b713-471f-9b51-70befc23ccf2",
+    "formerNames": [],
+    "displayName": "WaveVortexModel",
+    "summary": "Model rotating non-hydrostatic flows with variable stratification.",
+    "description": "Model rotating non-hydrostatic flows with variable stratification on a basis of energetically orthogonal wave-vortex modes.",
+    "provider": {
+        "name": "Jeffrey J. Early",
+        "organization": "NorthWest Research Associates",
+        "email": "jearly@nwra.com",
+        "url": "https://github.com/JeffreyEarly/wave-vortex-model"
+    },
+    "folders": [
+        {
+            "path": "ArgumentValidationFunctions",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "FastTransforms",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "FlowComponents",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Forcing",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Integrators",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "ObservingSystems",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Operations",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "UnitTests",
+            "languages": [
+                "matlab"
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "ClassAnnotations",
+            "compatibleVersions": "^1.0",
+            "id": "2fadd643-a526-49d9-ac09-2486f9d1d4b9"
+        },
+        {
+            "name": "InternalModes",
+            "compatibleVersions": "^1.0",
+            "id": "d671f7d7-4215-4319-a7cc-d4c25efc725a"
+        },
+        {
+            "name": "NetCDF",
+            "compatibleVersions": "^1.0",
+            "id": "f71928ab-80de-413b-b8ad-f0b9fc22d537"
+        },
+        {
+            "name": "SplineCore",
+            "compatibleVersions": "^1.0.1",
+            "id": "f723c088-397a-43e5-a0ad-e19422cc3c2a"
+        }
+    ],
+    "releaseCompatibility": ">=R2024b",
+    "schemaVersion": "1.1.0"
+}
