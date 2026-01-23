@@ -1,0 +1,6 @@
+dist
+.DS_Store
+*.asv
+*.nc
+/.idea
+*.zip
