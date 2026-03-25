@@ -1,0 +1,14 @@
+remote_theme: just-the-docs/just-the-docs
+title: OceanKit
+description: MATLAB package repository and developer guidance for OceanKit packages
+
+search_enabled: false
+
+aux_links:
+  "OceanKit on GitHub":
+    - "https://github.com/JeffreyEarly/OceanKit"
+
+aux_links_new_tab: false
+
+color_scheme: light
+
