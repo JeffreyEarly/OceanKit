@@ -105,6 +105,12 @@ Prefer local consistency unless the change is part of an intentional cleanup.
 - Prefer `join`, `replace`, `startsWith`, `endsWith`, `contains`, and related string operations over manual char-array manipulation in new text-handling code.
 - Modernize incrementally. Do not rewrite stable legacy code just to change container types or text types unless the surrounding API is already being refactored.
 
+## Formatting
+
+- Keep MATLAB function calls on one line whenever the full call fits within the repository line-length limit and each argument is a simple literal, variable, or short name-value pair.
+- Do not split function calls across multiple lines purely for visual alignment.
+- Only wrap a function call when the one-line form would exceed the line-length limit or when one or more arguments are themselves long expressions, nested calls, anonymous functions, or inline comments.
+
 ## Summary
 
 Write MATLAB code that is clear, explicit, scientifically faithful, and progressively modern without introducing churn for its own sake.
