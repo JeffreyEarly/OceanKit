@@ -1,0 +1,92 @@
+{
+    "name": "AdvectionDiffusionModels",
+    "version": "1.0.0",
+    "id": "8925cc26-879f-495c-b6a7-7f0d66ac906a",
+    "formerNames": [],
+    "displayName": "Advection-Diffusion Models",
+    "summary": "Integrate and estimate advection-diffusion models",
+    "description": "Integrate and estimate advection-diffusion models",
+    "provider": {
+        "name": "Jeffrey J. Early",
+        "organization": "NorthWest Research Associates",
+        "email": "jearly@nwra.com",
+        "url": "https://github.com/JeffreyEarly/advection-diffusion-models"
+    },
+    "folders": [
+        {
+            "path": "Estimation",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Estimation/LinearVelocityField",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Estimation/LinearVelocityField/SecondMomentMethod",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Estimation/LinearVelocityField/UnitTests",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Integrators",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Integrators/UnitTests",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Models",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Models/Examples",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Models/KinematicModels",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Models/UnitTests",
+            "languages": [
+                "matlab"
+            ]
+        },
+        {
+            "path": "Estimation/LinearVelocityField/SecondMomentMethod/Ellipses",
+            "languages": [
+                "matlab"
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "SplineCore",
+            "compatibleVersions": "",
+            "id": "f723c088-397a-43e5-a0ad-e19422cc3c2a"
+        }
+    ],
+    "releaseCompatibility": ">=R2024b",
+    "schemaVersion": "1.1.0"
+}
