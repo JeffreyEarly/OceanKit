@@ -1,0 +1,117 @@
+# AGENTS.md
+
+This file gives shared instructions for AI-assisted edits in repositories under
+`/Users/jearly/Documents/OceanKitRepositories`.
+
+Repository-local `AGENTS.md` files may add more specific instructions. When a
+more specific `AGENTS.md` exists in a descendant repository, follow the more
+local file for repo-specific rules and this file for shared OceanKit rules.
+
+## Required guides
+
+Before making changes, reread the relevant OceanKit guides and follow them
+literally rather than from memory:
+
+- `/Users/jearly/Documents/OceanKitRepositories/OceanKit/Documentation/WebsiteDocumentation/developers-guide/package-design.md`
+- `/Users/jearly/Documents/OceanKitRepositories/OceanKit/Documentation/WebsiteDocumentation/developers-guide/matlab-style-guide.md`
+- `/Users/jearly/Documents/OceanKitRepositories/OceanKit/Documentation/WebsiteDocumentation/developers-guide/documentation-style-guide.md`
+
+When a repository instruction conflicts with a generic MATLAB habit, follow the
+OceanKit guides.
+
+## Documentation compliance
+
+When editing inline MATLAB API documentation, use only the structured
+`class-docs` tokens supported by the documentation style guide. Use the exact
+spellings below, including the leading `- `, and put each token on its own
+comment line:
+
+- `- Topic: ...`
+- `- Declaration: ...`
+- `- Parameter <name>: ...`
+- `- Returns <name>: ...`
+- `- nav_order: ...`
+- `- Developer: true`
+
+Do not replace these with prose headings or unsupported pseudo-tokens such as:
+
+- `Topic:`
+- `Declaration:`
+- `Parameters:`
+- `Returns:`
+- `Notes:`
+- `See also:`
+- `Examples:`
+
+For classes, methods, and properties intended for generated API docs, keep the
+source comment order consistent with the guide:
+
+1. one-line summary
+2. overview or discussion prose
+3. optional example
+4. structured token lines
+
+Mathematical APIs should include the governing equations or defining relations
+when they materially clarify behavior. Use `$$...$$` for rendered equations and
+rendered mathematical aliases.
+
+When updating existing documentation:
+
+- preserve accurate existing documentation
+- only change documentation that is incorrect, outdated, or directly affected by
+  the code change
+
+Before finishing any documentation edit, do a compliance pass on all touched
+files and verify that no edited API doc uses unsupported headings where the
+guide requires structured tokens.
+
+## MATLAB style rules
+
+Apply the OceanKit MATLAB style guide during edits. In particular:
+
+- classes use `UpperCamelCase`
+- methods and properties use `lowerCamelCase`
+- preserve standard scientific notation when it carries real mathematical
+  meaning, such as `sigma_n`, `sigma_s`, `Mxx`, `Myy`, `Mxy`, `Lx`, `Ly`, and
+  `N2`
+- do not rename scientifically standard quantities just to satisfy a generic
+  naming rule
+- use `@ClassName` folders for class-based APIs
+- keep implementation-only methods in separate files inside the same class
+  folder when that materially improves readability
+- validate inputs at public API boundaries
+- use structured, actionable error identifiers and messages
+
+## MATLAB formatting rules
+
+- Keep MATLAB function calls on one line whenever the full call fits within the
+  repository line-length limit and each argument is a simple literal, variable,
+  or short name-value pair.
+- Do not split function calls across multiple lines purely for visual
+  alignment.
+- Only wrap a function call when the one-line form would exceed the line-length
+  limit or when one or more arguments are long expressions, nested calls,
+  anonymous functions, or inline comments.
+- Do not introduce manual `...` continuations for simple calls that fit on one
+  line.
+
+## Scope discipline
+
+- Preserve existing public behavior unless the requested task explicitly changes
+  it.
+- Do not refactor stable code purely for style.
+- Keep example-script modernization minimal unless broader restructuring is
+  explicitly requested.
+- Do not update website content unless the task explicitly includes website
+  work.
+
+## Pre-finish checklist
+
+Before finishing, verify the touched files against this checklist:
+
+- Documentation tokens follow the exact `class-docs` syntax.
+- Accurate existing documentation was preserved unless it needed correction.
+- Simple MATLAB calls that fit on one line are on one line.
+- No unnecessary manual `...` continuations were introduced.
+- Scientific notation with real meaning was preserved.
+- Any class refactor still follows the `@ClassName` folder pattern.
