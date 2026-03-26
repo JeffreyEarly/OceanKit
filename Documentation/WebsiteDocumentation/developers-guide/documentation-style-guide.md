@@ -59,11 +59,13 @@ The `class-docs` package extracts MATLAB metadata plus a small set of structured
 - The first help-comment line becomes the short description. Do not invent a `- Summary:` token.
 - Give every documented public method and property one `- Topic:` line unless `Other` is intentional.
 - Put the ordered class-level `- Topic:` list near the end of the class overview block, after prose and optional examples, and before `- Declaration: ...`.
+- For non-abstract classes, include a concise constructor-usage code block near the end of the class overview, before the metadata tokens.
 - Prefer imperative, task-oriented topic names such as `Create a spline` or `Inspect spline properties`.
 - Use `- nav_order:` only when deterministic ordering within one topic materially matters.
 - Use `- Developer: true` for internal implementation details that should appear under Developer Topics.
 - Use ordinary markdown for examples and explanatory prose.
 - Keep topic names and declarations accurate when signatures change.
+- Use braces for MathJax superscripts and subscripts whenever the exponent or index is not a single character, for example `$$s^{-1}$$`.
 - Include mathematical exposition when it materially clarifies behavior.
 
 ### Authoring rules
@@ -126,6 +128,8 @@ Use the same source-comment order for classes, methods, and documented propertie
 4. metadata token lines
 
 That ordering gives MATLAB metadata a clean summary line and keeps the detailed discussion readable in source form.
+
+For class comments specifically, non-abstract classes should normally include a concise MATLAB code block near the end of the overview showing how to call the constructor. Put that example after the overview prose and before the topic and declaration metadata. Abstract classes may omit constructor-usage examples when no direct construction path exists.
 
 #### Topics
 
@@ -191,6 +195,7 @@ For mathematically meaningful APIs, mathematical exposition should be treated as
 - Define symbols near their first use and connect them back to code identifiers, dimensions, and units when relevant.
 - When a code identifier is itself a mathematical symbol, introduce both forms early in the summary or discussion. For example, document `xi` as the coefficient vector `$$\xi$$`, and `K` as the spline order `$$K$$`.
 - Use `$$...$$` delimiters consistently for both displayed equations and rendered symbol forms.
+- Use braces for superscripts and subscripts whenever the exponent or index is not a single character or includes an operator or sign. Write `$$s^{-1}$$`, `$$\tau_{N_k}$$`, and `$$x_{\mathrm{Std}}$$`, not `$$s^-1$$`, `$$\tau_N_k$$`, or `$$x_\mathrm{Std}$$`.
 - Because generated `class-docs` page titles and headings use the raw MATLAB identifier, put the rendered mathematical alias in the short summary and/or discussion text rather than relying on the page title.
 - Use math to explain the API, not as decoration. If there is no meaningful mathematical interpretation, ordinary prose is sufficient.
 
@@ -221,6 +226,8 @@ classdef ExampleSpline < handle
     % - Declaration: classdef ExampleSpline < handle
 end
 ```
+
+That constructor-style code block is the expected pattern for non-abstract classes.
 
 #### Documented property
 
