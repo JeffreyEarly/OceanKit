@@ -45,7 +45,30 @@ Use the standard Just the Docs front matter fields used across OceanKit sites:
 
 The `class-docs` package extracts MATLAB metadata plus a small set of structured tokens from the detailed help text. The parser is case-insensitive, but OceanKit should standardize on the capitalized token spellings shown below.
 
-### Supported structured tokens
+### Quick rules
+
+- Use only the structured tokens listed below. Do not invent new metadata tokens.
+- Generated API docs cover public, non-hidden methods and properties selected by the build.
+- Document every public, non-hidden property that should appear in the generated API reference.
+- For classes, methods, and properties, keep help comments in this order:
+  1. one-line summary
+  2. overview or discussion prose
+  3. optional example
+  4. metadata token lines
+- Once the metadata token block begins, keep the rest of the comment block limited to token lines.
+- The first help-comment line becomes the short description. Do not invent a `- Summary:` token.
+- Give every documented public method and property one `- Topic:` line unless `Other` is intentional.
+- Put the ordered class-level `- Topic:` list near the end of the class overview block, after prose and optional examples, and before `- Declaration: ...`.
+- Prefer imperative, task-oriented topic names such as `Create a spline` or `Inspect spline properties`.
+- Use `- nav_order:` only when deterministic ordering within one topic materially matters.
+- Use `- Developer: true` for internal implementation details that should appear under Developer Topics.
+- Use ordinary markdown for examples and explanatory prose.
+- Keep topic names and declarations accurate when signatures change.
+- Include mathematical exposition when it materially clarifies behavior.
+
+### Authoring rules
+
+#### Supported structured tokens
 
 These are the exact metadata tokens currently supported:
 
@@ -67,7 +90,7 @@ Do not promise or rely on other structured tokens. In particular, `class-docs` d
 
 Those can still appear as ordinary prose headings or markdown, but they are not parsed as metadata.
 
-### What each token does
+#### What each token does
 
 - `- Topic: ...` On class comments, declares topic groups and their order in the generated class index. On method and property comments, assigns that item to one topic path.
 - `- Declaration: ...` Supplies the displayed declaration block.
@@ -76,33 +99,42 @@ Those can still appear as ordinary prose headings or markdown, but they are not 
 - `- nav_order: ...` Optionally controls ordering within a topic when multiple items appear together. Smaller values sort earlier.
 - `- Developer: ...` Marks an item as internal so it renders under Developer Topics.
 
-### Generated API scope and property coverage
+#### Generated API scope and property coverage
 
 `class-docs` generates a class index page plus one page for each public, non-hidden method and property selected by the documentation build.
 
-That means public properties are first-class API documentation targets, not secondary metadata. Document every public, non-hidden property that should appear in the generated API reference, including dependent properties and read-only computed properties.
+Public properties are first-class API documentation targets, not secondary metadata. Document every public, non-hidden property that should appear in the generated API reference, including dependent properties and read-only computed properties.
 
-Use the same comment structure for documented properties as for methods:
+If a dependent property also has a getter or setter with its own help text, that accessor documentation does not replace the property comment. Document the property where it is declared.
+
+Private, protected, hidden, or implementation-only storage slots may still have source comments for local clarity, but they are not the minimum generated-doc baseline. If a public item is useful as internal reference but should live under Developer Topics, keep it documented and mark it with `- Developer: true`.
+
+#### Summary, discussion, and token order
+
+The short summary shown on generated pages comes from MATLAB metadata, not from a separate token:
+
+- the first help-comment line becomes the short description
+- the remaining detailed help text becomes the Overview or Discussion section after structured tokens are stripped out
+
+Do not invent a `- Summary:` token. It is not supported.
+
+Use the same source-comment order for classes, methods, and documented properties:
 
 1. one-line summary
 2. overview or discussion prose
 3. optional example
 4. metadata token lines
 
-If a dependent property also has a getter or setter with its own help text, that accessor documentation does not replace the property comment. Document the property where it is declared.
+That ordering gives MATLAB metadata a clean summary line and keeps the detailed discussion readable in source form.
 
-Private, protected, hidden, or implementation-only storage slots may still have source comments for local clarity, but they are not the minimum generated-doc baseline. If a public item is useful as internal reference but should live under Developer Topics, keep it documented and mark it with `- Developer: true`.
-
-### Topic authoring and hierarchy
+#### Topics
 
 Every documented method or property should normally have exactly one `- Topic:` line. If an item has no topic, the current `class-docs` output places it under `Other`. Use that fallback only intentionally.
 
-Topic metadata appears in two places, and the distinction matters:
+Topic metadata appears in two places:
 
 - Class-level `- Topic:` lines declare the topic groups and their display order for the class index.
 - Method-level and property-level `- Topic:` lines assign each documented item to one topic or topic path.
-
-Put the ordered class-level topic list near the end of the class overview block, after the prose and optional example, and before `- Declaration: ...`.
 
 Nested topics use the em dash character `—`, not a hyphen-minus `-`.
 
@@ -115,8 +147,6 @@ For example:
 ```
 
 For most classes, stop at one or two topic levels. Use a third level only when it materially improves navigation. Reuse the same topic vocabulary across related methods and properties so the generated index stays coherent.
-
-### Topic naming and ordering
 
 Prefer imperative, task-oriented topic names, effectively using active voice. Use names such as `Create a spline`, `Inspect spline properties`, `Evaluate the spline`, `Transform the spline`, `Prepare knot sequences`, and `Compile constraints`.
 
@@ -136,33 +166,11 @@ When defining the class-level topic list, a good default order is:
 
 If a class has developer-only groups, still declare those groups in the class-level topic list so their order is stable. Pair the corresponding methods or properties with `- Developer: true`.
 
-### Ordering within a topic
-
 Use `- nav_order:` when deterministic ordering within one topic materially matters. Do not require it by default.
 
 If `- nav_order:` is omitted, item order falls back to current parser behavior and default ordering. That fallback is acceptable when no specific sequence matters, but it should not be treated as an authored semantic guarantee.
 
-### Recommended source-comment order
-
-For classes, methods, and properties that are meant to generate good API pages, use this order inside the help text:
-
-1. one-line summary
-2. overview or discussion prose
-3. optional example
-4. metadata token lines
-
-That gives MATLAB metadata a clean summary line and keeps the detailed discussion readable in source form. Once the metadata token block begins, keep the rest of the comment block limited to token lines only. Do not return to ordinary prose after the tokens.
-
-### Summary vs discussion
-
-The short summary shown on generated pages comes from MATLAB metadata, not from a separate token. In practice:
-
-- the first help-comment line becomes the short description
-- the remaining detailed help text becomes the Overview or Discussion section after structured tokens are stripped out
-
-Do not invent a `- Summary:` token. It is not supported.
-
-### Developer-only items
+#### Developer-only items
 
 Use `- Developer: true` for internal implementation details that should be documented but not emphasized as primary public API.
 
@@ -174,7 +182,7 @@ The parser currently treats values such as `true`, `1`, and `yes` as truthy, but
 
 Use this sparingly. A page becomes more useful when developer topics are clearly internal rather than a second copy of the public API.
 
-### Mathematical exposition
+#### Mathematical exposition
 
 For mathematically meaningful APIs, mathematical exposition should be treated as part of the documentation, not as an optional flourish. This applies to both public items and internal items marked with `- Developer: true`.
 
@@ -186,11 +194,11 @@ For mathematically meaningful APIs, mathematical exposition should be treated as
 - Because generated `class-docs` page titles and headings use the raw MATLAB identifier, put the rendered mathematical alias in the short summary and/or discussion text rather than relying on the page title.
 - Use math to explain the API, not as decoration. If there is no meaningful mathematical interpretation, ordinary prose is sufficient.
 
-## Example patterns
+### Examples and reference
 
 The following patterns are compatible with the current parser and match the style used in the spline-core reference classes.
 
-### Class header with ordered topics
+#### Class header with ordered topics
 
 ```matlab
 classdef ExampleSpline < handle
@@ -214,7 +222,7 @@ classdef ExampleSpline < handle
 end
 ```
 
-### Documented property
+#### Documented property
 
 ```matlab
 properties (SetAccess = private)
@@ -232,7 +240,7 @@ properties (SetAccess = private)
 end
 ```
 
-### Documented constructor or method
+#### Documented constructor or method
 
 ```matlab
 methods
@@ -252,7 +260,7 @@ methods
 end
 ```
 
-### Developer-only item with optional nav_order
+#### Developer-only item with optional nav_order
 
 ```matlab
 properties (SetAccess = private)
@@ -266,17 +274,3 @@ properties (SetAccess = private)
     systemMatrix
 end
 ```
-
-## Practical rules
-
-- Put each structured token on its own comment line.
-- Keep all ordinary prose and examples above the token block.
-- Keep token spelling consistent even though the parser is case-insensitive.
-- Give every documented public method and property a `- Topic:` line unless `Other` is intentional.
-- Reuse class-level topic names exactly and keep the class-level topic list in the intended display order.
-- Use `- nav_order:` only when you need to pin within-topic order.
-- Use ordinary markdown for examples and explanatory prose.
-- Use `mathjax: true` on hand-authored pages that include equations or rendered symbols.
-- Prefer `$$...$$` when you need rendered equations or rendered mathematical aliases in OceanKit docs.
-- Keep topic names and declarations accurate when signatures change.
-- Document only tokens that the current parser supports.
