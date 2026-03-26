@@ -69,14 +69,40 @@ Those can still appear as ordinary prose headings or markdown, but they are not 
 
 ### What each token does
 
-- `- Topic: ...` Assigns the class, method, or property to a topic in the generated site.
+- `- Topic: ...` On class comments, declares topic groups and their order in the generated class index. On method and property comments, assigns that item to one topic path.
 - `- Declaration: ...` Supplies the displayed declaration block.
 - `- Parameter <name>: ...` Adds a parameter entry to the generated Parameters section.
 - `- Returns <name>: ...` Adds a return-value entry to the generated Returns section.
-- `- nav_order: ...` Controls ordering within a topic when multiple items appear together.
+- `- nav_order: ...` Optionally controls ordering within a topic when multiple items appear together. Smaller values sort earlier.
 - `- Developer: ...` Marks an item as internal so it renders under Developer Topics.
 
-### Topic hierarchy
+### Generated API scope and property coverage
+
+`class-docs` generates a class index page plus one page for each public, non-hidden method and property selected by the documentation build.
+
+That means public properties are first-class API documentation targets, not secondary metadata. Document every public, non-hidden property that should appear in the generated API reference, including dependent properties and read-only computed properties.
+
+Use the same comment structure for documented properties as for methods:
+
+1. one-line summary
+2. overview or discussion prose
+3. optional example
+4. metadata token lines
+
+If a dependent property also has a getter or setter with its own help text, that accessor documentation does not replace the property comment. Document the property where it is declared.
+
+Private, protected, hidden, or implementation-only storage slots may still have source comments for local clarity, but they are not the minimum generated-doc baseline. If a public item is useful as internal reference but should live under Developer Topics, keep it documented and mark it with `- Developer: true`.
+
+### Topic authoring and hierarchy
+
+Every documented method or property should normally have exactly one `- Topic:` line. If an item has no topic, the current `class-docs` output places it under `Other`. Use that fallback only intentionally.
+
+Topic metadata appears in two places, and the distinction matters:
+
+- Class-level `- Topic:` lines declare the topic groups and their display order for the class index.
+- Method-level and property-level `- Topic:` lines assign each documented item to one topic or topic path.
+
+Put the ordered class-level topic list near the end of the class overview block, after the prose and optional example, and before `- Declaration: ...`.
 
 Nested topics use the em dash character `—`, not a hyphen-minus `-`.
 
@@ -88,7 +114,33 @@ For example:
 - Topic: Create a spline — Prepare knot sequences — Boundary handling
 ```
 
-Use human-readable topic names. Keep them stable across related methods so generated indexes stay coherent.
+For most classes, stop at one or two topic levels. Use a third level only when it materially improves navigation. Reuse the same topic vocabulary across related methods and properties so the generated index stays coherent.
+
+### Topic naming and ordering
+
+Prefer imperative, task-oriented topic names, effectively using active voice. Use names such as `Create a spline`, `Inspect spline properties`, `Evaluate the spline`, `Transform the spline`, `Prepare knot sequences`, and `Compile constraints`.
+
+- Prefer user-task language over internal implementation labels.
+- Keep sibling topic names parallel in grammar and scope.
+- Reuse topic names exactly rather than creating near-duplicates.
+- Prefer `Create a spline` over `Spline creation` or `Creating splines`.
+- Avoid passive or vague names unless the topic is inherently descriptive.
+
+When defining the class-level topic list, a good default order is:
+
+1. construction or creation topics
+2. inspection or reference topics
+3. core use or evaluation topics
+4. transform, analysis, or preparation topics
+5. developer or internal topics last
+
+If a class has developer-only groups, still declare those groups in the class-level topic list so their order is stable. Pair the corresponding methods or properties with `- Developer: true`.
+
+### Ordering within a topic
+
+Use `- nav_order:` when deterministic ordering within one topic materially matters. Do not require it by default.
+
+If `- nav_order:` is omitted, item order falls back to current parser behavior and default ordering. That fallback is acceptable when no specific sequence matters, but it should not be treated as an authored semantic guarantee.
 
 ### Recommended source-comment order
 
@@ -99,7 +151,7 @@ For classes, methods, and properties that are meant to generate good API pages, 
 3. optional example
 4. metadata token lines
 
-That gives MATLAB metadata a clean summary line and keeps the detailed discussion readable in source form.
+That gives MATLAB metadata a clean summary line and keeps the detailed discussion readable in source form. Once the metadata token block begins, keep the rest of the comment block limited to token lines only. Do not return to ordinary prose after the tokens.
 
 ### Summary vs discussion
 
@@ -134,39 +186,95 @@ For mathematically meaningful APIs, mathematical exposition should be treated as
 - Because generated `class-docs` page titles and headings use the raw MATLAB identifier, put the rendered mathematical alias in the short summary and/or discussion text rather than relying on the page title.
 - Use math to explain the API, not as decoration. If there is no meaningful mathematical interpretation, ordinary prose is sufficient.
 
-## Example pattern
+## Example patterns
 
-The following pattern is compatible with the current parser:
+The following patterns are compatible with the current parser and match the style used in the spline-core reference classes.
+
+### Class header with ordered topics
 
 ```matlab
-function xi = exampleMethod(self, inputValue, options)
-% Compute the coefficient vector `xi`, written mathematically as $$\xi$$.
-%
-% This method solves the linear system
-%
-% $$
-% \mathbf{A}\xi = b,
-% $$
-%
-% where $$\mathbf{A}$$ is the assembled operator, $$\xi$$ is the unknown
-% coefficient vector returned by the method, and $$b$$ is the right-hand
-% side assembled from `inputValue`.
-%
-% ```matlab
-% xi = obj.exampleMethod(3, mode="fast");
-% ```
-%
-% - Topic: Example topic — Example subtopic
-% - Declaration: xi = exampleMethod(self,inputValue,options)
-% - Parameter inputValue: scalar numeric input
-% - Parameter options.mode: optional operating mode
-% - Returns xi: coefficient vector $$\xi$$ that solves the assembled system
+classdef ExampleSpline < handle
+    % Create, inspect, and evaluate a tensor-product spline model.
+    %
+    % `ExampleSpline` stores one knot vector per dimension together with a
+    % coefficient array for fast evaluation on rectilinear grids.
+    %
+    % ```matlab
+    % spline = ExampleSpline(grid, values, S=3);
+    % valuesFit = spline(Xq, Yq);
+    % ```
+    %
+    % - Topic: Create a spline
+    % - Topic: Inspect spline properties
+    % - Topic: Evaluate the spline
+    % - Topic: Transform the spline
+    % - Topic: Prepare fit inputs
+    % - Topic: Solve fit systems
+    % - Declaration: classdef ExampleSpline < handle
+end
+```
+
+### Documented property
+
+```matlab
+properties (SetAccess = private)
+    % Grid vectors used to define the interpolation lattice.
+    %
+    % In one dimension `gridVectors` contains one column vector. In higher
+    % dimensions it stores one grid vector per tensor axis.
+    %
+    % ```matlab
+    % spline.gridVectors
+    % ```
+    %
+    % - Topic: Inspect interpolation grids
+    gridVectors
+end
+```
+
+### Documented constructor or method
+
+```matlab
+methods
+    function self = ExampleSpline(grid, values, options)
+        % Create a spline from rectilinear grid data.
+        %
+        % Use this constructor when the grid vectors are already known and
+        % the sampled values should define the fitted spline.
+        %
+        % - Topic: Create a spline
+        % - Declaration: self = ExampleSpline(grid,values,options)
+        % - Parameter grid: numeric vector in 1-D or cell array of grid vectors
+        % - Parameter values: sampled values on the grid
+        % - Parameter options.S: spline degree scalar or vector
+        % - Returns self: ExampleSpline instance
+    end
+end
+```
+
+### Developer-only item with optional nav_order
+
+```matlab
+properties (SetAccess = private)
+    % Cached normal-equation matrix used by the fit.
+    %
+    % This cache stores the matrix assembled from the weighted design matrix.
+    %
+    % - Topic: Solve fit systems
+    % - nav_order: 20
+    % - Developer: true
+    systemMatrix
+end
 ```
 
 ## Practical rules
 
 - Put each structured token on its own comment line.
+- Keep all ordinary prose and examples above the token block.
 - Keep token spelling consistent even though the parser is case-insensitive.
+- Give every documented public method and property a `- Topic:` line unless `Other` is intentional.
+- Reuse class-level topic names exactly and keep the class-level topic list in the intended display order.
+- Use `- nav_order:` only when you need to pin within-topic order.
 - Use ordinary markdown for examples and explanatory prose.
 - Use `mathjax: true` on hand-authored pages that include equations or rendered symbols.
 - Prefer `$$...$$` when you need rendered equations or rendered mathematical aliases in OceanKit docs.
