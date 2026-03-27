@@ -1,0 +1,32 @@
+{
+    "name": "ClassDocumentation",
+    "version": "1.1.1",
+    "id": "0cc6cbbd-b164-48a7-aedc-0fe3fab2ad93",
+    "formerNames": [],
+    "displayName": "Class Documentation",
+    "summary": "Builds better website documentation for Matlab classes",
+    "description": "Builds better website documentation for Matlab classes",
+    "provider": {
+        "name": "Jeffrey J. Early",
+        "organization": "NorthWest Research Associates",
+        "email": "jearly@nwra.com",
+        "url": "https://github.com/JeffreyEarly/class-docs"
+    },
+    "folders": [
+        {
+            "path": "Example",
+            "languages": [
+                "matlab"
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "ClassAnnotations",
+            "compatibleVersions": "^1.0",
+            "id": "2fadd643-a526-49d9-ac09-2486f9d1d4b9"
+        }
+    ],
+    "releaseCompatibility": ">=R2024b",
+    "schemaVersion": "1.1.0"
+}
