@@ -105,6 +105,19 @@ Apply the OceanKit MATLAB style guide during edits. In particular:
 - Do not update website content unless the task explicitly includes website
   work.
 
+## Missing local assets
+
+- If a requested task depends on local data files, example assets, generated
+  outputs, scripts, or other workspace content that is not present, say so
+  explicitly as soon as you discover it.
+- Do not let missing local assets remain implicit in a failing command, a vague
+  verification note, or a later summary.
+- When practical, continue with the parts of the task that can still be done,
+  but clearly separate completed work from work blocked by the missing asset.
+- In the final response, explicitly name any missing local asset that prevented
+  full verification or completion, and give the exact path that was expected
+  when that is known.
+
 ## Pre-finish checklist
 
 Before finishing, verify the touched files against this checklist:

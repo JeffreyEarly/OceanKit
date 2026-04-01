@@ -37,12 +37,12 @@ Prefer local consistency unless the change is part of an intentional cleanup.
 - Use positional arguments for the core identity of the operation or object, and name-value arguments for modifiers, options, and rare inputs.
 - Avoid positional boolean flags.
 - Prefer explicit alternate construction paths such as `geometryFromFile` or `waveVortexTransformFromFile`.
-- Prefer modern MATLAB signatures built around `arguments`, `arguments (Repeating)`, and `arguments (Output)` for new public APIs unless they materially hurt readability or add unnecessary boilerplate.
+- Use `arguments (Input)` for new public API inputs by default, use `arguments (Output)` wherever MATLAB can express the output contract cleanly, and avoid legacy validation patterns unless `arguments` cannot express the case clearly.
 - When forwarding options to another API, use `namedargs2cell(options)` instead of rebuilding name-value pairs manually.
 
 ## Callable form
 
-- Use standalone functions for stateless mathematics, transforms, validators, index helpers, shape helpers, and low-level operations that do not depend on object identity.
+- Use standalone functions for stateless mathematics, transforms, reusable domain validators, index helpers, shape helpers, and low-level operations that do not depend on object identity.
 - Use instance methods for behavior that depends on object state, mutates object state, or exposes a core capability of the object.
 - Use static factories for alternate construction paths, reconstruction from serialized state, or source-specific constructors.
 - Prefer explicit factory names over generic names such as `fromFile` when multiple object types may support similar reconstruction paths.
@@ -79,7 +79,8 @@ Prefer local consistency unless the change is part of an intentional cleanup.
 
 ## Errors, validation, and robustness
 
-- Validate inputs at public API boundaries.
+- Validate inputs at public API boundaries, and do not repeat validation downstream when an earlier validated boundary would already throw.
+- Keep routine boundary validation inline rather than splitting it into helper functions unless the user explicitly asks for that structure or the validation is genuinely shared and nontrivial.
 - Prefer clear, structured error identifiers using a package or class prefix, for example `ConstrainedSpline:InvalidGrid` or `WVTransform:UnknownVariable`.
 - Error messages should explain what failed and, when possible, what the caller should do next.
 - Use warnings only for recoverable situations.
