@@ -15,6 +15,7 @@ literally rather than from memory:
 - `/Users/jearly/Documents/OceanKitRepositories/OceanKit/Documentation/WebsiteDocumentation/developers-guide/package-design.md`
 - `/Users/jearly/Documents/OceanKitRepositories/OceanKit/Documentation/WebsiteDocumentation/developers-guide/matlab-style-guide.md`
 - `/Users/jearly/Documents/OceanKitRepositories/OceanKit/Documentation/WebsiteDocumentation/developers-guide/documentation-style-guide.md`
+- `/Users/jearly/Documents/OceanKitRepositories/OceanKit/Documentation/WebsiteDocumentation/developers-guide/annotated-persistence-style-guide.md` when editing classes that persist state through `CAAnnotatedClass` and NetCDF-backed files
 
 When a repository instruction conflicts with a generic MATLAB habit, follow the
 OceanKit guides.
