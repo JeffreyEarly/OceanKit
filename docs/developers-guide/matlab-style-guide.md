@@ -34,7 +34,8 @@ Prefer local consistency unless the change is part of an intentional cleanup.
 ## API design
 
 - Give each class one primary constructor and a clear initialization path.
-- Use positional arguments for the core identity of the operation or object, and name-value arguments for modifiers, options, and rare inputs.
+- Use positional arguments for the core identity of the operation or object when they materially improve the scientific API, and use name-value arguments for modifiers, options, and rare inputs.
+- For simple classes intended for direct annotated persistence, prefer constructor `name=value` arguments whose names match `classRequiredPropertyNames()`.
 - Avoid positional boolean flags.
 - Prefer explicit alternate construction paths such as `geometryFromFile` or `waveVortexTransformFromFile`.
 - Use `arguments (Input)` for new public API inputs by default, use `arguments (Output)` wherever MATLAB can express the output contract cleanly, and avoid legacy validation patterns unless `arguments` cannot express the case clearly.
@@ -91,6 +92,7 @@ Prefer local consistency unless the change is part of an intentional cleanup.
 
 - Prefer explicit persistence pairs such as an instance method `writeToFile` plus a source-specific factory such as `geometryFromFile`, `waveVortexTransformFromFile`, or `annotatedClassFromFile`.
 - Avoid hidden I/O side effects in constructors.
+- For simple annotated-persistence classes, prefer constructor `name=value` arguments that align with `classRequiredPropertyNames()` so the generic reconstruction path can stay direct.
 - Keep `path` as the first file-related input and put optional behavior in name-value arguments.
 - Prefer explicit file options such as `shouldOverwriteExisting`, `shouldReadOnly`, and `iTime`.
 - When a format is NetCDF-backed, keep dimensions, variable names, and attributes stable unless there is a versioned migration.
@@ -105,6 +107,13 @@ Prefer local consistency unless the change is part of an intentional cleanup.
 - Prefer name-value syntax such as `foo(bar=...)` over legacy comma-pair calling in new code.
 - Prefer `join`, `replace`, `startsWith`, `endsWith`, `contains`, and related string operations over manual char-array manipulation in new text-handling code.
 - Modernize incrementally. Do not rewrite stable legacy code just to change container types or text types unless the surrounding API is already being refactored.
+
+## Formatting
+
+- Keep MATLAB function calls on one line by default.
+- Do not proactively split function calls across multiple lines for formatting or visual alignment.
+- Treat simple helpers such as `union(...)`, `setdiff(...)`, `intersect(...)`, `cat(...)`, constructors such as `CANumericProperty(...)`, and similar short calls the same way: leave them on one line.
+- If a line truly needs wrapping for local readability, treat that as an intentional exception rather than the default formatting pattern.
 
 ## Summary
 
