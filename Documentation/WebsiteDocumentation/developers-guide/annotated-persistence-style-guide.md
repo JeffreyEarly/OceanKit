@@ -15,6 +15,8 @@ The shared convention should be as simple as the class allows. `wave-vortex-mode
 
 For simple persisted classes, OceanKit prefers `name=value` constructors whose argument names match `classRequiredPropertyNames()`. That alignment keeps the persistence path small, direct, and easier to maintain.
 
+When a class has both a cheap canonical persisted state and an expensive scientific setup path, OceanKit prefers making the constructor the cheap canonical constructor and moving the expensive setup into explicit static factories that delegate to that constructor.
+
 Use this guide together with the MATLAB style guide and documentation style guide. Package-specific documentation may extend this pattern, but it should not redefine the generic contract differently.
 
 ## Choose the lightest pattern that fits
@@ -58,6 +60,7 @@ Avoid hidden file I/O in constructors. Constructors should keep their normal sci
 For simple persisted classes, keep the structure local to the class:
 
 - a constructor that prefers `name=value` arguments matching `classRequiredPropertyNames()`
+- when the class also has an expensive scientific setup path, explicit static factories should build that state and then delegate to the constructor
 - `classDefinedPropertyAnnotations()`
 - `classRequiredPropertyNames()`
 - optional thin `classNameFromFile(path)` wrapper
@@ -67,9 +70,15 @@ In this pattern, the class annotations and required-property list are the primar
 
 Treat this constructor alignment as the default OceanKit design for simple persisted classes. It keeps constructor calls, persistence metadata, generic annotated reconstruction, tests, and documentation all speaking the same vocabulary.
 
+For classes whose ordinary scientific setup is materially more expensive than restart, prefer a public canonical constructor that takes the persisted-state vocabulary directly, and explicit static factories such as `fromGriddedValues(...)` or `fromKnotPoints(...)` for the scientific setup. Let those factories validate their own inputs, do the expensive work, and then delegate to the constructor.
+
+Keep formal `arguments` validation in place. Cheap constructors should validate canonical state directly, and scientific factories should validate their own source-specific inputs rather than weakening either contract.
+
 If a class has a strong scientific reason to keep positional constructor inputs, that is still allowed. In that case, use the thin-adapter pattern explicitly rather than forcing the persistence layer to guess how stored fields map back onto positional arguments.
 
 Avoid package-private orchestration helpers with names like `reconstructPersistedRole(...)` or `readConcreteRoleFromFile(...)` unless the logic is genuinely shared and would otherwise be duplicated in a way that hurts readability. In most packages, the explicit `roleFromFile(...)` and `roleFromGroup(...)` methods are clearer.
+
+Prefer short inline constructor branching over parser helpers such as `parseBootstrapInputs(...)` or `shouldUseBootstrapConstruction(...)` when the logic is truly small. Once a class starts carrying distinct scientific-setup and canonical-restart paths, prefer explicit factories over growing constructor mode logic.
 
 ## Helper naming for advanced cases
 
@@ -101,6 +110,8 @@ Use these to make subclass additions and intentional removals explicit rather th
 List the persisted properties needed to recover equivalent object state, including values that may be optional during ordinary construction but are required to reconstruct the saved state exactly.
 
 For simple classes, the preferred design is for these required-property names to also be the constructor's `name=value` argument names. When that is true, the generic annotated read path usually stays small enough that no additional reconstruction adapter is needed.
+
+If only a tiny amount of extra bootstrap state is needed, additional validated `options.<name>` fields are acceptable. Once that extra state creates a second substantive initialization path, prefer the cheap canonical constructor plus explicit static factories.
 
 In the direct and thin-adapter patterns, `roleFromGroup(...)` itself may be the adapter between persisted state and constructor inputs.
 
@@ -191,6 +202,55 @@ classdef ExampleDistribution < CAAnnotatedClass
 
         function names = classRequiredPropertyNames()
             names = {'sigma', 'nu'};
+        end
+    end
+end
+```
+
+### Cheap canonical constructor plus scientific factory
+
+```matlab
+classdef ExampleSpline < CAAnnotatedClass
+    properties (SetAccess = private)
+        gridAxes
+        knotAxes
+        xi
+    end
+
+    methods
+        function self = ExampleSpline(options)
+            arguments
+                options.gridAxes (:,1) ExampleAxis
+                options.knotAxes (:,1) ExampleAxis
+                options.xi {mustBeNumeric,mustBeReal,mustBeFinite}
+            end
+            self.gridAxes = options.gridAxes;
+            self.knotAxes = options.knotAxes;
+            self.xi = options.xi;
+        end
+    end
+
+    methods (Static)
+        function self = fromGriddedValues(gridVectors, values, options)
+            arguments
+                gridVectors
+                values {mustBeNumeric,mustBeReal,mustBeFinite}
+                options.S {mustBeNumeric,mustBeReal,mustBeFinite,mustBeInteger,mustBeNonnegative} = 3
+            end
+
+            [gridAxes, knotAxes, xi] = ExampleSpline.solveFromValues(gridVectors, values, options.S);
+            self = ExampleSpline(gridAxes=gridAxes, knotAxes=knotAxes, xi=xi);
+        end
+
+        function propertyAnnotations = classDefinedPropertyAnnotations()
+            propertyAnnotations = CAPropertyAnnotation.empty(0,0);
+            propertyAnnotations(end+1) = CAObjectProperty('gridAxes', 'Grid axes.');
+            propertyAnnotations(end+1) = CAObjectProperty('knotAxes', 'Knot axes.');
+            propertyAnnotations(end+1) = CANumericProperty('xi', {}, '', 'Coefficient state.');
+        end
+
+        function names = classRequiredPropertyNames()
+            names = {'gridAxes', 'knotAxes', 'xi'};
         end
     end
 end
