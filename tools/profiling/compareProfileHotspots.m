@@ -3,7 +3,9 @@ function comparison = compareProfileHotspots(baseline, candidate, options)
 %
 % Use `compareProfileHotspots` to compare same-workload before-and-after
 % profiling runs with absolute and percent deltas for functions and
-% executed lines.
+% executed lines. Start with wall time and function-level deltas; line-level
+% diffs are secondary because helper extraction or code motion can move time
+% across line numbers without a real regression at that exact source line.
 %
 % ```matlab
 % diff = compareProfileHotspots(baselineAnalysis, candidateAnalysis);
@@ -247,14 +249,35 @@ summary(end + 1) = compose("Compared %d functions and %d executed lines.", ...
     height(comparison.functionDiffs), height(comparison.lineDiffs));
 
 if ~isempty(comparison.regressions)
-    summary(end + 1) = formatComparisonSummaryItem(comparison.regressions(1, :));
+    summary(end + 1) = formatComparisonSummaryItem(selectHeadlineTarget(comparison.regressions));
 end
 if ~isempty(comparison.improvements)
-    summary(end + 1) = formatComparisonSummaryItem(comparison.improvements(1, :));
+    summary(end + 1) = formatComparisonSummaryItem(selectHeadlineTarget(comparison.improvements));
+end
+if ~isempty(comparison.lineDiffs)
+    summary(end + 1) = "Function-level totals are the primary comparison signal. " + ...
+        "Line-level diffs are code-motion-sensitive and best used as secondary context.";
 end
 end
 
 function text = formatComparisonSummaryItem(targetRow)
+if targetRow.targetType == "line"
+    switch targetRow.changeType
+        case "new"
+            text = targetRow.targetName + " is newly executed in the candidate profile. " + ...
+                "Line-level diffs are code-motion-sensitive and may reflect code motion.";
+        case "removed"
+            text = targetRow.targetName + " is no longer executed in the candidate profile. " + ...
+                "Line-level diffs are code-motion-sensitive and may reflect code motion.";
+        otherwise
+            directionText = ternary(targetRow.deltaValue >= 0, "regressed", "improved");
+            text = targetRow.targetName + " " + directionText + " in " + targetRow.metricName + ...
+                " by " + formatSeconds(abs(targetRow.deltaValue)) + ". " + ...
+                "Line-level diffs are code-motion-sensitive, so confirm with function-level totals and wall time.";
+    end
+    return
+end
+
 switch targetRow.changeType
     case "new"
         text = targetRow.targetName + " is newly executed in the candidate profile.";
@@ -264,6 +287,15 @@ switch targetRow.changeType
         directionText = ternary(targetRow.deltaValue >= 0, "regressed", "improved");
         text = targetRow.targetName + " " + directionText + " in " + targetRow.metricName + ...
             " by " + formatSeconds(abs(targetRow.deltaValue)) + ".";
+end
+end
+
+function targetRow = selectHeadlineTarget(targets)
+functionTargets = targets(targets.targetType == "function", :);
+if ~isempty(functionTargets)
+    targetRow = functionTargets(1, :);
+else
+    targetRow = targets(1, :);
 end
 end
 
@@ -339,9 +371,17 @@ for iReason = 1:numel(changeTypes)
     changeType = changeTypes(iReason);
     switch changeType
         case "new"
-            reasons(iReason) = "This " + targetType + " is newly executed in the candidate profile.";
+            if targetType == "function"
+                reasons(iReason) = "This function is newly executed in the candidate profile.";
+            else
+                reasons(iReason) = "This line is newly executed in the candidate profile and may reflect code motion rather than a stable new hotspot.";
+            end
         case "removed"
-            reasons(iReason) = "This " + targetType + " is no longer executed in the candidate profile.";
+            if targetType == "function"
+                reasons(iReason) = "This function is no longer executed in the candidate profile.";
+            else
+                reasons(iReason) = "This line is no longer executed in the candidate profile and may reflect code motion rather than a stable removal.";
+            end
         otherwise
             if targetType == "function"
                 reasons(iReason) = ternary(isRegression, ...
@@ -349,8 +389,8 @@ for iReason = 1:numel(changeTypes)
                     "Self time decreased in this function.");
             else
                 reasons(iReason) = ternary(isRegression, ...
-                    "This executed line got slower.", ...
-                    "This executed line got faster.");
+                    "This executed line got slower, but line-level diffs are code-motion-sensitive; confirm with function-level totals and wall time.", ...
+                    "This executed line got faster, but line-level diffs are code-motion-sensitive; confirm with function-level totals and wall time.");
             end
     end
 end
@@ -363,11 +403,21 @@ priority(changeTypes == "new") = 1;
 priority(changeTypes == "removed") = 2;
 end
 
+function priority = targetTypePriority(targetTypes)
+priority = zeros(numel(targetTypes), 1);
+priority(targetTypes == "function") = 0;
+priority(targetTypes == "line") = 1;
+end
+
 function rows = sortComparisonRows(rows, metricName, isRegression)
 if isempty(rows)
     return
 end
 
+hasTargetType = ismember("targetType", string(rows.Properties.VariableNames));
+if hasTargetType
+    rows.targetPriority = targetTypePriority(rows.targetType);
+end
 rows.changePriority = changeTypePriority(rows.changeType);
 metricValues = rows.(metricName);
 if isRegression
@@ -376,7 +426,15 @@ else
     rows.metricPriority = metricValues;
 end
 
-rows = sortrows(rows, ["changePriority", "metricPriority"], "ascend", MissingPlacement="last");
+sortNames = ["changePriority", "metricPriority"];
+if hasTargetType
+    sortNames = ["targetPriority", sortNames];
+end
+
+rows = sortrows(rows, sortNames, "ascend", MissingPlacement="last");
+if hasTargetType
+    rows.targetPriority = [];
+end
 rows.changePriority = [];
 rows.metricPriority = [];
 end

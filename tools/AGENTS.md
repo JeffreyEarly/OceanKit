@@ -126,6 +126,11 @@ Apply the OceanKit MATLAB style guide during edits. In particular:
 - Use `compareProfileHotspots` only for same-workload before/after comparisons.
   Do not use it to compare different benchmark shapes and then interpret the
   result as a performance regression.
+- For comparisons, start with elapsed wall time and function-level rows in
+  `functionDiffs`, `regressions`, and `improvements`.
+- Treat `lineDiffs` and line-level comparison targets as secondary context.
+  Helper extraction, code motion, or line-number churn can make line-level
+  "regressions" misleading even when the workload got faster.
 - When profiling a package authoring repository, add the package and dependency
   folders from `resources/mpackage.json` before profiling so MATLAB resolves
   package code in the same layout the package expects.

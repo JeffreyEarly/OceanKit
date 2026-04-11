@@ -50,7 +50,10 @@ comparison = compareProfileHotspots(before, after, projectRoots=pwd);
 
 `comparison.functionDiffs` and `comparison.lineDiffs` are the detailed joined
 tables. `comparison.regressions` and `comparison.improvements` are the short
-headline views.
+headline views. For comparisons, start with elapsed wall time and
+function-level rows. Line-level diffs are secondary because helper extraction
+or code motion can move time across line numbers without a real regression at
+that exact source line.
 
 ## Compute lines vs call sites
 
