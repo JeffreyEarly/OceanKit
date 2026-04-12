@@ -35,9 +35,36 @@ For new OceanKit tutorials, the standard pattern is a runnable MATLAB script in 
 - Use `%%` headings to define tutorial sections.
 - Use single-`%` comment lines for narrative prose.
 - Call `tutorialFigureCapture(...)` when a figure should appear in the rendered page.
+- Call `tutorialMovieCapture(...)` when a generated movie should appear in the rendered page.
 - Add each new tutorial source file to the tutorial source list in the repository `tools/build_website_documentation.m` script.
 
 Treat the script as the source of truth. The generated markdown page in `docs/` is build output.
+
+## Tutorial assets
+
+Every script-built tutorial owns one page and one asset root:
+
+- page: `docs/tutorials/<slug>.md`
+- asset root: `docs/tutorials/<slug>/`
+
+Within that root:
+
+- generated PNG figures, generated poster images, and generated movies live directly in `docs/tutorials/<slug>/`
+- curated static tutorial-owned files live only in `docs/tutorials/<slug>/preserved/`
+
+Tutorial builds are reused at the whole-tutorial level when the tutorial source file is unchanged:
+
+- each tutorial writes a source-based build stamp beside `docs/tutorials/<slug>.md`
+- when that stamp matches a previous build, the docs build reuses the prior page and asset root without executing the tutorial script
+- use `build_website_documentation(rebuildTutorials=true)` when package or dependency changes should refresh tutorial outputs
+- whole-tutorial invalidation is source-based in this pass, not dependency-declaration based
+
+For generated movies, use the normal tutorial pipeline rather than a separate manual docs path:
+
+- expensive generated movies should be reused by stamp instead of rebuilt on every docs run
+- movie-level stamps still apply inside a forced or source-invalidated rebuild
+- keep tracked tutorial movies at or below `25 MB`
+- `preserved/` is for curated website assets, not the normal generated tutorial outputs
 
 ## Nuts and bolts
 
