@@ -14,6 +14,7 @@ OceanKit tutorials should teach by combining narrative, math, code, and figures.
 - Start from the scientific question or workflow, not from package internals.
 - Alternate explanation with runnable code instead of dumping long uninterrupted scripts.
 - Use math when it clarifies the scientific model or notation, not as decoration.
+- Use backticks only for literal MATLAB or API identifiers. Render mathematical symbols such as $$\kappa$$, $$\Delta t$$, or $$\mathbf{u}$$ with `$$...$$`, not Markdown code quotes.
 - Use figures to confirm and explain the main point of a section.
 - Let each section teach one main step or idea.
 - Prefer self-contained synthetic or lightweight examples before asset-heavy case studies.
@@ -34,6 +35,7 @@ For new OceanKit tutorials, the standard pattern is a runnable MATLAB script in 
 - In that metadata section, use `% Title:`, `% Slug:`, `% Description:`, and optionally `% NavOrder:`.
 - Use `%%` headings to define tutorial sections.
 - Use single-`%` comment lines for narrative prose.
+- Guard optional `tutorialFigureCapture(...)` and `tutorialMovieCapture(...)` calls inline at the call site. Do not define top-of-script no-op fallback handles.
 - Call `tutorialFigureCapture(...)` when a figure should appear in the rendered page.
 - Call `tutorialMovieCapture(...)` when a generated movie should appear in the rendered page.
 - Add each new tutorial source file to the tutorial source list in the repository `tools/build_website_documentation.m` script.
@@ -83,3 +85,4 @@ Older live-script or export-driven tutorial formats still exist in some reposito
 - Keep notation, terminology, and API names consistent with the package reference.
 - Use enough narrative that a reader understands why the next code block exists.
 - End sections with a visible result when possible: a figure, a recovered parameter, a comparison, or a short interpretation.
+- Stay within the MathJax commands already supported by the site. Prefer simple supported notation such as $$\mathbf{z}$$ over unsupported commands such as `\boldsymbol`.

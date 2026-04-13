@@ -195,6 +195,7 @@ For mathematically meaningful APIs, mathematical exposition should be treated as
 - Define symbols near their first use and connect them back to code identifiers, dimensions, and units when relevant.
 - When a code identifier is itself a mathematical symbol, introduce both forms early in the summary or discussion. For example, document `xi` as the coefficient vector `$$\xi$$`, and `K` as the spline order `$$K$$`.
 - Use `$$...$$` delimiters consistently for both displayed equations and rendered symbol forms.
+- Markdown backticks are for code, not rendered math.
 - Use braces for superscripts and subscripts whenever the exponent or index is not a single character or includes an operator or sign. Write `$$s^{-1}$$`, `$$\tau_{N_k}$$`, and `$$x_{\mathrm{Std}}$$`, not `$$s^-1$$`, `$$\tau_N_k$$`, or `$$x_\mathrm{Std}$$`.
 - Because generated `class-docs` page titles and headings use the raw MATLAB identifier, put the rendered mathematical alias in the short summary and/or discussion text rather than relying on the page title.
 - Use math to explain the API, not as decoration. If there is no meaningful mathematical interpretation, ordinary prose is sufficient.
