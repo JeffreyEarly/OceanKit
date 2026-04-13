@@ -1,0 +1,16 @@
+function summary = extractSummaryFromFit(fit, queryTimes)
+qCenter = zeros(size(queryTimes));
+rCenter = zeros(size(queryTimes));
+uCenter = -fit.streamfunctionSpline.valueAtPoints(qCenter, rCenter, queryTimes, D=[0 1 0]);
+vCenter = fit.streamfunctionSpline.valueAtPoints(qCenter, rCenter, queryTimes, D=[1 0 0]);
+sigma_n = -2 * fit.streamfunctionSpline.valueAtPoints(qCenter, rCenter, queryTimes, D=[1 1 0]);
+dqq = fit.streamfunctionSpline.valueAtPoints(qCenter, rCenter, queryTimes, D=[2 0 0]);
+drr = fit.streamfunctionSpline.valueAtPoints(qCenter, rCenter, queryTimes, D=[0 2 0]);
+
+summary = struct( ...
+    "uCenter", reshape(uCenter, [], 1), ...
+    "vCenter", reshape(vCenter, [], 1), ...
+    "sigma_n", reshape(sigma_n, [], 1), ...
+    "sigma_s", reshape(dqq - drr, [], 1), ...
+    "zeta", reshape(dqq + drr, [], 1));
+end

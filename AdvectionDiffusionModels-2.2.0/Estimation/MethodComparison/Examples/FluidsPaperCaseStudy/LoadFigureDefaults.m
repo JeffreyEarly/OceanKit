@@ -1,0 +1,9 @@
+% AMS figure widths, given in picas, converted to points (1 pica = 12 points)
+figureWidthOneColumn = 19*12*scaleFactor;
+figureWidthMedium = 27*12*scaleFactor;
+figureWidthTwoColumn = 39*12*scaleFactor;
+figureFont = 'Helvetica';
+figureLegendSize = 9*scaleFactor;
+figureAxisTickSize = 8*scaleFactor;
+figureAxisLabelSize = 10*scaleFactor;
+figureTitleSize = 11*scaleFactor;

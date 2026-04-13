@@ -1,0 +1,1162 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{parskip}
+
+\geometry{margin=0.5in}
+
+\title{Lagrangian decomposition with a streamfunction}
+\author{jeffrey }
+\date{October 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Coupled asynchronous estimator with a spline-defined COM operator [Very good]}
+
+We now derive the asynchronous analogue of the coupled system in Oscroft et al.
+The center-of-mass (COM) trajectory is defined by a fast spline smoother, so the COM
+evolution equation is obtained by applying that same smoothing operator to the full
+fixed-frame dynamical model. Subtracting the COM equation from the full equation yields
+the particle evolution in the COM frame.
+
+The key point is that the mesoscale field remains present in \emph{both} equations.
+The only mean-free assumption is that the submesoscale residual has zero projection onto
+the COM spline space.
+
+\subsection{Asynchronous observations}
+
+Assume drifter $k$ is observed at times
+\begin{equation}
+t_{k,1},\dots,t_{k,N_k}, \qquad k=1,\dots,K,
+\end{equation}
+all lying in a common interval $[t_0,t_f]$, but not necessarily at simultaneous times.
+
+Let
+\begin{equation}
+x_{k,n}=x_k(t_{k,n}), \qquad y_{k,n}=y_k(t_{k,n}),
+\qquad
+\dot{x}_{k,n}=\dot{x}_k(t_{k,n}), \qquad \dot{y}_{k,n}=\dot{y}_k(t_{k,n}),
+\end{equation}
+for $n=1,\dots,N_k$.
+
+Let the total number of observations be
+\begin{equation}
+N_{\mathrm{tot}}=\sum_{k=1}^K N_k.
+\end{equation}
+Stack all observations in a single index $r=1,\dots,N_{\mathrm{tot}}$, with associated pair
+$(k(r),n(r))$.
+
+\subsection{Full fixed-frame model}
+
+We write the fixed-frame velocity decomposition as
+\begin{equation}
+\dot{x}_k(t)=u_k^{\mathrm{meso}}(t)+u^{\mathrm{bg}}(t)+u_k^{\mathrm{sm}}(t),
+\qquad
+\dot{y}_k(t)=v_k^{\mathrm{meso}}(t)+v^{\mathrm{bg}}(t)+v_k^{\mathrm{sm}}(t).
+\label{eq:full_fixed_model}
+\end{equation}
+
+Here
+\begin{itemize}
+    \item $(u_k^{\mathrm{meso}},v_k^{\mathrm{meso}})$ is the mesoscale velocity,
+    \item $(u^{\mathrm{bg}},v^{\mathrm{bg}})$ is the background velocity, common to all drifters,
+    \item $(u_k^{\mathrm{sm}},v_k^{\mathrm{sm}})$ is the submesoscale residual.
+\end{itemize}
+
+\subsection{Fast spline basis and COM smoothing operator}
+
+Let the pooled observation times, sorted in nondecreasing order, be
+\begin{equation}
+\tau_1 \le \tau_2 \le \cdots \le \tau_{N_{\mathrm{tot}}}.
+\end{equation}
+Let $D(\tau_r)$ denote the number of deployed drifters at time $\tau_r$.
+Define representative times recursively by
+\begin{equation}
+q_1=1,
+\qquad
+q_{m+1}=q_m+D(\tau_{q_m}),
+\end{equation}
+until $q_m>N_{\mathrm{tot}}$, and then set
+\begin{equation}
+\sigma_m=\tau_{q_m}, \qquad m=1,\dots,Q.
+\end{equation}
+These representative times define the knot sequence for a fast temporal spline basis
+\begin{equation}
+\{B_q(t)\}_{q=1}^{Q_b}.
+\end{equation}
+Here $Q_b$ is the number of fast temporal basis functions.
+
+
+Define the fast-basis design matrix on the observation grid:
+\begin{equation}
+\mathcal{B}_{rq}=B_q\!\left(t_{k(r),n(r)}\right),
+\qquad
+r=1,\dots,N_{\mathrm{tot}}, \quad q=1,\dots,Q_b.
+\label{eq:B_matrix}
+\end{equation}
+
+Stack the positions and velocities:
+\begin{equation}
+\mathbf{x}=
+\begin{bmatrix}
+x_{k(r),n(r)}
+\end{bmatrix}_{r=1}^{N_{\mathrm{tot}}},
+\qquad
+\mathbf{y}=
+\begin{bmatrix}
+y_{k(r),n(r)}
+\end{bmatrix}_{r=1}^{N_{\mathrm{tot}}},
+\end{equation}
+\begin{equation}
+\dot{\mathbf{x}}=
+\begin{bmatrix}
+\dot{x}_{k(r),n(r)}
+\end{bmatrix}_{r=1}^{N_{\mathrm{tot}}},
+\qquad
+\dot{\mathbf{y}}=
+\begin{bmatrix}
+\dot{y}_{k(r),n(r)}
+\end{bmatrix}_{r=1}^{N_{\mathrm{tot}}}.
+\end{equation}
+
+The COM coefficients are obtained by ordinary least squares:
+\begin{equation}
+\hat{\mathbf{b}}^x=(\mathcal{B}^{\top}\mathcal{B})^{-1}\mathcal{B}^{\top}\mathbf{x},
+\qquad
+\hat{\mathbf{b}}^y=(\mathcal{B}^{\top}\mathcal{B})^{-1}\mathcal{B}^{\top}\mathbf{y}.
+\end{equation}
+Hence the COM trajectory on the observation grid is
+\begin{equation}
+\mathbf{m}_x=\mathcal{B}\hat{\mathbf{b}}^x,
+\qquad
+\mathbf{m}_y=\mathcal{B}\hat{\mathbf{b}}^y.
+\end{equation}
+
+Define the smoothing operator
+\begin{equation}
+S=\mathcal{B}(\mathcal{B}^{\top}\mathcal{B})^{-1}\mathcal{B}^{\top}.
+\label{eq:S_operator}
+\end{equation}
+Let the derivative design matrix be
+\begin{equation}
+\dot{\mathcal{B}}_{rq}=B_q'\!\left(t_{k(r),n(r)}\right).
+\end{equation}
+Then
+\begin{equation}
+\mathbf{m}_x=S\mathbf{x},
+\qquad
+\mathbf{m}_y=S\mathbf{y},
+\qquad
+\dot{\mathbf{m}}_x=\dot{\mathcal{B}}\hat{\mathbf{b}}^x,
+\qquad
+\dot{\mathbf{m}}_y=\dot{\mathcal{B}}\hat{\mathbf{b}}^y.
+\label{eq:S_com_relation}
+\end{equation}
+This is the quantity used in the current implementation: the COM velocity is obtained by
+differentiating the fitted fast spline, while the projector $S$ is used for the COM-space
+split of the mesoscale and residual velocities.
+
+\subsection{Mesoscale streamfunction}
+
+Let $\{T_\ell(t)\}_{\ell=1}^{L}$ be a slow temporal spline basis, and let
+$X_i(\tilde{x})$, $Y_j(\tilde{y})$ be spatial basis functions in the COM frame.
+We represent the mesoscale streamfunction as
+\begin{equation}
+\psi(\tilde{x},\tilde{y},t)
+=
+\sum_{i=1}^{n_x}\sum_{j=1}^{n_y}\sum_{\ell=1}^{L}
+a_{ij\ell}\,
+X_i(\tilde{x})\,Y_j(\tilde{y})\,T_\ell(t).
+\label{eq:psi_model}
+\end{equation}
+The induced mesoscale velocity is
+\begin{align}
+u^{\mathrm{meso}}(\tilde{x},\tilde{y},t)
+&=
+-\sum_{i,j,\ell}
+a_{ij\ell}\,
+X_i(\tilde{x})\,Y_j'(\tilde{y})\,T_\ell(t),
+\label{eq:u_meso_model}
+\\
+v^{\mathrm{meso}}(\tilde{x},\tilde{y},t)
+&=
+\sum_{i,j,\ell}
+a_{ij\ell}\,
+X_i'(\tilde{x})\,Y_j(\tilde{y})\,T_\ell(t).
+\label{eq:v_meso_model}
+\end{align}
+
+Define the COM-frame coordinates at the observation times by
+\begin{equation}
+\tilde{x}_{k,n}=x_{k,n}-m_x(t_{k,n}),
+\qquad
+\tilde{y}_{k,n}=y_{k,n}-m_y(t_{k,n}).
+\label{eq:tilde_coords}
+\end{equation}
+
+Now evaluate the mesoscale velocity at each observation and stack the results:
+\begin{equation}
+\mathbf{u}^{\mathrm{meso}}=
+\begin{bmatrix}
+u^{\mathrm{meso}}(\tilde{x}_{k(r),n(r)},\tilde{y}_{k(r),n(r)},t_{k(r),n(r)})
+\end{bmatrix}_{r=1}^{N_{\mathrm{tot}}},
+\end{equation}
+\begin{equation}
+\mathbf{v}^{\mathrm{meso}}=
+\begin{bmatrix}
+v^{\mathrm{meso}}(\tilde{x}_{k(r),n(r)},\tilde{y}_{k(r),n(r)},t_{k(r),n(r)})
+\end{bmatrix}_{r=1}^{N_{\mathrm{tot}}}.
+\end{equation}
+
+Flattening the coefficients $a_{ij\ell}$ into a vector $\mathbf{a}$, we may write
+\begin{equation}
+\mathbf{u}^{\mathrm{meso}}=\mathbf{H}_x \mathbf{a},
+\qquad
+\mathbf{v}^{\mathrm{meso}}=\mathbf{H}_y \mathbf{a},
+\label{eq:Hxy_def}
+\end{equation}
+where the rows of $\mathbf{H}_x$ and $\mathbf{H}_y$ are
+\begin{equation}
+(\mathbf{H}_x)_{r,ij\ell}
+=
+-\,X_i(\tilde{x}_{k(r),n(r)})\,Y_j'(\tilde{y}_{k(r),n(r)})\,T_\ell(t_{k(r),n(r)}),
+\end{equation}
+\begin{equation}
+(\mathbf{H}_y)_{r,ij\ell}
+=
+\phantom{-}\,X_i'(\tilde{x}_{k(r),n(r)})\,Y_j(\tilde{y}_{k(r),n(r)})\,T_\ell(t_{k(r),n(r)}).
+\end{equation}
+
+\subsection{Background in the fast basis}
+
+Represent the background velocity in the same fast basis:
+\begin{equation}
+u^{\mathrm{bg}}(t)=\sum_{q=1}^{Q_b} c_q^x B_q(t),
+\qquad
+v^{\mathrm{bg}}(t)=\sum_{q=1}^{Q_b} c_q^y B_q(t).
+\label{eq:bg_model}
+\end{equation}
+Let
+\begin{equation}
+\mathbf{u}^{\mathrm{bg}}=\mathcal{B}\mathbf{c}^x,
+\qquad
+\mathbf{v}^{\mathrm{bg}}=\mathcal{B}\mathbf{c}^y.
+\label{eq:bg_stacked}
+\end{equation}
+
+Because the background lies in the column space of $\mathcal{B}$,
+\begin{equation}
+S\mathbf{u}^{\mathrm{bg}}=\mathbf{u}^{\mathrm{bg}},
+\qquad
+S\mathbf{v}^{\mathrm{bg}}=\mathbf{v}^{\mathrm{bg}}.
+\label{eq:bg_invariant}
+\end{equation}
+This follows because
+\begin{equation}
+S(\mathcal{B}\mathbf{c})
+=
+\mathcal{B}(\mathcal{B}^\top \mathcal{B})^{-1}\mathcal{B}^\top \mathcal{B}\mathbf{c}
+=
+\mathcal{B}\mathbf{c}
+\end{equation}
+
+\subsection{COM evolution equation}
+
+Stacking \eqref{eq:full_fixed_model} gives
+\begin{equation}
+\dot{\mathbf{x}}
+=
+\mathbf{u}^{\mathrm{meso}}+\mathbf{u}^{\mathrm{bg}}+\mathbf{u}^{\mathrm{sm}},
+\qquad
+\dot{\mathbf{y}}
+=
+\mathbf{v}^{\mathrm{meso}}+\mathbf{v}^{\mathrm{bg}}+\mathbf{v}^{\mathrm{sm}}.
+\label{eq:full_stacked}
+\end{equation}
+
+Applying the COM operator \(S\) and using \eqref{eq:S_com_relation}, we obtain
+\begin{equation}
+\dot{\mathbf{m}}_x
+=
+S\mathbf{H}_x\mathbf{a}
++
+S\mathbf{u}^{\mathrm{bg}}
++
+S\mathbf{u}^{\mathrm{sm}},
+\qquad
+\dot{\mathbf{m}}_y
+=
+S\mathbf{H}_y\mathbf{a}
++
+S\mathbf{v}^{\mathrm{bg}}
++
+S\mathbf{v}^{\mathrm{sm}}.
+\end{equation}
+
+Following the Oscroft logic, we impose that the submesoscale residual has no component
+in the COM space,
+\begin{equation}
+S\mathbf{u}^{\mathrm{sm}}=\mathbf{0},
+\qquad
+S\mathbf{v}^{\mathrm{sm}}=\mathbf{0},
+\label{eq:sm_zero_mean}
+\end{equation}
+so that the COM evolution reduces to
+\begin{equation}
+\dot{\mathbf{m}}_x
+=
+S\mathbf{H}_x\mathbf{a}
++
+\mathbf{u}^{\mathrm{bg}},
+\qquad
+\dot{\mathbf{m}}_y
+=
+S\mathbf{H}_y\mathbf{a}
++
+\mathbf{v}^{\mathrm{bg}},
+\label{eq:com_equation_joint}
+\end{equation}
+where \(\mathbf{u}^{\mathrm{bg}}\) and \(\mathbf{v}^{\mathrm{bg}}\) are, by definition,
+the residual background velocities in the COM space.
+
+\subsection{Particle evolution in the COM frame}
+
+Define the COM-frame velocities by
+\begin{equation}
+\dot{\tilde{\mathbf{x}}}=\dot{\mathbf{x}}-\dot{\mathbf{m}}_x,
+\qquad
+\dot{\tilde{\mathbf{y}}}=\dot{\mathbf{y}}-\dot{\mathbf{m}}_y.
+\label{eq:tilde_vels}
+\end{equation}
+
+Subtracting \eqref{eq:com_equation_joint} from \eqref{eq:full_stacked} gives
+\begin{equation}
+\dot{\tilde{\mathbf{x}}}
+=
+(I-S)\mathbf{H}_x\mathbf{a}
++
+\mathbf{u}^{\mathrm{sm}},
+\qquad
+\dot{\tilde{\mathbf{y}}}
+=
+(I-S)\mathbf{H}_y\mathbf{a}
++
+\mathbf{v}^{\mathrm{sm}},
+\label{eq:relative_equation_joint}
+\end{equation}
+where the submesoscale residual is mean-free by construction:
+\begin{equation}
+S\mathbf{u}^{\mathrm{sm}}=\mathbf{0},
+\qquad
+S\mathbf{v}^{\mathrm{sm}}=\mathbf{0}.
+\end{equation}
+
+\subsection{Mean-free assumption on the submesoscale residual}
+
+We assume that the submesoscale residual has zero projection onto the
+COM spline space:
+\begin{equation}
+S\mathbf{u}^{\mathrm{sm}}=\mathbf{0},
+\qquad
+S\mathbf{v}^{\mathrm{sm}}=\mathbf{0}.
+\end{equation}
+Thus the COM residual is identified with the background velocity, while
+the relative residual is identified with the submesoscale velocity.
+Equivalently,
+\begin{equation}
+\mathbf{u}^{\mathrm{bg}} = \dot{\mathbf{m}}_x - S\mathbf{H}_x\mathbf{a},
+\qquad
+\mathbf{v}^{\mathrm{bg}} = \dot{\mathbf{m}}_y - S\mathbf{H}_y\mathbf{a},
+\label{eq:bg_residual_def}
+\end{equation}
+and
+\begin{equation}
+\mathbf{u}^{\mathrm{sm}} = \dot{\tilde{\mathbf{x}}} - (I-S)\mathbf{H}_x\mathbf{a},
+\qquad
+\mathbf{v}^{\mathrm{sm}} = \dot{\tilde{\mathbf{y}}} - (I-S)\mathbf{H}_y\mathbf{a}.
+\label{eq:sm_residual_def}
+\end{equation}
+
+\subsection{Coupled least-squares system}
+
+The unknown mesoscale coefficients \(\mathbf a\) are determined by minimizing
+the residual energy in both the COM and relative equations.
+
+Define
+\begin{equation}
+\mathbf{d}_{\mathrm{com}}
+=
+\begin{bmatrix}
+\dot{\mathbf{m}}_x\\
+\dot{\mathbf{m}}_y
+\end{bmatrix},
+\qquad
+\mathbf{d}_{\mathrm{rel}}
+=
+\begin{bmatrix}
+\dot{\tilde{\mathbf{x}}}\\
+\dot{\tilde{\mathbf{y}}}
+\end{bmatrix},
+\end{equation}
+and
+\begin{equation}
+\mathbf{M}_{\mathrm{com}}
+=
+\begin{bmatrix}
+S\mathbf{H}_x\\
+S\mathbf{H}_y
+\end{bmatrix},
+\qquad
+\mathbf{M}_{\mathrm{rel}}
+=
+\begin{bmatrix}
+(I-S)\mathbf{H}_x\\
+(I-S)\mathbf{H}_y
+\end{bmatrix}.
+\end{equation}
+
+Then
+\begin{align}
+\mathbf{d}_{\mathrm{com}}
+&=
+\mathbf{M}_{\mathrm{com}}\mathbf{a}
++
+\boldsymbol{\epsilon}_{\mathrm{bg}},
+\label{eq:com_ls_system}
+\\
+\mathbf{d}_{\mathrm{rel}}
+&=
+\mathbf{M}_{\mathrm{rel}}\mathbf{a}
++
+\boldsymbol{\epsilon}_{\mathrm{sm}},
+\label{eq:rel_ls_system}
+\end{align}
+where
+\begin{equation}
+\boldsymbol{\epsilon}_{\mathrm{bg}}
+=
+\begin{bmatrix}
+\mathbf{u}^{\mathrm{bg}}\\
+\mathbf{v}^{\mathrm{bg}}
+\end{bmatrix},
+\qquad
+\boldsymbol{\epsilon}_{\mathrm{sm}}
+=
+\begin{bmatrix}
+\mathbf{u}^{\mathrm{sm}}\\
+\mathbf{v}^{\mathrm{sm}}
+\end{bmatrix}.
+\end{equation}
+
+The mesoscale estimate is therefore obtained from
+\begin{equation}
+\hat{\mathbf a}
+=
+\arg\min_{\mathbf a}
+\left(
+\|
+\mathbf{d}_{\mathrm{com}}-\mathbf{M}_{\mathrm{com}}\mathbf a
+\|_2^2
++
+\|
+\mathbf{d}_{\mathrm{rel}}-\mathbf{M}_{\mathrm{rel}}\mathbf a
+\|_2^2
+\right).
+\label{eq:joint_estimator}
+\end{equation}
+
+Equivalently, stacking the two systems gives
+\begin{equation}
+\underbrace{
+\begin{bmatrix}
+\mathbf{d}_{\mathrm{com}}\\
+\mathbf{d}_{\mathrm{rel}}
+\end{bmatrix}}_{\mathbf d}
+=
+\underbrace{
+\begin{bmatrix}
+\mathbf{M}_{\mathrm{com}}\\
+\mathbf{M}_{\mathrm{rel}}
+\end{bmatrix}}_{\mathbf X}
+\mathbf a
++
+\underbrace{
+\begin{bmatrix}
+\boldsymbol{\epsilon}_{\mathrm{bg}}\\
+\boldsymbol{\epsilon}_{\mathrm{sm}}
+\end{bmatrix}}_{\boldsymbol{\epsilon}}.
+\label{eq:joint_stacked_system}
+\end{equation}
+
+\paragraph{Least-squares solution.}
+
+The minimization problem \eqref{eq:joint_estimator} is a standard linear
+least-squares problem with design matrix
+\begin{equation}
+\mathbf X =
+\begin{bmatrix}
+\mathbf{M}_{\mathrm{com}}\\
+\mathbf{M}_{\mathrm{rel}}
+\end{bmatrix},
+\qquad
+\mathbf d =
+\begin{bmatrix}
+\mathbf{d}_{\mathrm{com}}\\
+\mathbf{d}_{\mathrm{rel}}
+\end{bmatrix}.
+\end{equation}
+The normal equations are
+\begin{equation}
+\mathbf X^\top \mathbf X\, \hat{\mathbf a}
+=
+\mathbf X^\top \mathbf d.
+\end{equation}
+Using the block structure, this becomes
+\begin{equation}
+\left(
+\mathbf{M}_{\mathrm{com}}^\top \mathbf{M}_{\mathrm{com}}
++
+\mathbf{M}_{\mathrm{rel}}^\top \mathbf{M}_{\mathrm{rel}}
+\right)\hat{\mathbf a}
+=
+\mathbf{M}_{\mathrm{com}}^\top \mathbf{d}_{\mathrm{com}}
++
+\mathbf{M}_{\mathrm{rel}}^\top \mathbf{d}_{\mathrm{rel}}.
+\label{eq:normal_equations}
+\end{equation}
+
+Substituting the definitions of the design matrices yields
+\begin{align}
+\mathbf{M}_{\mathrm{com}}^\top \mathbf{M}_{\mathrm{com}}
+&=
+\mathbf{H}_x^\top S \mathbf{H}_x
++
+\mathbf{H}_y^\top S \mathbf{H}_y,
+\\
+\mathbf{M}_{\mathrm{rel}}^\top \mathbf{M}_{\mathrm{rel}}
+&=
+\mathbf{H}_x^\top (I-S) \mathbf{H}_x
++
+\mathbf{H}_y^\top (I-S) \mathbf{H}_y.
+\end{align}
+Hence
+\begin{equation}
+\mathbf{X}^\top \mathbf{X}
+=
+\mathbf{H}_x^\top \mathbf{H}_x
++
+\mathbf{H}_y^\top \mathbf{H}_y,
+\end{equation}
+because
+\(
+S + (I-S) = I.
+\)
+
+Similarly,
+\begin{align}
+\mathbf{X}^\top \mathbf d
+&=
+\mathbf{H}_x^\top S \dot{\mathbf m}_x
++
+\mathbf{H}_y^\top S \dot{\mathbf m}_y
++
+\mathbf{H}_x^\top (I-S)\dot{\tilde{\mathbf x}}
++
+\mathbf{H}_y^\top (I-S)\dot{\tilde{\mathbf y}}.
+\end{align}
+
+Therefore the least-squares estimator is
+\begin{equation}
+\hat{\mathbf a}
+=
+\left(
+\mathbf{H}_x^\top \mathbf{H}_x
++
+\mathbf{H}_y^\top \mathbf{H}_y
+\right)^{-1}
+\left[
+\mathbf{H}_x^\top S \dot{\mathbf m}_x
++
+\mathbf{H}_y^\top S \dot{\mathbf m}_y
++
+\mathbf{H}_x^\top (I-S)\dot{\tilde{\mathbf x}}
++
+\mathbf{H}_y^\top (I-S)\dot{\tilde{\mathbf y}}
+\right].
+\label{eq:final_estimator}
+\end{equation}
+
+\subsection{Optional hard mesoscale constraints}
+
+In the MATLAB implementation, the additive spatial gauge is first removed by
+writing the full coefficient vector as
+\begin{equation}
+\mathbf c = G \boldsymbol{\alpha},
+\end{equation}
+where $G$ spans the gauge-free coefficient subspace. The unconstrained fit then
+becomes the reduced least-squares problem
+\begin{equation}
+\hat{\boldsymbol{\alpha}}
+=
+\arg\min_{\boldsymbol{\alpha}}
+\|
+\mathbf d - \mathbf X G \boldsymbol{\alpha}
+\|_2^2.
+\end{equation}
+
+The new optional constraint modes replace this with the equality-constrained
+problem
+\begin{equation}
+\hat{\boldsymbol{\alpha}}
+=
+\arg\min_{\boldsymbol{\alpha}}
+\|
+\mathbf d - \mathbf X G \boldsymbol{\alpha}
+\|_2^2
+\qquad
+\text{subject to}
+\qquad
+C\boldsymbol{\alpha}=0.
+\label{eq:constrained_estimator}
+\end{equation}
+The constraint acts only on the mesoscale streamfunction coefficients; the
+background and submesoscale components are still recovered afterward from the
+COM and relative residuals.
+
+For the \texttt{zeroVorticity} option, we enforce
+\begin{equation}
+\zeta = \psi_{qq} + \psi_{rr} = 0.
+\end{equation}
+For the \texttt{zeroStrain} option, we enforce
+\begin{equation}
+\psi_{qr} = 0,
+\qquad
+\psi_{qq} - \psi_{rr} = 0,
+\end{equation}
+which is equivalent to forcing both
+\begin{equation}
+\sigma_n = -2\psi_{qr} = 0,
+\qquad
+\sigma_s = \psi_{qq} - \psi_{rr} = 0.
+\end{equation}
+
+The implementation assembles these constraints by collocation over the
+spline-support cells, not by adding a penalty term. For each nonzero knot span
+in $q$, $r$, and $t$, it places $S_q+1$, $S_r+1$, and $S_t+1$ interior points,
+forms the tensor-product support grid, and evaluates the derivative basis
+matrices
+\begin{equation}
+A_{qq}, \qquad A_{rr}, \qquad A_{qr}
+\end{equation}
+on that grid. The reduced-space constraint matrix is then
+\begin{equation}
+C_{\zeta} = (A_{qq} + A_{rr})G
+\end{equation}
+for \texttt{zeroVorticity}, and
+\begin{equation}
+C_{\sigma}
+=
+\begin{bmatrix}
+A_{qr}\\
+A_{qq} - A_{rr}
+\end{bmatrix}
+G
+\end{equation}
+for \texttt{zeroStrain}. Redundant constraint rows are removed before solving
+the equality-constrained normal equations.
+
+Because each constrained diagnostic is piecewise polynomial on every
+spline-support cell, vanishing on this collocation set forces the diagnostic to
+vanish everywhere in the spline domain. In this sense the imposed constraint is
+exact for the fitted spline model, not merely pointwise at the observations.
+
+\paragraph{Interpretation.}
+The \texttt{zeroVorticity} option forces the mesoscale streamfunction to be
+harmonic. The \texttt{zeroStrain} option is much more restrictive: it removes
+both strain components and leaves only the rigid-rotation-type spatial
+mesoscale family.
+
+\subsection{Recovered fields}
+
+The fitted mesoscale velocity is
+\begin{align}
+\hat{u}^{\mathrm{meso}}(\tilde{x},\tilde{y},t)
+&=
+-\sum_{i,j,\ell}\hat{a}_{ij\ell}\,X_i(\tilde{x})Y_j'(\tilde{y})T_\ell(t),
+\\
+\hat{v}^{\mathrm{meso}}(\tilde{x},\tilde{y},t)
+&=
+\sum_{i,j,\ell}\hat{a}_{ij\ell}\,X_i'(\tilde{x})Y_j(\tilde{y})T_\ell(t).
+\end{align}
+
+The recovered background velocity is defined as the COM residual:
+\begin{equation}
+\hat{\mathbf{u}}^{\mathrm{bg}}
+=
+\dot{\mathbf{m}}_x
+-
+S\mathbf{H}_x\hat{\mathbf a},
+\qquad
+\hat{\mathbf{v}}^{\mathrm{bg}}
+=
+\dot{\mathbf{m}}_y
+-
+S\mathbf{H}_y\hat{\mathbf a}.
+\end{equation}
+
+The recovered submesoscale residual is defined as the relative residual:
+\begin{equation}
+\hat{\mathbf{u}}^{\mathrm{sm}}
+=
+\dot{\tilde{\mathbf{x}}}
+-
+(I-S)\mathbf{H}_x\hat{\mathbf a},
+\qquad
+\hat{\mathbf{v}}^{\mathrm{sm}}
+=
+\dot{\tilde{\mathbf{y}}}
+-
+(I-S)\mathbf{H}_y\hat{\mathbf a}.
+\end{equation}
+In the current implementation, $\hat{\mathbf{u}}^{\mathrm{bg}}$ and
+$\hat{\mathbf{v}}^{\mathrm{bg}}$ are projected back into the fast spline basis before
+integration, while the per-drifter mesoscale and submesoscale trajectory components are
+rebuilt from interpolating splines on each drifter's native observation times.
+
+\subsection{Trajectory decomposition in the fixed and COM frames}
+
+The velocity decomposition \eqref{eq:full_fixed_model}, together with the
+definitions of the recovered fields, induces a corresponding decomposition
+of the trajectories by time integration. Because the observations are
+asynchronous, the component trajectories must be defined with consistent
+anchoring in time.
+
+\paragraph{Background trajectory.}
+The background velocity is defined as the residual of the COM equation,
+\begin{equation}
+\hat{\mathbf{u}}^{\mathrm{bg}}
+=
+\dot{\mathbf{m}}_x
+-
+S\mathbf{H}_x\hat{\mathbf a},
+\qquad
+\hat{\mathbf{v}}^{\mathrm{bg}}
+=
+\dot{\mathbf{m}}_y
+-
+S\mathbf{H}_y\hat{\mathbf a}.
+\end{equation}
+The corresponding background trajectory is defined as the anchored integral
+\begin{equation}
+x^{\mathrm{bg}}(t) := \int_{t_0}^{t} \hat{u}^{\mathrm{bg}}(s)\,ds,
+\qquad
+y^{\mathrm{bg}}(t) := \int_{t_0}^{t} \hat{v}^{\mathrm{bg}}(s)\,ds,
+\end{equation}
+with
+\begin{equation}
+x^{\mathrm{bg}}(t_0)=0,
+\qquad
+y^{\mathrm{bg}}(t_0)=0.
+\end{equation}
+In implementation, this residual is projected onto the fast spline basis
+$\mathcal{B}$ and then integrated once to obtain a common smooth background path.
+The fixed-frame background contribution for drifter $k$ is the reanchored path
+\begin{equation}
+x_k^{\mathrm{bg}}(t)=x^{\mathrm{bg}}(t)-x^{\mathrm{bg}}(t_{k,0}),
+\qquad
+y_k^{\mathrm{bg}}(t)=y^{\mathrm{bg}}(t)-y^{\mathrm{bg}}(t_{k,0}).
+\end{equation}
+
+\paragraph{Mesoscale trajectory.}
+For each drifter $k$, the mesoscale trajectory contribution is defined by
+\begin{equation}
+x_k^{\mathrm{meso}}(t)
+\;:=\;
+x_k(t_{k,0})+\int_{t_{k,0}}^{t}
+\hat{u}_k^{\mathrm{meso}}(s)\,ds,
+\qquad
+y_k^{\mathrm{meso}}(t)
+\;:=\;
+y_k(t_{k,0})+\int_{t_{k,0}}^{t}
+\hat{v}_k^{\mathrm{meso}}(s)\,ds,
+\end{equation}
+where $t_{k,0}$ is the first observation time of drifter $k$, and
+\begin{equation}
+\hat{u}_k^{\mathrm{meso}}(t)
+=
+u^{\mathrm{meso}}(\tilde{x}_k(t),\tilde{y}_k(t),t),
+\qquad
+\hat{v}_k^{\mathrm{meso}}(t)
+=
+v^{\mathrm{meso}}(\tilde{x}_k(t),\tilde{y}_k(t),t).
+\end{equation}
+This definition ensures
+\begin{equation}
+x_k^{\mathrm{meso}}(t_{k,0})=x_k(t_{k,0}),
+\qquad
+y_k^{\mathrm{meso}}(t_{k,0})=y_k(t_{k,0}).
+\end{equation}
+
+\paragraph{Submesoscale trajectory.}
+The submesoscale velocity is defined as the residual of the relative equation,
+\begin{equation}
+\hat{\mathbf{u}}^{\mathrm{sm}}
+=
+\dot{\tilde{\mathbf{x}}}
+-
+(I-S)\mathbf{H}_x\hat{\mathbf a},
+\qquad
+\hat{\mathbf{v}}^{\mathrm{sm}}
+=
+\dot{\tilde{\mathbf{y}}}
+-
+(I-S)\mathbf{H}_y\hat{\mathbf a}.
+\end{equation}
+For each drifter $k$, the corresponding trajectory contribution is
+\begin{equation}
+x_k^{\mathrm{sm}}(t)
+:=
+\int_{t_{k,0}}^{t} \hat{u}_k^{\mathrm{sm}}(s)\,ds,
+\qquad
+y_k^{\mathrm{sm}}(t)
+:=
+\int_{t_{k,0}}^{t} \hat{v}_k^{\mathrm{sm}}(s)\,ds,
+\end{equation}
+so that
+\begin{equation}
+x_k^{\mathrm{sm}}(t_{k,0})=0,
+\qquad
+y_k^{\mathrm{sm}}(t_{k,0})=0.
+\end{equation}
+
+\paragraph{Fixed-frame trajectory decomposition.}
+With these definitions, the observed trajectory of drifter $k$ satisfies
+\begin{align}
+x_k(t)
+&= 
+x_k^{\mathrm{bg}}(t)
++
+x_k^{\mathrm{meso}}(t)
++
+x_k^{\mathrm{sm}}(t),
+\\
+y_k(t)
+&=
+y_k^{\mathrm{bg}}(t)
++
+y_k^{\mathrm{meso}}(t)
++
+y_k^{\mathrm{sm}}(t).
+\end{align}
+Differentiation recovers the velocity decomposition
+\eqref{eq:full_fixed_model}.
+
+\paragraph{COM-frame trajectory decomposition.}
+Let $\tilde{x}_k = x_k - m_x$ and $\tilde{y}_k = y_k - m_y$ denote
+centered coordinates. Then the background contribution cancels, and the
+relative motion decomposes as
+\begin{equation}
+\dot{\tilde{\mathbf{x}}}
+=
+(I-S)\mathbf{H}_x \hat{\mathbf a}
++
+\hat{\mathbf{u}}^{\mathrm{sm}},
+\qquad
+\dot{\tilde{\mathbf{y}}}
+=
+(I-S)\mathbf{H}_y \hat{\mathbf a}
++
+\hat{\mathbf{v}}^{\mathrm{sm}}.
+\end{equation}
+Define the centered mesoscale contribution for drifter $k$ by
+\begin{equation}
+\tilde{x}_k^{\mathrm{meso}}(t)
+=
+\tilde{x}_k(t_{k,0})+\int_{t_{k,0}}^{t} \hat{\tilde{u}}_k^{\mathrm{meso}}(s)\,ds,
+\qquad
+\tilde{y}_k^{\mathrm{meso}}(t)
+=
+\tilde{y}_k(t_{k,0})+\int_{t_{k,0}}^{t} \hat{\tilde{v}}_k^{\mathrm{meso}}(s)\,ds,
+\end{equation}
+where
+\begin{equation}
+\hat{\tilde{\mathbf{u}}}^{\mathrm{meso}}=(I-S)\mathbf{H}_x\hat{\mathbf a},
+\qquad
+\hat{\tilde{\mathbf{v}}}^{\mathrm{meso}}=(I-S)\mathbf{H}_y\hat{\mathbf a}.
+\end{equation}
+The centered submesoscale contribution is zero-anchored:
+\begin{equation}
+\tilde{x}_k^{\mathrm{sm}}(t)
+=
+\int_{t_{k,0}}^{t} \hat{\tilde{u}}_k^{\mathrm{sm}}(s)\,ds,
+\qquad
+\tilde{y}_k^{\mathrm{sm}}(t)
+=
+\int_{t_{k,0}}^{t} \hat{\tilde{v}}_k^{\mathrm{sm}}(s)\,ds,
+\end{equation}
+we obtain
+\begin{equation}
+\tilde{x}_k(t)
+=
+\tilde{x}_k^{\mathrm{meso}}(t)
++
+\tilde{x}_k^{\mathrm{sm}}(t),
+\qquad
+\tilde{y}_k(t)
+=
+\tilde{y}_k^{\mathrm{meso}}(t)
++
+\tilde{y}_k^{\mathrm{sm}}(t).
+\end{equation}
+In the current code, these integrals are implemented drifter-by-drifter with
+interpolating splines on the native sample times, using spline degree
+$\min(3,N_k-1)$ for each velocity component.
+
+\paragraph{Interpretation.}
+In the fixed frame, the trajectory decomposes into background,
+mesoscale, and submesoscale contributions. In the COM frame, the
+background motion is removed, leaving a decomposition into mesoscale and
+submesoscale relative motion. The background and submesoscale components
+are defined as residuals in complementary subspaces, ensuring that the
+mesoscale field captures as much variance as possible in both the COM
+and relative dynamics.
+
+In the current MATLAB implementation, this decomposition can also be
+reapplied to any supplied collection of \texttt{TrajectorySpline}
+drifters without refitting the estimator. Provided the supplied
+trajectories are evaluated inside the fitted fast and mesoscale support,
+the fitted COM trajectory $m_x(t),m_y(t)$ and mesoscale field
+$u^{\mathrm{meso}},v^{\mathrm{meso}}$ are held fixed, and the background
+and submesoscale residuals are recomputed on that supplied ensemble
+using the same COM-space projection and anchoring conventions described
+above. This produces the same fixed-frame and centered-frame trajectory
+components as in the fitted object, but evaluated for the supplied
+drifter set rather than only for the original fit ensemble.
+
+\subsection{Zero gauge}
+
+ The centered-frame streamfunction is represented as
+ \[
+ \psi(q,r,t) = \sum_{k=1}^{M_t} \sum_{j=1}^{M_r} \sum_{i=1}^{M_q}
+ c_{ijk} B_i(q) B_j(r) T_k(t),
+ \]
+ where $B_i$, $B_j$, and $T_k$ are the tensor-product B-spline
+ basis functions. Because the fit uses only $u = -\psi_r$ and
+ $v = \psi_q$, the coefficients are unchanged if
+ \[
+ \psi(q,r,t) \mapsto \psi(q,r,t) + a(t).
+ \]
+
+ The implementation removes this gauge by constructing the spatial
+ coefficient vector $\phi \in \mathbf{R}^{M_q M_r}$ that reproduces
+ the constant field on a dense support grid,
+\[
+ A_{\mathrm{sp}} \phi = \mathbf{1},
+ \]
+ where $A_{\mathrm{sp}}$ is the spatial tensor-product basis evaluated
+ on the $(q,r)$ support grid used to identify the constant mode.
+ The retained spatial subspace is then
+\[
+ G_{\mathrm{sp}} = \operatorname{null}(\phi^\top),
+ \]
+ and the full reduced basis is
+\[
+ G = I_{M_t} \otimes G_{\mathrm{sp}},
+ \qquad
+ c = G \alpha.
+ \]
+ The fitted coefficients come from the reduced least-squares problem
+\[
+\hat{\alpha} = \arg\min_{\alpha} \|\mathbf{X} G \alpha - \mathbf{d}\|_2^2,
+\qquad
+\hat{c} = G \hat{\alpha},
+\]
+with $\mathbf{X}$ and $\mathbf{d}$ defined in
+\eqref{eq:joint_stacked_system}. This is exactly the gauge-reduced solve
+ used in the current MATLAB implementation.
+
+\subsection{Bootstrap uncertainty assessment}
+
+To assess sensitivity to which drifters were observed, we form a
+whole-drifter bootstrap ensemble. Let the original asynchronous drifter
+set contain $K$ trajectory splines. Bootstrap replicate $b$ is formed by
+drawing
+\begin{equation}
+i_1^{(b)}, \dots, i_K^{(b)} \in \{1,\dots,K\}
+\end{equation}
+with replacement, and refitting the full estimator to the resampled
+trajectory list
+\begin{equation}
+\left\{\mathcal{T}_{i_1^{(b)}}, \dots, \mathcal{T}_{i_K^{(b)}}\right\}.
+\end{equation}
+This produces replicate-specific fitted objects
+\begin{equation}
+\hat{\psi}^{(b)}, \qquad \hat{m}_x^{(b)}(t), \qquad \hat{m}_y^{(b)}(t),
+\qquad \hat{u}_{\mathrm{bg}}^{(b)}(t), \qquad \hat{v}_{\mathrm{bg}}^{(b)}(t),
+\end{equation}
+as well as the corresponding fixed-frame and COM-frame trajectory
+decompositions.
+
+The bootstrap summaries are evaluated on a common query grid
+\begin{equation}
+t_1^{\mathrm{q}} < \cdots < t_{N_q}^{\mathrm{q}}
+\end{equation}
+chosen inside the overlap interval shared by the original drifters. For
+each replicate, we evaluate the COM path
+\begin{equation}
+\hat{x}_c^{(b)}(t_i^{\mathrm{q}})=\hat{m}_x^{(b)}(t_i^{\mathrm{q}}),
+\qquad
+\hat{y}_c^{(b)}(t_i^{\mathrm{q}})=\hat{m}_y^{(b)}(t_i^{\mathrm{q}}),
+\end{equation}
+and then define the COM-local mesoscale diagnostics
+\begin{align}
+\hat{u}_c^{(b)}(t_i^{\mathrm{q}})
+&=
+\hat{u}^{\mathrm{meso},(b)}\!\left(
+t_i^{\mathrm{q}},
+\hat{x}_c^{(b)}(t_i^{\mathrm{q}}),
+\hat{y}_c^{(b)}(t_i^{\mathrm{q}})
+\right),
+\\
+\hat{v}_c^{(b)}(t_i^{\mathrm{q}})
+&=
+\hat{v}^{\mathrm{meso},(b)}\!\left(
+t_i^{\mathrm{q}},
+\hat{x}_c^{(b)}(t_i^{\mathrm{q}}),
+\hat{y}_c^{(b)}(t_i^{\mathrm{q}})
+\right),
+\\
+\hat{\sigma}_n^{(b)}(t_i^{\mathrm{q}})
+&=
+\hat{\sigma}_n^{(b)}\!\left(
+t_i^{\mathrm{q}},
+\hat{x}_c^{(b)}(t_i^{\mathrm{q}}),
+\hat{y}_c^{(b)}(t_i^{\mathrm{q}})
+\right),
+\\
+\hat{\sigma}_s^{(b)}(t_i^{\mathrm{q}})
+&=
+\hat{\sigma}_s^{(b)}\!\left(
+t_i^{\mathrm{q}},
+\hat{x}_c^{(b)}(t_i^{\mathrm{q}}),
+\hat{y}_c^{(b)}(t_i^{\mathrm{q}})
+\right),
+\\
+\hat{\zeta}^{(b)}(t_i^{\mathrm{q}})
+&=
+\hat{\zeta}^{(b)}\!\left(
+t_i^{\mathrm{q}},
+\hat{x}_c^{(b)}(t_i^{\mathrm{q}}),
+\hat{y}_c^{(b)}(t_i^{\mathrm{q}})
+\right).
+\end{align}
+These are exactly the quantities stored by the bootstrap implementation.
+
+We also store one scalar submesoscale diffusivity diagnostic per
+replicate. Let
+\begin{equation}
+\hat{x}_{k,\mathrm{sm}}^{(b)}(t), \qquad \hat{y}_{k,\mathrm{sm}}^{(b)}(t)
+\end{equation}
+denote the fixed-frame submesoscale trajectory contribution for drifter
+$k$ in replicate $b$, with native time interval
+$[t_{k,0}^{(b)}, t_{k,f}^{(b)}]$. The diagnostic is
+\begin{equation}
+\hat{\kappa}^{(b)}
+=
+\frac{1}{K}
+\sum_{k=1}^{K}
+\frac{
+\left(\hat{x}_{k,\mathrm{sm}}^{(b)}(t_{k,f}^{(b)})\right)^2
++
+\left(\hat{y}_{k,\mathrm{sm}}^{(b)}(t_{k,f}^{(b)})\right)^2
+}{
+4\left(t_{k,f}^{(b)}-t_{k,0}^{(b)}\right)
+}.
+\end{equation}
+This is used only as a scalar diagnostic summary; it is not included in
+the bootstrap ranking score.
+
+To rank the replicate fits, we form an empirical consensus score from the
+bootstrap cloud itself. Choose a score subset
+\begin{equation}
+\mathcal{I}_{\mathrm{score}} \subset \{1,\dots,N_q\},
+\end{equation}
+typically by striding the query times. At each scored time, construct a
+2-D KDE for the cloud
+\begin{equation}
+\left\{
+\left(\hat{u}_c^{(b)}(t_i^{\mathrm{q}}), \hat{v}_c^{(b)}(t_i^{\mathrm{q}})\right)
+\right\}_{b=1}^{B},
+\end{equation}
+another 2-D KDE for
+\begin{equation}
+\left\{
+\left(\hat{\sigma}_n^{(b)}(t_i^{\mathrm{q}}), \hat{\sigma}_s^{(b)}(t_i^{\mathrm{q}})\right)
+\right\}_{b=1}^{B},
+\end{equation}
+and a 1-D KDE for
+\begin{equation}
+\left\{
+\hat{\zeta}^{(b)}(t_i^{\mathrm{q}})
+\right\}_{b=1}^{B}.
+\end{equation}
+Denoting these empirical densities by
+$\hat{p}_{uv,i}$, $\hat{p}_{\sigma,i}$, and $\hat{p}_{\zeta,i}$, the
+component scores for replicate $b$ are
+\begin{align}
+\ell_{uv}^{(b)}
+&=
+\sum_{i \in \mathcal{I}_{\mathrm{score}}}
+\log_{10}
+\hat{p}_{uv,i}
+\!\left(
+\hat{u}_c^{(b)}(t_i^{\mathrm{q}}),
+\hat{v}_c^{(b)}(t_i^{\mathrm{q}})
+\right),
+\\
+\ell_{\sigma}^{(b)}
+&=
+\sum_{i \in \mathcal{I}_{\mathrm{score}}}
+\log_{10}
+\hat{p}_{\sigma,i}
+\!\left(
+\hat{\sigma}_n^{(b)}(t_i^{\mathrm{q}}),
+\hat{\sigma}_s^{(b)}(t_i^{\mathrm{q}})
+\right),
+\\
+\ell_{\zeta}^{(b)}
+&=
+\sum_{i \in \mathcal{I}_{\mathrm{score}}}
+\log_{10}
+\hat{p}_{\zeta,i}
+\!\left(
+\hat{\zeta}^{(b)}(t_i^{\mathrm{q}})
+\right).
+\end{align}
+The joint consensus score is then
+\begin{equation}
+\ell_{\mathrm{joint}}^{(b)}
+=
+\ell_{uv}^{(b)}
++
+\ell_{\sigma}^{(b)}
++
+\ell_{\zeta}^{(b)}.
+\end{equation}
+If the fit enforces \texttt{zeroVorticity}, the $\ell_{\zeta}^{(b)}$
+block is omitted. If the fit enforces \texttt{zeroStrain}, the
+$\ell_{\sigma}^{(b)}$ block is omitted.
+
+When the user supplies explicit fast or mesoscale knot vectors, every
+bootstrap replicate reuses them exactly. Otherwise each replicate is
+allowed to choose its own default fast and mesoscale knot sequences from
+the resampled data. In both cases, the resolved knot vectors used by each
+replicate are stored so that any selected bootstrap fit can be
+reconstructed exactly later.
+
+\end{document}
