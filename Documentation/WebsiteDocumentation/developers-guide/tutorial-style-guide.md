@@ -13,6 +13,7 @@ OceanKit tutorials should teach by combining narrative, math, code, and figures.
 
 - Start from the scientific question or workflow, not from package internals.
 - Alternate explanation with runnable code instead of dumping long uninterrupted scripts.
+- Keep tutorial code on the scientific path. Do not add tutorial-local defensive error checking, file-existence guards, or input validation around required assets or standard package APIs.
 - Use math when it clarifies the scientific model or notation, not as decoration.
 - Use backticks only for literal MATLAB or API identifiers. Render mathematical symbols such as $$\kappa$$, $$\Delta t$$, or $$\mathbf{u}$$ with `$$...$$`, not Markdown code quotes.
 - Use figures to confirm and explain the main point of a section.
@@ -24,6 +25,7 @@ OceanKit tutorials should teach by combining narrative, math, code, and figures.
 - Usually keep a code block to about `10-20` lines or one main step before returning to prose or a figure.
 - Usually keep displayed math to one main relation or a short cluster of closely related equations before returning to explanation.
 - If a code block or math block starts to feel long, break it up with narrative, interpretation, or a figure.
+- Combine adjacent setup and solve steps when they are one easy mental action, such as preparing trajectories and immediately fitting the model from them.
 - Avoid long stretches that are only prose, only code, or only equations.
 
 ## Standard OceanKit pattern
@@ -35,7 +37,9 @@ For new OceanKit tutorials, the standard pattern is a runnable MATLAB script in 
 - In that metadata section, use `% Title:`, `% Slug:`, `% Description:`, and optionally `% NavOrder:`.
 - Use `%%` headings to define tutorial sections.
 - Use single-`%` comment lines for narrative prose.
+- Use section headings to mark teaching beats, not tiny implementation mechanics. When a short preparation step exists only to feed the immediately following solve step, keep them in one section.
 - Guard optional `tutorialFigureCapture(...)` and `tutorialMovieCapture(...)` calls inline at the call site. Do not define top-of-script no-op fallback handles.
+- The optional `tutorialFigureCapture(...)` and `tutorialMovieCapture(...)` guards are the standard exception to the no-defensive-checking rule above.
 - Call `tutorialFigureCapture(...)` when a figure should appear in the rendered page.
 - Call `tutorialMovieCapture(...)` when a generated movie should appear in the rendered page.
 - Add each new tutorial source file to the tutorial source list in the repository `tools/build_website_documentation.m` script.
