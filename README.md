@@ -50,6 +50,7 @@ with authoring enabled.
 
 # Packages in this repository
 
+- [advection-diffusion-models](https://github.com/JeffreyEarly/advection-diffusion-models) Integrate and estimate advection-diffusion models
 - [AlongTrackSimulator](https://github.com/satmapkit/AlongTrackSimulator) A ground track simulator for satellite altimetry missions
 - [chebfun](https://github.com/chebfun/chebfun) Chebfun: numerical computing with functions.
 - [class-docs](https://github.com/JeffreyEarly/class-annotations) Builds better website documentation for Matlab classes
