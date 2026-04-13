@@ -108,6 +108,14 @@ Apply the OceanKit MATLAB style guide during edits. In particular:
 - Do not update website content unless the task explicitly includes website
   work.
 
+## Package metadata edits
+
+- Never directly edit `mpackage.json` files. When package metadata must change,
+  work from the package root through the public `matlab.mpm.Package` API and
+  let MATLAB rewrite `resources/mpackage.json`. Inspect the available
+  `matlab.mpm.Package` methods and properties to determine the supported
+  operation instead of patching JSON by hand.
+
 ## Profiling tools
 
 - The generic profiling hotspot utilities live in `tools/profiling`. Add that
