@@ -214,7 +214,7 @@ classdef WVTransformConstantStratification < WVGeometryDoublyPeriodicStratifiedC
             if self.hasForcingWithName("antialias filter")
                 j_max = self.forcingWithName("antialias filter").effectiveJMax;
             else
-                j_max =effectiveJMax@WVGeometryDoublyPeriodicStratified(self);
+                j_max = effectiveJMax@WVGeometryDoublyPeriodicStratifiedConstant(self);
             end
         end
 

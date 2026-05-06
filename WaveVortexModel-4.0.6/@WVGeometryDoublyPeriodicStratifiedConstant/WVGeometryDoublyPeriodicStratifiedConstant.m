@@ -89,6 +89,10 @@ classdef WVGeometryDoublyPeriodicStratifiedConstant < WVGeometryDoublyPeriodic &
             Lr2 = self.g*self.h_0/(self.f*self.f);
         end
 
+        function j_max = effectiveJMax(self)
+            j_max = max(self.j);
+        end
+
         function vm = verticalModes(self)
             vm = InternalModesConstantStratification(N0=self.N0, rho0=self.rho0, zIn=[self.z(1) 0], zOut=self.z, latitude=self.latitude);
         end
