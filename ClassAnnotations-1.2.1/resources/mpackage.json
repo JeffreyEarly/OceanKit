@@ -1,0 +1,32 @@
+{
+    "name": "ClassAnnotations",
+    "version": "1.2.1",
+    "id": "2fadd643-a526-49d9-ac09-2486f9d1d4b9",
+    "formerNames": [],
+    "displayName": "Class Annotations",
+    "summary": "Annotate Matlab classes",
+    "description": "Annotates Matlab class properties and methods to enable writing to NetCDF files and better class documentation",
+    "provider": {
+        "name": "Jeffrey J. Early",
+        "organization": "NorthWest Research Associates",
+        "email": "jearly@nwra.com",
+        "url": "https://github.com/JeffreyEarly/class-annotations"
+    },
+    "folders": [
+        {
+            "path": "UnitTests",
+            "languages": [
+                "matlab"
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "NetCDF",
+            "compatibleVersions": "^1.0.2",
+            "id": "f71928ab-80de-413b-b8ad-f0b9fc22d537"
+        }
+    ],
+    "releaseCompatibility": ">=R2024b",
+    "schemaVersion": "1.1.0"
+}
