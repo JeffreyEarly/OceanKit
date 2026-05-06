@@ -66,8 +66,8 @@ classdef WVGeometryDoublyPeriodicStratifiedConstant < WVGeometryDoublyPeriodic &
 
             stratOptions.z = dz*(0:(Nz-1))' - Lz; % Cosine basis for DCT-I and DST-I
             stratOptions.j = (0:(stratOptions.Nj-1))';
-            stratOptions.rhoFunction = @(z) -(options.N0*options.N0*stratOptions.rho0/stratOptions.g)*stratOptions.z + stratOptions.rho0;
-            stratOptions.N2Function = @(z) options.N0*options.N0*ones(size(stratOptions.z));
+            stratOptions.rhoFunction = @(z) -(options.N0*options.N0*stratOptions.rho0/stratOptions.g)*z + stratOptions.rho0;
+            stratOptions.N2Function = @(z) options.N0*options.N0*ones(size(z));
 
             statOptionCell = namedargs2cell(stratOptions);
             self@WVStratification(Lz,Nz,statOptionCell{:});
@@ -84,6 +84,10 @@ classdef WVGeometryDoublyPeriodicStratifiedConstant < WVGeometryDoublyPeriodic &
         
         du = diffZF(self,u,options)
         dw = diffZG(self,w,options)
+        S_f = spectrumWithFgTransform(self,f)
+        S_f = spectrumWithGgTransform(self,f)
+        S_f = crossSpectrumWithFgTransform(self,phi,gamma)
+        S_f = crossSpectrumWithGgTransform(self,phi,gamma)
 
         function Lr2 = get.Lr2(self)
             Lr2 = self.g*self.h_0/(self.f*self.f);
