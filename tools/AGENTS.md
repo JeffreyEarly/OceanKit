@@ -76,6 +76,34 @@ continue with the parts of the task that can be completed safely.
 - Keep example-script modernization minimal unless broader restructuring is explicitly requested.
 - Do not update website content unless the task explicitly includes website work.
 
+## Generated LaTeX source style
+
+When generating or rewriting LaTeX, follow these source-formatting rules in
+addition to the focused LaTeX guide:
+
+- Do not hard-wrap ordinary prose paragraphs in `.tex` files. Keep one source
+  line per paragraph and rely on editor soft wrapping. Preserve intentional blank
+  lines between paragraphs and structural blocks.
+- Soft-wrap equations too. Do not insert source line breaks merely to satisfy a
+  column limit or vertically align terms.
+- The main exception is an intentional rendered equation line break: in `align`,
+  `aligned`, `gathered`, arrays, and similar display math, put a source newline
+  immediately after each `\\`. Keep the following equation line as one logical
+  source line unless another rendered line break is needed.
+- Put spaces around ordinary binary and relational operators such as `+`, `-`,
+  `=`, `\le`, and `\ge`, and after punctuation when it improves math-source
+  readability. Preserve semantically meaningful LaTeX spacing commands such as
+  `\,`, `\!`, `\quad`, and `\qquad`.
+- Keep subscripts and superscripts attached to the symbol they decorate, but do
+  not merge a decorated symbol with the next factor. Write `u_h w`,
+  `\partial_x p_\mathrm{e}`, `g \eta`, and `\rho_0 g z`, not `u_hw`,
+  `\partial_xp_\mathrm{e}`, `g\eta`, or `\rho_0gz`.
+- In Codex responses, write LaTeX intended as mathematics outside Markdown code
+  blocks so it renders. Use code blocks or inline code only when the point is to
+  discuss, compare, or edit the literal LaTeX markup.
+- Do not bulk-reflow existing LaTeX solely to satisfy these preferences unless
+  the task explicitly asks for source-style cleanup.
+
 ## Package snapshot discipline
 
 Do not edit versioned package snapshots inside `OceanKit/`, such as
