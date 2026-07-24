@@ -1,0 +1,25 @@
+{
+    "name": "AlongTrackSimulator",
+    "version": "1.1.0",
+    "id": "7be8b3a1-bf4d-4362-8f78-f3e14f69cf3d",
+    "formerNames": [],
+    "displayName": "AlongTrackSimulator",
+    "summary": "Ground track simulator for altimetry missions.",
+    "description": "Ground track simulator for altimetry missions.",
+    "provider": {
+        "name": "Jeffrey J. Early",
+        "organization": "NorthWest Research Associates",
+        "email": "jearly@nwra.com",
+        "url": "https://github.com/satmapkit/AlongTrackSimulator"
+    },
+    "folders": [],
+    "dependencies": [
+        {
+            "name": "WaveVortexModel",
+            "compatibleVersions": "^4.1.0",
+            "id": "5b1d512f-b713-471f-9b51-70befc23ccf2"
+        }
+    ],
+    "releaseCompatibility": ">=R2024b",
+    "schemaVersion": "1.1.0"
+}

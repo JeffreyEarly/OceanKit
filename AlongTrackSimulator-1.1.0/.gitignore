@@ -1,0 +1,5 @@
+*.asv
+.DS_Store
+*.nc
+*.mp4
+!docs/tutorials/*/*.mp4
