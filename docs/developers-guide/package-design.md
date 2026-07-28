@@ -16,7 +16,7 @@ The following pieces should exist in every OceanKit package authoring repository
 - MATLAB source code at the repository root. Use `@ClassName` folders for class-based APIs, plain `.m` files for standalone functions, and domain folders such as `Operations`, `Integrators`, or `Forcing` when the package needs them.
 - `resources/mpackage.json`. This is the MPM contract for the package. Keep the package name, version, id, display name, summary, description, provider, dependencies, `releaseCompatibility`, and `schemaVersion` accurate. Keep the `folders` entries aligned with the real repository layout.
 - `README.md`. Provide a concise package summary, a quick start, and any citations or scientific references that a user needs immediately.
-- `.github/workflows/release-mpm.yml`. OceanKit packages use the shared reusable release workflow from the `OceanKit` repository. Each authoring repository should expose the same release entry point.
+- `.github/workflows/release-mpm.yml`. OceanKit packages use the shared reusable release workflow from the `OceanKit` repository. Each authoring repository should expose the same release entry point. See the [release workflow](release-workflow) for the current process and modernization target.
 
 ## Recommended
 

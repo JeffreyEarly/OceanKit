@@ -38,10 +38,11 @@ For new OceanKit tutorials, the standard pattern is a runnable MATLAB script in 
 - Use `%%` headings to define tutorial sections.
 - Use single-`%` comment lines for narrative prose.
 - Use section headings to mark teaching beats, not tiny implementation mechanics. When a short preparation step exists only to feed the immediately following solve step, keep them in one section.
-- Guard optional `tutorialFigureCapture(...)` and `tutorialMovieCapture(...)` calls inline at the call site. Do not define top-of-script no-op fallback handles.
-- The optional `tutorialFigureCapture(...)` and `tutorialMovieCapture(...)` guards are the standard exception to the no-defensive-checking rule above.
+- Guard optional `tutorialFigureCapture(...)`, `tutorialMovieCapture(...)`, and `tutorialOutputCapture(...)` calls inline at the call site. Do not define top-of-script no-op fallback handles.
+- The optional `tutorialFigureCapture(...)`, `tutorialMovieCapture(...)`, and `tutorialOutputCapture(...)` guards are the standard exception to the no-defensive-checking rule above.
 - Call `tutorialFigureCapture(...)` when a figure should appear in the rendered page.
 - Call `tutorialMovieCapture(...)` when a generated movie should appear in the rendered page.
+- Call `tutorialOutputCapture(...)` when command-window output should appear in the rendered page as a fenced text block. Ordinary `disp(...)` and `fprintf(...)` output is not captured automatically.
 - Add each new tutorial source file to the tutorial source list in the repository `tools/build_website_documentation.m` script.
 
 Treat the script as the source of truth. The generated markdown page in `docs/` is build output.
