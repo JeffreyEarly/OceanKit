@@ -1,0 +1,28 @@
+.DS_Store
+*.asv
+*~
+
+# MATLAB MEX binaries
+*.mexa64
+*.mexmaci64
+*.mexmaca64
+*.mexw64
+
+# Native build products
+*.o
+*.obj
+*.a
+*.dylib
+*.so
+*.dll
+build/
+dist/
+.fftw-cache/
+native-fftw-cache/
+
+# Downloaded third-party archives
+fftw-*.tar
+fftw-*.tar.gz
+fftw-*.tar.bz2
+fftw-*.tar.xz
+fftw-*.zip
