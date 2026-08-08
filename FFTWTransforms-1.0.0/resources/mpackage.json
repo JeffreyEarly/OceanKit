@@ -1,0 +1,19 @@
+{
+    "name": "FFTWTransforms",
+    "version": "1.0.0",
+    "id": "c9f6616c-d26a-4fdc-8426-91ca8ffd751b",
+    "formerNames": [],
+    "displayName": "FFTWTransforms",
+    "summary": "Reusable FFTW transforms for MATLAB.",
+    "description": "Build and use reusable FFTW real-to-complex and real-to-real transforms with MATLAB-managed storage.",
+    "provider": {
+        "name": "Jeffrey J. Early",
+        "organization": "NorthWest Research Associates",
+        "email": "jearly@nwra.com",
+        "url": "https://github.com/JeffreyEarly/fftw-transforms"
+    },
+    "folders": [],
+    "dependencies": [],
+    "releaseCompatibility": ">=R2024b",
+    "schemaVersion": "1.1.0"
+}
