@@ -1,0 +1,324 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "complete",
+  "runId": "20260808T180426Z",
+  "environment": {
+    "os": "Darwin 25.5.0 Darwin Kernel Version 25.5.0: Tue Jun  9 22:28:34 PDT 2026; root:xnu-12377.121.10~1/RELEASE_ARM64_T6050 arm64",
+    "processor": "ABI64 ARM ARM64E",
+    "matlabVersion": "26.1.0.3312084 (R2026a) Update 4",
+    "matlabRelease": "2026a",
+    "architecture": "maca64",
+    "requestedThreads": 18,
+    "sourceCommit": "0d36eae79649c1f37e0dac4044fa5f83fb60fc1e",
+    "sourceDirty": false,
+    "physicalMemoryBytes": 5.1539607552E+10
+  },
+  "configuration": {
+    "suiteIds": "core-v1",
+    "backendIds": "builtin",
+    "correctnessTolerance": 1E-12,
+    "shouldMeasureMemory": true,
+    "caseIds": [
+      "constant-nonhydrostatic-256x256x65",
+      "constant-hydrostatic-256x256x65",
+      "constant-nonhydrostatic-512x512x129",
+      "constant-hydrostatic-512x512x129"
+    ]
+  },
+  "suites": {
+    "id": "core-v1",
+    "version": 1,
+    "description": "Canonical constant-stratification nonlinear-advection score",
+    "operation": "nonlinearAdvection",
+    "isScored": true,
+    "status": "complete",
+    "cases": [
+      {
+        "id": "constant-nonhydrostatic-256x256x65",
+        "transformId": "constant-nonhydrostatic",
+        "scoreFamily": "constant-nonhydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          65
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 2101,
+        "warmupCount": 2,
+        "sampleCount": 7,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 1.310059125,
+          "firstCallSeconds": 0.20757420833333334,
+          "sameStateCacheHitSeconds": 0.094857,
+          "rawSeconds": [
+            0.1432015,
+            0.132000375,
+            0.13622716666666668,
+            0.13010283333333333,
+            0.12871329166666667,
+            0.127057,
+            0.12886154166666666
+          ],
+          "medianSeconds": 0.13010283333333333,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 0.13010283333333333,
+          "caseScore": 100,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 7.60692736E+8,
+            "persistentBytes": 2.09682432E+9,
+            "peakBytes": 2.12303872E+9,
+            "persistentIncrementBytes": 1.336131584E+9,
+            "peakIncrementBytes": 1.362345984E+9,
+            "samplingIntervalSeconds": [],
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "constant-hydrostatic-256x256x65",
+        "transformId": "constant-hydrostatic",
+        "scoreFamily": "constant-hydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          65
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 2102,
+        "warmupCount": 2,
+        "sampleCount": 7,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 0.5052635,
+          "firstCallSeconds": 0.137880375,
+          "sameStateCacheHitSeconds": 0.072191458333333333,
+          "rawSeconds": [
+            0.11538325,
+            0.11699820833333334,
+            0.104822625,
+            0.10492541666666666,
+            0.10292783333333333,
+            0.10312408333333334,
+            0.10350870833333334
+          ],
+          "medianSeconds": 0.104822625,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 0.104822625,
+          "caseScore": 100,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 7.60741888E+8,
+            "persistentBytes": 2.042200064E+9,
+            "peakBytes": 2.069184512E+9,
+            "persistentIncrementBytes": 1.281458176E+9,
+            "peakIncrementBytes": 1.308442624E+9,
+            "samplingIntervalSeconds": [],
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "constant-nonhydrostatic-512x512x129",
+        "transformId": "constant-nonhydrostatic",
+        "scoreFamily": "constant-nonhydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 2103,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 1.1096895416666666,
+          "firstCallSeconds": 1.2849771666666667,
+          "sameStateCacheHitSeconds": 0.85183604166666671,
+          "rawSeconds": [
+            1.1523589583333333,
+            1.157343875,
+            1.15664225
+          ],
+          "medianSeconds": 1.15664225,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 1.15664225,
+          "caseScore": 100,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 7.63265024E+8,
+            "persistentBytes": 8.491139072E+9,
+            "peakBytes": 8.684847104E+9,
+            "persistentIncrementBytes": 7.727874048E+9,
+            "peakIncrementBytes": 7.92158208E+9,
+            "samplingIntervalSeconds": [],
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "constant-hydrostatic-512x512x129",
+        "transformId": "constant-hydrostatic",
+        "scoreFamily": "constant-hydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 2104,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 1.0309864166666667,
+          "firstCallSeconds": 1.1039644166666667,
+          "sameStateCacheHitSeconds": 0.66547470833333333,
+          "rawSeconds": [
+            1.0258171666666667,
+            0.99306529166666668,
+            0.997666625
+          ],
+          "medianSeconds": 0.997666625,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 0.997666625,
+          "caseScore": 100,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 7.64346368E+8,
+            "persistentBytes": 7.962886144E+9,
+            "peakBytes": 8.158756864E+9,
+            "persistentIncrementBytes": 7.198539776E+9,
+            "peakIncrementBytes": 7.394410496E+9,
+            "samplingIntervalSeconds": [],
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      }
+    ],
+    "familyScores": [
+      {
+        "id": "constant-nonhydrostatic",
+        "backendId": "builtin",
+        "score": 100.00000000000004
+      },
+      {
+        "id": "constant-hydrostatic",
+        "backendId": "builtin",
+        "score": 100.00000000000004
+      }
+    ],
+    "suiteScores": {
+      "id": "core-v1",
+      "backendId": "builtin",
+      "score": 100.00000000000004
+    },
+    "referenceArtifact": "/private/tmp/wave-vortex-benchmark-worktree/Benchmarks/results/reference/core-v1-m5-max-r2026a-builtin"
+  }
+}

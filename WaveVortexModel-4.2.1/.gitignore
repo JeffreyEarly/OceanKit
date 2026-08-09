@@ -1,0 +1,6 @@
+.DS_Store
+*.asv
+*.mat
+*.nc
+Benchmarks/results/runs/
+*.nc

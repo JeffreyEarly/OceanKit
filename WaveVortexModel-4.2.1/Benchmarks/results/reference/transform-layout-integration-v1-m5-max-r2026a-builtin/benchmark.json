@@ -1,0 +1,1700 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "complete",
+  "runId": "transform-layout-integration-v1-m5-max-r2026a-builtin",
+  "environment": {
+    "matlabVersion": "26.1.0.3312084 (R2026a) Update 4",
+    "matlabRelease": "2026a",
+    "architecture": "maca64",
+    "os": "Darwin 25.5.0 Darwin Kernel Version 25.5.0: Tue Jun  9 22:28:34 PDT 2026; root:xnu-12377.121.10~1/RELEASE_ARM64_T6050 arm64",
+    "sourceCommit": "aeb158b7cdec79b686e9b997e5fb85c848e38278",
+    "sourceTree": "9667e8c9afb5b9f25e54568adfb7930700c6ca8e"
+  },
+  "configuration": {
+    "caseIds": [],
+    "correctnessTolerance": 1E-12,
+    "gateTolerance": 0.03,
+    "gateSizes": [
+      [
+        256,
+        256,
+        65
+      ],
+      [
+        512,
+        512,
+        129
+      ]
+    ]
+  },
+  "reference": {
+    "issue": 69,
+    "path": "Benchmarks/results/reference/transform-layout-v1-m5-max-r2026a-builtin/benchmark.json",
+    "sha256": "d07b40c6209e8b557b7f7cea63f9f5cdbd893a028888cc7e7e1b3f2cbeeaa7ec",
+    "strategy": "wv-sorted-linear"
+  },
+  "operationIds": [
+    "extract",
+    "insert-primary",
+    "insert-conjugate",
+    "insert-complete",
+    "forward-complete",
+    "inverse-complete"
+  ],
+  "cases": [
+    {
+      "id": "full-layout-64x48x17-antialias-0",
+      "Nxyz": [
+        64,
+        48,
+        17
+      ],
+      "shouldAntialias": false,
+      "seed": 6901,
+      "warmupCount": 2,
+      "sampleCount": 7,
+      "isGate": false,
+      "status": "complete",
+      "failure": {
+        "identifier": "",
+        "message": "",
+        "stack": []
+      },
+      "mappingStrategy": "two-dimensional-rows",
+      "storageShape": [
+        64,
+        48
+      ],
+      "mappingBytes": 24440,
+      "legacyMappingsAreMaterialized": false,
+      "legacyMappingBytes": 0,
+      "persistentBufferBytes": 835584,
+      "warmupSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ]
+      ],
+      "sampleSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ],
+        [
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary"
+        ],
+        [
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate"
+        ],
+        [
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete"
+        ],
+        [
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete"
+        ],
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ]
+      ],
+      "operations": [
+        {
+          "id": "extract",
+          "rawSeconds": [
+            0.00032858333333333334,
+            0.000146,
+            0.0001465,
+            0.00017141666666666667,
+            0.000132125,
+            0.00034404166666666665,
+            0.00011633333333333333
+          ],
+          "medianSeconds": 0.0001465,
+          "referenceMedianSeconds": 8.004166666666667E-5,
+          "relativeToReference": 1.8302967204580949,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-primary",
+          "rawSeconds": [
+            9.5083333333333332E-5,
+            8.8166666666666664E-5,
+            9.5166666666666671E-5,
+            0.00010275,
+            0.000134625,
+            7.7166666666666668E-5,
+            7.2541666666666664E-5
+          ],
+          "medianSeconds": 9.5083333333333332E-5,
+          "referenceMedianSeconds": 0.00013820833333333334,
+          "relativeToReference": 0.687971058185107,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-conjugate",
+          "rawSeconds": [
+            5.6541666666666668E-5,
+            5.2375E-5,
+            5.9375E-5,
+            5.2958333333333331E-5,
+            5.5958333333333336E-5,
+            5.7541666666666665E-5,
+            5.225E-5
+          ],
+          "medianSeconds": 5.5958333333333336E-5,
+          "referenceMedianSeconds": 5.05E-5,
+          "relativeToReference": 1.108085808580858,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-complete",
+          "rawSeconds": [
+            0.00015183333333333333,
+            0.00012241666666666667,
+            0.00014045833333333334,
+            0.00016966666666666668,
+            0.00011320833333333334,
+            0.00023429166666666667,
+            0.00011716666666666666
+          ],
+          "medianSeconds": 0.00014045833333333334,
+          "referenceMedianSeconds": 0.00015558333333333334,
+          "relativeToReference": 0.902785216925549,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "forward-complete",
+          "rawSeconds": [
+            0.00034979166666666665,
+            0.00032508333333333331,
+            0.000340375,
+            0.00039258333333333333,
+            0.00034966666666666669,
+            0.00035016666666666665,
+            0.000372
+          ],
+          "medianSeconds": 0.00034979166666666665,
+          "referenceMedianSeconds": 0.00025279166666666668,
+          "relativeToReference": 1.3837151804845886,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "inverse-complete",
+          "rawSeconds": [
+            0.00050341666666666666,
+            0.00045104166666666665,
+            0.00051308333333333338,
+            0.00045095833333333332,
+            0.00055141666666666663,
+            0.00056375,
+            0.00042845833333333332
+          ],
+          "medianSeconds": 0.00050341666666666666,
+          "referenceMedianSeconds": 0.00041629166666666664,
+          "relativeToReference": 1.2092883595235713,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        }
+      ]
+    },
+    {
+      "id": "full-layout-64x48x17-antialias-1",
+      "Nxyz": [
+        64,
+        48,
+        17
+      ],
+      "shouldAntialias": true,
+      "seed": 6902,
+      "warmupCount": 2,
+      "sampleCount": 7,
+      "isGate": false,
+      "status": "complete",
+      "failure": {
+        "identifier": "",
+        "message": "",
+        "stack": []
+      },
+      "mappingStrategy": "two-dimensional-rows",
+      "storageShape": [
+        64,
+        48
+      ],
+      "mappingBytes": 11976,
+      "legacyMappingsAreMaterialized": false,
+      "legacyMappingBytes": 0,
+      "persistentBufferBytes": 835584,
+      "warmupSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ]
+      ],
+      "sampleSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ],
+        [
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary"
+        ],
+        [
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate"
+        ],
+        [
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete"
+        ],
+        [
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete"
+        ],
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ]
+      ],
+      "operations": [
+        {
+          "id": "extract",
+          "rawSeconds": [
+            0.00011391666666666667,
+            0.00025275,
+            0.00013008333333333334,
+            0.00011929166666666666,
+            0.00014995833333333332,
+            0.000145125,
+            0.00014891666666666666
+          ],
+          "medianSeconds": 0.000145125,
+          "referenceMedianSeconds": 3.3916666666666667E-5,
+          "relativeToReference": 4.2788697788697787,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-primary",
+          "rawSeconds": [
+            0.00012904166666666665,
+            7.6958333333333338E-5,
+            5.9625E-5,
+            5.7541666666666665E-5,
+            5.3541666666666669E-5,
+            6.1875E-5,
+            5.2875E-5
+          ],
+          "medianSeconds": 5.9625E-5,
+          "referenceMedianSeconds": 8.0958333333333327E-5,
+          "relativeToReference": 0.73648996397323729,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-conjugate",
+          "rawSeconds": [
+            7.0625E-5,
+            6.0125E-5,
+            6.7833333333333333E-5,
+            4.854166666666667E-5,
+            6.4166666666666663E-5,
+            5.5416666666666667E-5,
+            4.325E-5
+          ],
+          "medianSeconds": 6.0125E-5,
+          "referenceMedianSeconds": 1.125E-5,
+          "relativeToReference": 5.3444444444444441,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-complete",
+          "rawSeconds": [
+            9.7625E-5,
+            0.00010470833333333334,
+            0.00010433333333333334,
+            0.00010266666666666666,
+            9.9625E-5,
+            9.0291666666666661E-5,
+            8.375E-5
+          ],
+          "medianSeconds": 9.9625E-5,
+          "referenceMedianSeconds": 8.0541666666666668E-5,
+          "relativeToReference": 1.2369374030005174,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "forward-complete",
+          "rawSeconds": [
+            0.00030583333333333336,
+            0.000336375,
+            0.00035516666666666666,
+            0.00041404166666666667,
+            0.00030654166666666666,
+            0.000361625,
+            0.00030129166666666667
+          ],
+          "medianSeconds": 0.000336375,
+          "referenceMedianSeconds": 0.00018979166666666667,
+          "relativeToReference": 1.7723380900109769,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "inverse-complete",
+          "rawSeconds": [
+            0.00039925,
+            0.00043720833333333334,
+            0.00043316666666666666,
+            0.00040975,
+            0.00046341666666666666,
+            0.00050054166666666671,
+            0.0003925
+          ],
+          "medianSeconds": 0.00043316666666666666,
+          "referenceMedianSeconds": 0.000296375,
+          "relativeToReference": 1.4615492759735695,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        }
+      ]
+    },
+    {
+      "id": "full-layout-65x63x17-antialias-0",
+      "Nxyz": [
+        65,
+        63,
+        17
+      ],
+      "shouldAntialias": false,
+      "seed": 6903,
+      "warmupCount": 2,
+      "sampleCount": 7,
+      "isGate": false,
+      "status": "complete",
+      "failure": {
+        "identifier": "",
+        "message": "",
+        "stack": []
+      },
+      "mappingStrategy": "two-dimensional-rows",
+      "storageShape": [
+        65,
+        63
+      ],
+      "mappingBytes": 33536,
+      "legacyMappingsAreMaterialized": false,
+      "legacyMappingBytes": 0,
+      "persistentBufferBytes": 1.11384E+6,
+      "warmupSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ]
+      ],
+      "sampleSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ],
+        [
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary"
+        ],
+        [
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate"
+        ],
+        [
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete"
+        ],
+        [
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete"
+        ],
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ]
+      ],
+      "operations": [
+        {
+          "id": "extract",
+          "rawSeconds": [
+            0.00013266666666666667,
+            0.00047320833333333335,
+            0.0002345,
+            0.00017354166666666668,
+            0.00023508333333333335,
+            9.6541666666666664E-5,
+            8.0416666666666665E-5
+          ],
+          "medianSeconds": 0.00017354166666666668,
+          "referenceMedianSeconds": 9.8291666666666666E-5,
+          "relativeToReference": 1.765578635014837,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-primary",
+          "rawSeconds": [
+            0.00017733333333333333,
+            9.7041666666666663E-5,
+            0.00014741666666666665,
+            9.9583333333333333E-5,
+            0.00013825,
+            0.00014033333333333332,
+            8.1291666666666673E-5
+          ],
+          "medianSeconds": 0.00013825,
+          "referenceMedianSeconds": 4.8166666666666667E-5,
+          "relativeToReference": 2.8702422145328721,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-conjugate",
+          "rawSeconds": [
+            4.8875E-5,
+            4.9041666666666668E-5,
+            5.5291666666666664E-5,
+            5.4E-5,
+            5.3333333333333333E-5,
+            4.9625E-5,
+            4.5541666666666665E-5
+          ],
+          "medianSeconds": 4.9625E-5,
+          "referenceMedianSeconds": 9.7916666666666664E-6,
+          "relativeToReference": 5.0680851063829788,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-complete",
+          "rawSeconds": [
+            0.00011175,
+            0.00015595833333333333,
+            0.00012345833333333333,
+            0.0001535,
+            0.00015258333333333335,
+            0.000127875,
+            0.00010870833333333334
+          ],
+          "medianSeconds": 0.000127875,
+          "referenceMedianSeconds": 5.4083333333333331E-5,
+          "relativeToReference": 2.3644067796610173,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "forward-complete",
+          "rawSeconds": [
+            0.0004295,
+            0.00037716666666666665,
+            0.000406,
+            0.00053083333333333335,
+            0.00039233333333333335,
+            0.00032579166666666667,
+            0.00028604166666666665
+          ],
+          "medianSeconds": 0.00039233333333333335,
+          "referenceMedianSeconds": 0.0002465,
+          "relativeToReference": 1.5916159567275188,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "inverse-complete",
+          "rawSeconds": [
+            0.00043275,
+            0.00044633333333333336,
+            0.00051741666666666668,
+            0.00059158333333333328,
+            0.00052983333333333333,
+            0.0005435,
+            0.00047704166666666668
+          ],
+          "medianSeconds": 0.00051741666666666668,
+          "referenceMedianSeconds": 0.00026691666666666666,
+          "relativeToReference": 1.9384951607867624,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        }
+      ]
+    },
+    {
+      "id": "full-layout-65x63x17-antialias-1",
+      "Nxyz": [
+        65,
+        63,
+        17
+      ],
+      "shouldAntialias": true,
+      "seed": 6904,
+      "warmupCount": 2,
+      "sampleCount": 7,
+      "isGate": false,
+      "status": "complete",
+      "failure": {
+        "identifier": "",
+        "message": "",
+        "stack": []
+      },
+      "mappingStrategy": "two-dimensional-rows",
+      "storageShape": [
+        65,
+        63
+      ],
+      "mappingBytes": 11976,
+      "legacyMappingsAreMaterialized": false,
+      "legacyMappingBytes": 0,
+      "persistentBufferBytes": 1.11384E+6,
+      "warmupSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ]
+      ],
+      "sampleSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ],
+        [
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary"
+        ],
+        [
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate"
+        ],
+        [
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete"
+        ],
+        [
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete"
+        ],
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ]
+      ],
+      "operations": [
+        {
+          "id": "extract",
+          "rawSeconds": [
+            4.4958333333333333E-5,
+            4.9208333333333335E-5,
+            4.9291666666666668E-5,
+            4.2583333333333336E-5,
+            8.0875E-5,
+            4.3958333333333336E-5,
+            4.1E-5
+          ],
+          "medianSeconds": 4.4958333333333333E-5,
+          "referenceMedianSeconds": 2.0958333333333332E-5,
+          "relativeToReference": 2.1451292246520874,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-primary",
+          "rawSeconds": [
+            5.075E-5,
+            0.000114,
+            0.000120875,
+            8.5083333333333332E-5,
+            7.45E-5,
+            4.9916666666666669E-5,
+            7.3083333333333339E-5
+          ],
+          "medianSeconds": 7.45E-5,
+          "referenceMedianSeconds": 2.0625E-5,
+          "relativeToReference": 3.6121212121212118,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-conjugate",
+          "rawSeconds": [
+            3.8208333333333331E-5,
+            4.1208333333333337E-5,
+            4.3958333333333336E-5,
+            3.725E-5,
+            3.6E-5,
+            4.1708333333333335E-5,
+            3.8666666666666667E-5
+          ],
+          "medianSeconds": 3.8666666666666667E-5,
+          "referenceMedianSeconds": 7.7083333333333338E-6,
+          "relativeToReference": 5.0162162162162156,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-complete",
+          "rawSeconds": [
+            0.000116625,
+            8.1791666666666672E-5,
+            7.6791666666666672E-5,
+            8.945833333333333E-5,
+            7.2208333333333331E-5,
+            0.00013295833333333334,
+            7.495833333333333E-5
+          ],
+          "medianSeconds": 8.1791666666666672E-5,
+          "referenceMedianSeconds": 2.3833333333333334E-5,
+          "relativeToReference": 3.4318181818181817,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "forward-complete",
+          "rawSeconds": [
+            0.00025908333333333333,
+            0.000275375,
+            0.00031075,
+            0.00025070833333333336,
+            0.00024804166666666665,
+            0.00025141666666666666,
+            0.000295125
+          ],
+          "medianSeconds": 0.00025908333333333333,
+          "referenceMedianSeconds": 0.00022025,
+          "relativeToReference": 1.17631479379493,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        },
+        {
+          "id": "inverse-complete",
+          "rawSeconds": [
+            0.00044741666666666665,
+            0.00043670833333333333,
+            0.00038416666666666666,
+            0.00047779166666666667,
+            0.00046229166666666668,
+            0.000446875,
+            0.000355375
+          ],
+          "medianSeconds": 0.000446875,
+          "referenceMedianSeconds": 0.00024958333333333332,
+          "relativeToReference": 1.790484140233723,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": false,
+          "performancePassed": true
+        }
+      ]
+    },
+    {
+      "id": "full-layout-256x256x65-antialias-0",
+      "Nxyz": [
+        256,
+        256,
+        65
+      ],
+      "shouldAntialias": false,
+      "seed": 6905,
+      "warmupCount": 2,
+      "sampleCount": 7,
+      "isGate": true,
+      "status": "complete",
+      "failure": {
+        "identifier": "",
+        "message": "",
+        "stack": []
+      },
+      "mappingStrategy": "two-dimensional-rows",
+      "storageShape": [
+        256,
+        256
+      ],
+      "mappingBytes": 523256,
+      "legacyMappingsAreMaterialized": false,
+      "legacyMappingBytes": 0,
+      "persistentBufferBytes": 6.815744E+7,
+      "warmupSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ]
+      ],
+      "sampleSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ],
+        [
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary"
+        ],
+        [
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate"
+        ],
+        [
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete"
+        ],
+        [
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete"
+        ],
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ]
+      ],
+      "operations": [
+        {
+          "id": "extract",
+          "rawSeconds": [
+            0.0027723333333333332,
+            0.0027570833333333332,
+            0.0027297083333333331,
+            0.0027839583333333332,
+            0.0028119166666666666,
+            0.0027771666666666665,
+            0.002894
+          ],
+          "medianSeconds": 0.0027771666666666665,
+          "referenceMedianSeconds": 0.005341875,
+          "relativeToReference": 0.51988611988611988,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-primary",
+          "rawSeconds": [
+            0.0024710833333333334,
+            0.0024615,
+            0.002477375,
+            0.00246275,
+            0.0024562916666666665,
+            0.0025320416666666668,
+            0.0034477083333333334
+          ],
+          "medianSeconds": 0.0024710833333333334,
+          "referenceMedianSeconds": 0.013715875,
+          "relativeToReference": 0.18016228154115821,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-conjugate",
+          "rawSeconds": [
+            0.00012529166666666667,
+            0.00012420833333333332,
+            0.00013716666666666668,
+            0.00011895833333333333,
+            0.000119625,
+            0.00012254166666666666,
+            0.0003035
+          ],
+          "medianSeconds": 0.00012420833333333332,
+          "referenceMedianSeconds": 0.00012479166666666666,
+          "relativeToReference": 0.99532554257095152,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-complete",
+          "rawSeconds": [
+            0.0025274166666666665,
+            0.0025014166666666665,
+            0.0025418333333333334,
+            0.0025428333333333331,
+            0.0025464583333333333,
+            0.0024890833333333332,
+            0.0031855
+          ],
+          "medianSeconds": 0.0025418333333333334,
+          "referenceMedianSeconds": 0.013962458333333334,
+          "relativeToReference": 0.18204769336822849,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "forward-complete",
+          "rawSeconds": [
+            0.004699,
+            0.0045354583333333332,
+            0.004569083333333333,
+            0.0047977916666666664,
+            0.0045652083333333334,
+            0.0045944583333333332,
+            0.0058179166666666665
+          ],
+          "medianSeconds": 0.0045944583333333332,
+          "referenceMedianSeconds": 0.00777425,
+          "relativeToReference": 0.59098412494238461,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "inverse-complete",
+          "rawSeconds": [
+            0.004765125,
+            0.0046392083333333337,
+            0.0046961666666666671,
+            0.004701,
+            0.0051000833333333332,
+            0.0046377916666666668,
+            0.0062820833333333331
+          ],
+          "medianSeconds": 0.004701,
+          "referenceMedianSeconds": 0.016834833333333334,
+          "relativeToReference": 0.27924244374263679,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        }
+      ]
+    },
+    {
+      "id": "full-layout-256x256x65-antialias-1",
+      "Nxyz": [
+        256,
+        256,
+        65
+      ],
+      "shouldAntialias": true,
+      "seed": 6906,
+      "warmupCount": 2,
+      "sampleCount": 7,
+      "isGate": true,
+      "status": "complete",
+      "failure": {
+        "identifier": "",
+        "message": "",
+        "stack": []
+      },
+      "mappingStrategy": "two-dimensional-rows",
+      "storageShape": [
+        256,
+        256
+      ],
+      "mappingBytes": 185064,
+      "legacyMappingsAreMaterialized": false,
+      "legacyMappingBytes": 0,
+      "persistentBufferBytes": 6.815744E+7,
+      "warmupSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ]
+      ],
+      "sampleSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ],
+        [
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary"
+        ],
+        [
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate"
+        ],
+        [
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete"
+        ],
+        [
+          "inverse-complete",
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete"
+        ],
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ]
+      ],
+      "operations": [
+        {
+          "id": "extract",
+          "rawSeconds": [
+            0.00081945833333333328,
+            0.0010228333333333333,
+            0.00100275,
+            0.00098675,
+            0.0010659166666666666,
+            0.0010194583333333334,
+            0.0010550416666666666
+          ],
+          "medianSeconds": 0.0010194583333333334,
+          "referenceMedianSeconds": 0.0031182083333333335,
+          "relativeToReference": 0.32693721020350897,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-primary",
+          "rawSeconds": [
+            0.00103725,
+            0.000955625,
+            0.00098754166666666673,
+            0.00094254166666666661,
+            0.00097575,
+            0.00093620833333333338,
+            0.00094166666666666672
+          ],
+          "medianSeconds": 0.000955625,
+          "referenceMedianSeconds": 0.0042735833333333332,
+          "relativeToReference": 0.22361211317590624,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-conjugate",
+          "rawSeconds": [
+            6.8375E-5,
+            4.2208333333333334E-5,
+            4.7625E-5,
+            4.2625E-5,
+            4.525E-5,
+            3.9166666666666665E-5,
+            4.2958333333333332E-5
+          ],
+          "medianSeconds": 4.2958333333333332E-5,
+          "referenceMedianSeconds": 7.7333333333333334E-5,
+          "relativeToReference": 0.55549568965517238,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-complete",
+          "rawSeconds": [
+            0.00089566666666666668,
+            0.000804375,
+            0.00096370833333333334,
+            0.00081408333333333333,
+            0.0007626666666666667,
+            0.00076716666666666665,
+            0.000770375
+          ],
+          "medianSeconds": 0.000804375,
+          "referenceMedianSeconds": 0.0044815416666666667,
+          "relativeToReference": 0.17948622590812313,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "forward-complete",
+          "rawSeconds": [
+            0.003642625,
+            0.0036327083333333333,
+            0.0035362083333333335,
+            0.0035457916666666667,
+            0.0037059583333333332,
+            0.0035720833333333334,
+            0.0035156666666666665
+          ],
+          "medianSeconds": 0.0035720833333333334,
+          "referenceMedianSeconds": 0.0038003333333333335,
+          "relativeToReference": 0.93993947899307073,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "inverse-complete",
+          "rawSeconds": [
+            0.0033745,
+            0.00313125,
+            0.0030432083333333335,
+            0.0030977916666666667,
+            0.0031036666666666665,
+            0.00294825,
+            0.0030714583333333332
+          ],
+          "medianSeconds": 0.0030977916666666667,
+          "referenceMedianSeconds": 0.0066432083333333334,
+          "relativeToReference": 0.46630957682344748,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        }
+      ]
+    },
+    {
+      "id": "full-layout-512x512x129-antialias-0",
+      "Nxyz": [
+        512,
+        512,
+        129
+      ],
+      "shouldAntialias": false,
+      "seed": 6907,
+      "warmupCount": 2,
+      "sampleCount": 3,
+      "isGate": true,
+      "status": "complete",
+      "failure": {
+        "identifier": "",
+        "message": "",
+        "stack": []
+      },
+      "mappingStrategy": "two-dimensional-rows",
+      "storageShape": [
+        512,
+        512
+      ],
+      "mappingBytes": 2.095096E+6,
+      "legacyMappingsAreMaterialized": false,
+      "legacyMappingBytes": 0,
+      "persistentBufferBytes": 5.41065216E+8,
+      "warmupSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ]
+      ],
+      "sampleSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ],
+        [
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary"
+        ]
+      ],
+      "operations": [
+        {
+          "id": "extract",
+          "rawSeconds": [
+            0.02468125,
+            0.02496025,
+            0.024882916666666668
+          ],
+          "medianSeconds": 0.024882916666666668,
+          "referenceMedianSeconds": 0.088622708333333328,
+          "relativeToReference": 0.28077359781282546,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-primary",
+          "rawSeconds": [
+            0.0202465,
+            0.021250416666666667,
+            0.020467833333333334
+          ],
+          "medianSeconds": 0.020467833333333334,
+          "referenceMedianSeconds": 0.0761265,
+          "relativeToReference": 0.26886607598317713,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-conjugate",
+          "rawSeconds": [
+            0.0002,
+            0.00028108333333333333,
+            0.00022454166666666667
+          ],
+          "medianSeconds": 0.00022454166666666667,
+          "referenceMedianSeconds": 0.00031629166666666665,
+          "relativeToReference": 0.709919641680938,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-complete",
+          "rawSeconds": [
+            0.021498041666666665,
+            0.02171425,
+            0.020844083333333333
+          ],
+          "medianSeconds": 0.021498041666666665,
+          "referenceMedianSeconds": 0.076521291666666671,
+          "relativeToReference": 0.28094196005360161,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "forward-complete",
+          "rawSeconds": [
+            0.048578125,
+            0.047576958333333336,
+            0.047661666666666665
+          ],
+          "medianSeconds": 0.047661666666666665,
+          "referenceMedianSeconds": 0.095419041666666662,
+          "relativeToReference": 0.49949848409886743,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "inverse-complete",
+          "rawSeconds": [
+            0.038732875,
+            0.039557666666666665,
+            0.038293083333333332
+          ],
+          "medianSeconds": 0.038732875,
+          "referenceMedianSeconds": 0.095180458333333329,
+          "relativeToReference": 0.40694146338687348,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        }
+      ]
+    },
+    {
+      "id": "full-layout-512x512x129-antialias-1",
+      "Nxyz": [
+        512,
+        512,
+        129
+      ],
+      "shouldAntialias": true,
+      "seed": 6908,
+      "warmupCount": 2,
+      "sampleCount": 3,
+      "isGate": true,
+      "status": "complete",
+      "failure": {
+        "identifier": "",
+        "message": "",
+        "stack": []
+      },
+      "mappingStrategy": "two-dimensional-rows",
+      "storageShape": [
+        512,
+        512
+      ],
+      "mappingBytes": 736320,
+      "legacyMappingsAreMaterialized": false,
+      "legacyMappingBytes": 0,
+      "persistentBufferBytes": 5.41065216E+8,
+      "warmupSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ]
+      ],
+      "sampleSchedules": [
+        [
+          "extract",
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete"
+        ],
+        [
+          "insert-primary",
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract"
+        ],
+        [
+          "insert-conjugate",
+          "insert-complete",
+          "forward-complete",
+          "inverse-complete",
+          "extract",
+          "insert-primary"
+        ]
+      ],
+      "operations": [
+        {
+          "id": "extract",
+          "rawSeconds": [
+            0.00879225,
+            0.0089057083333333332,
+            0.00886475
+          ],
+          "medianSeconds": 0.00886475,
+          "referenceMedianSeconds": 0.029760625,
+          "relativeToReference": 0.2978684083415587,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-primary",
+          "rawSeconds": [
+            0.008013208333333334,
+            0.0081609583333333326,
+            0.007813875
+          ],
+          "medianSeconds": 0.008013208333333334,
+          "referenceMedianSeconds": 0.026782458333333332,
+          "relativeToReference": 0.29919614673161388,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-conjugate",
+          "rawSeconds": [
+            0.00018,
+            0.00018658333333333333,
+            0.00021875
+          ],
+          "medianSeconds": 0.00018658333333333333,
+          "referenceMedianSeconds": 0.00022704166666666668,
+          "relativeToReference": 0.82180216553496055,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "insert-complete",
+          "rawSeconds": [
+            0.0081153333333333338,
+            0.0080756666666666668,
+            0.007938
+          ],
+          "medianSeconds": 0.0080756666666666668,
+          "referenceMedianSeconds": 0.027066166666666665,
+          "relativeToReference": 0.29836758068190916,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "forward-complete",
+          "rawSeconds": [
+            0.031146916666666667,
+            0.031209083333333332,
+            0.031397916666666664
+          ],
+          "medianSeconds": 0.031209083333333332,
+          "referenceMedianSeconds": 0.052373958333333331,
+          "relativeToReference": 0.595889337496768,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        },
+        {
+          "id": "inverse-complete",
+          "rawSeconds": [
+            0.025809125,
+            0.025314333333333335,
+            0.025484875
+          ],
+          "medianSeconds": 0.025484875,
+          "referenceMedianSeconds": 0.046071041666666666,
+          "relativeToReference": 0.55316472295955976,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "performanceGateApplies": true,
+          "performancePassed": true
+        }
+      ]
+    }
+  ],
+  "readiness": {
+    "passed": true,
+    "completeGateSet": true,
+    "gateCaseCount": 4,
+    "failedCriteria": []
+  }
+}
