@@ -7,7 +7,7 @@ nav_order: 8
 
 # Release workflow refactor milestones
 
-This roadmap migrates OceanKit package releases from the [current workflow to the future workflow](release-workflow) without replacing the repository model or requiring a single disruptive cutover. Each milestone must be independently releasable, testable, and reversible.
+This roadmap migrates OceanKit package releases from the [current workflow to the future workflow](release-workflow) without replacing the repository model or requiring a single disruptive cutover. Each milestone must be independently releasable, testable, and reversible. GitHub milestone [MPM Release Workflow v1](https://github.com/JeffreyEarly/OceanKit/milestone/1) tracks the pilot and five implementation stages.
 
 ## Objectives and boundaries
 
@@ -27,13 +27,44 @@ The migration does not introduce a central cross-repository dispatcher, GitHub A
 
 | Milestone | Status | Prerequisites | Completion evidence |
 | --- | --- | --- | --- |
-| 1. Release contract and preflight | Not started | Current workflow documented | Input and mode tests pass without starting MATLAB on invalid requests |
-| 2. Changelog and documentation integrity | Not started | Milestone 1 metadata contract | Pilot version history contains the exact new changelog entry |
-| 3. Central release engine | Not started | Milestones 1–2 helpers | InternalModes and a second pilot resolve the same central entry point |
-| 4. Publication safety | Not started | Stable central engine | Existing snapshots are protected and partial-failure recovery is demonstrated |
-| 5. Verification and ecosystem rollout | Not started | Milestones 1–4 | All callers use a tested immutable workflow tag |
+| [0. WaveVortexModel release-safety pilot](https://github.com/JeffreyEarly/OceanKit/issues/3) | Planned | Current workflow documented; WaveVortexModel documentation checks available | WaveVortexModel consumes tested `mpm-release-v0.1.0` |
+| [1. Release contract and preflight](https://github.com/JeffreyEarly/OceanKit/issues/4) | Planned | Pilot contract validated | Input and mode tests pass without starting MATLAB on invalid requests |
+| [2. Changelog and documentation integrity](https://github.com/JeffreyEarly/OceanKit/issues/5) | Planned | Milestone 1 metadata contract | Pilot version history contains the exact promoted changelog entry |
+| [3. Central release engine](https://github.com/JeffreyEarly/OceanKit/issues/6) | Planned | Milestones 1–2 helpers | InternalModes and a second pilot resolve the same central entry point |
+| [4. Publication safety](https://github.com/JeffreyEarly/OceanKit/issues/7) | Planned | Stable central engine | Existing snapshots are protected and partial-failure recovery is demonstrated |
+| [5. Verification and ecosystem rollout](https://github.com/JeffreyEarly/OceanKit/issues/8) | Planned | Milestones 1–4 | All callers use a tested immutable workflow tag |
 
 Update this table as milestones begin and complete. Record links to the validating workflow runs or pull requests in the completion-evidence column.
+
+## Milestone 0: WaveVortexModel release-safety pilot
+
+### Deliverables
+
+- Preserve existing caller behavior while adding opt-in documentation-package, documentation-check, and changelog-promotion inputs.
+- Validate the request, manifest, proposed tag, proposed snapshot, and requested package hooks before mutation.
+- Transport legacy dispatch notes safely.
+- Write release metadata in every mode and make non-distribution runs skip OceanKit export and publication completely.
+- Promote WaveVortexModel's nonempty `Unreleased` section and use it as the GitHub release body.
+- Install `ClassDocumentation@1.3.0` exactly and run `buildtool docs:check` before release mutation.
+- Reject an existing snapshot and publish the authoring commit and OceanKit snapshot before the tag and GitHub release.
+- Validate WaveVortexModel as the first consumer and tag the tested workflow as `mpm-release-v0.1.0`.
+
+### Acceptance criteria
+
+- Packages that do not opt in retain their current behavior.
+- Missing or mismatched documentation tooling and stale documentation fail before mutation.
+- A non-distribution run produces complete metadata and never modifies OceanKit.
+- The promoted changelog content agrees with generated version history and the GitHub release body.
+- An existing snapshot or simulated OceanKit publication failure creates no tag or GitHub release.
+- WaveVortexModel can consume the pilot without a package-specific release workflow.
+
+### Boundary
+
+Only [OceanKit issue #3](https://github.com/JeffreyEarly/OceanKit/issues/3) blocks [WaveVortexModel issue #19](https://github.com/JeffreyEarly/wave-vortex-model/issues/19) and WaveVortexModel 4.2.1. The remaining roadmap stages generalize and replace transitional pilot behavior but do not block that maintenance release.
+
+### Rollback
+
+Existing callers remain compatible with the unversioned workflow during pilot development. WaveVortexModel can return to its previous caller reference until `mpm-release-v0.1.0` has been validated and adopted.
 
 ## Milestone 1: Release contract and preflight
 
@@ -41,9 +72,9 @@ Update this table as milestones begin and complete. Record links to the validati
 
 - Change reusable-workflow documentation and package callers to use native boolean inputs for documentation and distribution.
 - Use the `inputs` context rather than the string-converting `github.event.inputs` context.
-- Transport release notes through an environment variable or temporary file and read them with `getenv` or `fileread` in MATLAB.
+- Remove transitional pilot inputs after callers migrate, and transport any remaining free-form values through an environment variable or temporary file.
 - Validate `bump` against `none`, `patch`, `minor`, and `major`.
-- Require nonempty notes when `bump` is not `none`.
+- Require a nonempty `Unreleased` changelog section when `bump` is not `none`.
 - Verify the manifest, requested documentation hook, release branch, proposed tag, and proposed snapshot before MATLAB setup.
 - Make the MATLAB release function write metadata for every mode, not only distribution.
 - Condition export-copy and OceanKit-push steps on the distribution input and produced metadata.
@@ -51,7 +82,7 @@ Update this table as milestones begin and complete. Record links to the validati
 
 ### Acceptance criteria
 
-- Multiline notes containing quotes, backticks, percent signs, and blank lines reach MATLAB unchanged.
+- Free-form values containing quotes, backticks, percent signs, and blank lines reach MATLAB unchanged.
 - Invalid input, a missing manifest, missing requested documentation builder, or an existing tag fails during preflight.
 - Documentation-only mode reaches the authoring commit step without requiring an export or OceanKit metadata folder.
 - Distribution-disabled mode never modifies the OceanKit checkout.
@@ -59,16 +90,16 @@ Update this table as milestones begin and complete. Record links to the validati
 
 ### Rollback
 
-Keep existing callers on `@main` during development. Reverting the central workflow commit restores the previous contract until the first versioned workflow tag is created.
+Keep non-migrated callers compatible during development. The pilot's `mpm-release-v0.1.0` tag remains available while the stable caller contract is developed.
 
 ## Milestone 2: Changelog and documentation integrity
 
 ### Deliverables
 
-- Update the changelog on every real version bump; remove the current dependency on nonempty notes after Milestone 1 makes notes mandatory.
+- Generalize the pilot's `Unreleased` promotion to every real version bump.
 - Add one central helper that renders `CHANGELOG.md` into `docs/version-history.md` with standard Just the Docs front matter.
 - Run the helper after the package-specific documentation builder so later copy or generation operations cannot overwrite it.
-- Validate that the generated page contains the new `## [<version>]` heading and the submitted release-note text.
+- Validate that the generated page contains the new `## [<version>]` heading and the exact promoted changelog content.
 - Make a requested but unavailable documentation builder a hard failure.
 - Remove duplicated changelog rendering from package builders only after the central helper is active for that package.
 - Audit GitHub Pages source settings and change InternalModes from `InternalModesEVP/docs` to `main/docs`.
@@ -79,7 +110,7 @@ Use `spline-core` as the documentation-heavy pilot because it combines generated
 
 ### Acceptance criteria
 
-- A pilot patch release adds one changelog entry and the identical entry appears in committed `docs/version-history.md`.
+- A pilot patch release promotes one changelog entry and identical content appears in committed `docs/version-history.md`.
 - The deployed Pages site displays that entry after the release commit.
 - A documentation-only run republishes a manually corrected changelog without creating a tag or OceanKit snapshot.
 - Deleting or renaming a requested builder fails with an actionable preflight error.
@@ -134,7 +165,7 @@ Keep the old central `ci_release` available as a compatibility wrapper for one m
 
 ### Rollback
 
-Publication-order changes remain behind the untagged workflow during testing. If race retry or recovery reporting is unreliable, retain immutable snapshot checks and return to manual OceanKit conflict resolution before creating the first stable workflow tag.
+The pilot's basic immutable-snapshot and publication-order guarantees remain in place during this work. If race retry or recovery reporting is unreliable, retain those pilot guarantees and return to manual OceanKit conflict resolution before creating the first stable workflow tag.
 
 ## Milestone 5: Verification and ecosystem rollout
 
@@ -174,4 +205,3 @@ Roll back one package by changing its caller to the previous reusable-workflow t
 ## Completion definition
 
 The refactor is complete when all callers use the tested immutable workflow tag, all supported execution modes behave independently, changelog entries are validated in generated and deployed version-history pages, exported snapshots pass a clean-path smoke test, existing snapshots are protected by default, and release recovery no longer requires inferring completed writes from raw logs.
-
