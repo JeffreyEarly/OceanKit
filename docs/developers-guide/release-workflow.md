@@ -137,6 +137,8 @@ Recovery is manual. The operator must determine which writes completed, repair o
 
 The pilot also writes metadata in non-distribution modes, conditions OceanKit publication on actual export output, rejects an existing snapshot, and creates the tag and GitHub release only after the authoring commit and OceanKit snapshot succeed. It intentionally does not migrate all callers to native booleans, rename the central release engine, generalize documentation handling across the ecosystem, or implement snapshot-replacement and push-race recovery.
 
+The pilot was completed in [OceanKit PR #10](https://github.com/JeffreyEarly/OceanKit/pull/10) and published as the annotated workflow tag [`mpm-release-v0.1.0`](https://github.com/JeffreyEarly/OceanKit/tree/mpm-release-v0.1.0). Its [fixture CI](https://github.com/JeffreyEarly/OceanKit/actions/runs/31319149488) and [tagged WaveVortexModel validation](https://github.com/JeffreyEarly/wave-vortex-model/actions/runs/31319357216) establish the tested compatibility boundary. Detailed negative and positive validation evidence is recorded in the [release-workflow roadmap](release-workflow-refactor-milestones#completion-evidence).
+
 Only this pilot blocks [WaveVortexModel issue #19](https://github.com/JeffreyEarly/wave-vortex-model/issues/19) and the 4.2.1 release. The remaining v1 roadmap is important shared-infrastructure work but does not block that maintenance release.
 
 ## Future workflow
