@@ -248,6 +248,11 @@ classdef TestReleaseWorkflow < matlab.unittest.TestCase
         function validationHelpersFailClearly(testCase)
             testCase.verifyError(@()oceankitrelease.installDocumentationPackage("ClassDocumentation"), ...
                 "OceanKitRelease:InvalidDocumentationPackageSpecifier");
+            dependency = oceankitrelease.installDocumentationPackage("ClassDocumentation@1.3.0", ...
+                repositoryRoot=testCase.OceanKitRoot);
+            testCase.verifyEqual(dependency.Name,"ClassDocumentation");
+            testCase.verifyEqual(dependency.Version,"1.3.0");
+            testCase.verifyTrue(isfolder(dependency.Root));
             repositoryRoot = testCase.createPackageFixture("missing-buildfile");
             testCase.verifyError(@()oceankitrelease.runDocumentationCheck(repositoryRoot,"docs:check"), ...
                 "OceanKitRelease:BuildFileNotFound");

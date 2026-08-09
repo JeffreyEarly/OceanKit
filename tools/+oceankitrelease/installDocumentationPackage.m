@@ -12,6 +12,19 @@ end
 expectedName = string(tokens{1});
 expectedVersion = string(tokens{2});
 
+if options.repositoryRoot ~= ""
+    sourceManifestPath = fullfile(options.repositoryRoot,expectedName + "-" + expectedVersion,"resources","mpackage.json");
+    if ~isfile(sourceManifestPath)
+        error("OceanKitRelease:DocumentationPackageSourceNotFound", ...
+            "Requested package source was not found at %s.", sourceManifestPath);
+    end
+    sourceManifest = jsondecode(fileread(sourceManifestPath));
+    if string(sourceManifest.name) ~= expectedName || string(sourceManifest.version) ~= expectedVersion
+        error("OceanKitRelease:DocumentationPackageSourceMismatch", ...
+            "The source manifest at %s does not match %s.", sourceManifestPath, specifier);
+    end
+end
+
 packages = mpmlist;
 matches = find(string([packages.Name]) == expectedName);
 if isempty(matches)
@@ -31,13 +44,9 @@ if actualVersion ~= expectedVersion
 end
 
 actualRoot = canonicalPath(string(resolved.PackageRoot));
-if options.repositoryRoot ~= ""
-    expectedRoot = canonicalPath(fullfile(options.repositoryRoot,expectedName + "-" + expectedVersion));
-    if actualRoot ~= expectedRoot
-        error("OceanKitRelease:DocumentationPackagePathMismatch", ...
-            "Requested %s from %s, but the installed package resolves from %s.", ...
-            specifier, expectedRoot, actualRoot);
-    end
+if ~isfolder(actualRoot)
+    error("OceanKitRelease:DocumentationPackageRootNotFound", ...
+        "The installed package root does not exist: %s.", actualRoot);
 end
 
 dependency = struct("Name",expectedName,"Version",actualVersion,"Root",actualRoot);
