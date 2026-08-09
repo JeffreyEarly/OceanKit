@@ -50,12 +50,6 @@ jobs:
     permissions:
       contents: write
     env:
-      RELEASE_ROOT: ${{ runner.temp }}/mpm-release
-      PREFLIGHT_PATH: ${{ runner.temp }}/mpm-release/preflight.json
-      METADATA_PATH: ${{ runner.temp }}/mpm-release/release-metadata.json
-      NOTES_PATH: ${{ runner.temp }}/mpm-release/legacy-notes.md
-      RELEASE_BODY_PATH: ${{ runner.temp }}/mpm-release/release-body.md
-      EXPORT_ROOT: ${{ runner.temp }}/mpm-release/export
       PILOT_ENABLED: ${{ inputs.documentationPackageSpecifier != '' || inputs.shouldCheckWebsiteDocumentation || inputs.shouldPromoteUnreleased }}
       BUMP_TYPE: ${{ inputs.bump }}
       SHOULD_BUILD_DOCUMENTATION: ${{ inputs.shouldBuildWebsiteDocumentation }}
@@ -66,6 +60,15 @@ jobs:
       SHOULD_PROMOTE_UNRELEASED: ${{ inputs.shouldPromoteUnreleased }}
 
     steps:
+      - name: Initialize runner-temporary paths
+        run: |
+          printf 'RELEASE_ROOT=%s\n' "$RUNNER_TEMP/mpm-release" >> "$GITHUB_ENV"
+          printf 'PREFLIGHT_PATH=%s\n' "$RUNNER_TEMP/mpm-release/preflight.json" >> "$GITHUB_ENV"
+          printf 'METADATA_PATH=%s\n' "$RUNNER_TEMP/mpm-release/release-metadata.json" >> "$GITHUB_ENV"
+          printf 'NOTES_PATH=%s\n' "$RUNNER_TEMP/mpm-release/legacy-notes.md" >> "$GITHUB_ENV"
+          printf 'RELEASE_BODY_PATH=%s\n' "$RUNNER_TEMP/mpm-release/release-body.md" >> "$GITHUB_ENV"
+          printf 'EXPORT_ROOT=%s\n' "$RUNNER_TEMP/mpm-release/export" >> "$GITHUB_ENV"
+
       - name: Check out calling repository
         uses: actions/checkout@v6
         with:
