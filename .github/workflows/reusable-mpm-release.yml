@@ -10,6 +10,7 @@ on:
       notes:
         description: "Release notes / changes in this update"
         required: false
+        default: ""
         type: string
       shouldBuildWebsiteDocumentation:
         description: "Build website documentation? (true/false)"
@@ -19,175 +20,223 @@ on:
         description: "Package for distribution? (true/false)"
         required: true
         type: string
+      documentationPackageSpecifier:
+        description: "Exact documentation package, for example ClassDocumentation@1.3.0"
+        required: false
+        default: ""
+        type: string
+      shouldCheckWebsiteDocumentation:
+        description: "Run the package documentation check before mutation"
+        required: false
+        default: false
+        type: boolean
+      documentationCheckTask:
+        description: "Canonical build task used to verify documentation"
+        required: false
+        default: "docs:check"
+        type: string
+      shouldPromoteUnreleased:
+        description: "Promote the nonempty Unreleased changelog section"
+        required: false
+        default: false
+        type: boolean
     secrets:
       MPM_REPO_PAT:
         required: true
-      # Optional: uncomment if you use a MATLAB license token
-      # MW_LICENSE_TOKEN:
-      #   required: true
 
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      PILOT_ENABLED: ${{ inputs.documentationPackageSpecifier != '' || inputs.shouldCheckWebsiteDocumentation || inputs.shouldPromoteUnreleased }}
+      BUMP_TYPE: ${{ inputs.bump }}
+      SHOULD_BUILD_DOCUMENTATION: ${{ inputs.shouldBuildWebsiteDocumentation }}
+      SHOULD_PACKAGE_FOR_DISTRIBUTION: ${{ inputs.shouldPackageForDistribution }}
+      DOCUMENTATION_PACKAGE_SPECIFIER: ${{ inputs.documentationPackageSpecifier }}
+      SHOULD_CHECK_DOCUMENTATION: ${{ inputs.shouldCheckWebsiteDocumentation }}
+      DOCUMENTATION_CHECK_TASK: ${{ inputs.documentationCheckTask }}
+      SHOULD_PROMOTE_UNRELEASED: ${{ inputs.shouldPromoteUnreleased }}
 
     steps:
-      # 1) Calling repo (MATLAB package under release)
-      - name: Check out calling repo
-        uses: actions/checkout@v4
+      - name: Initialize runner-temporary paths
+        run: |
+          printf 'RELEASE_ROOT=%s\n' "$RUNNER_TEMP/mpm-release" >> "$GITHUB_ENV"
+          printf 'PREFLIGHT_PATH=%s\n' "$RUNNER_TEMP/mpm-release/preflight.json" >> "$GITHUB_ENV"
+          printf 'METADATA_PATH=%s\n' "$RUNNER_TEMP/mpm-release/release-metadata.json" >> "$GITHUB_ENV"
+          printf 'NOTES_PATH=%s\n' "$RUNNER_TEMP/mpm-release/legacy-notes.md" >> "$GITHUB_ENV"
+          printf 'RELEASE_BODY_PATH=%s\n' "$RUNNER_TEMP/mpm-release/release-body.md" >> "$GITHUB_ENV"
+          printf 'EXPORT_ROOT=%s\n' "$RUNNER_TEMP/mpm-release/export" >> "$GITHUB_ENV"
+
+      - name: Check out calling repository
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           path: my-repo
 
-      # 3) OceanKit itself (for ci_release.m, update_changelog.m, and as MPM repo)
-      - name: Check out OceanKit
-        uses: actions/checkout@v4
+      - name: Check out immutable OceanKit workflow tools
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ job.workflow_repository }}
+          ref: ${{ job.workflow_sha }}
+          path: OceanKitWorkflow
+          persist-credentials: false
+
+      - name: Check out writable OceanKit repository
+        if: ${{ inputs.shouldPackageForDistribution == 'true' }}
+        uses: actions/checkout@v6
         with:
           repository: JeffreyEarly/OceanKit
-          path: OceanKit
+          ref: main
+          path: OceanKitPublish
           token: ${{ secrets.MPM_REPO_PAT }}
           fetch-depth: 0
 
+      - name: Record release notes safely
+        env:
+          RELEASE_NOTES: ${{ inputs.notes }}
+        run: |
+          mkdir -p "$RELEASE_ROOT"
+          printf '%s' "$RELEASE_NOTES" > "$NOTES_PATH"
+
+      - name: Preflight release request
+        env:
+          SOURCE_REPOSITORY_ROOT: my-repo
+          OCEANKIT_PUBLISH_ROOT: OceanKitPublish
+          WORKFLOW_REF: ${{ job.workflow_ref }}
+          WORKFLOW_SHA: ${{ job.workflow_sha }}
+        run: OceanKitWorkflow/tools/preflight_mpm_release.sh
+
       - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v2
+        uses: matlab-actions/setup-matlab@v3
         with:
           release: R2025bU2
           cache: true
-        # If you have a license token, uncomment:
-        # with:
-        #   token: ${{ secrets.MW_LICENSE_TOKEN }}
 
-      - name: Bump version, update changelog, build docs, export MPM package
-        uses: matlab-actions/run-command@v2
+      - name: Prepare and validate release candidate
+        uses: matlab-actions/run-command@v3
+        env:
+          WORKFLOW_REF: ${{ job.workflow_ref }}
+          WORKFLOW_SHA: ${{ job.workflow_sha }}
         with:
           command: |
-            % add our primary mpm repo 
-            mpmAddRepository("OceanKit","OceanKit");
-            
-            % install this package from its github repo and its dependencies
-            pkg = matlab.mpm.Package("my-repo");
+            sourceRoot = fullfile(pwd,"my-repo");
+            workflowRoot = fullfile(pwd,"OceanKitWorkflow");
+            releaseRoot = string(getenv("RELEASE_ROOT"));
+            preflight = jsondecode(fileread(getenv("PREFLIGHT_PATH")));
+            isPilot = strcmpi(getenv("PILOT_ENABLED"),"true");
+            shouldBuild = strcmpi(getenv("SHOULD_BUILD_DOCUMENTATION"),"true");
+            shouldPackage = strcmpi(getenv("SHOULD_PACKAGE_FOR_DISTRIBUTION"),"true");
+            shouldCheck = strcmpi(getenv("SHOULD_CHECK_DOCUMENTATION"),"true");
+            shouldPromote = strcmpi(getenv("SHOULD_PROMOTE_UNRELEASED"),"true");
+
+            mpmAddRepository("OceanKit",workflowRoot);
+            pkg = matlab.mpm.Package(sourceRoot);
             mpminstall(pkg,Prompt=false,Authoring=true);
 
-            % if not already installed, install the documentation classes
-            % this order and checking is necessary
-            pkgList = mpmlist;
-            if ~any(contains([pkgList.Name],"ClassAnnotations"))
-                mpminstall("ClassAnnotations",Prompt=false);
+            addpath(fullfile(workflowRoot,"tools"));
+            addpath(fullfile(sourceRoot,"tools"));
+            if isPilot
+                addpath(fullfile(workflowRoot,"tools"),"-begin");
+                expectedReleaseFunction = fullfile(workflowRoot,"tools","ci_release.m");
+                if string(which("ci_release")) ~= expectedReleaseFunction
+                    error("OceanKitRelease:CentralEngineNotResolved","Pilot releases require %s.",expectedReleaseFunction);
+                end
+                releaseFunction = @ci_release;
+                addpath(fullfile(sourceRoot,"tools"),"-begin");
+                specifier = string(getenv("DOCUMENTATION_PACKAGE_SPECIFIER"));
+                if specifier ~= ""
+                    oceankitrelease.installDocumentationPackage(specifier,repositoryRoot=workflowRoot);
+                end
+                if shouldCheck
+                    oceankitrelease.runDocumentationCheck(sourceRoot,string(getenv("DOCUMENTATION_CHECK_TASK")));
+                end
+            else
+                releaseFunction = @ci_release;
+                packageList = mpmlist;
+                if ~any(string([packageList.Name]) == "ClassAnnotations")
+                    mpminstall("ClassAnnotations",Prompt=false);
+                end
+                if ~any(string([packageList.Name]) == "ClassDocumentation")
+                    mpminstall("ClassDocumentation",Prompt=false);
+                end
             end
-            if ~any(contains([pkgList.Name],"ClassDocumentation"))
-                mpminstall("ClassDocumentation",Prompt=false);
+
+            options = struct;
+            options.rootDir = sourceRoot;
+            options.bumpType = string(getenv("BUMP_TYPE"));
+            options.shouldBuildWebsiteDocumentation = shouldBuild;
+            options.shouldPackageForDistribution = shouldPackage;
+            if isPilot
+                options.notesFile = string(getenv("NOTES_PATH"));
+                options.shouldPromoteUnreleased = shouldPromote;
+                options.shouldRequireDocumentationBuilder = shouldBuild;
+                options.releaseDate = string(preflight.releaseDate);
+                options.releaseBodyPath = string(getenv("RELEASE_BODY_PATH"));
+                options.outputRoot = string(getenv("EXPORT_ROOT"));
+            else
+                options.notes = string(fileread(getenv("NOTES_PATH")));
             end
+            optionCells = namedargs2cell(options);
+            releaseFunction(optionCells{:});
 
-            addpath("OceanKit/tools"); % Add OceanKit tools (e.g. ci_release.m)
-            addpath("my-repo/tools"); % Add calling-repo tools (e.g. build_website_documentation.m)
+            if isPilot
+                exportRoot = string(getenv("EXPORT_ROOT"));
+            else
+                exportRoot = fullfile(sourceRoot,"dist");
+            end
+            releaseBodyPath = "";
+            if shouldPromote
+                releaseBodyPath = string(getenv("RELEASE_BODY_PATH"));
+            elseif string(getenv("BUMP_TYPE")) ~= "none" && strlength(strtrim(string(fileread(getenv("NOTES_PATH"))))) > 0
+                releaseBodyPath = string(getenv("NOTES_PATH"));
+            end
+            oceankitrelease.writeMetadata(string(getenv("METADATA_PATH")), ...
+                mode=string(preflight.mode), ...
+                workflowRef=string(preflight.workflowRef), ...
+                workflowSha=string(preflight.workflowSha), ...
+                sourceStartSha=string(preflight.sourceStartSha), ...
+                repositoryRoot=sourceRoot, ...
+                oldVersion=string(preflight.oldVersion), ...
+                bumpType=string(preflight.bumpType), ...
+                releaseDate=string(preflight.releaseDate), ...
+                documentationChecked=shouldCheck, ...
+                documentationBuilt=shouldBuild, ...
+                unreleasedPromoted=shouldPromote, ...
+                shouldPackageForDistribution=shouldPackage, ...
+                exportRoot=exportRoot, ...
+                releaseBodyPath=releaseBodyPath);
 
-            opts = struct;
-            opts.rootDir = "my-repo";  % root of the calling repo
-            opts.bumpType = "${{ inputs.bump }}";
-            opts.notes = "${{ inputs.notes }}";
-            opts.shouldBuildWebsiteDocumentation = ${{ inputs.shouldBuildWebsiteDocumentation }};
-            opts.shouldPackageForDistribution = ${{ inputs.shouldPackageForDistribution }};
-
-            options = namedargs2cell(opts);
-            ci_release(options{:});
-          
-      - name: Read release metadata from MATLAB
-        working-directory: my-repo
-        id: meta
+      - name: Report release candidate
         run: |
-          META_FILE="dist/mpm_release_metadata.txt"
-          if [ ! -f "$META_FILE" ]; then
-            echo "Metadata file $META_FILE not found"; exit 1
-          fi
-          cat "$META_FILE"
-          NAME=$(grep '^NAME=' "$META_FILE" | cut -d'=' -f2)
-          VERSION=$(grep '^VERSION=' "$META_FILE" | cut -d'=' -f2)
-          FOLDER=$(grep '^FOLDER=' "$META_FILE" | cut -d'=' -f2)
-          echo "name=$NAME"      >> $GITHUB_OUTPUT
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "folder=$FOLDER"   >> $GITHUB_OUTPUT
+          jq . "$METADATA_PATH"
+          {
+            printf '### Validated release candidate\n\n'
+            printf -- '- Workflow: `%s` (`%s`)\n' "$(jq -r .workflowRef "$METADATA_PATH")" "$(jq -r .workflowSha "$METADATA_PATH")"
+            printf -- '- Package: `%s@%s`\n' "$(jq -r .packageName "$METADATA_PATH")" "$(jq -r .version "$METADATA_PATH")"
+            printf -- '- Distribution created: `%s`\n' "$(jq -r .distributionCreated "$METADATA_PATH")"
+          } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Commit version bump (and docs/changelog) in calling repo
-        working-directory: my-repo
-        env:
-          VERSION: ${{ steps.meta.outputs.version }}
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Always add the updated mpackage.json
-          if [ -f resources/mpackage.json ]; then
-            git add resources/mpackage.json
-          fi
-
-          # Conditionally add CHANGELOG.md
-          if [ -f CHANGELOG.md ]; then
-            echo "Adding CHANGELOG.md"
-            git add CHANGELOG.md
-          else
-            echo "CHANGELOG.md not found — skipping"
-          fi
-
-          # Conditionally add docs directory
-          if [ -d docs ]; then
-            echo "Adding docs/"
-            git add docs
-          else
-            echo "docs/ directory not found — skipping"
-          fi
-
-          # If nothing staged, skip commit
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-
-          git commit -m "Bump version to v${VERSION}"
-          git push origin HEAD
-
-      - name: Create git tag and GitHub release
-        working-directory: my-repo
-        if: ${{ inputs.bump != 'none' }}
+      - name: Publish validated release candidate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: v${{ steps.meta.outputs.version }}
-          NOTES: ${{ inputs.notes }}
         run: |
-          echo "Creating tag $TAG"
-
-          git tag "$TAG"
-          git push origin "$TAG"
-
-          if [ -z "$NOTES" ]; then
-            gh release create "$TAG" \
-              --repo "$GITHUB_REPOSITORY" \
-              --title "$TAG" \
-              --generate-notes
+          if [[ "$(jq -r .distributionCreated "$METADATA_PATH")" == "true" ]]; then
+            OceanKitWorkflow/tools/publish_mpm_release.sh "$METADATA_PATH" my-repo OceanKitPublish
           else
-            gh release create "$TAG" \
-              --repo "$GITHUB_REPOSITORY" \
-              --title "$TAG" \
-              --notes "$NOTES"
+            OceanKitWorkflow/tools/publish_mpm_release.sh "$METADATA_PATH" my-repo
           fi
 
-      - name: Copy package into OceanKit (MPM repo)
+      - name: Report and clean ephemeral checkouts
+        if: always()
         run: |
-          echo "Copying my-repo/dist/${{ steps.meta.outputs.folder }} -> OceanKit/"
-          rsync -av "my-repo/dist/${{ steps.meta.outputs.folder }}/" "OceanKit/${{ steps.meta.outputs.folder }}/"
-
-      - name: Commit and push to OceanKit
-        working-directory: OceanKit
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git add .
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit in OceanKit."
-            exit 0
-          fi
-
-          git commit -m "Add ${{ steps.meta.outputs.folder }} (from $GITHUB_REPOSITORY@$GITHUB_SHA)"
-          git push
+          for repository in my-repo OceanKitPublish; do
+            if [[ -d "$repository/.git" ]]; then
+              printf '%s status before cleanup:\n' "$repository"
+              git -C "$repository" status --short || true
+              git -C "$repository" restore --staged --worktree . || true
+              git -C "$repository" clean -ffdx || true
+            fi
+          done
+          rm -rf "$RELEASE_ROOT"

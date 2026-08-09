@@ -27,44 +27,53 @@ Versioned package directories in OceanKit are distribution artifacts. Package de
 
 Every participating authoring repository contains `.github/workflows/release-mpm.yml`. This workflow is manually dispatched from that repository and calls `JeffreyEarly/OceanKit/.github/workflows/reusable-mpm-release.yml@main`.
 
-The caller exposes four inputs:
+The legacy caller exposes four inputs:
 
 - `bump`: `none`, `patch`, `minor`, or `major`
 - `notes`: release notes used for the changelog and GitHub release
 - `shouldBuildWebsiteDocumentation`: string-valued `true` or `false`
 - `shouldPackageForDistribution`: string-valued `true` or `false`
 
+The WaveVortexModel pilot adds four optional reusable-workflow inputs without changing those callers:
+
+- `documentationPackageSpecifier`: an exact authoring-tool package such as `ClassDocumentation@1.3.0`
+- `shouldCheckWebsiteDocumentation`: whether to run a documentation check before mutation
+- `documentationCheckTask`: the build-tool task, defaulting to `docs:check`
+- `shouldPromoteUnreleased`: whether to promote the authoritative `Unreleased` changelog section
+
+Supplying a documentation package or enabling either pilot boolean activates the strict pilot path. Callers that omit them retain the legacy release behavior.
+
 The package repository supplies its own `GITHUB_TOKEN` for commits, tags, and releases in that repository. It also supplies `MPM_REPO_PAT`, which checks out and pushes to the OceanKit repository.
 
 ### Release sequence
 
-The reusable workflow currently performs these operations in one job:
+The reusable workflow performs these operations in one job:
 
 1. Check out the calling repository into `my-repo` with full history.
-2. Check out OceanKit into `OceanKit` using `MPM_REPO_PAT`.
-3. Set up MATLAB R2025b Update 2 with caching enabled.
-4. Register the checked-out OceanKit directory as an MPM repository.
-5. Create a `matlab.mpm.Package` for `my-repo` and install it in authoring mode, resolving its declared dependencies from OceanKit.
-6. Install `ClassAnnotations` and `ClassDocumentation` when they are not already installed.
-7. Add the OceanKit and package-specific `tools` directories to the MATLAB path.
-8. Call `ci_release` with the dispatch inputs.
-9. Read `dist/mpm_release_metadata.txt` to obtain the package name, version, and export folder.
-10. Commit `resources/mpackage.json`, `CHANGELOG.md`, and `docs/` changes to the authoring repository.
-11. For a real version bump, create a `v<version>` tag and GitHub release.
-12. Copy the exported package snapshot into OceanKit.
-13. Commit and push the snapshot to OceanKit.
+2. Check out the OceanKit commit that defines the reusable job into `OceanKitWorkflow`, using `job.workflow_repository` and `job.workflow_sha`. Release tools and dependency snapshots come only from this immutable checkout.
+3. When distribution is requested, check out current OceanKit `main` separately into writable `OceanKitPublish` using `MPM_REPO_PAT`.
+4. Validate the manifest, requested mode, proposed version, tag, snapshot, documentation hooks, and initial repository state.
+5. Set up MATLAB R2025b Update 2 with caching enabled.
+6. Register `OceanKitWorkflow` as the MPM repository.
+7. Create a `matlab.mpm.Package` for `my-repo` and install it in authoring mode.
+8. For an opted-in caller, install and report the exact documentation package and run the requested documentation check before mutation.
+9. Call `ci_release`, using runner-temporary files for free-form notes, metadata, release content, and pilot exports.
+10. Validate the resulting authoring diff and write canonical JSON metadata for every mode.
+11. Commit and push the validated authoring changes.
+12. When an export was produced, copy, commit, and push the new snapshot to `OceanKitPublish`.
+13. For a real version bump, create the `v<version>` tag and GitHub release last.
 
-The OceanKit commit message records the package folder and the workflow's original calling-repository SHA.
+The OceanKit commit message records the package folder and the workflow's original calling-repository SHA. The workflow logs and summary record the exact reusable-workflow ref and SHA.
 
 ### Version and changelog handling
 
 The central `ci_release` function reads the package through `matlab.mpm.Package`. For `major`, `minor`, and `patch` releases it constructs a new `matlab.mpm.Version` and assigns it to the package, allowing the public MPM API to rewrite `resources/mpackage.json`.
 
-When a real bump has nonempty release notes, `update_changelog` inserts a dated `## [<version>]` entry before the existing release entries. A bump with empty notes does not update the changelog in the central implementation.
+Legacy callers retain the current dispatch-note behavior: when a real bump has nonempty release notes, `update_changelog` inserts a dated `## [<version>]` entry before the existing release entries, while an empty note leaves the changelog unchanged.
 
-This behavior does not correctly release a package that accumulates changes under `## [Unreleased]`. The current helper inserts a separate entry containing only the dispatch notes and leaves the actual release changes under `Unreleased`; with empty notes it leaves the changelog unchanged. The future workflow instead treats the changelog as authoritative and promotes the existing `Unreleased` content.
+An opted-in caller may instead promote exactly one nonempty `## [Unreleased]` section. The workflow creates a fresh empty section, moves the complete reviewed body under the dated release version, and passes that same Markdown to the GitHub release through a file rather than executable MATLAB text.
 
-The workflow interpolates release notes directly into generated MATLAB source. Multiline notes or MATLAB string delimiters can therefore make the MATLAB command syntactically invalid. A WaveVortexModel 4.1.1 release attempt failed this way before succeeding with single-line notes.
+Free-form dispatch notes are written to runner-temporary storage and read by MATLAB. Multiline text, quotes, backticks, percent signs, and blank lines therefore remain data rather than generated source. A WaveVortexModel 4.1.1 release attempt exposed the previous interpolation defect before this transport was corrected.
 
 ### Documentation and online version history
 
@@ -80,7 +89,7 @@ This arrangement makes online version history fragile:
 
 Most package sites use GitHub Pages legacy branch publishing from `main/docs`. After the release commit reaches `main`, GitHub Pages rebuilds the site independently of the release workflow.
 
-WaveVortexModel now provides a deterministic `buildtool docs:check` command and requires the authoring-only generator `ClassDocumentation@1.3.0`. The current reusable workflow cannot request that exact version or run the check before release mutation. Other packages may have a documentation builder without an equivalent check command, so the exact generator and verification contract must remain opt-in during the initial pilot.
+WaveVortexModel provides a deterministic `buildtool docs:check` command and requires the authoring-only generator `ClassDocumentation@1.3.0`. The pilot installs that exact version, reports its resolved path, and runs the check before release mutation. Other packages may have a documentation builder without an equivalent check command, so the exact generator and verification contract remains opt-in.
 
 ### Package export
 
@@ -96,7 +105,7 @@ When distribution is requested, `ci_release` copies the authoring repository int
 
 The export retains runtime source, manifest-declared package folders, tests, examples, `README.md`, and `CHANGELOG.md` unless the package layout excludes them by other means.
 
-The metadata file used by later Actions steps is written only when distribution is requested. The workflow nevertheless reads the metadata and performs the OceanKit copy unconditionally, so `shouldPackageForDistribution=false` is not currently a complete or usable mode.
+The workflow now writes canonical metadata in runner-temporary storage for every mode. A non-distribution run records that no export exists, skips the writable OceanKit checkout and every snapshot-publication step, and remains a complete supported mode. The legacy text metadata remains available to direct `ci_release` callers but no longer controls the shared workflow.
 
 ### Repository-specific variation
 
@@ -110,22 +119,21 @@ Not every repository provides a documentation builder. Requesting documentation 
 
 The workflow has successfully produced authoring commits, tags, GitHub releases, documentation updates, and OceanKit snapshots, but several boundaries remain weak:
 
-- All callers use the mutable `@main` version of the reusable workflow, so central changes affect every future release immediately.
-- Dispatch inputs are strings and release notes are interpolated into executable MATLAB text.
+- Existing callers still use the mutable `@main` version until they migrate to a tested workflow tag.
+- The two legacy boolean inputs remain string-valued until the caller-contract migration.
 - Invalid input combinations are discovered after the relatively expensive MATLAB setup.
 - Documentation generation is not required to prove that the new changelog entry reached the published version-history page.
 - No clean-path test installs and exercises the exported OceanKit snapshot before publication.
-- A `bump=none` distribution can modify an already published version folder.
+- Non-opted-in `bump=none` distributions can still modify an already published version folder.
 - The final `rsync` does not delete files that disappeared from a replacement export.
 - Authoring commits, tags, releases, and OceanKit commits are separate writes and cannot be transactional.
-- The tag and GitHub release are created before the OceanKit push, so a late failure can leave a published release without its distribution snapshot.
 - Concurrent releases from different repositories can race when pushing directly to OceanKit.
 
 Recovery is manual. The operator must determine which writes completed, repair or resume the missing steps, and avoid applying a second version bump when retrying a partially completed release.
 
 ## WaveVortexModel release-safety pilot
 
-[OceanKit issue #3](https://github.com/JeffreyEarly/OceanKit/issues/3) provides a limited, backward-compatible pilot needed before WaveVortexModel 4.2.1. Existing callers retain their current contract unless they opt into the pilot. WaveVortexModel requests `ClassDocumentation@1.3.0`, runs `buildtool docs:check` before mutation, promotes its nonempty `Unreleased` section, and consumes the tested workflow through the immutable `mpm-release-v0.1.0` tag.
+[OceanKit issue #3](https://github.com/JeffreyEarly/OceanKit/issues/3) provides a limited, backward-compatible pilot needed before WaveVortexModel 4.2.1. Existing callers retain their current contract unless they opt into the pilot. WaveVortexModel requests `ClassDocumentation@1.3.0`, runs `buildtool docs:check` before mutation, promotes its nonempty `Unreleased` section, and consumes the tested workflow through the immutable `mpm-release-v0.1.0` tag. The tagged reusable YAML checks out its colocated OceanKit tools at `job.workflow_sha`, so later changes to OceanKit `main` cannot alter a pinned release.
 
 The pilot also writes metadata in non-distribution modes, conditions OceanKit publication on actual export output, rejects an existing snapshot, and creates the tag and GitHub release only after the authoring commit and OceanKit snapshot succeed. It intentionally does not migrate all callers to native booleans, rename the central release engine, generalize documentation handling across the ecosystem, or implement snapshot-replacement and push-race recovery.
 

@@ -3,8 +3,14 @@ arguments
     options.rootDir = ".."
     options.bumpType = "none"
     options.notes string = ""
+    options.notesFile (1,1) string = ""
     options.shouldBuildWebsiteDocumentation (1,1) logical = false
     options.shouldPackageForDistribution (1,1) logical = false
+    options.shouldPromoteUnreleased (1,1) logical = false
+    options.shouldRequireDocumentationBuilder (1,1) logical = false
+    options.releaseDate (1,1) string = ""
+    options.releaseBodyPath (1,1) string = ""
+    options.outputRoot (1,1) string = ""
     options.dist_folder (1,1) string = "dist"
     options.excluded_dist_folders string = [".git", ".github", "docs", "tools", "Documentation", "OceanKit"]
 end
@@ -21,6 +27,14 @@ end
 %   i.e. the folder that contains the resources/mpackage.json file.
 
 % 1) Read package metadata and bump version (semantic x.y.z) if requested
+
+notes = options.notes;
+if options.notesFile ~= ""
+    if ~isfile(options.notesFile)
+        error("ci_release:notesFileNotFound", "Could not find release notes at %s", options.notesFile);
+    end
+    notes = string(fileread(options.notesFile));
+end
 
 mpkgPath = fullfile(options.rootDir, "resources", "mpackage.json");
 if ~isfile(mpkgPath)
@@ -52,9 +66,21 @@ end
 
 newVer = string(newVerObj);
 
+isVersionBump = any(bumpType == ["major" "minor" "patch"]);
+if options.shouldPromoteUnreleased
+    if ~isVersionBump
+        error("ci_release:promotionRequiresVersionBump", "Promoting Unreleased requires a major, minor, or patch bump.");
+    end
+    if options.releaseDate == "" || options.releaseBodyPath == ""
+        error("ci_release:promotionOutputRequired", "Promoting Unreleased requires a release date and release-body path.");
+    end
+    changelogPath = fullfile(options.rootDir, "CHANGELOG.md");
+    oceankitrelease.unreleasedBody(changelogPath);
+end
+
 % If we are actually bumping, assign back to the package so that
 % mpackage.json is rewritten by MATLAB Package Manager.
-if bumpType == "major" || bumpType == "minor" || bumpType == "patch"    
+if isVersionBump
     pkg.Version = newVerObj;
     fprintf('Bumping version: %s -> %s (%s)\n', oldVer, string(newVerObj), bumpType);
 else
@@ -64,9 +90,12 @@ end
 
 
 % If we bumped the version and have release notes, update the changelog.
-if (bumpType == "major" || bumpType == "minor" || bumpType == "patch") && strlength(strtrim(options.notes)) > 0
+if isVersionBump && options.shouldPromoteUnreleased
     changelogPath = fullfile(options.rootDir, "CHANGELOG.md");
-    update_changelog(changelogPath, options.notes, newVer);
+    oceankitrelease.promoteUnreleased(changelogPath, newVer, options.releaseDate, options.releaseBodyPath);
+elseif isVersionBump && strlength(strtrim(notes)) > 0
+    changelogPath = fullfile(options.rootDir, "CHANGELOG.md");
+    update_changelog(changelogPath, notes, newVer);
 end
 
 %% 2) Run your custom documentation build
@@ -76,13 +105,19 @@ if options.shouldBuildWebsiteDocumentation
     if exist("build_website_documentation","file")
         fprintf('Running documentation builder\n');
         build_website_documentation(rootDir=options.rootDir);
+    elseif options.shouldRequireDocumentationBuilder
+        error("ci_release:documentationBuilderNotFound", "Requested documentation builder build_website_documentation was not found.");
     end
 end
 
 %% 3) Export package root to dist/<name>-<version> for MPM repo
 
 if options.shouldPackageForDistribution == true
-    distDir = fullfile(options.rootDir, options.dist_folder);
+    if options.outputRoot == ""
+        distDir = fullfile(options.rootDir, options.dist_folder);
+    else
+        distDir = options.outputRoot;
+    end
     if ~isfolder(distDir)
         mkdir(distDir);
     end
