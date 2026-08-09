@@ -186,7 +186,7 @@ if PATH="$stub_bin:$PATH" \
     printf 'Rejected OceanKit push unexpectedly succeeded.\n' >&2
     exit 1
 fi
-git --git-dir="$failed_source_remote" log -1 --format=%s | grep -Fx 'Bump version to v1.2.4' >/dev/null
+git --git-dir="$failed_source_remote" log -1 --format=%s main | grep -Fx 'Bump version to v1.2.4' >/dev/null
 if git --git-dir="$failed_source_remote" show-ref --verify --quiet refs/tags/v1.2.4; then
     printf 'Tag was created after a rejected OceanKit push.\n' >&2
     exit 1
