@@ -139,6 +139,12 @@ jobs:
             addpath(fullfile(sourceRoot,"tools"));
             if isPilot
                 addpath(fullfile(workflowRoot,"tools"),"-begin");
+                expectedReleaseFunction = fullfile(workflowRoot,"tools","ci_release.m");
+                if string(which("ci_release")) ~= expectedReleaseFunction
+                    error("OceanKitRelease:CentralEngineNotResolved","Pilot releases require %s.",expectedReleaseFunction);
+                end
+                releaseFunction = @ci_release;
+                addpath(fullfile(sourceRoot,"tools"),"-begin");
                 specifier = string(getenv("DOCUMENTATION_PACKAGE_SPECIFIER"));
                 if specifier ~= ""
                     oceankitrelease.installDocumentationPackage(specifier,repositoryRoot=workflowRoot);
@@ -147,6 +153,7 @@ jobs:
                     oceankitrelease.runDocumentationCheck(sourceRoot,string(getenv("DOCUMENTATION_CHECK_TASK")));
                 end
             else
+                releaseFunction = @ci_release;
                 packageList = mpmlist;
                 if ~any(string([packageList.Name]) == "ClassAnnotations")
                     mpminstall("ClassAnnotations",Prompt=false);
@@ -172,7 +179,7 @@ jobs:
                 options.notes = string(fileread(getenv("NOTES_PATH")));
             end
             optionCells = namedargs2cell(options);
-            ci_release(optionCells{:});
+            releaseFunction(optionCells{:});
 
             if isPilot
                 exportRoot = string(getenv("EXPORT_ROOT"));
