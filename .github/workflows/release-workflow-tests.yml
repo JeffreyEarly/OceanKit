@@ -50,6 +50,7 @@ jobs:
         uses: matlab-actions/run-command@v3
         with:
           command: >-
+            mpmAddRepository("OceanKit",pwd);
             addpath("tools");
             results = runtests("UnitTests/TestReleaseWorkflow.m");
             assertSuccess(results)
