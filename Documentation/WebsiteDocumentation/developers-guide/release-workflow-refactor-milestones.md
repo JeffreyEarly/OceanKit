@@ -27,7 +27,7 @@ The migration does not introduce a central cross-repository dispatcher, GitHub A
 
 | Milestone | Status | Prerequisites | Completion evidence |
 | --- | --- | --- | --- |
-| [0. WaveVortexModel release-safety pilot](https://github.com/JeffreyEarly/OceanKit/issues/3) | Planned | Current workflow documented; WaveVortexModel documentation checks available | WaveVortexModel consumes tested `mpm-release-v0.1.0` |
+| [0. WaveVortexModel release-safety pilot](https://github.com/JeffreyEarly/OceanKit/issues/3) | In progress | Current workflow documented; WaveVortexModel documentation checks available | WaveVortexModel consumes tested `mpm-release-v0.1.0` |
 | [1. Release contract and preflight](https://github.com/JeffreyEarly/OceanKit/issues/4) | Planned | Pilot contract validated | Input and mode tests pass without starting MATLAB on invalid requests |
 | [2. Changelog and documentation integrity](https://github.com/JeffreyEarly/OceanKit/issues/5) | Planned | Milestone 1 metadata contract | Pilot version history contains the exact promoted changelog entry |
 | [3. Central release engine](https://github.com/JeffreyEarly/OceanKit/issues/6) | Planned | Milestones 1–2 helpers | InternalModes and a second pilot resolve the same central entry point |
@@ -48,6 +48,7 @@ Update this table as milestones begin and complete. Record links to the validati
 - Install `ClassDocumentation@1.3.0` exactly and run `buildtool docs:check` before release mutation.
 - Reject an existing snapshot and publish the authoring commit and OceanKit snapshot before the tag and GitHub release.
 - Validate WaveVortexModel as the first consumer and tag the tested workflow as `mpm-release-v0.1.0`.
+- Resolve the reusable job's OceanKit tools and dependencies from `job.workflow_sha`, while retaining a separate writable checkout for snapshot publication.
 
 ### Acceptance criteria
 

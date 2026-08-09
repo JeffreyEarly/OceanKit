@@ -1,0 +1,61 @@
+name: Release Workflow Tests
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/reusable-mpm-release.yml
+      - .github/workflows/release-workflow-tests.yml
+      - tools/ci_release.m
+      - tools/update_changelog.m
+      - tools/+oceankitrelease/**
+      - tools/*mpm_release.sh
+      - UnitTests/TestReleaseWorkflow.m
+      - UnitTests/test_release_workflow.sh
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/reusable-mpm-release.yml
+      - .github/workflows/release-workflow-tests.yml
+      - tools/ci_release.m
+      - tools/update_changelog.m
+      - tools/+oceankitrelease/**
+      - tools/*mpm_release.sh
+      - UnitTests/TestReleaseWorkflow.m
+      - UnitTests/test_release_workflow.sh
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fixtures:
+    name: Release fixtures / MATLAB R2025bU2
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out OceanKit
+        uses: actions/checkout@v6
+
+      - name: Run shell publication fixtures
+        run: UnitTests/test_release_workflow.sh
+
+      - name: Set up MATLAB R2025b Update 2
+        uses: matlab-actions/setup-matlab@v3
+        with:
+          release: R2025bU2
+          cache: true
+
+      - name: Run MATLAB release fixtures
+        uses: matlab-actions/run-command@v3
+        with:
+          command: >-
+            addpath("tools");
+            results = runtests("UnitTests/TestReleaseWorkflow.m");
+            assertSuccess(results)
+
+      - name: Verify clean checkout
+        if: always()
+        run: |
+          git diff --check
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
