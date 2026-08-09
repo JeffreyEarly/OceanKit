@@ -27,7 +27,7 @@ The migration does not introduce a central cross-repository dispatcher, GitHub A
 
 | Milestone | Status | Prerequisites | Completion evidence |
 | --- | --- | --- | --- |
-| [0. WaveVortexModel release-safety pilot](https://github.com/JeffreyEarly/OceanKit/issues/3) | In progress | Current workflow documented; WaveVortexModel documentation checks available | WaveVortexModel consumes tested `mpm-release-v0.1.0` |
+| [0. WaveVortexModel release-safety pilot](https://github.com/JeffreyEarly/OceanKit/issues/3) | Complete | Current workflow documented; WaveVortexModel documentation checks available | [PR #10](https://github.com/JeffreyEarly/OceanKit/pull/10), [fixture CI](https://github.com/JeffreyEarly/OceanKit/actions/runs/31319149488), and [tagged consumer validation](https://github.com/JeffreyEarly/wave-vortex-model/actions/runs/31319357216) |
 | [1. Release contract and preflight](https://github.com/JeffreyEarly/OceanKit/issues/4) | Planned | Pilot contract validated | Input and mode tests pass without starting MATLAB on invalid requests |
 | [2. Changelog and documentation integrity](https://github.com/JeffreyEarly/OceanKit/issues/5) | Planned | Milestone 1 metadata contract | Pilot version history contains the exact promoted changelog entry |
 | [3. Central release engine](https://github.com/JeffreyEarly/OceanKit/issues/6) | Planned | Milestones 1–2 helpers | InternalModes and a second pilot resolve the same central entry point |
@@ -62,6 +62,12 @@ Update this table as milestones begin and complete. Record links to the validati
 ### Boundary
 
 Only [OceanKit issue #3](https://github.com/JeffreyEarly/OceanKit/issues/3) blocks [WaveVortexModel issue #19](https://github.com/JeffreyEarly/wave-vortex-model/issues/19) and WaveVortexModel 4.2.1. The remaining roadmap stages generalize and replace transitional pilot behavior but do not block that maintenance release.
+
+### Completion evidence
+
+The implementation merged in [OceanKit PR #10](https://github.com/JeffreyEarly/OceanKit/pull/10) after the [OceanKit fixture suite](https://github.com/JeffreyEarly/OceanKit/actions/runs/31319149488) passed. WaveVortexModel then demonstrated that a [mismatched documentation generator](https://github.com/JeffreyEarly/wave-vortex-model/actions/runs/31318822889) and [stale committed documentation](https://github.com/JeffreyEarly/wave-vortex-model/actions/runs/31318846438) both fail before mutation. A clean [feature-branch validation](https://github.com/JeffreyEarly/wave-vortex-model/actions/runs/31319091195) succeeded without publication.
+
+The merge commit is published as the immutable annotated tag [`mpm-release-v0.1.0`](https://github.com/JeffreyEarly/OceanKit/tree/mpm-release-v0.1.0). The final [tagged WaveVortexModel validation](https://github.com/JeffreyEarly/wave-vortex-model/actions/runs/31319357216) resolved the reusable workflow and its tools from that tag, installed `ClassDocumentation@1.3.0`, produced complete non-distribution metadata, and left both repositories, tags, releases, and snapshots unchanged.
 
 ### Rollback
 
