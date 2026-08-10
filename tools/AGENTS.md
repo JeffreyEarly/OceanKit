@@ -76,6 +76,45 @@ continue with the parts of the task that can be completed safely.
 - Keep example-script modernization minimal unless broader restructuring is explicitly requested.
 - Do not update website content unless the task explicitly includes website work.
 
+## Documentation verification cadence
+
+For documentation-only and documentation-focused work, use the smallest
+verification cycle appropriate to the current stage. Correctness fixes and
+behavior-changing work may require broader verification.
+
+### During editing
+
+- Batch related documentation edits before starting MATLAB verification.
+- Use searches, diff review, and whitespace checks while drafting.
+- Do not regenerate documentation after every small edit.
+
+### After a coherent batch
+
+1. Generate documentation once when canonical sources affect generated output.
+2. Run only the directly affected focused tests.
+3. When a focused test fails, correct it and rerun only the failing test methods.
+4. Run `docs:check` once.
+
+Do not repeat a successful build or check unless a later change could affect its
+result. Test-assertion-only changes do not require documentation regeneration.
+Accumulate further canonical documentation corrections before regenerating the
+site again.
+
+### Final branch handoff
+
+- Run the affected focused tests and one documentation check.
+- Run Code Analyzer once when MATLAB source or tests changed.
+- Run whitespace, repository-scope, package-manifest, and generated-artifact checks.
+- Run `docs:check` twice only for an explicit determinism test, final publication,
+  or integration of a larger documentation series.
+- Defer smoke, full, exhaustive, optional, package, and rendered-site suites to
+  final series integration or CI unless behavior changed or the user explicitly
+  requests them.
+
+Maintain a brief verification ledger during the task. Do not repeat a successful
+gate without identifying a subsequent change that could affect it. A more local
+`AGENTS.md` may impose stricter verification when required by that repository.
+
 ## Generated LaTeX source style
 
 When generating or rewriting LaTeX, follow these source-formatting rules in
