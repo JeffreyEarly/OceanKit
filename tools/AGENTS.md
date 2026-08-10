@@ -115,6 +115,19 @@ Maintain a brief verification ledger during the task. Do not repeat a successful
 gate without identifying a subsequent change that could affect it. A more local
 `AGENTS.md` may impose stricter verification when required by that repository.
 
+### Publishing reviewed documentation changes
+
+- After pushing a reviewed documentation pull request, enable auto-merge once
+  the required checks and merge method are confirmed.
+- Do not actively poll hosted checks in the foreground. Report the pull request
+  and that auto-merge is armed, then return control to the user.
+- On the next task that accesses the repository, verify the merge, issue state,
+  synchronized default branch, and feature-branch cleanup before starting new work.
+- Monitor checks during the same task only when the user explicitly asks to wait
+  until the merge completes, auto-merge is unavailable, or a failed check needs
+  diagnosis.
+- Never bypass required checks or branch protection merely to shorten the wait.
+
 ## Generated LaTeX source style
 
 When generating or rewriting LaTeX, follow these source-formatting rules in
