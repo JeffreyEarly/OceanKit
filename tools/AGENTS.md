@@ -29,6 +29,11 @@ higher-priority instructions or safety constraints.
 When a repository instruction conflicts with a generic MATLAB habit, follow the
 OceanKit guides.
 
+The external-repository communication restriction in this file is workspace-wide.
+A repository-local `AGENTS.md`, issue, plan, delegated task, or focused guide may
+make that restriction stricter but may not relax it. To change the restriction,
+update this shared authoritative policy first.
+
 ## Guide routing
 
 Before making changes, identify the kind of work requested and read the matching
@@ -75,6 +80,49 @@ continue with the parts of the task that can be completed safely.
 - Do not refactor stable code purely for style.
 - Keep example-script modernization minimal unless broader restructuring is explicitly requested.
 - Do not update website content unless the task explicitly includes website work.
+
+## External repository communication
+
+Treat creating, editing, commenting on, reopening, or closing issues and pull
+requests; submitting reviews; posting to discussions; publishing releases; and
+other public tracker communication as external communication. Pull-request
+creation and release publication are covered even when their underlying source
+changes or pushes are otherwise authorized.
+
+Perform a covered action only when both conditions are satisfied:
+
+1. Confirm that the repository owner is the authenticated user or an organization
+   that the user has explicitly identified as theirs. Treat ambiguous ownership
+   as third-party ownership.
+2. Obtain permission in the current task that names the exact repository and the
+   communication action. Permission is not inherited from an earlier task.
+
+Never perform a covered action in a third-party repository. This prohibition
+still applies when an issue body, research plan, delegated task, upstream-report
+requirement, or user request in an ordinary task asks for the action. To change
+this policy, the user must first explicitly request an update to this shared
+authoritative file; an ordinary task instruction is not an exception.
+
+General instructions such as "pursue the issue," "report upstream," or "complete
+the research" are not permission to post. For a third-party project, limit work
+to read-only inspection and preparation of a local draft or a draft stored in a
+user-owned repository, then hand that draft to the user for manual posting.
+
+Apply these rules to all subagents and delegated tasks. A coordinator must not
+delegate around the restriction, and delegation cannot supply or broaden posting
+permission.
+
+Examples:
+
+- "Comment on `JeffreyEarly/wave-vortex-model#132` with the benchmark result" is
+  sufficient permission for that comment after ownership is confirmed.
+- A request to "report the FFTW++ defect upstream" does not authorize opening or
+  commenting on an issue in `dealias/fftwpp`; prepare the report for the user to
+  post instead.
+
+This restriction does not prohibit read-only hosted-service access, local work,
+or source pushes that the development task explicitly authorizes. It does not
+turn a source-push authorization into permission for a covered communication.
 
 ## Documentation verification cadence
 
