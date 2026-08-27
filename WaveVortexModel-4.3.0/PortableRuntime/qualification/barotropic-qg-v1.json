@@ -1,0 +1,46 @@
+{
+  "schemaIdentifier": "wave-vortex-barotropic-qg-qualification-v1",
+  "schemaVersion": 1,
+  "issue": 286,
+  "requestAuthor": "WVModel.writePortableRunRequest",
+  "transform": "WVTransformBarotropicQG",
+  "providers": ["reference", "native-fftw"],
+  "grids": [[5, 4], [6, 5], [5, 6], [6, 4], [8, 6], [9, 7], [8, 7], [9, 6]],
+  "verticalModes": [0, 1],
+  "antialiasing": [false, true],
+  "integration": ["fixed-rk4-explicit", "fixed-rk4-cfl", "adaptive-rk23", "adaptive-rk45", "adaptive-rk78"],
+  "forcings": ["WVNonlinearAdvection", "WVAdaptiveDamping", "WVFixedAmplitudeForcing", "WVNarrowBandGeostrophicForcing", "WVBottomFrictionLinear", "WVBottomFrictionQuadratic", "WVBetaPlanePVAdvection"],
+  "observers": ["WVCoefficients:A0", "WVEulerianFields:2D", "WVLagrangianParticles:XY", "WVTracer:rank2"],
+  "output": ["single-file", "multi-file", "single-group", "multi-group", "exact", "dense", "create", "replace", "append", "restart", "segmentation", "matlab-continuation"],
+  "transactionalRejections": ["WVMooring", "vertical-particles", "rank3-tracers", "unsupported-forcing", "incompatible-observer-graphs", "model-contract-mismatch"],
+  "acceptance": {
+    "coefficientRelativeErrorMaximum": 1e-12,
+    "fieldRelativeErrorMaximum": 1e-12,
+    "compactCoefficientFamilies": ["A0"],
+    "forbiddenCoefficientFamilies": ["Ap", "Am"],
+    "persistentFullHermitianBytes": 0,
+    "fallbackAllowed": false,
+    "nativeFFTWVersion": "3.3.11",
+    "maximumFFTThreads": 16
+  },
+  "requiredTests": {
+    "matlabCppMatlab": [
+      "TestPortableRuntimeCompatibility/barotropicQGModelOutputRoundTripsThroughStandalone",
+      "TestPortableRuntimeCompatibility/matlabWriterBarotropicQGRequestsDecodeAndRun",
+      "TestPortableRuntimeCompatibility/matlabWriterBarotropicQGForcingMatrixMatchesMatlab",
+      "TestPortableRuntimeCompatibility/matlabWriterBarotropicQGMultiFileGroupsAndPolicies",
+      "TestPortableRuntimeCompatibility/matlabWriterBarotropicQGRejectionsAreTransactional"
+    ],
+    "matlabKernelParity": ["TestBarotropicQGCompiledKernel/matlabAuthoritativeParity"],
+    "portableCpp": [
+      "barotropic-qg-integration",
+      "barotropic-qg-forcing",
+      "barotropic-qg-model-output",
+      "barotropic-qg-native-fftw"
+    ],
+    "constantStratificationRegression": [
+      "TestPortableRuntimeCompatibility/matlabModelGraphRoundTripsThroughStandalone",
+      "TestPortableRunRequestWriter/writesEveryAcceptedSchemaFormDeterministically"
+    ]
+  }
+}

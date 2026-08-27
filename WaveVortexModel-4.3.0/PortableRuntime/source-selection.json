@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0.0",
+  "integrationBase": "9dcb7c93e703bd2541fa94f00f1ac41b2b8b8529",
+  "testedFeatureCommit": "005ac7e24fa069fea0d2f825cc1e9913c3e23f11",
+  "sourceAPI": {
+    "identifier": "wave-vortex-portable-source-api-v1",
+    "major": 1,
+    "minor": 0,
+    "compatibility": "source-only",
+    "publicHeaders": [
+      "PortableRuntime/include/WaveVortexRuntime/WVPortableImplementationContract.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVPortableTypedRecord.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVExtensionCatalog.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVObservingSystem.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVObserverOutputProvider.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVObservation.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVOutputSchedule.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVForcing.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVForcingContracts.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVModelOutputConfiguration.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVModel.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVRunner.hpp"
+    ]
+  },
+  "retained": {
+    "compiledCore": "CompiledKernel",
+    "portableRuntime": "PortableRuntime/CMakeLists.txt, PortableRuntime/README.md, PortableRuntime/buildWaveVortexRun.sh, PortableRuntime/source-selection.json, PortableRuntime/include, PortableRuntime/src, PortableRuntime/app, PortableRuntime/contracts, PortableRuntime/examples, PortableRuntime/third_party/nlohmann",
+    "portableRuntimeInputs": [
+      "PortableRuntime/CMakeLists.txt",
+      "PortableRuntime/README.md",
+      "PortableRuntime/buildWaveVortexRun.sh",
+      "PortableRuntime/source-selection.json",
+      "PortableRuntime/include",
+      "PortableRuntime/src",
+      "PortableRuntime/app",
+      "PortableRuntime/contracts",
+      "PortableRuntime/examples",
+      "PortableRuntime/third_party/nlohmann"
+    ],
+    "contracts": "PortableRuntime/tests",
+    "buildAndExport": ".github/workflows, tools/prepareWaveVortexModelReleaseCandidate.m"
+  },
+  "postSelectionExtensions": {
+    "explicitExtensionCatalog": "issue-271",
+    "eventDependentObservationGeometry": "issue-272",
+    "losslessOutputGraphs": "issue-273",
+    "stableSourceAPI": "issue-249",
+    "barotropicQGKernel": "issue-280",
+    "barotropicQGForcing": "issue-281",
+    "barotropicQGModelOutputRestart": "issue-282",
+    "sourceAPIVersion": "1.0",
+    "preFacadeBaseline": "5940f4e4e206fbfb9a6cb4760af2ba2347e3571f",
+    "preGeneralizationBaseline": "900f98eb28629a56b7a2d26da38c597c7a709a96",
+    "externalConsumerBaseline": "satmapkit/AlongTrackSimulator",
+    "externalConsumerBaselineCommit": "ba57981f336ad5bbbc0907dcd74fcd4fcd137708",
+    "externalConsumerBaselineWaveVortexCommit": "84dc1b53093650fdbc9be62b637cf298c46a95d3",
+    "description": "Source-linked observer, output-schedule, and forcing implementations are resolved through an explicitly owned immutable typed catalog. Observation occurrences use construction-resolved schedule payloads, evaluator-owned event geometry, central resolved-field evaluation, and destination-independent retry identity. Source API v1 exposes no legacy persistence callbacks or WVModel internals."
+  },
+  "excluded": [
+    "benchmark harnesses and payloads",
+    "planning and audit artifacts",
+    "standalone inspector programs",
+    "experimental and rejected implementations",
+    "downloaded or compiled products"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wavevortexmodel.org/schemas/published-three-interface-v3.schema.json",
+  "title": "WaveVortexModel matched integrator runtime and memory benchmark v3",
+  "type": "object",
+  "required": ["schemaVersion", "datasetId", "collectedAt", "studyId", "source", "platform", "provider", "provenance", "cases"],
+  "properties": {
+    "schemaVersion": {"const": "published-three-interface-v3"},
+    "datasetId": {"type": "string", "pattern": "^three-interface--[a-z0-9][a-z0-9-]*--[0-9]{8}T[0-9]{6}Z$"},
+    "collectedAt": {"type": "string"},
+    "studyId": {"const": "integrator-runtime-memory-v1"},
+    "source": {"type": "object"},
+    "platform": {"type": "object"},
+    "provider": {"type": "object"},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rawSchemaVersion", "rawArtifactSHA256", "externalArchive", "fixtures"],
+      "properties": {
+        "rawSchemaVersion": {"const": "three-interface-benchmark-v2"},
+        "rawArtifactSHA256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "externalArchive": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fileName", "sha256", "compressedBytes", "location"],
+          "properties": {
+            "fileName": {"type": "string", "minLength": 1},
+            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "compressedBytes": {"type": "integer", "minimum": 1},
+            "location": {"type": "string", "minLength": 1}
+          }
+        },
+        "fixtures": {"type": "array", "minItems": 2, "maxItems": 4},
+        "revalidation": {"type": "object"}
+      }
+    },
+    "cases": {"type": "array", "minItems": 1, "maxItems": 16}
+  },
+  "additionalProperties": false
+}

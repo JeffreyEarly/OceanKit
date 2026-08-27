@@ -1,0 +1,87 @@
+{
+  "schema": "wave-vortex-forcing-fixtures-v1",
+  "checkpointProfile": "wave-vortex-4x-v1",
+  "forcingProfile": "wave-vortex-forcing-v1",
+  "sourceRepository": "JeffreyEarly/wave-vortex-model",
+  "sourceCommit": "1eda8dc2d17aae5594c17c0f202261871497a2f1",
+  "waveVortexModelVersion": "4.2.1",
+  "matlabRelease": "2026a",
+  "files": [
+    {
+      "name": "forcing-nonlinear.nc",
+      "isHydrostatic": false,
+      "forcingClasses": "WVNonlinearAdvection",
+      "forcingNames": "nonlinear advection"
+    },
+    {
+      "name": "forcing-adaptive-damping.nc",
+      "isHydrostatic": false,
+      "forcingClasses": "WVAdaptiveDamping",
+      "forcingNames": "adaptive damping"
+    },
+    {
+      "name": "forcing-fixed-amplitude.nc",
+      "isHydrostatic": false,
+      "forcingClasses": "WVFixedAmplitudeForcing",
+      "forcingNames": "fixed-amplitude fixture"
+    },
+    {
+      "name": "forcing-quadratic-bottom-friction.nc",
+      "isHydrostatic": false,
+      "forcingClasses": "WVBottomFrictionQuadratic",
+      "forcingNames": "quadratic bottom friction"
+    },
+    {
+      "name": "forcing-pseudo-topographic.nc",
+      "isHydrostatic": false,
+      "forcingClasses": "WVPseudoTopographicWaveGeneration",
+      "forcingNames": "pseudo-topographic fixture"
+    },
+    {
+      "name": "forcing-beta-plane.nc",
+      "isHydrostatic": false,
+      "forcingClasses": "WVBetaPlanePVAdvection",
+      "forcingNames": "beta-plane advection of qgpv"
+    },
+    {
+      "name": "forcing-mixed-hydrostatic.nc",
+      "isHydrostatic": true,
+      "forcingClasses": [
+        "WVNonlinearAdvection",
+        "WVBottomFrictionQuadratic",
+        "WVPseudoTopographicWaveGeneration",
+        "WVAdaptiveDamping",
+        "WVBetaPlanePVAdvection",
+        "WVFixedAmplitudeForcing"
+      ],
+      "forcingNames": [
+        "nonlinear advection",
+        "quadratic bottom friction",
+        "pseudo-topographic fixture",
+        "adaptive damping",
+        "beta-plane advection of qgpv",
+        "fixed-amplitude fixture"
+      ]
+    },
+    {
+      "name": "forcing-mixed-nonhydrostatic.nc",
+      "isHydrostatic": false,
+      "forcingClasses": [
+        "WVNonlinearAdvection",
+        "WVBottomFrictionQuadratic",
+        "WVPseudoTopographicWaveGeneration",
+        "WVAdaptiveDamping",
+        "WVBetaPlanePVAdvection",
+        "WVFixedAmplitudeForcing"
+      ],
+      "forcingNames": [
+        "nonlinear advection",
+        "quadratic bottom friction",
+        "pseudo-topographic fixture",
+        "adaptive damping",
+        "beta-plane advection of qgpv",
+        "fixed-amplitude fixture"
+      ]
+    }
+  ]
+}

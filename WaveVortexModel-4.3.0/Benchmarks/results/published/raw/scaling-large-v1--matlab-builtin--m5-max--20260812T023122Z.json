@@ -1,0 +1,1092 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "partial",
+  "runId": "20260812T023122Z",
+  "environment": {
+    "os": "Darwin 25.5.0 Darwin Kernel Version 25.5.0: Tue Jun  9 22:28:34 PDT 2026; root:xnu-12377.121.10~1/RELEASE_ARM64_T6050 arm64",
+    "processor": "ABI64 ARM ARM64E",
+    "physicalMemoryBytes": 5.1539607552E+10,
+    "matlabVersion": "26.1.0.3312084 (R2026a) Update 4",
+    "matlabRelease": "2026a",
+    "architecture": "maca64",
+    "requestedThreads": 18,
+    "sourceCommit": "9652b116b3ffd4ee3372cc5cdeea9700cd6cbc32",
+    "sourceDirty": false
+  },
+  "configuration": {
+    "suiteIds": "scaling-large-v1",
+    "backendIds": "builtin",
+    "caseIds": [
+      "constant-nonhydrostatic-256x256x129",
+      "constant-nonhydrostatic-512x512x129",
+      "constant-nonhydrostatic-512x512x257",
+      "constant-hydrostatic-256x256x129",
+      "constant-hydrostatic-512x512x129",
+      "constant-hydrostatic-512x512x257",
+      "hydrostatic-256x256x129",
+      "hydrostatic-512x512x129",
+      "hydrostatic-512x512x257",
+      "boussinesq-256x256x129",
+      "boussinesq-512x512x129",
+      "stratified-qg-256x256x129",
+      "stratified-qg-512x512x129",
+      "stratified-qg-512x512x257",
+      "barotropic-qg-2048x2048",
+      "barotropic-qg-4096x4096"
+    ],
+    "correctnessTolerance": 1E-12,
+    "shouldMeasureMemory": true
+  },
+  "suites": {
+    "id": "scaling-large-v1",
+    "version": 1,
+    "kind": "model-operation",
+    "description": "Large-memory scaling across transform families",
+    "operation": "nonlinearAdvection",
+    "isScored": true,
+    "selectionIsComplete": false,
+    "status": "partial",
+    "cases": [
+      {
+        "id": "constant-nonhydrostatic-256x256x129",
+        "transformId": "constant-nonhydrostatic",
+        "scoreFamily": "constant-nonhydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          129
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4001,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 0.73845158333333338,
+          "firstCallSeconds": 0.32943333333333336,
+          "sameStateCacheHitSeconds": 0.18982516666666666,
+          "rawSeconds": [
+            0.241209625,
+            0.23448516666666666,
+            0.23261954166666668
+          ],
+          "medianSeconds": 0.23448516666666666,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 0.25515058333333335,
+          "caseScore": 108.81310189486045,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.47561216E+8,
+            "persistentBytes": 3.069673472E+9,
+            "peakBytes": 3.1182848E+9,
+            "persistentIncrementBytes": 2.422112256E+9,
+            "peakIncrementBytes": 2.470723584E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "constant-nonhydrostatic-512x512x129",
+        "transformId": "constant-nonhydrostatic",
+        "scoreFamily": "constant-nonhydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4002,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 0.96874291666666668,
+          "firstCallSeconds": 1.1265671666666666,
+          "sameStateCacheHitSeconds": 0.724415625,
+          "rawSeconds": [
+            0.9271105,
+            0.92380708333333328,
+            0.93187283333333337
+          ],
+          "medianSeconds": 0.9271105,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": null,
+          "caseScore": null,
+          "sameHostSpeedup": null,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.475776E+8,
+            "persistentBytes": 8.858222592E+9,
+            "peakBytes": 9.056354304E+9,
+            "persistentIncrementBytes": 8.210644992E+9,
+            "peakIncrementBytes": 8.408776704E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "constant-nonhydrostatic-512x512x257",
+        "transformId": "constant-nonhydrostatic",
+        "scoreFamily": "constant-nonhydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4003,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 1.65585425,
+          "firstCallSeconds": 2.486957625,
+          "sameStateCacheHitSeconds": 1.73195,
+          "rawSeconds": [
+            2.1772905416666668,
+            2.179219,
+            2.2122595416666666
+          ],
+          "medianSeconds": 2.179219,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 2.3296898333333331,
+          "caseScore": 106.90480549836127,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.4626688E+8,
+            "persistentBytes": 1.7817370624E+10,
+            "peakBytes": 1.81936128E+10,
+            "persistentIncrementBytes": 1.7171103744E+10,
+            "peakIncrementBytes": 1.754734592E+10,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "constant-hydrostatic-256x256x129",
+        "transformId": "constant-hydrostatic",
+        "scoreFamily": "constant-hydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4005,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 0.4537185,
+          "firstCallSeconds": 0.31288316666666666,
+          "sameStateCacheHitSeconds": 0.13743341666666667,
+          "rawSeconds": [
+            0.18561975,
+            0.18465470833333333,
+            0.18675058333333333
+          ],
+          "medianSeconds": 0.18561975,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 0.21823729166666667,
+          "caseScore": 117.57223661095689,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.47118848E+8,
+            "persistentBytes": 2.957852672E+9,
+            "peakBytes": 3.00654592E+9,
+            "persistentIncrementBytes": 2.310733824E+9,
+            "peakIncrementBytes": 2.359427072E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "constant-hydrostatic-512x512x129",
+        "transformId": "constant-hydrostatic",
+        "scoreFamily": "constant-hydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4006,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 0.86619129166666664,
+          "firstCallSeconds": 0.89624,
+          "sameStateCacheHitSeconds": 0.58013733333333328,
+          "rawSeconds": [
+            0.80831429166666668,
+            0.81604870833333332,
+            0.82320025
+          ],
+          "medianSeconds": 0.81604870833333332,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": null,
+          "caseScore": null,
+          "sameHostSpeedup": null,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.4856064E+8,
+            "persistentBytes": 9.24614656E+9,
+            "peakBytes": 9.434939392E+9,
+            "persistentIncrementBytes": 8.59758592E+9,
+            "peakIncrementBytes": 8.786378752E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "constant-hydrostatic-512x512x257",
+        "transformId": "constant-hydrostatic",
+        "scoreFamily": "constant-hydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4007,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 1.3513490416666667,
+          "firstCallSeconds": 1.9293972916666666,
+          "sameStateCacheHitSeconds": 1.323284,
+          "rawSeconds": [
+            1.7931413333333333,
+            1.811297875,
+            1.8006765
+          ],
+          "medianSeconds": 1.8006765,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 2.1524953333333334,
+          "caseScore": 119.53814765358095,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.46692864E+8,
+            "persistentBytes": 1.5635185664E+10,
+            "peakBytes": 1.6013426688E+10,
+            "persistentIncrementBytes": 1.49884928E+10,
+            "peakIncrementBytes": 1.5366733824E+10,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "hydrostatic-256x256x129",
+        "transformId": "hydrostatic",
+        "scoreFamily": "hydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4009,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 0.8099287083333333,
+          "firstCallSeconds": 0.346453,
+          "sameStateCacheHitSeconds": 0.12710591666666668,
+          "rawSeconds": [
+            0.17543795833333334,
+            0.173770875,
+            0.17206733333333332
+          ],
+          "medianSeconds": 0.173770875,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": null,
+          "caseScore": null,
+          "sameHostSpeedup": null,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.46332416E+8,
+            "persistentBytes": 2.915221504E+9,
+            "peakBytes": 2.963914752E+9,
+            "persistentIncrementBytes": 2.268889088E+9,
+            "peakIncrementBytes": 2.317582336E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "hydrostatic-512x512x129",
+        "transformId": "hydrostatic",
+        "scoreFamily": "hydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4010,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 0.9774272083333333,
+          "firstCallSeconds": 0.783064625,
+          "sameStateCacheHitSeconds": 0.50889541666666671,
+          "rawSeconds": [
+            0.70959179166666664,
+            0.71665545833333333,
+            0.71973458333333329
+          ],
+          "medianSeconds": 0.71665545833333333,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 0.85623254166666662,
+          "caseScore": 119.47617669136802,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.47544832E+8,
+            "persistentBytes": 8.953888768E+9,
+            "peakBytes": 9.143074816E+9,
+            "persistentIncrementBytes": 8.306343936E+9,
+            "peakIncrementBytes": 8.495529984E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "hydrostatic-512x512x257",
+        "transformId": "hydrostatic",
+        "scoreFamily": "hydrostatic",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4011,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 2.1514024583333335,
+          "firstCallSeconds": 1.7706915416666666,
+          "sameStateCacheHitSeconds": 1.1849240416666666,
+          "rawSeconds": [
+            1.6414712916666667,
+            1.6426834166666666,
+            1.64213625
+          ],
+          "medianSeconds": 1.64213625,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": null,
+          "caseScore": null,
+          "sameHostSpeedup": null,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.47561216E+8,
+            "persistentBytes": 1.4681800704E+10,
+            "peakBytes": 1.5067414528E+10,
+            "persistentIncrementBytes": 1.4034239488E+10,
+            "peakIncrementBytes": 1.4419853312E+10,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "boussinesq-256x256x129",
+        "transformId": "boussinesq",
+        "scoreFamily": "boussinesq",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          129
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4012,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 125.528695,
+          "firstCallSeconds": 0.55669058333333332,
+          "sameStateCacheHitSeconds": 0.224839375,
+          "rawSeconds": [
+            0.40660016666666665,
+            0.40141658333333335,
+            0.39707220833333334
+          ],
+          "medianSeconds": 0.40141658333333335,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": null,
+          "caseScore": null,
+          "sameHostSpeedup": null,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.4667648E+8,
+            "persistentBytes": 4.081876992E+9,
+            "peakBytes": 4.146446336E+9,
+            "persistentIncrementBytes": 3.435200512E+9,
+            "peakIncrementBytes": 3.499769856E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "boussinesq-512x512x129",
+        "transformId": "boussinesq",
+        "scoreFamily": "boussinesq",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4013,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 465.86285254166665,
+          "firstCallSeconds": 1.6539291666666667,
+          "sameStateCacheHitSeconds": 0.852991875,
+          "rawSeconds": [
+            1.5395075,
+            1.5376739583333334,
+            1.5442261666666666
+          ],
+          "medianSeconds": 1.5395075,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": null,
+          "caseScore": null,
+          "sameHostSpeedup": null,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.47069696E+8,
+            "persistentBytes": 1.115332608E+10,
+            "peakBytes": 1.1433066496E+10,
+            "persistentIncrementBytes": 1.0506256384E+10,
+            "peakIncrementBytes": 1.07859968E+10,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "stratified-qg-256x256x129",
+        "transformId": "stratified-qg",
+        "scoreFamily": "stratified-qg",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4015,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 0.34555329166666665,
+          "firstCallSeconds": 0.088246291666666671,
+          "sameStateCacheHitSeconds": 0.02737175,
+          "rawSeconds": [
+            0.058651291666666668,
+            0.05811425,
+            0.057071
+          ],
+          "medianSeconds": 0.05811425,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": null,
+          "caseScore": null,
+          "sameHostSpeedup": null,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.47446528E+8,
+            "persistentBytes": 1.894793216E+9,
+            "peakBytes": 1.91864832E+9,
+            "persistentIncrementBytes": 1.247346688E+9,
+            "peakIncrementBytes": 1.271201792E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "stratified-qg-512x512x129",
+        "transformId": "stratified-qg",
+        "scoreFamily": "stratified-qg",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4016,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 0.533553,
+          "firstCallSeconds": 0.25206995833333334,
+          "sameStateCacheHitSeconds": 0.10643929166666667,
+          "rawSeconds": [
+            0.24622,
+            0.2528685,
+            0.2479545
+          ],
+          "medianSeconds": 0.2479545,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 0.34517816666666667,
+          "caseScore": 139.2102852203395,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.48216576E+8,
+            "persistentBytes": 5.027463168E+9,
+            "peakBytes": 5.12212992E+9,
+            "persistentIncrementBytes": 4.379246592E+9,
+            "peakIncrementBytes": 4.473913344E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "stratified-qg-512x512x257",
+        "transformId": "stratified-qg",
+        "scoreFamily": "stratified-qg",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4017,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 1.34602,
+          "firstCallSeconds": 0.55964,
+          "sameStateCacheHitSeconds": 0.228711875,
+          "rawSeconds": [
+            0.558653875,
+            0.56553841666666671,
+            0.559600875
+          ],
+          "medianSeconds": 0.559600875,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": null,
+          "caseScore": null,
+          "sameHostSpeedup": null,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.46791168E+8,
+            "persistentBytes": 9.179447296E+9,
+            "peakBytes": 9.368436736E+9,
+            "persistentIncrementBytes": 8.532656128E+9,
+            "peakIncrementBytes": 8.721645568E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "barotropic-qg-2048x2048",
+        "transformId": "barotropic-qg",
+        "scoreFamily": "barotropic-qg",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000
+        ],
+        "Nxyz": [
+          2048,
+          2048
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4018,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 1.0610424166666668,
+          "firstCallSeconds": 0.069493166666666661,
+          "sameStateCacheHitSeconds": 0.017328625,
+          "rawSeconds": [
+            0.035676333333333331,
+            0.034528791666666669,
+            0.033274916666666668
+          ],
+          "medianSeconds": 0.034528791666666669,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 0.030321,
+          "caseScore": 87.813672406240684,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.46479872E+8,
+            "persistentBytes": 1.674002432E+9,
+            "peakBytes": 1.68624128E+9,
+            "persistentIncrementBytes": 1.02752256E+9,
+            "peakIncrementBytes": 1.039761408E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      },
+      {
+        "id": "barotropic-qg-4096x4096",
+        "transformId": "barotropic-qg",
+        "scoreFamily": "barotropic-qg",
+        "operation": "nonlinearAdvection",
+        "Lxyz": [
+          15000,
+          15000
+        ],
+        "Nxyz": [
+          4096,
+          4096
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4019,
+        "warmupCount": 2,
+        "sampleCount": 3,
+        "status": "complete",
+        "failure": {
+          "identifier": "",
+          "message": "",
+          "stack": []
+        },
+        "backends": {
+          "id": "builtin",
+          "status": "complete",
+          "constructionSeconds": 4.5595452083333337,
+          "firstCallSeconds": 0.17992304166666667,
+          "sameStateCacheHitSeconds": 0.061324083333333335,
+          "rawSeconds": [
+            0.12397266666666666,
+            0.12509229166666666,
+            0.12327766666666666
+          ],
+          "medianSeconds": 0.12397266666666666,
+          "relativeError": 0,
+          "correctnessPassed": true,
+          "referenceMedianSeconds": 0.11279604166666667,
+          "caseScore": 90.984605477551511,
+          "sameHostSpeedup": 1,
+          "memory": {
+            "status": "complete",
+            "provider": "macos-ps-rss",
+            "baselineBytes": 6.46905856E+8,
+            "persistentBytes": 4.369481728E+9,
+            "peakBytes": 4.416765952E+9,
+            "persistentIncrementBytes": 3.722575872E+9,
+            "peakIncrementBytes": 3.769860096E+9,
+            "samplingIntervalSeconds": 0,
+            "failure": {
+              "identifier": "",
+              "message": "",
+              "stack": []
+            }
+          },
+          "failure": {
+            "identifier": "",
+            "message": "",
+            "stack": []
+          }
+        }
+      }
+    ],
+    "familyScores": [],
+    "suiteScores": [],
+    "referenceArtifact": "/private/tmp/wvm-issue140-local.jDUMye/wave-vortex-model-v4.2.1/Benchmarks/results/reference/scaling-large-v1-m5-max-r2026a-builtin",
+    "metadata": {}
+  }
+}

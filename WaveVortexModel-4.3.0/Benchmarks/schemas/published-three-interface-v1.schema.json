@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wavevortexmodel.org/schemas/published-three-interface-v1.schema.json",
+  "title": "WaveVortexModel matched three-interface benchmark v1",
+  "type": "object",
+  "required": ["schemaVersion", "datasetId", "collectedAt", "source", "platform", "provider", "provenance", "cases"],
+  "properties": {
+    "schemaVersion": {"const": "published-three-interface-v1"},
+    "datasetId": {"type": "string", "pattern": "^three-interface--[a-z0-9][a-z0-9-]*--[0-9]{8}T[0-9]{6}Z$"},
+    "collectedAt": {"type": "string"},
+    "source": {"type": "object"},
+    "platform": {"type": "object"},
+    "provider": {"type": "object"},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rawSchemaVersion", "externalArchive"],
+      "properties": {
+        "rawSchemaVersion": {"const": "three-interface-benchmark-v1"},
+        "externalArchive": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fileName", "sha256", "compressedBytes"],
+          "properties": {
+            "fileName": {"type": "string", "minLength": 1},
+            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "compressedBytes": {"type": "integer", "minimum": 1}
+          }
+        }
+      }
+    },
+    "cases": {"type": "array", "minItems": 3, "maxItems": 3}
+  },
+  "additionalProperties": false
+}

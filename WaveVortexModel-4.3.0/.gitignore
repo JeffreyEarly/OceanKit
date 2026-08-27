@@ -1,0 +1,15 @@
+.DS_Store
+*.asv
+*.mat
+*.nc
+CompiledKernel/build/
+/build/
+tools/compiled-kernel/build/
+tools/compiled-kernel/build-*/
+*.a
+*.o
+*.mex*
+Benchmarks/results/runs/
+.compiled-backend-cache/
+*.nc
+!PortableRuntime/tests/fixtures/*.nc

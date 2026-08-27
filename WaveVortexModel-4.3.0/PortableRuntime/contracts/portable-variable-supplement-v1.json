@@ -1,0 +1,38 @@
+{
+  "schema": "portable-variable-supplement-v1",
+  "primitiveDependencies": {
+    "primitiveValues": 1,
+    "pressureHeight": 2,
+    "streamfunction": 4,
+    "potentialVorticity": 8,
+    "uDerivatives": 16,
+    "vDerivatives": 32,
+    "wDerivatives": 64,
+    "spectralEnergy": 128
+  },
+  "variables": [
+    {"ordinal": 0, "name": "Ap", "cppIdentifier": "Ap", "portableKind": "coefficient", "naturalRank": "coefficient", "samplingModes": ["coefficients"], "primitiveDependencies": [], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 1, "name": "Am", "cppIdentifier": "Am", "portableKind": "coefficient", "naturalRank": "coefficient", "samplingModes": ["coefficients"], "primitiveDependencies": [], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 2, "name": "A0", "cppIdentifier": "A0", "portableKind": "coefficient", "naturalRank": "coefficient", "samplingModes": ["coefficients"], "primitiveDependencies": [], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 3, "name": "u", "cppIdentifier": "u", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["primitiveValues"], "movingPrimitiveChannel": 0, "netCDFAttributes": {}},
+    {"ordinal": 4, "name": "v", "cppIdentifier": "v", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["primitiveValues"], "movingPrimitiveChannel": 1, "netCDFAttributes": {}},
+    {"ordinal": 5, "name": "w", "cppIdentifier": "w", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["primitiveValues"], "movingPrimitiveChannel": 2, "netCDFAttributes": {}},
+    {"ordinal": 6, "name": "eta", "cppIdentifier": "eta", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["primitiveValues"], "movingPrimitiveChannel": 3, "netCDFAttributes": {}},
+    {"ordinal": 7, "name": "pi", "cppIdentifier": "pi", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["pressureHeight"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 8, "name": "p", "cppIdentifier": "p", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["pressureHeight"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 9, "name": "psi", "cppIdentifier": "psi", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["streamfunction"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 10, "name": "qgpv", "cppIdentifier": "qgpv", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["potentialVorticity"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 11, "name": "rho_e", "cppIdentifier": "rhoE", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["primitiveValues"], "movingPrimitiveChannel": 4, "netCDFAttributes": {}},
+    {"ordinal": 12, "name": "rho_total", "cppIdentifier": "rhoTotal", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["primitiveValues"], "movingPrimitiveChannel": 5, "netCDFAttributes": {}},
+    {"ordinal": 13, "name": "rho_bar", "cppIdentifier": "rhoBar", "portableKind": "field", "naturalRank": "vertical", "samplingModes": ["fullGrid"], "primitiveDependencies": ["primitiveValues"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 14, "name": "zeta_x", "cppIdentifier": "zetaX", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["vDerivatives", "wDerivatives"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 15, "name": "zeta_y", "cppIdentifier": "zetaY", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["uDerivatives", "wDerivatives"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 16, "name": "zeta_z", "cppIdentifier": "zetaZ", "portableKind": "field", "naturalRank": "volume", "samplingModes": ["fullGrid", "fixedVerticalProfiles", "positions"], "primitiveDependencies": ["uDerivatives", "vDerivatives"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 17, "name": "ssu", "cppIdentifier": "ssu", "portableKind": "field", "naturalRank": "horizontal", "samplingModes": ["fullGrid", "positions"], "primitiveDependencies": ["primitiveValues"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 18, "name": "ssv", "cppIdentifier": "ssv", "portableKind": "field", "naturalRank": "horizontal", "samplingModes": ["fullGrid", "positions"], "primitiveDependencies": ["primitiveValues"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 19, "name": "ssh", "cppIdentifier": "ssh", "portableKind": "field", "naturalRank": "horizontal", "samplingModes": ["fullGrid", "positions"], "primitiveDependencies": ["pressureHeight"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 20, "name": "energy", "cppIdentifier": "energy", "portableKind": "field", "naturalRank": "scalar", "samplingModes": ["fullGrid"], "primitiveDependencies": ["spectralEnergy"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 21, "name": "uvMax", "cppIdentifier": "uvMax", "portableKind": "field", "naturalRank": "scalar", "samplingModes": ["fullGrid"], "primitiveDependencies": ["primitiveValues"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}},
+    {"ordinal": 22, "name": "wMax", "cppIdentifier": "wMax", "portableKind": "field", "naturalRank": "scalar", "samplingModes": ["fullGrid"], "primitiveDependencies": ["primitiveValues"], "movingPrimitiveChannel": -1, "netCDFAttributes": {}}
+  ]
+}

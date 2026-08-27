@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "1.0.0",
+  "integrationBase": "836508bdccd67f57f853d1602a2233ae93f8d90f",
+  "selectedFeatureSnapshot": "8d0b49236c703dfa7230a8875022fdb3e30283b0",
+  "preparation": {
+    "sharedCoefficientFormulas": "97e28a892f55877a9267b2c4e3ca399b85596a34",
+    "nativeFFTWProvider": "1854d72ec07b0fb58c2b2aa972250d91629e669d"
+  },
+  "postSelectionExtensions": {
+    "sharedRightHandSideEvaluation": "bcbf315dc46d2becc5964300ccf252452a9768d5",
+    "fullGridTracerVerticalDifferentiation": "2704ca5a2d3f495745d4bb1ce4642423adc663fe",
+    "portableCompilerTestInjection": "1946c47ff70db06cb36d2622a2d094861ea4686c",
+    "eagerScalarAdvectionPlanning": "issue-218",
+    "adaptiveRK23MatlabParity": "issue-240",
+    "wvModelRuntimeFacade": "issue-248",
+    "wvModelRuntimeFacadeSHA256": "fdefaee9d72f64f9972d95d56c725b94937963bbdd132f33fe2446b5e8abdc42",
+    "resolvedObservingSystems": "issue-258",
+    "observationBatches": "issue-260",
+    "resolvedForcings": "issue-261",
+    "linearBottomFriction": "issue-262",
+    "explicitExtensionCatalog": "issue-271",
+    "eventDependentObservationGeometry": "issue-272",
+    "losslessOutputGraphs": "issue-273",
+    "stableSourceAPI": "issue-249",
+    "barotropicQGKernel": "issue-280",
+    "sourceAPIVersion": "1.0",
+    "preFacadeBaseline": "5940f4e4e206fbfb9a6cb4760af2ba2347e3571f",
+    "preGeneralizationBaseline": "900f98eb28629a56b7a2d26da38c597c7a709a96",
+    "externalConsumerBaseline": "satmapkit/AlongTrackSimulator",
+    "externalConsumerBaselineCommit": "ba57981f336ad5bbbc0907dcd74fcd4fcd137708",
+    "externalConsumerBaselineWaveVortexCommit": "84dc1b53093650fdbc9be62b637cf298c46a95d3",
+    "description": "Shared per-RHS advection fields, core-owned F-grid scalar differentiation, construction-time preparation of required scalar and event-sampling plans, MATLAB-compatible adaptive tolerances for integrated observers, one thin WVModel owner shared by the CLI and production MEX RHS path, source-linked observing-system and forcing implementations resolved through an explicit immutable typed catalog, generic event-scoped observation batches and geometry, linear bottom friction, and stable source API v1 with runtime-only access to WVModel internals.",
+    "kernelTypesSHA256": "4b7cf55649b02eaae224bfaf618f756122a81c1caaff92c751b4e35f827ea1cc",
+    "kernelInterfaceSHA256": "6f04c9deb091ba02d372901b80c9cff6a1f136c9f1cdd98a38843577923bafd6",
+    "integrationSystemSHA256": "1bb9d96106e698b6ecdd3066ab7a237052d1bf6e2ba9eefd4bbd87ee0dbdbd69",
+    "forcingEngineSHA256": "6f27859f43d38dfaf8355adb6d066c5f2ae30ec10e95bc07ade3141430af5ca9",
+    "forcingInterfaceSHA256": "0e08bd27b5e069fdee2de7b1428ab549051580e943ce576dde090a705cd8e56f"
+  },
+  "contract": {
+    "version": 4,
+    "coefficientShape": "[Nj,Nkl]",
+    "planCount": 17,
+    "knownScratch": "4H+6R",
+    "coefficientWorkers": 2,
+    "persistentFullHermitianSpectrum": false
+  },
+  "barotropicQGContract": {
+    "version": 4,
+    "coefficientFamilies": ["A0"],
+    "coefficientShape": "[Nkl]",
+    "normalization": "QGPV",
+    "planCount": 3,
+    "knownScratch": "4H+5R",
+    "persistentFullHermitianSpectrum": false,
+    "portableProvider": "reference-direct",
+    "nativeProvider": "fftw-3.3.11-neon-pthreads"
+  },
+  "selectedSourceSHA256": "f338eedfd6295d22b5cf563c270b8e5037dd7295db2f90c39b9c915a63715369",
+  "keySourceSHA256": {
+    "coefficientFormulas": "78d647608d8919b33c278c280eb6d2b253dfb0acd8d3330141fbdc845e00864a",
+    "kernel": "3e8f618fa813ca274b0c33ed3a34c023fc891ef79b0a062abdc99a967de4a3a9",
+    "integrationSystem": "1bb9d96106e698b6ecdd3066ab7a237052d1bf6e2ba9eefd4bbd87ee0dbdbd69",
+    "nativeEngine": "5081f650cf5bf2cee9c210cef8ab1596a73aad4de7d65c712783fa36795e3b4b",
+    "mexGateway": "7d9253fdd126d1b028016f3e893e41dca8eee5f8ba629bca0b1b6c0ae493ea50",
+    "buildOrchestrator": "f2c8d71e3e078d467c7cd508596a143c665f469116917b2870da67001b12b371"
+  },
+  "excluded": [
+    "historical benchmark harnesses and canonical engineering artifacts",
+    "provider sweeps and alternative FFT engines",
+    "rejected arena, layout, and workspace schedules",
+    "preparation-branch verification artifacts",
+    "public computationalBackend selection"
+  ]
+}

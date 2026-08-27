@@ -1,0 +1,270 @@
+{
+  "schemaVersion": "published-benchmark-v1",
+  "datasetId": "core-v1--cpp-native-fftw--m5-max--20260812T195257Z",
+  "collectedAt": "2026-08-12T19:52:57Z",
+  "benchmark": {
+    "suiteId": "core-v1",
+    "suiteVersion": 1,
+    "operation": "nonlinearFlux",
+    "correctnessTolerance": 1E-12
+  },
+  "implementation": {
+    "id": "cpp",
+    "displayName": "WaveVortexModel compiled preview",
+    "version": "unreleased-preview",
+    "repository": "https://github.com/JeffreyEarly/wave-vortex-model",
+    "commit": "3b762e518bf5ef92681bab7ac48dfe54b10fc708",
+    "backend": "native-fftw",
+    "sourceDirty": false
+  },
+  "platform": {
+    "id": "m5-max",
+    "displayName": "Donut (Apple M5 Max)",
+    "processor": "Apple M5 Max",
+    "physicalMemoryBytes": 5.1539607552E+10,
+    "os": "Darwin 25.5.0 Darwin Kernel Version 25.5.0: Tue Jun  9 22:28:34 PDT 2026; root:xnu-12377.121.10~1/RELEASE_ARM64_T6050 arm64",
+    "architecture": "maca64",
+    "threadCount": 18
+  },
+  "toolchain": {
+    "kind": "cpp",
+    "name": "Apple Clang + FFTW",
+    "version": "21.0.0",
+    "details": {
+      "provider": "native-neon-pthreads",
+      "fftwVersion": "3.3.11",
+      "threadBackend": "pthreads",
+      "matlabHostRelease": "2026a"
+    }
+  },
+  "provenance": {
+    "rawArtifact": "Benchmarks/results/reference/compiled-preview-v1-m5-max-r2026a/compiled-preview-benchmark.json",
+    "rawSchemaVersion": "compiled-preview-benchmark-v1"
+  },
+  "cases": [
+    {
+      "id": "constant-hydrostatic-256x256x65",
+      "transformId": "constant-hydrostatic",
+      "scoreFamily": "constant-hydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          65
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 2102,
+        "warmupCount": 2,
+        "sampleCount": 7
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.057722708333333331,
+        "samplesSeconds": [
+          0.058074625,
+          0.057802291666666665,
+          0.058063333333333335,
+          0.05661870833333333,
+          0.057722708333333331,
+          0.056977625,
+          0.055640291666666668,
+          0.057935458333333335,
+          0.056719541666666665,
+          0.05860825,
+          0.059444333333333335,
+          0.061163875,
+          0.057908,
+          0.056867125,
+          0.051671791666666668,
+          0.049619416666666666,
+          0.050874291666666668,
+          0.050928291666666667,
+          0.051617166666666665,
+          0.051400958333333337,
+          0.051159166666666665
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 8.85479903488953E-15
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss-external",
+        "baselineProcessBytes": 2.367258624E+9,
+        "peakProcessBytes": 2.367832064E+9,
+        "peakIncrementBytes": 573440,
+        "exactRetainedBytes": 5.11764471E+8,
+        "exactRetainedDefinition": "active transform, populated cache, compiled-owned storage when active, and three outputs; canonical Ap/Am/A0 excluded"
+      }
+    },
+    {
+      "id": "constant-nonhydrostatic-256x256x65",
+      "transformId": "constant-nonhydrostatic",
+      "scoreFamily": "constant-nonhydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          65
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 2101,
+        "warmupCount": 2,
+        "sampleCount": 7
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.066681083333333335,
+        "samplesSeconds": [
+          0.0697405,
+          0.068935791666666663,
+          0.070095791666666671,
+          0.070558916666666666,
+          0.068427125,
+          0.06843470833333333,
+          0.068386166666666665,
+          0.066681083333333335,
+          0.065677041666666672,
+          0.066941958333333329,
+          0.06602683333333334,
+          0.067453666666666662,
+          0.0667095,
+          0.066627791666666672,
+          0.064177791666666664,
+          0.062968333333333334,
+          0.065149291666666664,
+          0.06764975,
+          0.065696125,
+          0.067743083333333329,
+          0.068725791666666661
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 8.0339721716117165E-15
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss-external",
+        "baselineProcessBytes": 2.367225856E+9,
+        "peakProcessBytes": 2.367717376E+9,
+        "peakIncrementBytes": 491520,
+        "exactRetainedBytes": 5.11764471E+8,
+        "exactRetainedDefinition": "active transform, populated cache, compiled-owned storage when active, and three outputs; canonical Ap/Am/A0 excluded"
+      }
+    },
+    {
+      "id": "constant-hydrostatic-512x512x129",
+      "transformId": "constant-hydrostatic",
+      "scoreFamily": "constant-hydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 2104,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.392814875,
+        "samplesSeconds": [
+          0.391205875,
+          0.392814875,
+          0.39304058333333336,
+          0.46829533333333334,
+          0.47479195833333332,
+          0.45834608333333332,
+          0.39089666666666667,
+          0.390140125,
+          0.388470375
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 2.2984533163362344E-14
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss-external",
+        "baselineProcessBytes": 1.1692032E+10,
+        "peakProcessBytes": 1.1692064768E+10,
+        "peakIncrementBytes": 32768,
+        "exactRetainedBytes": 4.067021733E+9,
+        "exactRetainedDefinition": "active transform, populated cache, compiled-owned storage when active, and three outputs; canonical Ap/Am/A0 excluded"
+      }
+    },
+    {
+      "id": "constant-nonhydrostatic-512x512x129",
+      "transformId": "constant-nonhydrostatic",
+      "scoreFamily": "constant-nonhydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 2103,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.52665591666666667,
+        "samplesSeconds": [
+          0.51402995833333331,
+          0.514669,
+          0.53400729166666672,
+          0.53207925,
+          0.54472608333333339,
+          0.53555595833333336,
+          0.5266429583333333,
+          0.52712429166666663,
+          0.52665591666666667
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 1.5680959628408194E-14
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss-external",
+        "baselineProcessBytes": 1.1887624192E+10,
+        "peakProcessBytes": 1.188765696E+10,
+        "peakIncrementBytes": 163840,
+        "exactRetainedBytes": 4.067021733E+9,
+        "exactRetainedDefinition": "active transform, populated cache, compiled-owned storage when active, and three outputs; canonical Ap/Am/A0 excluded"
+      }
+    }
+  ]
+}

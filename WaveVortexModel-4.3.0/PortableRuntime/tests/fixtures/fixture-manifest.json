@@ -1,0 +1,58 @@
+{
+  "schema": "wave-vortex-checkpoint-fixtures-v1",
+  "profile": "wave-vortex-4x-v1",
+  "sourceRepository": "JeffreyEarly/wave-vortex-model",
+  "sourceCommit": "52de16195c6817c6f107b6147c1f7e46922e8983",
+  "waveVortexModelVersion": "4.2.1",
+  "matlabRelease": "2026a",
+  "files": [
+    {
+      "name": "root-nonhydrostatic.nc",
+      "isHydrostatic": false,
+      "stateGroupPath": "/",
+      "stateCount": 1,
+      "times": 4.5,
+      "t0": -3.25,
+      "Nj": 4,
+      "Nkl": 9
+    },
+    {
+      "name": "time-series-nonhydrostatic.nc",
+      "isHydrostatic": false,
+      "stateGroupPath": "/wave-vortex",
+      "stateCount": 3,
+      "times": [
+        0.5,
+        1.75,
+        3.25
+      ],
+      "t0": -3.25,
+      "Nj": 4,
+      "Nkl": 9
+    },
+    {
+      "name": "root-hydrostatic.nc",
+      "isHydrostatic": true,
+      "stateGroupPath": "/",
+      "stateCount": 1,
+      "times": 5.5,
+      "t0": -3.25,
+      "Nj": 4,
+      "Nkl": 9
+    },
+    {
+      "name": "time-series-hydrostatic.nc",
+      "isHydrostatic": true,
+      "stateGroupPath": "/wave-vortex",
+      "stateCount": 3,
+      "times": [
+        0.5,
+        1.75,
+        3.25
+      ],
+      "t0": -3.25,
+      "Nj": 4,
+      "Nkl": 9
+    }
+  ]
+}

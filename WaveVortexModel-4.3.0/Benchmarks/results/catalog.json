@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "benchmark-catalog-v1",
+  "scoringReferences": [
+    {
+      "suiteId": "core-v1",
+      "backendId": "builtin",
+      "rawArtifact": "Benchmarks/results/reference/core-v1-m5-max-r2026a-builtin/benchmark.json"
+    },
+    {
+      "suiteId": "scaling-standard-v1",
+      "backendId": "builtin",
+      "rawArtifact": "Benchmarks/results/reference/scaling-standard-v1-m5-max-r2026a-builtin/benchmark.json"
+    },
+    {
+      "suiteId": "scaling-large-v1",
+      "backendId": "builtin",
+      "rawArtifact": "Benchmarks/results/reference/scaling-large-v1-m5-max-r2026a-builtin/benchmark.json"
+    }
+  ],
+  "publishedDatasets": [
+    {
+      "datasetId": "core-v1--cpp-native-fftw--m5-max--20260812T195257Z",
+      "artifact": "Benchmarks/results/published/core-v1--cpp-native-fftw--m5-max--20260812T195257Z.json"
+    },
+    {
+      "datasetId": "core-v1--matlab-builtin--m5-max--20260812T195257Z",
+      "artifact": "Benchmarks/results/published/core-v1--matlab-builtin--m5-max--20260812T195257Z.json"
+    },
+    {
+      "datasetId": "scaling-large-v1--matlab-builtin--lyra--20260811T213524Z",
+      "artifact": "Benchmarks/results/published/scaling-large-v1--matlab-builtin--lyra--20260811T213524Z.json"
+    },
+    {
+      "datasetId": "scaling-large-v1--matlab-builtin--m5-max--20260812T023122Z",
+      "artifact": "Benchmarks/results/published/scaling-large-v1--matlab-builtin--m5-max--20260812T023122Z.json"
+    },
+    {
+      "datasetId": "scaling-standard-v1--matlab-builtin--lyra--20260811T204835Z",
+      "artifact": "Benchmarks/results/published/scaling-standard-v1--matlab-builtin--lyra--20260811T204835Z.json"
+    },
+    {
+      "datasetId": "scaling-standard-v1--matlab-builtin--m5-max--20260812T020708Z",
+      "artifact": "Benchmarks/results/published/scaling-standard-v1--matlab-builtin--m5-max--20260812T020708Z.json"
+    },
+    {
+      "datasetId": "scaling-standard-v1--matlab-builtin--matilda--20260811T205115Z",
+      "artifact": "Benchmarks/results/published/scaling-standard-v1--matlab-builtin--matilda--20260811T205115Z.json"
+    }
+  ],
+  "interfaceComparisons": [
+    {
+      "datasetId": "three-interface--m5-max--20260827T151230Z",
+      "artifact": "Benchmarks/results/published/three-interface--m5-max--20260827T151230Z.json"
+    },
+    {
+      "datasetId": "three-interface--lyra--20260816T044250Z",
+      "artifact": "Benchmarks/results/published/three-interface--lyra--20260816T044250Z.json"
+    },
+    {
+      "datasetId": "three-interface--lyra--20260816T034908Z",
+      "artifact": "Benchmarks/results/published/three-interface--lyra--20260816T034908Z.json"
+    }
+  ]
+}
