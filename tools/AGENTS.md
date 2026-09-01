@@ -81,6 +81,15 @@ continue with the parts of the task that can be completed safely.
 - Keep example-script modernization minimal unless broader restructuring is explicitly requested.
 - Do not update website content unless the task explicitly includes website work.
 
+## MATLAB execution on local Apple Silicon
+
+On this local Apple Silicon host, MATLAB R2026a cannot start inside Codex's macOS sandbox because the sandbox blocks Qt's NEON CPU-feature probe. The resulting `Incompatible processor. This Qt build requires the following features: neon` error does not indicate missing hardware support.
+
+- Run every local `matlab -batch ...` command outside the sandbox by setting `sandbox_permissions="require_escalated"`.
+- Use the `matlab -batch` command form so it matches the approved `["matlab", "-batch"]` prefix rule and can run outside the sandbox without an additional prompt.
+- Do not retry with `-nojvm`, the direct MATLAB binary, or Rosetta; those do not address the sandbox restriction.
+- Keep commands other than MATLAB sandboxed unless they independently require escalation.
+
 ## External repository communication
 
 Treat creating, editing, commenting on, reopening, or closing issues and pull
