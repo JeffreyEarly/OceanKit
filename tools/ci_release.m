@@ -133,12 +133,16 @@ if options.shouldPackageForDistribution == true
     fprintf('Exporting package root to %s\n', targetRoot);
     copyfile(options.rootDir, targetRoot);
 
-    % Strip CI-only junk from the exported package
-    % (best-effort: ignore errors if these don't exist)
+    % Remove excluded entries, including regular .git files in worktrees.
     for iFolder = 1:numel(options.excluded_dist_folders)
-        try
-            rmdir(fullfile(targetRoot, options.excluded_dist_folders(iFolder)), "s");
-        catch
+        excludedPath = fullfile(targetRoot, options.excluded_dist_folders(iFolder));
+        if isfolder(excludedPath)
+            rmdir(excludedPath, "s");
+        elseif isfile(excludedPath)
+            delete(excludedPath);
+        end
+        if isfolder(excludedPath) || isfile(excludedPath)
+            error("ci_release:excludedPathRemains", "Could not remove excluded entry %s. Check permissions before retrying the export.", excludedPath);
         end
     end
 
