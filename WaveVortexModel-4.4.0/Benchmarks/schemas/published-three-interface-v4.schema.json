@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wavevortexmodel.org/schemas/published-three-interface-v4.schema.json",
+  "title": "WaveVortexModel matched three-model RK78 runtime and memory benchmark v4",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "datasetId", "collectedAt", "studyId", "modelConfiguration", "cohortKey", "cohort", "source", "platform", "provider", "provenance", "cases"],
+  "properties": {
+    "schemaVersion": {"const": "published-three-interface-v4"},
+    "datasetId": {"type": "string", "pattern": "^three-interface--[a-z0-9][a-z0-9-]*--[0-9]{8}T[0-9]{6}Z$"},
+    "collectedAt": {"type": "string"},
+    "studyId": {"const": "matched-model-runtime-v1"},
+    "modelConfiguration": {"enum": ["constant-nonhydrostatic", "hydrostatic-exponential", "boussinesq-exponential"]},
+    "cohortKey": {"type": "string", "minLength": 1},
+    "cohort": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceCommit", "sourceTree", "platformId", "matlabVersion", "threadCount", "providerId", "providerVersion"],
+      "properties": {
+        "sourceCommit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "sourceTree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "platformId": {"type": "string", "minLength": 1},
+        "matlabVersion": {"type": "string", "minLength": 1},
+        "threadCount": {"type": "integer", "minimum": 1},
+        "providerId": {"const": "native-neon-pthreads"},
+        "providerVersion": {"type": "string", "minLength": 1}
+      }
+    },
+    "source": {"$ref": "#/$defs/source"},
+    "platform": {"$ref": "#/$defs/platform"},
+    "provider": {"$ref": "#/$defs/provider"},
+    "provenance": {"$ref": "#/$defs/provenance"},
+    "cases": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"$ref": "#/$defs/case"}
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit", "tree", "sourceDirty", "version"],
+      "properties": {
+        "repository": {"type": "string", "minLength": 1},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "sourceDirty": {"const": false},
+        "version": {"type": "string", "minLength": 1}
+      }
+    },
+    "platform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "displayName", "processor", "physicalMemoryBytes", "os", "architecture", "matlabVersion", "threadCount"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "displayName": {"type": "string", "minLength": 1},
+        "processor": {"type": "string", "minLength": 1},
+        "physicalMemoryBytes": {"type": "number", "exclusiveMinimum": 0},
+        "os": {"type": "string", "minLength": 1},
+        "architecture": {"type": "string", "minLength": 1},
+        "matlabVersion": {"type": "string", "minLength": 1},
+        "threadCount": {"type": "integer", "minimum": 1}
+      }
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "threadBackend", "scope", "moduleSHA256", "identityValidated", "openMPDetected"],
+      "properties": {
+        "id": {"const": "native-neon-pthreads"},
+        "version": {"type": "string", "minLength": 1},
+        "threadBackend": {"const": "pthreads"},
+        "scope": {"const": "compiled-interfaces-only"},
+        "moduleSHA256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "identityValidated": {"const": true},
+        "openMPDetected": {"const": false}
+      }
+    },
+    "fileIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rawSchemaVersion", "rawArtifactSHA256", "externalArchive", "fixtures", "initialCondition", "model", "stepControls", "matlabWorker", "standaloneWorkers"],
+      "properties": {
+        "rawSchemaVersion": {"const": "three-interface-benchmark-v3"},
+        "rawArtifactSHA256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "externalArchive": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fileName", "sha256", "compressedBytes", "location"],
+          "properties": {
+            "fileName": {"type": "string", "minLength": 1},
+            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "compressedBytes": {"type": "integer", "minimum": 1},
+            "location": {"type": "string", "minLength": 1}
+          }
+        },
+        "fixtures": {"type": "array", "minItems": 2, "maxItems": 2},
+        "initialCondition": {"type": "object"},
+        "model": {"type": "object"},
+        "stepControls": {"type": "object"},
+        "matlabWorker": {"$ref": "#/$defs/fileIdentity"},
+        "standaloneWorkers": {
+          "type": "object",
+          "required": ["runner", "kernel"],
+          "properties": {
+            "runner": {"$ref": "#/$defs/fileIdentity"},
+            "kernel": {"type": "object"}
+          }
+        }
+      }
+    },
+    "completeInterface": {
+      "type": "object",
+      "required": ["id", "status", "providerId", "integrationSeconds", "totalPeakRSSBytes", "integrationRatio", "totalRSSRatio", "integrationSamplesSeconds", "totalPeakRSSSamplesBytes", "diagnostics"],
+      "allOf": [
+        {
+          "if": {"properties": {"id": {"enum": ["matlab-compiled", "standalone-compiled"]}}, "required": ["id"]},
+          "then": {"required": ["executionPolicy"]}
+        }
+      ],
+      "properties": {
+        "id": {"enum": ["matlab-builtin", "matlab-compiled", "standalone-compiled"]},
+        "status": {"const": "complete"},
+        "providerId": {"type": "string", "minLength": 1},
+        "integrationSeconds": {"type": "number", "exclusiveMinimum": 0},
+        "totalPeakRSSBytes": {"type": "number", "exclusiveMinimum": 0},
+        "integrationRatio": {"type": "number", "exclusiveMinimum": 0},
+        "totalRSSRatio": {"type": "number", "exclusiveMinimum": 0},
+        "integrationSamplesSeconds": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number", "exclusiveMinimum": 0}},
+        "totalPeakRSSSamplesBytes": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number", "exclusiveMinimum": 0}},
+        "executionPolicy": {"$ref": "#/$defs/executionPolicy"},
+        "diagnostics": {"type": "object"}
+      }
+    },
+    "executionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["configuredThreadBudget", "actualFFTThreads", "requestedFFTThreads", "selection"],
+      "allOf": [
+        {
+          "if": {"properties": {"selection": {"const": "compact-native-accelerate"}}, "required": ["selection"]},
+          "then": {"required": ["matrixBackend", "compact", "horizontalWorkers", "pointwiseWorkers"]}
+        }
+      ],
+      "properties": {
+        "configuredThreadBudget": {"type": "integer", "minimum": 1},
+        "actualFFTThreads": {"type": "integer", "minimum": 1},
+        "requestedFFTThreads": {"oneOf": [{"type": "array", "maxItems": 0}, {"type": "integer", "minimum": 1}]},
+        "selection": {"enum": ["compact-native-accelerate", "non-variable-transform"]},
+        "matrixBackend": {"const": "accelerate"},
+        "compact": {"const": true},
+        "horizontalWorkers": {"type": "integer", "minimum": 1},
+        "pointwiseWorkers": {"type": "integer", "minimum": 1}
+      }
+    },
+    "unavailableInterface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "unavailableReason"],
+      "properties": {
+        "id": {"const": "matlab-compiled"},
+        "status": {"const": "unavailable"},
+        "unavailableReason": {"type": "string", "minLength": 1}
+      }
+    },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "modelConfiguration", "physicalConfiguration", "isHydrostatic", "workload", "integrator", "contract", "interfaces", "correctness"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^(constant-nonhydrostatic|hydrostatic-exponential|boussinesq-exponential)--adaptive-rk78--(coefficient-endpoint|composite-dense-output)$"},
+        "modelConfiguration": {"enum": ["constant-nonhydrostatic", "hydrostatic-exponential", "boussinesq-exponential"]},
+        "physicalConfiguration": {"enum": ["hydrostatic", "nonhydrostatic"]},
+        "isHydrostatic": {"type": "boolean"},
+        "workload": {"enum": ["coefficient-endpoint", "composite-dense-output"]},
+        "integrator": {"const": "adaptive-rk78"},
+        "contract": {"$ref": "#/$defs/contract"},
+        "interfaces": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"oneOf": [{"$ref": "#/$defs/completeInterface"}, {"$ref": "#/$defs/unavailableInterface"}]}},
+        "correctness": {"type": "object"}
+      }
+    },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Nxyz", "Lxyz", "modelConfiguration", "physicalConfiguration", "isHydrostatic", "stratificationProfile", "workload", "integrator", "finalTime", "outputScheduleSeconds", "relativeTolerance", "absoluteToleranceScale", "initialStep", "maximumStepPolicy", "processRunCount"],
+      "properties": {
+        "Nxyz": {"const": [256, 256, 129]},
+        "Lxyz": {"const": [150000, 150000, 1300]},
+        "modelConfiguration": {"enum": ["constant-nonhydrostatic", "hydrostatic-exponential", "boussinesq-exponential"]},
+        "physicalConfiguration": {"enum": ["hydrostatic", "nonhydrostatic"]},
+        "isHydrostatic": {"type": "boolean"},
+        "stratificationProfile": {"type": "string", "minLength": 1},
+        "workload": {"enum": ["coefficient-endpoint", "composite-dense-output"]},
+        "integrator": {"const": "adaptive-rk78"},
+        "finalTime": {"const": 7168},
+        "outputScheduleSeconds": {"oneOf": [{"const": [0, 7168]}, {"const": [0, 32, 64, 96, 128]}]},
+        "relativeTolerance": {"type": "number", "exclusiveMinimum": 0},
+        "absoluteToleranceScale": {"type": "number", "exclusiveMinimum": 0},
+        "initialStep": {"type": "number", "exclusiveMinimum": 0},
+        "maximumStepPolicy": {"const": "matlab-default"},
+        "processRunCount": {"const": 3}
+      }
+    }
+  }
+}

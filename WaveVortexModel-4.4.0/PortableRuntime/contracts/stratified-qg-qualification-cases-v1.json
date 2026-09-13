@@ -1,0 +1,112 @@
+{
+  "schemaIdentifier": "wave-vortex-sqg-qualification-cases-v1",
+  "cases": [
+    {
+      "id": "sqg-continuation-1",
+      "grid": [
+        9,
+        7,
+        9
+      ],
+      "Nj": 2,
+      "shouldAntialias": false,
+      "method": "fixed-rk4",
+      "stepPolicy": "explicit",
+      "linear": false,
+      "duration": 600,
+      "cfl": 0.002
+    },
+    {
+      "id": "sqg-continuation-2",
+      "grid": [
+        12,
+        10,
+        13
+      ],
+      "Nj": 4,
+      "shouldAntialias": true,
+      "method": "adaptive-rk23",
+      "stepPolicy": "explicit",
+      "linear": false,
+      "duration": 600,
+      "cfl": 0.002
+    },
+    {
+      "id": "sqg-continuation-3",
+      "grid": [
+        11,
+        9,
+        11
+      ],
+      "Nj": 5,
+      "shouldAntialias": false,
+      "method": "adaptive-rk78",
+      "stepPolicy": "explicit",
+      "linear": false,
+      "duration": 600,
+      "cfl": 0.002
+    },
+    {
+      "id": "sqg-continuation-4",
+      "grid": [
+        16,
+        12,
+        13
+      ],
+      "Nj": 6,
+      "shouldAntialias": true,
+      "method": "fixed-rk4",
+      "stepPolicy": "cfl",
+      "linear": false,
+      "duration": 600,
+      "cfl": 0.002
+    },
+    {
+      "id": "sqg-continuation-5",
+      "grid": [
+        9,
+        7,
+        9
+      ],
+      "Nj": 1,
+      "shouldAntialias": false,
+      "method": "adaptive-rk23",
+      "stepPolicy": "default",
+      "linear": true,
+      "duration": 600,
+      "cfl": 0.002
+    },
+    {
+      "id": "sqg-continuation-6",
+      "grid": [
+        12,
+        10,
+        13
+      ],
+      "Nj": 4,
+      "shouldAntialias": true,
+      "method": "adaptive-rk78",
+      "stepPolicy": "default",
+      "linear": false,
+      "duration": 600,
+      "cfl": 0.002
+    }
+  ],
+  "lifecycleGrids": [
+    [
+      8,
+      6,
+      9
+    ],
+    [
+      12,
+      10,
+      13
+    ],
+    [
+      20,
+      16,
+      17
+    ]
+  ]
+}

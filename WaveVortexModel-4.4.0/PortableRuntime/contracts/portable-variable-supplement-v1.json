@@ -1,0 +1,2261 @@
+{
+  "schema": "portable-variable-supplement-v1",
+  "primitiveDependencies": {
+    "primitiveValues": 1,
+    "pressureHeight": 2,
+    "streamfunction": 4,
+    "potentialVorticity": 8,
+    "uDerivatives": 16,
+    "vDerivatives": 32,
+    "wDerivatives": 64,
+    "spectralEnergy": 128
+  },
+  "variables": [
+    {
+      "ordinal": 0,
+      "name": "Ap",
+      "cppIdentifier": "Ap",
+      "portableKind": "coefficient",
+      "naturalRank": "coefficient",
+      "samplingModes": [
+        "coefficients"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 1,
+      "name": "Am",
+      "cppIdentifier": "Am",
+      "portableKind": "coefficient",
+      "naturalRank": "coefficient",
+      "samplingModes": [
+        "coefficients"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 2,
+      "name": "A0",
+      "cppIdentifier": "A0",
+      "portableKind": "coefficient",
+      "naturalRank": "coefficient",
+      "samplingModes": [
+        "coefficients"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 3,
+      "name": "u",
+      "cppIdentifier": "u",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": 0,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 4,
+      "name": "v",
+      "cppIdentifier": "v",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": 1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 5,
+      "name": "w",
+      "cppIdentifier": "w",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": 2,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 6,
+      "name": "eta",
+      "cppIdentifier": "eta",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": 3,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 7,
+      "name": "pi",
+      "cppIdentifier": "pi",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "pressureHeight"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 8,
+      "name": "p",
+      "cppIdentifier": "p",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "pressureHeight"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 9,
+      "name": "psi",
+      "cppIdentifier": "psi",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "streamfunction"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 10,
+      "name": "qgpv",
+      "cppIdentifier": "qgpv",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "potentialVorticity"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 11,
+      "name": "rho_e",
+      "cppIdentifier": "rhoE",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": 4,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 12,
+      "name": "rho_total",
+      "cppIdentifier": "rhoTotal",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": 5,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 13,
+      "name": "rho_bar",
+      "cppIdentifier": "rhoBar",
+      "portableKind": "field",
+      "naturalRank": "vertical",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 14,
+      "name": "zeta_x",
+      "cppIdentifier": "zetaX",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "vDerivatives",
+        "wDerivatives"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 15,
+      "name": "zeta_y",
+      "cppIdentifier": "zetaY",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "uDerivatives",
+        "wDerivatives"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 16,
+      "name": "zeta_z",
+      "cppIdentifier": "zetaZ",
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "uDerivatives",
+        "vDerivatives"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 17,
+      "name": "ssu",
+      "cppIdentifier": "ssu",
+      "portableKind": "field",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 18,
+      "name": "ssv",
+      "cppIdentifier": "ssv",
+      "portableKind": "field",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 19,
+      "name": "ssh",
+      "cppIdentifier": "ssh",
+      "portableKind": "field",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "pressureHeight"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 20,
+      "name": "energy",
+      "cppIdentifier": "energy",
+      "portableKind": "field",
+      "naturalRank": "scalar",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [
+        "spectralEnergy"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 21,
+      "name": "uvMax",
+      "cppIdentifier": "uvMax",
+      "portableKind": "field",
+      "naturalRank": "scalar",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 22,
+      "name": "wMax",
+      "cppIdentifier": "wMax",
+      "portableKind": "field",
+      "naturalRank": "scalar",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 23,
+      "name": "A0t",
+      "cppIdentifier": "A0t",
+      "portableKind": "diagnostic",
+      "naturalRank": "coefficient",
+      "samplingModes": [
+        "coefficients"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 24,
+      "name": "Amt",
+      "cppIdentifier": "Amt",
+      "portableKind": "diagnostic",
+      "naturalRank": "coefficient",
+      "samplingModes": [
+        "coefficients"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 25,
+      "name": "Apt",
+      "cppIdentifier": "Apt",
+      "portableKind": "diagnostic",
+      "naturalRank": "coefficient",
+      "samplingModes": [
+        "coefficients"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 26,
+      "name": "Feta_portable_catalog_forcing",
+      "cppIdentifier": "Feta_portable_catalog_forcing",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 27,
+      "name": "Fqgpv_portable_catalog_forcing",
+      "cppIdentifier": "Fqgpv_portable_catalog_forcing",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 28,
+      "name": "Fu_portable_catalog_forcing",
+      "cppIdentifier": "Fu_portable_catalog_forcing",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 29,
+      "name": "Fv_portable_catalog_forcing",
+      "cppIdentifier": "Fv_portable_catalog_forcing",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 30,
+      "name": "Fw_portable_catalog_forcing",
+      "cppIdentifier": "Fw_portable_catalog_forcing",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 31,
+      "name": "ape",
+      "cppIdentifier": "ape",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 32,
+      "name": "apv",
+      "cppIdentifier": "apv",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 33,
+      "name": "conjPhase",
+      "cppIdentifier": "conjPhase",
+      "portableKind": "diagnostic",
+      "naturalRank": "coefficient",
+      "samplingModes": [
+        "coefficients"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 34,
+      "name": "energy_g",
+      "cppIdentifier": "energy_g",
+      "portableKind": "diagnostic",
+      "naturalRank": "scalar",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [
+        "spectralEnergy"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 35,
+      "name": "energy_io",
+      "cppIdentifier": "energy_io",
+      "portableKind": "diagnostic",
+      "naturalRank": "scalar",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [
+        "spectralEnergy"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 36,
+      "name": "energy_mda",
+      "cppIdentifier": "energy_mda",
+      "portableKind": "diagnostic",
+      "naturalRank": "scalar",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [
+        "spectralEnergy"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 37,
+      "name": "energy_w",
+      "cppIdentifier": "energy_w",
+      "portableKind": "diagnostic",
+      "naturalRank": "scalar",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [
+        "spectralEnergy"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 38,
+      "name": "eta_g",
+      "cppIdentifier": "eta_g",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 39,
+      "name": "eta_io",
+      "cppIdentifier": "eta_io",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 40,
+      "name": "eta_mda",
+      "cppIdentifier": "eta_mda",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 41,
+      "name": "eta_true",
+      "cppIdentifier": "eta_true",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 42,
+      "name": "eta_w",
+      "cppIdentifier": "eta_w",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 43,
+      "name": "geostrophicEnergy",
+      "cppIdentifier": "geostrophicEnergy",
+      "portableKind": "diagnostic",
+      "naturalRank": "scalar",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [
+        "spectralEnergy"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 44,
+      "name": "p_g",
+      "cppIdentifier": "p_g",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "pressureHeight"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 45,
+      "name": "p_io",
+      "cppIdentifier": "p_io",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "pressureHeight"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 46,
+      "name": "p_mda",
+      "cppIdentifier": "p_mda",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "pressureHeight"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 47,
+      "name": "p_w",
+      "cppIdentifier": "p_w",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "pressureHeight"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 48,
+      "name": "phase",
+      "cppIdentifier": "phase",
+      "portableKind": "diagnostic",
+      "naturalRank": "coefficient",
+      "samplingModes": [
+        "coefficients"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 49,
+      "name": "rho_nm",
+      "cppIdentifier": "rho_nm",
+      "portableKind": "diagnostic",
+      "naturalRank": "vertical",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 50,
+      "name": "ssh_g",
+      "cppIdentifier": "ssh_g",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "pressureHeight"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 51,
+      "name": "ssh_io",
+      "cppIdentifier": "ssh_io",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "pressureHeight"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 52,
+      "name": "ssh_mda",
+      "cppIdentifier": "ssh_mda",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "pressureHeight"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 53,
+      "name": "ssh_w",
+      "cppIdentifier": "ssh_w",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "pressureHeight"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 54,
+      "name": "ssu_g",
+      "cppIdentifier": "ssu_g",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 55,
+      "name": "ssu_io",
+      "cppIdentifier": "ssu_io",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 56,
+      "name": "ssu_mda",
+      "cppIdentifier": "ssu_mda",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 57,
+      "name": "ssu_w",
+      "cppIdentifier": "ssu_w",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 58,
+      "name": "ssv_g",
+      "cppIdentifier": "ssv_g",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 59,
+      "name": "ssv_io",
+      "cppIdentifier": "ssv_io",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 60,
+      "name": "ssv_mda",
+      "cppIdentifier": "ssv_mda",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 61,
+      "name": "ssv_w",
+      "cppIdentifier": "ssv_w",
+      "portableKind": "diagnostic",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 62,
+      "name": "totalEnergy",
+      "cppIdentifier": "totalEnergy",
+      "portableKind": "diagnostic",
+      "naturalRank": "scalar",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [
+        "spectralEnergy"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 63,
+      "name": "totalEnergySpatiallyIntegrated",
+      "cppIdentifier": "totalEnergySpatiallyIntegrated",
+      "portableKind": "diagnostic",
+      "naturalRank": "scalar",
+      "samplingModes": [
+        "fullGrid"
+      ],
+      "primitiveDependencies": [],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 64,
+      "name": "u_g",
+      "cppIdentifier": "u_g",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 65,
+      "name": "u_io",
+      "cppIdentifier": "u_io",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 66,
+      "name": "u_mda",
+      "cppIdentifier": "u_mda",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 67,
+      "name": "u_w",
+      "cppIdentifier": "u_w",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 68,
+      "name": "v_g",
+      "cppIdentifier": "v_g",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 69,
+      "name": "v_io",
+      "cppIdentifier": "v_io",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 70,
+      "name": "v_mda",
+      "cppIdentifier": "v_mda",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 71,
+      "name": "v_w",
+      "cppIdentifier": "v_w",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 72,
+      "name": "w_g",
+      "cppIdentifier": "w_g",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 73,
+      "name": "w_io",
+      "cppIdentifier": "w_io",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 74,
+      "name": "w_mda",
+      "cppIdentifier": "w_mda",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    },
+    {
+      "ordinal": 75,
+      "name": "w_w",
+      "cppIdentifier": "w_w",
+      "portableKind": "diagnostic",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencies": [
+        "primitiveValues"
+      ],
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {}
+    }
+  ],
+  "intermediates": [
+    {
+      "name": "phaseEvolution",
+      "ordinal": 0,
+      "lifetime": "event-scratch",
+      "description": "Phase factors at the observation time."
+    },
+    {
+      "name": "spectralReconstruction",
+      "ordinal": 1,
+      "lifetime": "event-scratch",
+      "description": "Transform-specific reconstruction from phased coefficients."
+    },
+    {
+      "name": "componentReconstruction",
+      "ordinal": 2,
+      "lifetime": "event-scratch",
+      "description": "Reconstruction using the resolved built-in component masks."
+    },
+    {
+      "name": "velocityGradients",
+      "ordinal": 3,
+      "lifetime": "event-scratch",
+      "description": "Shared Cartesian velocity derivatives."
+    },
+    {
+      "name": "densityMoments",
+      "ordinal": 4,
+      "lifetime": "event-scratch",
+      "description": "Volume moments of total density."
+    },
+    {
+      "name": "noMotionProfile",
+      "ordinal": 5,
+      "lifetime": "event-scratch",
+      "description": "Moment-constrained density profile; solver selected at construction."
+    },
+    {
+      "name": "inverseDensitySpline",
+      "ordinal": 6,
+      "lifetime": "event-scratch",
+      "description": "Monotone density spline and inverse mapping."
+    },
+    {
+      "name": "etaTrueGradients",
+      "ordinal": 7,
+      "lifetime": "event-scratch",
+      "description": "Cartesian derivatives of true isopycnal displacement."
+    },
+    {
+      "name": "apeQuadrature",
+      "ordinal": 8,
+      "lifetime": "event-scratch",
+      "description": "Reference-density integrals for available potential energy."
+    },
+    {
+      "name": "spatialQuadrature",
+      "ordinal": 9,
+      "lifetime": "event-scratch",
+      "description": "Transform-specific horizontal average and vertical integration."
+    },
+    {
+      "name": "forcingTendency",
+      "ordinal": 10,
+      "lifetime": "event-scratch",
+      "description": "Observed forcing contributions in registered stage order; issue #315."
+    },
+    {
+      "name": "spectralReduction",
+      "ordinal": 11,
+      "lifetime": "event-scratch",
+      "description": "Transform energy factors and resolved component masks."
+    },
+    {
+      "name": "extremaReduction",
+      "ordinal": 12,
+      "lifetime": "event-scratch",
+      "description": "Shared speed extrema reduction."
+    },
+    {
+      "name": "referenceDensity",
+      "ordinal": 13,
+      "lifetime": "event-scratch",
+      "description": "Immutable stratification and reference density sampled on the grid."
+    }
+  ],
+  "diagnosticContracts": [
+    {
+      "name": "Ap",
+      "dependencies": [],
+      "intermediates": [],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "Am",
+      "dependencies": [],
+      "intermediates": [],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "A0",
+      "dependencies": [],
+      "intermediates": [],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "u",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "spectralReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "v",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "spectralReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "w",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "spectralReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "eta",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "spectralReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "pi",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "spectralReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "p",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "spectralReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "psi",
+      "dependencies": [
+        "A0t"
+      ],
+      "intermediates": [
+        "spectralReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "qgpv",
+      "dependencies": [
+        "A0t"
+      ],
+      "intermediates": [
+        "spectralReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "rho_e",
+      "dependencies": [
+        "eta"
+      ],
+      "intermediates": [
+        "referenceDensity"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "rho_total",
+      "dependencies": [
+        "rho_e"
+      ],
+      "intermediates": [
+        "referenceDensity"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "rho_bar",
+      "dependencies": [
+        "A0"
+      ],
+      "intermediates": [
+        "referenceDensity"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "zeta_x",
+      "dependencies": [
+        "v",
+        "w"
+      ],
+      "intermediates": [
+        "velocityGradients"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "zeta_y",
+      "dependencies": [
+        "u",
+        "w"
+      ],
+      "intermediates": [
+        "velocityGradients"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "zeta_z",
+      "dependencies": [
+        "u",
+        "v"
+      ],
+      "intermediates": [
+        "velocityGradients"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssu",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "spectralReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssv",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "spectralReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssh",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "spectralReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "energy",
+      "dependencies": [
+        "$coefficients"
+      ],
+      "intermediates": [
+        "spectralReduction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "uvMax",
+      "dependencies": [
+        "u",
+        "v"
+      ],
+      "intermediates": [
+        "extremaReduction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "wMax",
+      "dependencies": [
+        "w"
+      ],
+      "intermediates": [
+        "extremaReduction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Legacy sampling contract.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "A0t",
+      "dependencies": [
+        "A0"
+      ],
+      "intermediates": [],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Spectral coefficient layout only; spatial interpolation is undefined.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "Amt",
+      "dependencies": [
+        "Am",
+        "conjPhase"
+      ],
+      "intermediates": [],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Spectral coefficient layout only; spatial interpolation is undefined.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "Apt",
+      "dependencies": [
+        "Ap",
+        "phase"
+      ],
+      "intermediates": [],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Spectral coefficient layout only; spatial interpolation is undefined.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "Feta_portable_catalog_forcing",
+      "dependencies": [
+        "$coefficients"
+      ],
+      "intermediates": [
+        "forcingTendency"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Bind an authenticated built-in forcing identity, stage and unique instance name before evaluation."
+    },
+    {
+      "name": "Fqgpv_portable_catalog_forcing",
+      "dependencies": [
+        "$coefficients"
+      ],
+      "intermediates": [
+        "forcingTendency"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Bind an authenticated built-in forcing identity, stage and unique instance name before evaluation."
+    },
+    {
+      "name": "Fu_portable_catalog_forcing",
+      "dependencies": [
+        "$coefficients"
+      ],
+      "intermediates": [
+        "forcingTendency"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Bind an authenticated built-in forcing identity, stage and unique instance name before evaluation."
+    },
+    {
+      "name": "Fv_portable_catalog_forcing",
+      "dependencies": [
+        "$coefficients"
+      ],
+      "intermediates": [
+        "forcingTendency"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Bind an authenticated built-in forcing identity, stage and unique instance name before evaluation."
+    },
+    {
+      "name": "Fw_portable_catalog_forcing",
+      "dependencies": [
+        "$coefficients"
+      ],
+      "intermediates": [
+        "forcingTendency"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Bind an authenticated built-in forcing identity, stage and unique instance name before evaluation."
+    },
+    {
+      "name": "ape",
+      "dependencies": [
+        "eta_true",
+        "$trueProfile"
+      ],
+      "intermediates": [
+        "apeQuadrature"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid, vertical profiles, and fixed/event/moving positions; interpolation is qualified for these spatial samples. Reductions remain unsupported.",
+      "configurationRestriction": "The wave-vortex-density-diagnostics-v1 runtime contract defaults to actual density with dampedLeastSquares recovery. Explicit initial reference applies to displacement, APE and APV; rho_nm always describes current density. Legacy MATLAB solver choices are not inferred from saved files."
+    },
+    {
+      "name": "apv",
+      "dependencies": [
+        "eta_true",
+        "zeta_x",
+        "zeta_y",
+        "zeta_z"
+      ],
+      "intermediates": [
+        "etaTrueGradients"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid, vertical profiles, and fixed/event/moving positions; interpolation is qualified for these spatial samples. Reductions remain unsupported.",
+      "configurationRestriction": "The wave-vortex-density-diagnostics-v1 runtime contract defaults to actual density with dampedLeastSquares recovery. Explicit initial reference applies to displacement, APE and APV; rho_nm always describes current density. Legacy MATLAB solver choices are not inferred from saved files."
+    },
+    {
+      "name": "conjPhase",
+      "dependencies": [
+        "phase"
+      ],
+      "intermediates": [],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Spectral coefficient layout only; spatial interpolation is undefined.",
+      "configurationRestriction": "Applies only to wave-bearing transform configurations; evaluated at the event time relative to t0."
+    },
+    {
+      "name": "energy_g",
+      "dependencies": [
+        "$coefficients"
+      ],
+      "intermediates": [
+        "spectralReduction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "energy_io",
+      "dependencies": [
+        "$coefficients"
+      ],
+      "intermediates": [
+        "spectralReduction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "energy_mda",
+      "dependencies": [
+        "$coefficients"
+      ],
+      "intermediates": [
+        "spectralReduction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "energy_w",
+      "dependencies": [
+        "$coefficients"
+      ],
+      "intermediates": [
+        "spectralReduction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "eta_g",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "eta_io",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "eta_mda",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "eta_true",
+      "dependencies": [
+        "rho_total",
+        "$trueProfile"
+      ],
+      "intermediates": [
+        "referenceDensity",
+        "inverseDensitySpline"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid, vertical profiles, and fixed/event/moving positions; interpolation is qualified for these spatial samples. Reductions remain unsupported.",
+      "configurationRestriction": "The wave-vortex-density-diagnostics-v1 runtime contract defaults to actual density with dampedLeastSquares recovery. Explicit initial reference applies to displacement, APE and APV; rho_nm always describes current density. Legacy MATLAB solver choices are not inferred from saved files."
+    },
+    {
+      "name": "eta_w",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "geostrophicEnergy",
+      "dependencies": [
+        "A0"
+      ],
+      "intermediates": [
+        "spectralReduction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "p_g",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "p_io",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "p_mda",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "p_w",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "phase",
+      "dependencies": [],
+      "intermediates": [
+        "phaseEvolution"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Spectral coefficient layout only; spatial interpolation is undefined.",
+      "configurationRestriction": "Applies only to wave-bearing transform configurations; evaluated at the event time relative to t0."
+    },
+    {
+      "name": "rho_nm",
+      "dependencies": [
+        "rho_total"
+      ],
+      "intermediates": [
+        "densityMoments",
+        "noMotionProfile"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid, vertical profiles, and fixed/event/moving positions; interpolation is qualified for these spatial samples. Reductions remain unsupported.",
+      "configurationRestriction": "The wave-vortex-density-diagnostics-v1 runtime contract defaults to actual density with dampedLeastSquares recovery. Explicit initial reference applies to displacement, APE and APV; rho_nm always describes current density. Legacy MATLAB solver choices are not inferred from saved files."
+    },
+    {
+      "name": "ssh_g",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssh_io",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssh_mda",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssh_w",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssu_g",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssu_io",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssu_mda",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssu_w",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssv_g",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssv_io",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssv_mda",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "ssv_w",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "totalEnergy",
+      "dependencies": [
+        "$coefficients"
+      ],
+      "intermediates": [
+        "spectralReduction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "totalEnergySpatiallyIntegrated",
+      "dependencies": [
+        "u",
+        "v",
+        "eta",
+        "$nonhydrostaticW"
+      ],
+      "intermediates": [
+        "spatialQuadrature"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "u_g",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "u_io",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "u_mda",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "u_w",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "v_g",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "v_io",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "v_mda",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "v_w",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "w_g",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "w_io",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "w_mda",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    },
+    {
+      "name": "w_w",
+      "dependencies": [
+        "$phasedCoefficients"
+      ],
+      "intermediates": [
+        "componentReconstruction"
+      ],
+      "runtimeStatus": "implemented",
+      "samplingRestriction": "Full natural grid or scalar only; interpolation requires a separately qualified evaluator.",
+      "configurationRestriction": "Applies only to the enumerated transform configurations and built-in component masks."
+    }
+  ],
+  "exclusions": [
+    {
+      "name": "totalEnstrophy",
+      "reason": "method-without-variable-annotation"
+    },
+    {
+      "name": "totalEnstrophySpatiallyIntegrated",
+      "reason": "method-without-variable-annotation"
+    },
+    {
+      "name": "exactTotalEnergy",
+      "reason": "property-without-variable-annotation"
+    },
+    {
+      "name": "exactPotentialEnstrophy",
+      "reason": "property-without-variable-annotation"
+    },
+    {
+      "name": "totalEnergyOfFlowComponent",
+      "reason": "argument-requiring-method-use-energy-component-factory"
+    },
+    {
+      "name": "waveEnergy",
+      "reason": "unregistered-variable-use-energy_w"
+    },
+    {
+      "name": "inertialEnergy",
+      "reason": "unregistered-variable-use-energy_io"
+    },
+    {
+      "name": "mdaEnergy",
+      "reason": "unregistered-variable-use-energy_mda"
+    },
+    {
+      "name": "Fp",
+      "reason": "unregistered-legacy-defaultOperations"
+    },
+    {
+      "name": "Fm",
+      "reason": "unregistered-legacy-defaultOperations"
+    },
+    {
+      "name": "F0",
+      "reason": "unregistered-legacy-defaultOperations"
+    }
+  ]
+}

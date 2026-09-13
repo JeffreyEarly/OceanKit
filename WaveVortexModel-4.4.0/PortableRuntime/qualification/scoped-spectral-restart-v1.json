@@ -1,0 +1,165 @@
+{
+  "issue": 393,
+  "matlabRelease": "R2025b",
+  "scope": "isolated-locally-qualified",
+  "files": {
+    "@WVGeometryDoublyPeriodicStratifiedConstant/WVGeometryDoublyPeriodicStratifiedConstant.m": "1475089aefbc07f5594a04b47c13cc680b08ae8b376b37d644d945eabbf71fc9",
+    "UnitTests/TestPortableDiagnostics.m": "abd5ae46ec2e5b8397166948e8de14df1fee9a7e9a90a90730c7c64ec875f1e4",
+    "UnitTests/TestSpectralOutputRestart.m": "e5aa37caf6b942476bfd333e7e88ea4476ba0a204921246ebc0e72eb11019629"
+  },
+  "tests": [
+    {
+      "name": "TestSpectralOutputRestart/spectralGroupsSurviveInitialAndPopulatedRestarts",
+      "passed": true,
+      "durationSeconds": 28.918993,
+      "receipt": "/private/tmp/wvm393-restart-tests.json"
+    },
+    {
+      "name": "TestSpectralOutputRestart/unusedOutputCoordinatesCannotChangeConstantGeometry",
+      "passed": true,
+      "durationSeconds": 0.6535850833333333,
+      "receipt": "/private/tmp/wvm393-tests.json"
+    },
+    {
+      "name": "TestPortableDiagnostics/outputContinuationMatchesMatlab",
+      "passed": true,
+      "durationSeconds": 113.71374058333333,
+      "receipt": "/private/tmp/wvm393-parity-final.json"
+    },
+    {
+      "name": "TestShouldExcludeConjugatesPersistence/correctedFieldRoundTrips",
+      "passed": true,
+      "durationSeconds": 0.17439195833333332,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    },
+    {
+      "name": "TestShouldExcludeConjugatesPersistence/legacyShouldExludeConjugatesLoadsThroughout4x",
+      "passed": true,
+      "durationSeconds": 0.09781725000000001,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    },
+    {
+      "name": "TestShouldExcludeConjugatesPersistence/correctedFieldTakesPrecedence",
+      "passed": true,
+      "durationSeconds": 0.054575416666666675,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    },
+    {
+      "name": "TestShouldExcludeConjugatesPersistence/missingFieldUsesExistingFailure",
+      "passed": true,
+      "durationSeconds": 0.07378270833333334,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    },
+    {
+      "name": "TestShouldExcludeConjugatesPersistence/stableTransformRoundTripRemainsGreen(transformType=constantHydrostatic)",
+      "passed": true,
+      "durationSeconds": 0.8887200833333333,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    },
+    {
+      "name": "TestShouldExcludeConjugatesPersistence/stableTransformRoundTripRemainsGreen(transformType=constantNonhydrostatic)",
+      "passed": true,
+      "durationSeconds": 0.5668815,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    },
+    {
+      "name": "TestShouldExcludeConjugatesPersistence/stableTransformRoundTripRemainsGreen(transformType=hydrostatic)",
+      "passed": true,
+      "durationSeconds": 1.0648695416666667,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    },
+    {
+      "name": "TestShouldExcludeConjugatesPersistence/stableTransformRoundTripRemainsGreen(transformType=boussinesq)",
+      "passed": true,
+      "durationSeconds": 1.8260635,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    },
+    {
+      "name": "TestShouldExcludeConjugatesPersistence/stableTransformRoundTripRemainsGreen(transformType=stratifiedQG)",
+      "passed": true,
+      "durationSeconds": 0.6270149583333333,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    },
+    {
+      "name": "TestShouldExcludeConjugatesPersistence/stableTransformRoundTripRemainsGreen(transformType=barotropicQG)",
+      "passed": true,
+      "durationSeconds": 0.30210183333333335,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    },
+    {
+      "name": "TestWVModelOutputPersistence/restartedObserversMatchUninterruptedControl(integratorType=fixed)",
+      "passed": true,
+      "durationSeconds": 2.2659147500000003,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    },
+    {
+      "name": "TestWVModelOutputPersistence/restartedObserversMatchUninterruptedControl(integratorType=adaptive)",
+      "passed": true,
+      "durationSeconds": 1.516181125,
+      "receipt": "/private/tmp/wvm393-parity-regressions.json"
+    }
+  ],
+  "restartConfigurations": 12,
+  "cppMatlabLifecycleScenarios": 36,
+  "numericalTolerance": 1e-12,
+  "codeAnalyzer": {
+    "Release": "R2025b",
+    "Files": [
+      "@WVGeometryDoublyPeriodicStratifiedConstant/WVGeometryDoublyPeriodicStratifiedConstant.m",
+      "UnitTests/TestPortableDiagnostics.m",
+      "UnitTests/TestSpectralOutputRestart.m"
+    ],
+    "Findings": [
+      {
+        "RelativeFile": "UnitTests/TestPortableDiagnostics.m",
+        "CheckID": "AGROW",
+        "Line": 84,
+        "Column": 29,
+        "Severity": "info",
+        "Diagnostic": "Variable appears to change size on every loop iteration. Consider preallocating for speed.",
+        "Suppressed": true,
+        "Classification": "performance",
+        "Rationale": "Dynamic allocation is visible performance advice and is not a correctness failure."
+      },
+      {
+        "RelativeFile": "UnitTests/TestSpectralOutputRestart.m",
+        "CheckID": "AGROW",
+        "Line": 18,
+        "Column": 25,
+        "Severity": "info",
+        "Diagnostic": "Variable appears to change size on every loop iteration. Consider preallocating for speed.",
+        "Suppressed": false,
+        "Classification": "performance",
+        "Rationale": "Dynamic allocation is visible performance advice and is not a correctness failure."
+      }
+    ],
+    "BlockingFindings": [],
+    "NonblockingFindings": [
+      {
+        "RelativeFile": "UnitTests/TestPortableDiagnostics.m",
+        "CheckID": "AGROW",
+        "Line": 84,
+        "Column": 29,
+        "Severity": "info",
+        "Diagnostic": "Variable appears to change size on every loop iteration. Consider preallocating for speed.",
+        "Suppressed": true,
+        "Classification": "performance",
+        "Rationale": "Dynamic allocation is visible performance advice and is not a correctness failure."
+      },
+      {
+        "RelativeFile": "UnitTests/TestSpectralOutputRestart.m",
+        "CheckID": "AGROW",
+        "Line": 18,
+        "Column": 25,
+        "Severity": "info",
+        "Diagnostic": "Variable appears to change size on every loop iteration. Consider preallocating for speed.",
+        "Suppressed": false,
+        "Classification": "performance",
+        "Rationale": "Dynamic allocation is visible performance advice and is not a correctness failure."
+      }
+    ]
+  },
+  "pending": [
+    "See coordinated-termination-repairs-apple-silicon-v1.json and combined ledger for subsequent documentation, native integration and hosted CI status."
+  ]
+}

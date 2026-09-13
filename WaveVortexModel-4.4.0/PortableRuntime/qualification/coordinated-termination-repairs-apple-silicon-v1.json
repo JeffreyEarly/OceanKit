@@ -1,0 +1,1489 @@
+{
+  "schema": "coordinated-termination-repairs-apple-silicon-v1",
+  "issues": [
+    288,
+    392,
+    393,
+    409
+  ],
+  "status": "locally-qualified",
+  "baselineCommit": "23aa3f0d2e436e51b423231dcb16c5bd0a90258a",
+  "candidateCodeCommit": "778d7d6de50bcbe4fb1ec4a104d1d4610df5081b",
+  "platform": "Apple Silicon macOS; AppleClang Release, native FFTW and Accelerate",
+  "matlabRelease": "R2025b",
+  "sourceSHA256": {
+    "@WVGeometryDoublyPeriodicStratifiedConstant/WVGeometryDoublyPeriodicStratifiedConstant.m": "1475089aefbc07f5594a04b47c13cc680b08ae8b376b37d644d945eabbf71fc9",
+    "@WVTransform/classDefinedOperationForKnownVariable.m": "72c192d2f0b8c33b02f591aeeecccac66095718f6391d035cecef089a7f9eed5",
+    "Forcing/WVAdaptiveDamping.m": "61cf2738753ade972cca1de1eb3eb72f965554454e48be0b9ff509fc985a943d",
+    "ObservingSystems/WVEulerianFields.m": "6adc11562e05a59a05f584f604e399f6c0d7f5a74f10619c078dd29402957075",
+    "PortableRuntime/CMakeLists.txt": "b56a4ad5d80e3c8259001ccec9b55f70894af2cdfcb6c01f33196940045987ed",
+    "PortableRuntime/README.md": "21381dd86a903d8f491264467c4439c265ae92dc99b12520185a7e9dd7b94cd5",
+    "PortableRuntime/app/WaveVortexRun.cpp": "77d0d60dfe86e0348b2e9db23e88bd52bb99acaebf09804c5480dd56ca0827a0",
+    "PortableRuntime/app/WaveVortexRunMain.cpp": "1ac59b6450ff7a2dfdcdc430ea32bb4db64b147569f82255c84196fc2d14b64a",
+    "PortableRuntime/include/WaveVortexRuntime/WVIntegrationContracts.hpp": "649f29e05fdcd821920435686f4bd09c654e400e0d0504c9ffdea3c648b4e4e5",
+    "PortableRuntime/include/WaveVortexRuntime/WVModel.hpp": "5665207710821ac3abf4a6fae30028dbd4db18dc94137f6fa7b1f3659ef1b3e8",
+    "PortableRuntime/include/WaveVortexRuntime/WVModelOutputNetCDF.hpp": "2b5149e0db45a137c31284d34ddde5a49cd897b99ddf36528ccbc009997087e1",
+    "PortableRuntime/include/WaveVortexRuntime/WVOutputOrchestration.hpp": "e83c1a05cb5c96cb8e0f8813ad4ddc342fa60b95fcb16b6ca3a3159d019465fd",
+    "PortableRuntime/include/WaveVortexRuntime/WVRungeKutta.hpp": "24e5494ee76993439a364f9f3dac868c19756ed781e9077e80d16241b2149405",
+    "PortableRuntime/include/WaveVortexRuntime/WVRunner.hpp": "24112aa2984625c07e284da0b427259aa862f21cb9082e1e32f401f6aa25afdb",
+    "PortableRuntime/src/WVForcingEngine.cpp": "377fda8325059f4c20bfad539299c4abdffa2052bf143e07c7677feccfaaeb83",
+    "PortableRuntime/src/WVModel.cpp": "a3431993bc146eb30856fe908526ebd4663f200a39aaa308058b3dfb6445e468",
+    "PortableRuntime/src/WVModelOutputNetCDFWriter.cpp": "63fd048d8dc124808259f6ac6d9480bf76b74fcf9864565743d9f970257e46e2",
+    "PortableRuntime/src/WVOutputOrchestration.cpp": "03a3ad962ba28cc466a850b028a4664aae9ec58e7c3487e85e75407c8af4864b",
+    "PortableRuntime/src/WVRungeKutta.cpp": "b5c57a5632a1211835d3801dc02c05bfbb0102d4f760c30ae5a65e30008028d9",
+    "PortableRuntime/tests/TestWVForcingAndRK4.cpp": "d2b5092001b1c1c992ea03346413c7266e69c7c30fc67b2a138d63db31dd7b6f",
+    "PortableRuntime/tests/TestWVModel.cpp": "72c8a5f237185a9daa896fabfc3030f08ba6c696243a122e5dd8899e7ba4a2b4",
+    "PortableRuntime/tests/TestWVModelOutputNetCDF.cpp": "0f3547130d325aaf49eade8b4ad765a5b1921dea97e0f12aa97c8f71993229b6",
+    "PortableRuntime/tests/TestWVOutputOrchestration.cpp": "6b4f64518b74a18a6882252aea6722c496f56dba728bfa69b362e2b462358f65",
+    "PortableRuntime/tests/TestWaveVortexRun.cpp": "ed5125ef91c5ab925417f4fe9c18467de2cb701eb77d26a19daf0e19936e66c8",
+    "UnitTests/TestAdaptiveDampingResolution.m": "7dc23b34530e8542bf2dd07993b1800c4c2ecf82967ecee59e324369628a3daf",
+    "UnitTests/TestEnergyDiagnostics.m": "9cd46a7730c6ada9c733a208e1d188e07d163df30e6faec97d43c85309cefc2d",
+    "UnitTests/TestPortableDiagnostics.m": "8ecbde82fad99e9f25c29dfbb06e6c3bdfb6f52d1453aff713de6eff92aeb493",
+    "UnitTests/TestPortableStableForcing.m": "a488472ed5189bc911844e18bae49d374c8a0b272e6de82044efb7350b01cc1e",
+    "UnitTests/TestSpectralOutputRestart.m": "e5aa37caf6b942476bfd333e7e88ea4476ba0a204921246ebc0e72eb11019629",
+    "tools/ci/route.py": "a0e07a6312bd00ece9fef4bb796207379470111a97d7ab064920f80d7026987a",
+    "tools/ci/test_routing.py": "07d8d125bef2960b90fdf388798d72d1bd06a4faeca8b0dfba89c2609d6a5759",
+    "PortableRuntime/source-selection.json": "e22ebaa3d47220714b257045a56aeda3c55b1cd6866099821fb313ba5b134b79",
+    "CompiledKernel/source-selection.json": "f5eb24228556818a1deec4ece28a4b7aca6735ad08d910e3a88a784ced9ff46e"
+  },
+  "isolatedReceipts": [
+    "PortableRuntime/qualification/scoped-spectral-restart-v1.json",
+    "PortableRuntime/qualification/matlab-energy-adaptive-repairs-v1.json",
+    ".github/ci-evidence/issue-288-matlab-restart.json"
+  ],
+  "combinedMatlab": {
+    "names": [
+      "TestPortableDiagnostics/allTransformDiagnosticsMatchMatlab",
+      "TestPortableDiagnostics/outputContinuationMatchesMatlab",
+      "TestPortableStableForcing/degenerateAdaptiveDampingMatchesMatlab",
+      "TestCompiledKernelIntegration/selectionRecordsTheAcceptedContract",
+      "TestCompiledKernelIntegration/runtimeSelectionRecordsStableSourceAPI",
+      "TestCompiledKernelIntegration/keyRuntimeHashesMatchTheSelection"
+    ],
+    "passed": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "duration": [
+      21.006766,
+      130.83947579166667,
+      23.374015125,
+      0.091405875,
+      0.034243875,
+      0.16982733333333333
+    ]
+  },
+  "combinedMatlabAnalyzer": {
+    "Release": "R2025b",
+    "Files": "UnitTests/TestPortableDiagnostics.m",
+    "Findings": [
+      {
+        "RelativeFile": "UnitTests/TestPortableDiagnostics.m",
+        "CheckID": "AGROW",
+        "Line": 79,
+        "Column": 29,
+        "Severity": "info",
+        "Diagnostic": "Variable appears to change size on every loop iteration. Consider preallocating for speed.",
+        "Suppressed": true,
+        "Classification": "performance",
+        "Rationale": "Dynamic allocation is visible performance advice and is not a correctness failure."
+      }
+    ],
+    "BlockingFindings": [],
+    "NonblockingFindings": [
+      {
+        "RelativeFile": "UnitTests/TestPortableDiagnostics.m",
+        "CheckID": "AGROW",
+        "Line": 79,
+        "Column": 29,
+        "Severity": "info",
+        "Diagnostic": "Variable appears to change size on every loop iteration. Consider preallocating for speed.",
+        "Suppressed": true,
+        "Classification": "performance",
+        "Rationale": "Dynamic allocation is visible performance advice and is not a correctness failure."
+      }
+    ]
+  },
+  "combinedMatlabBuildProvenance": {
+    "sourceCommit": "6a358c0985dd20c4a3ffc4bacd947dc9edaf290b",
+    "executables": {
+      "wave-vortex-run": "63d34d284a0e0215ed6ad7ce15c5a0d2ff89d75f798186e20a55d7283306bfde",
+      "WVDiagnosticFieldDump": "911e73e3f39eb11822fd26cc8a1e8b2938d5d9f14c21b47eb2510c529207eeed",
+      "WVStableForcingDump": "a666f700d395c17b93ec82a565aabda505317952488566f90f367755c29a2c30"
+    },
+    "files": {
+      ".github/ci-evidence/issue-288-matlab-restart.json": "b0cdecf7bbd96708afe361e6e3cd54e03740db24331eb0152caad849618a50e6",
+      ".github/planning/issue-288-verification.md": "18f0c582e7bf72d7ed0dc9b5da7d6d5221a651c53431b04ec7580d7dfec27f12",
+      ".github/planning/issues-392-409-verification.md": "0b88bd8224f7d328eb7adb4e72f5aace7a318db21852a78ee423d976f499401c",
+      "@WVGeometryDoublyPeriodicStratifiedConstant/WVGeometryDoublyPeriodicStratifiedConstant.m": "1475089aefbc07f5594a04b47c13cc680b08ae8b376b37d644d945eabbf71fc9",
+      "@WVTransform/classDefinedOperationForKnownVariable.m": "72c192d2f0b8c33b02f591aeeecccac66095718f6391d035cecef089a7f9eed5",
+      "Forcing/WVAdaptiveDamping.m": "61cf2738753ade972cca1de1eb3eb72f965554454e48be0b9ff509fc985a943d",
+      "ObservingSystems/WVEulerianFields.m": "6adc11562e05a59a05f584f604e399f6c0d7f5a74f10619c078dd29402957075",
+      "PortableRuntime/CMakeLists.txt": "b56a4ad5d80e3c8259001ccec9b55f70894af2cdfcb6c01f33196940045987ed",
+      "PortableRuntime/README.md": "21381dd86a903d8f491264467c4439c265ae92dc99b12520185a7e9dd7b94cd5",
+      "PortableRuntime/app/WaveVortexRun.cpp": "3dcdae478d052d352f3eb21f4f68eeafafd743f3b45693f018a33228f961f934",
+      "PortableRuntime/app/WaveVortexRunMain.cpp": "1ac59b6450ff7a2dfdcdc430ea32bb4db64b147569f82255c84196fc2d14b64a",
+      "PortableRuntime/include/WaveVortexRuntime/WVIntegrationContracts.hpp": "649f29e05fdcd821920435686f4bd09c654e400e0d0504c9ffdea3c648b4e4e5",
+      "PortableRuntime/include/WaveVortexRuntime/WVModel.hpp": "5665207710821ac3abf4a6fae30028dbd4db18dc94137f6fa7b1f3659ef1b3e8",
+      "PortableRuntime/include/WaveVortexRuntime/WVModelOutputNetCDF.hpp": "2b5149e0db45a137c31284d34ddde5a49cd897b99ddf36528ccbc009997087e1",
+      "PortableRuntime/include/WaveVortexRuntime/WVOutputOrchestration.hpp": "e83c1a05cb5c96cb8e0f8813ad4ddc342fa60b95fcb16b6ca3a3159d019465fd",
+      "PortableRuntime/include/WaveVortexRuntime/WVRungeKutta.hpp": "24e5494ee76993439a364f9f3dac868c19756ed781e9077e80d16241b2149405",
+      "PortableRuntime/include/WaveVortexRuntime/WVRunner.hpp": "24112aa2984625c07e284da0b427259aa862f21cb9082e1e32f401f6aa25afdb",
+      "PortableRuntime/qualification/matlab-energy-adaptive-repairs-v1.json": "61d0207e7e4482438995eda7bfc202c403c698b7528a5f28eeb4b01c1cce5f6a",
+      "PortableRuntime/src/WVForcingEngine.cpp": "377fda8325059f4c20bfad539299c4abdffa2052bf143e07c7677feccfaaeb83",
+      "PortableRuntime/src/WVModel.cpp": "a3431993bc146eb30856fe908526ebd4663f200a39aaa308058b3dfb6445e468",
+      "PortableRuntime/src/WVModelOutputNetCDFWriter.cpp": "63fd048d8dc124808259f6ac6d9480bf76b74fcf9864565743d9f970257e46e2",
+      "PortableRuntime/src/WVOutputOrchestration.cpp": "03a3ad962ba28cc466a850b028a4664aae9ec58e7c3487e85e75407c8af4864b",
+      "PortableRuntime/src/WVRungeKutta.cpp": "b5c57a5632a1211835d3801dc02c05bfbb0102d4f760c30ae5a65e30008028d9",
+      "PortableRuntime/tests/TestWVForcingAndRK4.cpp": "d2b5092001b1c1c992ea03346413c7266e69c7c30fc67b2a138d63db31dd7b6f",
+      "PortableRuntime/tests/TestWVModel.cpp": "72c8a5f237185a9daa896fabfc3030f08ba6c696243a122e5dd8899e7ba4a2b4",
+      "PortableRuntime/tests/TestWVModelOutputNetCDF.cpp": "0f3547130d325aaf49eade8b4ad765a5b1921dea97e0f12aa97c8f71993229b6",
+      "PortableRuntime/tests/TestWVOutputOrchestration.cpp": "6b4f64518b74a18a6882252aea6722c496f56dba728bfa69b362e2b462358f65",
+      "PortableRuntime/tests/TestWaveVortexRun.cpp": "816e353395ff3ebeaa32f0dc069349c90cdef706c3bd461daeb3c1bdc502d9fc",
+      "UnitTests/TestAdaptiveDampingResolution.m": "7dc23b34530e8542bf2dd07993b1800c4c2ecf82967ecee59e324369628a3daf",
+      "UnitTests/TestEnergyDiagnostics.m": "9cd46a7730c6ada9c733a208e1d188e07d163df30e6faec97d43c85309cefc2d",
+      "UnitTests/TestPortableDiagnostics.m": "8ecbde82fad99e9f25c29dfbb06e6c3bdfb6f52d1453aff713de6eff92aeb493",
+      "UnitTests/TestPortableStableForcing.m": "a488472ed5189bc911844e18bae49d374c8a0b272e6de82044efb7350b01cc1e",
+      "UnitTests/TestSpectralOutputRestart.m": "e5aa37caf6b942476bfd333e7e88ea4476ba0a204921246ebc0e72eb11019629",
+      "PortableRuntime/source-selection.json": "e22ebaa3d47220714b257045a56aeda3c55b1cd6866099821fb313ba5b134b79",
+      "CompiledKernel/source-selection.json": "f5eb24228556818a1deec4ece28a4b7aca6735ad08d910e3a88a784ced9ff46e"
+    }
+  },
+  "matlabProvenanceNote": "Diagnostics and continuation used the initial combined runner. The final CLI benchmark-warmup-only fix was rebuilt while remaining forcing checks completed. These MATLAB paths never invoke warmup. Kernel, writer and MATLAB production sources are identical; the final runner is additionally qualified by native C++ tests and matched output comparison.",
+  "combinedDiagnosticReport": {
+    "schema": "portable-diagnostic-numerical-v1",
+    "issue": 305,
+    "sourceCommit": "6a358c0985dd20c4a3ffc4bacd947dc9edaf290b",
+    "matlabRelease": "2025b",
+    "rows": [
+      {
+        "configuration": "constant-hydrostatic-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 2.756447208794543e-14,
+        "variableCount": 61,
+        "retainedBytes": 147095,
+        "scratchHighWaterBytes": 138178,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-hydrostatic-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 2.7511746694465423e-14,
+        "variableCount": 61,
+        "retainedBytes": 144943,
+        "scratchHighWaterBytes": 138178,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-hydrostatic-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.0909767808308737e-13,
+        "variableCount": 61,
+        "retainedBytes": 199978,
+        "scratchHighWaterBytes": 206002,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-hydrostatic-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 1.090716857360826e-13,
+        "variableCount": 61,
+        "retainedBytes": 197826,
+        "scratchHighWaterBytes": 206002,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-hydrostatic-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.6472394133366828e-14,
+        "variableCount": 61,
+        "retainedBytes": 124877,
+        "scratchHighWaterBytes": 131522,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-hydrostatic-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 1.6569264668232927e-14,
+        "variableCount": 61,
+        "retainedBytes": 122725,
+        "scratchHighWaterBytes": 131522,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-hydrostatic-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 5.2236096082467364e-14,
+        "variableCount": 61,
+        "retainedBytes": 151106,
+        "scratchHighWaterBytes": 190642,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-hydrostatic-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 5.2235377062300775e-14,
+        "variableCount": 61,
+        "retainedBytes": 148954,
+        "scratchHighWaterBytes": 190642,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-nonhydrostatic-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 2.90096519948999e-14,
+        "variableCount": 61,
+        "retainedBytes": 147095,
+        "scratchHighWaterBytes": 138178,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-nonhydrostatic-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 2.894372096763876e-14,
+        "variableCount": 61,
+        "retainedBytes": 144943,
+        "scratchHighWaterBytes": 138178,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-nonhydrostatic-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.2222953475043186e-13,
+        "variableCount": 61,
+        "retainedBytes": 199978,
+        "scratchHighWaterBytes": 206002,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-nonhydrostatic-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 1.221955250557141e-13,
+        "variableCount": 61,
+        "retainedBytes": 197826,
+        "scratchHighWaterBytes": 206002,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-nonhydrostatic-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.641423042610783e-14,
+        "variableCount": 61,
+        "retainedBytes": 124877,
+        "scratchHighWaterBytes": 131522,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-nonhydrostatic-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 1.644999127670937e-14,
+        "variableCount": 61,
+        "retainedBytes": 122725,
+        "scratchHighWaterBytes": 131522,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-nonhydrostatic-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 4.810205849485675e-14,
+        "variableCount": 61,
+        "retainedBytes": 151106,
+        "scratchHighWaterBytes": 190642,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "constant-nonhydrostatic-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 4.8058307834052084e-14,
+        "variableCount": 61,
+        "retainedBytes": 148954,
+        "scratchHighWaterBytes": 190642,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "barotropic-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.2390372924692605e-15,
+        "variableCount": 14,
+        "retainedBytes": 23856,
+        "scratchHighWaterBytes": 3088,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 8
+      },
+      {
+        "configuration": "barotropic-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 3.210798083915982e-16,
+        "variableCount": 14,
+        "retainedBytes": 23792,
+        "scratchHighWaterBytes": 3088,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 8
+      },
+      {
+        "configuration": "barotropic-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 2.527295818467024e-15,
+        "variableCount": 14,
+        "retainedBytes": 26974,
+        "scratchHighWaterBytes": 3928,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 8
+      },
+      {
+        "configuration": "barotropic-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 4.0872305782894716e-16,
+        "variableCount": 14,
+        "retainedBytes": 26910,
+        "scratchHighWaterBytes": 3928,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 8
+      },
+      {
+        "configuration": "barotropic-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.8182074292110792e-15,
+        "variableCount": 14,
+        "retainedBytes": 20918,
+        "scratchHighWaterBytes": 3088,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 8
+      },
+      {
+        "configuration": "barotropic-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 2.972582417859376e-16,
+        "variableCount": 14,
+        "retainedBytes": 20854,
+        "scratchHighWaterBytes": 3088,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 8
+      },
+      {
+        "configuration": "barotropic-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.8206040154581603e-15,
+        "variableCount": 14,
+        "retainedBytes": 22262,
+        "scratchHighWaterBytes": 3928,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 8
+      },
+      {
+        "configuration": "barotropic-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 3.6789417590292796e-16,
+        "variableCount": 14,
+        "retainedBytes": 22198,
+        "scratchHighWaterBytes": 3928,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 8
+      },
+      {
+        "configuration": "stratified-qg-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.5171426843914527e-15,
+        "variableCount": 19,
+        "retainedBytes": 73413,
+        "scratchHighWaterBytes": 35107,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 11
+      },
+      {
+        "configuration": "stratified-qg-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 4.1393612648822977e-16,
+        "variableCount": 19,
+        "retainedBytes": 73413,
+        "scratchHighWaterBytes": 35107,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 11
+      },
+      {
+        "configuration": "stratified-qg-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.6675492527989513e-15,
+        "variableCount": 19,
+        "retainedBytes": 96149,
+        "scratchHighWaterBytes": 50947,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 11
+      },
+      {
+        "configuration": "stratified-qg-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 4.2496915204290597e-16,
+        "variableCount": 19,
+        "retainedBytes": 96149,
+        "scratchHighWaterBytes": 50947,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 11
+      },
+      {
+        "configuration": "stratified-qg-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.7960697342596825e-15,
+        "variableCount": 19,
+        "retainedBytes": 64741,
+        "scratchHighWaterBytes": 35107,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 11
+      },
+      {
+        "configuration": "stratified-qg-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 3.3291390009820846e-16,
+        "variableCount": 19,
+        "retainedBytes": 64741,
+        "scratchHighWaterBytes": 35107,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 11
+      },
+      {
+        "configuration": "stratified-qg-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.7275932130540994e-15,
+        "variableCount": 19,
+        "retainedBytes": 76565,
+        "scratchHighWaterBytes": 50947,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 11
+      },
+      {
+        "configuration": "stratified-qg-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 4.783240843574498e-16,
+        "variableCount": 19,
+        "retainedBytes": 76565,
+        "scratchHighWaterBytes": 50947,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 11
+      },
+      {
+        "configuration": "hydrostatic-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 3.878856184239354e-15,
+        "variableCount": 62,
+        "retainedBytes": 138148,
+        "scratchHighWaterBytes": 133570,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "hydrostatic-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 3.8618932563199405e-15,
+        "variableCount": 62,
+        "retainedBytes": 138148,
+        "scratchHighWaterBytes": 133570,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "hydrostatic-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 3.4246443183918897e-15,
+        "variableCount": 62,
+        "retainedBytes": 181668,
+        "scratchHighWaterBytes": 195762,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "hydrostatic-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 3.4246443183918897e-15,
+        "variableCount": 62,
+        "retainedBytes": 181668,
+        "scratchHighWaterBytes": 195762,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "hydrostatic-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 3.3894254815256163e-15,
+        "variableCount": 62,
+        "retainedBytes": 122916,
+        "scratchHighWaterBytes": 131010,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "hydrostatic-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 3.404356871312073e-15,
+        "variableCount": 62,
+        "retainedBytes": 122916,
+        "scratchHighWaterBytes": 131010,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "hydrostatic-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 5.112225843393539e-15,
+        "variableCount": 62,
+        "retainedBytes": 145956,
+        "scratchHighWaterBytes": 189618,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "hydrostatic-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 5.3406721064340344e-15,
+        "variableCount": 62,
+        "retainedBytes": 145956,
+        "scratchHighWaterBytes": 189618,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "boussinesq-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 1.7108077086392618e-14,
+        "variableCount": 62,
+        "retainedBytes": 242269,
+        "scratchHighWaterBytes": 133570,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "boussinesq-aa0",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 6.3753960187897416e-15,
+        "variableCount": 62,
+        "retainedBytes": 242269,
+        "scratchHighWaterBytes": 133570,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "boussinesq-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 6.775374245373719e-15,
+        "variableCount": 62,
+        "retainedBytes": 370101,
+        "scratchHighWaterBytes": 195762,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "boussinesq-aa0",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 4.4389822812370165e-15,
+        "variableCount": 62,
+        "retainedBytes": 370101,
+        "scratchHighWaterBytes": 195762,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "boussinesq-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 6.182581808718872e-15,
+        "variableCount": 62,
+        "retainedBytes": 178411,
+        "scratchHighWaterBytes": 131010,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "boussinesq-aa1",
+        "grid": [
+          8,
+          6,
+          9
+        ],
+        "provider": "native",
+        "maximumRelativeError": 5.524860339706225e-15,
+        "variableCount": 62,
+        "retainedBytes": 178411,
+        "scratchHighWaterBytes": 131010,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "boussinesq-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "reference",
+        "maximumRelativeError": 5.407767549962256e-15,
+        "variableCount": 62,
+        "retainedBytes": 206491,
+        "scratchHighWaterBytes": 189618,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      },
+      {
+        "configuration": "boussinesq-aa1",
+        "grid": [
+          9,
+          7,
+          10
+        ],
+        "provider": "native",
+        "maximumRelativeError": 7.210356733283008e-15,
+        "variableCount": 62,
+        "retainedBytes": 206491,
+        "scratchHighWaterBytes": 189618,
+        "scratchLiveBytes": 0,
+        "primitiveOutputCount": 42
+      }
+    ],
+    "passes": true
+  },
+  "combinedCpp": {
+    "configuration": "Release/native FFTW/Accelerate",
+    "tests": [
+      "forcing-and-rk4",
+      "output-orchestration",
+      "model-output-netcdf",
+      "model-facade",
+      "standalone-runner"
+    ],
+    "passed": 5,
+    "failed": 0,
+    "durationSeconds": 9.77,
+    "logSHA256": "a0871dbe3cb9ad11dd61f538e1e8fe3beca6447e86d9d93054b93dc31108c846"
+  },
+  "docsCheck": {
+    "passed": true,
+    "files": 2026,
+    "routes": 4145,
+    "validationFailures": 0,
+    "generatedChanges": 0,
+    "logSHA256": "910336b001bc7a4ca539dc964079d274790b3a368df68ffcf806aefda663ac21"
+  },
+  "routingTests": {
+    "passed": 13,
+    "scope": "new classes retained for current, complete and associated production-only selections, both MATLAB releases"
+  },
+  "nonregression": {
+    "schema": "portable-diagnostic-nonregression-v1",
+    "issue": 288,
+    "maximumRegressionFraction": 0.03,
+    "runsPerExecutable": 8,
+    "method": "One excluded warmup pair, alternating process order, ratio of medians; complete integration includes scheduled output.",
+    "executableSHA256": {
+      "baseline": "ae0e765e04dbef755d897f9a4db29a41134f1b1964ac8cd2ef161378f9ebcfa2",
+      "candidate": "1a3b62e7cd2b0ce7096d757e931dd8cee26f534e63168c21838d878b6228e5cd"
+    },
+    "cases": [
+      {
+        "family": "constant",
+        "sourceSHA256": "0cd2aa70695b407673c09e5e135e9f720e622d6a1e92eacc3d1e8252704e5490",
+        "requestSHA256": "3dfade6400a63198fe2f00f26329cbaff38e1ce149cc5a87bb18228314d043d6",
+        "samples": {
+          "baseline": [
+            {
+              "integrationSeconds": 0.548958208,
+              "processSeconds": 1.7071810839697719,
+              "retainedBytes": 6605929,
+              "maximumLiveBytes": 6749490,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.550007,
+              "processSeconds": 1.7200105420779437,
+              "retainedBytes": 6605929,
+              "maximumLiveBytes": 6749490,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.550875125,
+              "processSeconds": 1.7234724999871105,
+              "retainedBytes": 6605929,
+              "maximumLiveBytes": 6749490,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.552571042,
+              "processSeconds": 1.7103388330433518,
+              "retainedBytes": 6605929,
+              "maximumLiveBytes": 6749490,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.549710125,
+              "processSeconds": 1.7035262919962406,
+              "retainedBytes": 6605929,
+              "maximumLiveBytes": 6749490,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.610997208,
+              "processSeconds": 1.7722466660197824,
+              "retainedBytes": 6605929,
+              "maximumLiveBytes": 6749490,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.54747075,
+              "processSeconds": 1.703713667113334,
+              "retainedBytes": 6605929,
+              "maximumLiveBytes": 6749490,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.546594167,
+              "processSeconds": 1.7188397501595318,
+              "retainedBytes": 6605929,
+              "maximumLiveBytes": 6749490,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            }
+          ],
+          "candidate": [
+            {
+              "integrationSeconds": 0.55163175,
+              "processSeconds": 1.7203507500234991,
+              "retainedBytes": 6605937,
+              "maximumLiveBytes": 6749570,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.55838525,
+              "processSeconds": 1.7218131669797003,
+              "retainedBytes": 6605937,
+              "maximumLiveBytes": 6749570,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.551438792,
+              "processSeconds": 1.7252187910489738,
+              "retainedBytes": 6605937,
+              "maximumLiveBytes": 6749570,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.551845792,
+              "processSeconds": 1.7370698750019073,
+              "retainedBytes": 6605937,
+              "maximumLiveBytes": 6749570,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.619594625,
+              "processSeconds": 1.7746649999171495,
+              "retainedBytes": 6605937,
+              "maximumLiveBytes": 6749570,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.550751583,
+              "processSeconds": 1.7058445420116186,
+              "retainedBytes": 6605937,
+              "maximumLiveBytes": 6749570,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.55212775,
+              "processSeconds": 1.7075352498795837,
+              "retainedBytes": 6605937,
+              "maximumLiveBytes": 6749570,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.548301167,
+              "processSeconds": 1.7044335829559714,
+              "retainedBytes": 6605937,
+              "maximumLiveBytes": 6749570,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            }
+          ]
+        },
+        "medians": {
+          "baseline": {
+            "integrationSeconds": 0.5498585625000001,
+            "retainedBytes": 6605929
+          },
+          "candidate": {
+            "integrationSeconds": 0.5517387709999999,
+            "retainedBytes": 6605937
+          }
+        },
+        "runtimeChangeFraction": 0.0034194402492364606,
+        "retainedMemoryChangeFraction": 1.2110333005299623e-06,
+        "passes": true
+      },
+      {
+        "family": "hydrostatic",
+        "sourceSHA256": "b1c797e746116db899867d6214f74839e718367548c7f4e130c0f702092508d8",
+        "requestSHA256": "81c962ce8362f60b580d43ac134d974cf6bd07dff2ae432f3c6c01dade1990ec",
+        "samples": {
+          "baseline": [
+            {
+              "integrationSeconds": 0.638487916,
+              "processSeconds": 0.686358500039205,
+              "retainedBytes": 3228685,
+              "maximumLiveBytes": 3292470,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.638047875,
+              "processSeconds": 0.6804872499778867,
+              "retainedBytes": 3228685,
+              "maximumLiveBytes": 3292470,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.63719,
+              "processSeconds": 0.6827900419011712,
+              "retainedBytes": 3228685,
+              "maximumLiveBytes": 3292470,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.630673875,
+              "processSeconds": 0.6747270419728011,
+              "retainedBytes": 3228685,
+              "maximumLiveBytes": 3292470,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.642195125,
+              "processSeconds": 0.6846864169929177,
+              "retainedBytes": 3228685,
+              "maximumLiveBytes": 3292470,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.639948208,
+              "processSeconds": 0.6817187499254942,
+              "retainedBytes": 3228685,
+              "maximumLiveBytes": 3292470,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.637597084,
+              "processSeconds": 0.6801237498875707,
+              "retainedBytes": 3228685,
+              "maximumLiveBytes": 3292470,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.639893833,
+              "processSeconds": 0.6789084998890758,
+              "retainedBytes": 3228685,
+              "maximumLiveBytes": 3292470,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            }
+          ],
+          "candidate": [
+            {
+              "integrationSeconds": 0.641224042,
+              "processSeconds": 0.6828128749039024,
+              "retainedBytes": 3228805,
+              "maximumLiveBytes": 3292742,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.638775334,
+              "processSeconds": 0.6811651249881834,
+              "retainedBytes": 3228805,
+              "maximumLiveBytes": 3292742,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.630892583,
+              "processSeconds": 0.6812870828434825,
+              "retainedBytes": 3228805,
+              "maximumLiveBytes": 3292742,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.6414755,
+              "processSeconds": 0.6983722080476582,
+              "retainedBytes": 3228805,
+              "maximumLiveBytes": 3292742,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.631757417,
+              "processSeconds": 0.6748454170301557,
+              "retainedBytes": 3228805,
+              "maximumLiveBytes": 3292742,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.640876208,
+              "processSeconds": 0.6838650000281632,
+              "retainedBytes": 3228805,
+              "maximumLiveBytes": 3292742,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.638508625,
+              "processSeconds": 0.6809569590259343,
+              "retainedBytes": 3228805,
+              "maximumLiveBytes": 3292742,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.638490709,
+              "processSeconds": 0.677555583184585,
+              "retainedBytes": 3228805,
+              "maximumLiveBytes": 3292742,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            }
+          ]
+        },
+        "medians": {
+          "baseline": {
+            "integrationSeconds": 0.6382678955000001,
+            "retainedBytes": 3228685
+          },
+          "candidate": {
+            "integrationSeconds": 0.6386419795,
+            "retainedBytes": 3228805
+          }
+        },
+        "runtimeChangeFraction": 0.0005860924584133453,
+        "retainedMemoryChangeFraction": 3.716683417542832e-05,
+        "passes": true
+      },
+      {
+        "family": "boussinesq",
+        "sourceSHA256": "5abd22e797538c0ec41ee00be916c1f151fc0378005eaa97102f1eec7987ba3b",
+        "requestSHA256": "0ea1aad6c8f484c1d80612427607bfe99addd73f4b4bebee753f52b93954ab4c",
+        "samples": {
+          "baseline": [
+            {
+              "integrationSeconds": 0.515422333,
+              "processSeconds": 0.5679213339462876,
+              "retainedBytes": 1587164,
+              "maximumLiveBytes": 1623685,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.518735917,
+              "processSeconds": 0.5741172921843827,
+              "retainedBytes": 1587164,
+              "maximumLiveBytes": 1623685,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.516459208,
+              "processSeconds": 0.5690546659752727,
+              "retainedBytes": 1587164,
+              "maximumLiveBytes": 1623685,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.515119667,
+              "processSeconds": 0.5685601248405874,
+              "retainedBytes": 1587164,
+              "maximumLiveBytes": 1623685,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.511521959,
+              "processSeconds": 0.5635599161032587,
+              "retainedBytes": 1587164,
+              "maximumLiveBytes": 1623685,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.515262042,
+              "processSeconds": 0.5672015829477459,
+              "retainedBytes": 1587164,
+              "maximumLiveBytes": 1623685,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.5172185,
+              "processSeconds": 0.569930125027895,
+              "retainedBytes": 1587164,
+              "maximumLiveBytes": 1623685,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.520408,
+              "processSeconds": 0.5731345831882209,
+              "retainedBytes": 1587164,
+              "maximumLiveBytes": 1623685,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            }
+          ],
+          "candidate": [
+            {
+              "integrationSeconds": 0.534536958,
+              "processSeconds": 0.5878704159986228,
+              "retainedBytes": 1587172,
+              "maximumLiveBytes": 1623765,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.514045584,
+              "processSeconds": 0.5670202921610326,
+              "retainedBytes": 1587172,
+              "maximumLiveBytes": 1623765,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.516388584,
+              "processSeconds": 0.570564541965723,
+              "retainedBytes": 1587172,
+              "maximumLiveBytes": 1623765,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.514705083,
+              "processSeconds": 0.5669110829476267,
+              "retainedBytes": 1587172,
+              "maximumLiveBytes": 1623765,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.513436958,
+              "processSeconds": 0.5659158749040216,
+              "retainedBytes": 1587172,
+              "maximumLiveBytes": 1623765,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.516288167,
+              "processSeconds": 0.5689658750779927,
+              "retainedBytes": 1587172,
+              "maximumLiveBytes": 1623765,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.516751875,
+              "processSeconds": 0.5697504170238972,
+              "retainedBytes": 1587172,
+              "maximumLiveBytes": 1623765,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            },
+            {
+              "integrationSeconds": 0.51856975,
+              "processSeconds": 0.5722778330091387,
+              "retainedBytes": 1587172,
+              "maximumLiveBytes": 1623765,
+              "stepCount": 64,
+              "rhsEvaluationCount": 256
+            }
+          ]
+        },
+        "medians": {
+          "baseline": {
+            "integrationSeconds": 0.5159407705,
+            "retainedBytes": 1587164
+          },
+          "candidate": {
+            "integrationSeconds": 0.5163383755,
+            "retainedBytes": 1587172
+          }
+        },
+        "runtimeChangeFraction": 0.0007706407842409391,
+        "retainedMemoryChangeFraction": 5.0404369049683595e-06,
+        "passes": true
+      }
+    ],
+    "passes": true
+  },
+  "benchmarkProvenance": {
+    "baselineCommit": "23aa3f0d2e436e51b423231dcb16c5bd0a90258a",
+    "baselineSourceTree": "e0b2a6086e4b4262733fb6a38d7cbacb06d8b156",
+    "baselineExecutable": "/private/tmp/wvm288-baseline-build/wave-vortex-run",
+    "baselineExecutableSHA256": "ae0e765e04dbef755d897f9a4db29a41134f1b1964ac8cd2ef161378f9ebcfa2",
+    "configuration": "Release, native FFTW, Accelerate; BUILD_TESTING=OFF; build target wave-vortex-run",
+    "fixtureSHA256": {
+      "boussinesq-request.json": "0ea1aad6c8f484c1d80612427607bfe99addd73f4b4bebee753f52b93954ab4c",
+      "boussinesq-source.nc": "5abd22e797538c0ec41ee00be916c1f151fc0378005eaa97102f1eec7987ba3b",
+      "constant-request.json": "3dfade6400a63198fe2f00f26329cbaff38e1ce149cc5a87bb18228314d043d6",
+      "constant-source.nc": "0cd2aa70695b407673c09e5e135e9f720e622d6a1e92eacc3d1e8252704e5490",
+      "hydrostatic-request.json": "81c962ce8362f60b580d43ac134d974cf6bd07dff2ae432f3c6c01dade1990ec",
+      "hydrostatic-source.nc": "b1c797e746116db899867d6214f74839e718367548c7f4e130c0f702092508d8"
+    },
+    "benchmark": "Benchmarks/comparePortableDiagnosticBaseline.py",
+    "plannedMeasuredPairsPerCase": 8,
+    "excludedWarmupPairsPerCase": 1,
+    "performanceMeasured": true
+  },
+  "benchmarkNumericOutput": [
+    {
+      "family": "constant",
+      "numericVariableCount": 43,
+      "maximumNormalizedError": 4.716229757222744e-16,
+      "allNumericVariablesExactlyEqual": false
+    },
+    {
+      "family": "hydrostatic",
+      "numericVariableCount": 55,
+      "maximumNormalizedError": 5.088318043170461e-16,
+      "allNumericVariablesExactlyEqual": false
+    },
+    {
+      "family": "boussinesq",
+      "numericVariableCount": 65,
+      "maximumNormalizedError": 0,
+      "allNumericVariablesExactlyEqual": true
+    }
+  ],
+  "intentionalLimits": [
+    "Saved-output stop may drain to the next authored per-file complete restart checkpoint.",
+    "No suitable checkpoint before finalTime yields explicit outputFailure without target overrun.",
+    "Existing allocated Nj<=2 adaptive damping fallback is unchanged; undefined horizontal maximum-zero full-rate construction remains rejected.",
+    "Six phase/density-profile contracts remain tracked under issue391; issues407 and412 are separate."
+  ],
+  "hostedIntegration": "Required CI and merge are recorded in the PR and issue handoff; no hosted success is inferred from local checks.",
+  "ciCorrections": [
+    {
+      "initialRun": "https://github.com/JeffreyEarly/wave-vortex-model/actions/runs/34307890693",
+      "failure": "GCC range-loop-construct warning treated as error in test pointer-pair loop",
+      "correction": "Bind pair by const reference; no production change",
+      "file": "PortableRuntime/tests/TestWVModelOutputNetCDF.cpp",
+      "correctedSHA256": "e5335bd840e1b1df39dd00aff341ee5a61fc8280af33512edf87e0de07fc66b5",
+      "focusedNativeTest": {
+        "name": "model-output-netcdf",
+        "passed": true,
+        "durationSeconds": 2.2
+      },
+      "retainedEvidence": "Initial source hashes remain bound to original passing local qualification. Production binaries and numerical/performance results are unchanged."
+    },
+    {
+      "initialRun": "https://github.com/JeffreyEarly/wave-vortex-model/actions/runs/34308166199",
+      "failure": "Both MATLAB releases detect stale generated energy-operation expression provenance",
+      "correction": "Regenerate exactly44 operationExpression strings; all other catalog JSON values unchanged",
+      "sourceSHA256": {
+        "PortableRuntime/contracts/portable-variable-catalog-v1.json": "40af912b318b2d05b91f09f5cd8aa11c0afe1ca261d33055cf658675a927aa61",
+        "PortableRuntime/include/WaveVortexRuntime/generated/WVPortableVariableContracts.hpp": "64bdf97945f92e65552701d7ba1883de5dd75fc5458b1f870b5d74142a4933a6"
+      },
+      "matlabCatalogTests": {
+        "names": [
+          "TestPortableVariableCatalog/testGeneratedCatalogMatchesCommittedFiles",
+          "TestPortableVariableCatalog/testCatalogIdentityAndAnnotationMetadata",
+          "TestPortableVariableCatalog/testLegacyMetadataAndGraphFailures",
+          "TestPortableVariableCatalog/testConfigurationAndConditionalDependencies",
+          "TestPortableVariableCatalog/testEvaluationLoopsDoNotCompareFieldNames",
+          "TestPortableVariableCatalog/testHydrostaticAndNonhydrostaticAnnotationsAgree"
+        ],
+        "passed": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "duration": [
+          17.44928841666667,
+          0.051365208333333336,
+          0.3304183333333333,
+          0.03780658333333333,
+          0.015141833333333334,
+          0.21890979166666666
+        ]
+      },
+      "nativeCatalogTest": {
+        "name": "portable-variable-catalog",
+        "passed": true,
+        "durationSeconds": 0.3
+      },
+      "semanticChanges": false,
+      "precedingHostedCpp": {
+        "releasePassed": 45,
+        "sanitizedPassed": 45
+      },
+      "retainedEvidence": "Operation-expression strings have no runtime evaluator; the numerical and performance receipts retain their original exact executable hashes."
+    }
+  ]
+}

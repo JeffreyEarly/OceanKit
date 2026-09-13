@@ -1,0 +1,635 @@
+{
+  "schema": "wave-vortex-forward-integration-v1",
+  "schemaVersion": 1,
+  "slice": "forward-integration",
+  "assemblyTarget": 306,
+  "scope": "Supported forward integration only; an assembly input, not a complete feature matrix or a parity decision.",
+  "configurations": [
+    {
+      "id": "constant-hydrostatic",
+      "transform": "WVTransformConstantStratification"
+    },
+    {
+      "id": "constant-nonhydrostatic",
+      "transform": "WVTransformConstantStratification"
+    },
+    {
+      "id": "barotropic-qg",
+      "transform": "WVTransformBarotropicQG"
+    },
+    {
+      "id": "stratified-qg",
+      "transform": "WVTransformStratifiedQG"
+    },
+    {
+      "id": "hydrostatic",
+      "transform": "WVTransformHydrostatic"
+    },
+    {
+      "id": "boussinesq",
+      "transform": "WVTransformBoussinesq"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "rk4-explicit",
+      "method": "fixed-rk4",
+      "stepPolicy": "explicit"
+    },
+    {
+      "id": "rk4-cfl",
+      "method": "fixed-rk4",
+      "stepPolicy": "cfl"
+    },
+    {
+      "id": "adaptive-rk23",
+      "method": "adaptive-rk23",
+      "stepPolicy": "adaptive"
+    },
+    {
+      "id": "adaptive-rk45",
+      "method": "adaptive-rk45",
+      "stepPolicy": "adaptive"
+    },
+    {
+      "id": "adaptive-rk78",
+      "method": "adaptive-rk78",
+      "stepPolicy": "adaptive"
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "backward-integration",
+      "reason": "unsupported",
+      "detail": "Backward execution is rejected before destination mutation."
+    },
+    {
+      "id": "matlab-function-handle-execution",
+      "reason": "unsupported",
+      "detail": "C++ does not execute arbitrary MATLAB function handles. Persisted opaque N2Function bytes remain supported scientific provenance and are preserved for MATLAB restoration."
+    },
+    {
+      "id": "experimental-adaptive-cell",
+      "reason": "under-development",
+      "detail": "Experimental adaptive-cell algorithms are outside this stable integration slice."
+    }
+  ],
+  "witnesses": [
+    {
+      "id": "constant-linear",
+      "path": "UnitTests/TestPortableRuntimeCompatibility.m",
+      "symbol": "linearBottomFrictionMatchesMatlabFixedAndAdaptive",
+      "configurations": [
+        "constant-hydrostatic",
+        "constant-nonhydrostatic"
+      ],
+      "profiles": [
+        "rk4-explicit",
+        "adaptive-rk23",
+        "adaptive-rk45"
+      ],
+      "coverage": "MATLAB coefficient and physical-state parity for both constant-stratification configurations."
+    },
+    {
+      "id": "constant-cfl",
+      "path": "UnitTests/TestPortableRuntimeCompatibility.m",
+      "symbol": "runRequestV2MatchesCFLAndExactMatlabSolvers",
+      "configurations": [
+        "constant-nonhydrostatic"
+      ],
+      "profiles": [
+        "rk4-cfl"
+      ],
+      "coverage": "Nonhydrostatic CFL-selected execution and MATLAB solver comparison."
+    },
+    {
+      "id": "constant-hydrostatic-cfl-request",
+      "path": "UnitTests/TestPortableRuntimeCompatibility.m",
+      "symbol": "matlabWriterRequestsDecodeAndRunEveryIntegrationForm",
+      "configurations": [
+        "constant-hydrostatic"
+      ],
+      "profiles": [
+        "rk4-cfl"
+      ],
+      "coverage": "Hydrostatic CFL request acceptance at the saved time; advancing lifecycle is covered by the representative case."
+    },
+    {
+      "id": "forcing-continuation",
+      "path": "UnitTests/TestPortableStableForcing.m",
+      "symbol": "forcingOutputContinuationMatchesMatlab",
+      "configurations": [
+        "constant-hydrostatic",
+        "constant-nonhydrostatic",
+        "barotropic-qg",
+        "stratified-qg",
+        "hydrostatic",
+        "boussinesq"
+      ],
+      "profiles": [
+        "rk4-explicit",
+        "adaptive-rk45",
+        "adaptive-rk78"
+      ],
+      "coverage": "Parameterized transform and dynamics cases exercise explicit RK4, RK45 and RK78 with composed forcing and output."
+    },
+    {
+      "id": "barotropic-methods",
+      "path": "UnitTests/TestPortableRuntimeCompatibility.m",
+      "symbol": "matlabWriterBarotropicQGRequestsDecodeAndRun",
+      "configurations": [
+        "barotropic-qg"
+      ],
+      "profiles": [
+        "rk4-explicit",
+        "rk4-cfl",
+        "adaptive-rk23",
+        "adaptive-rk45",
+        "adaptive-rk78"
+      ],
+      "coverage": "All five profiles advance Barotropic QG output and compare MATLAB fields and amplitudes."
+    },
+    {
+      "id": "stratified-qg-methods",
+      "path": "UnitTests/TestPortableStratifiedQG.m",
+      "symbol": "modelIntegrationRoundTripsThroughMatlab",
+      "configurations": [
+        "stratified-qg"
+      ],
+      "profiles": [
+        "rk4-explicit",
+        "adaptive-rk23",
+        "adaptive-rk78"
+      ],
+      "coverage": "MATLAB-authored model continuation compared with the matching MATLAB integration policy."
+    },
+    {
+      "id": "stratified-qg-cfl",
+      "path": "UnitTests/TestPortableStratifiedQG.m",
+      "symbol": "cflAndDefaultSteppingMatchMatlab",
+      "configurations": [
+        "stratified-qg"
+      ],
+      "profiles": [
+        "rk4-cfl"
+      ],
+      "coverage": "MATLAB-authored model continuation compared with the matching MATLAB integration policy."
+    },
+    {
+      "id": "hydrostatic-methods",
+      "path": "UnitTests/TestPortableHydrostatic.m",
+      "symbol": "modelIntegrationRoundTripsThroughMatlab",
+      "configurations": [
+        "hydrostatic"
+      ],
+      "profiles": [
+        "rk4-explicit",
+        "adaptive-rk23",
+        "adaptive-rk78"
+      ],
+      "coverage": "MATLAB-authored model continuation compared with the matching MATLAB integration policy."
+    },
+    {
+      "id": "hydrostatic-cfl",
+      "path": "UnitTests/TestPortableHydrostatic.m",
+      "symbol": "cflAndDefaultSteppingMatchMatlab",
+      "configurations": [
+        "hydrostatic"
+      ],
+      "profiles": [
+        "rk4-cfl"
+      ],
+      "coverage": "MATLAB-authored model continuation compared with the matching MATLAB integration policy."
+    },
+    {
+      "id": "boussinesq-methods",
+      "path": "UnitTests/TestPortableBoussinesq.m",
+      "symbol": "modelIntegrationRoundTripsThroughMatlab",
+      "configurations": [
+        "boussinesq"
+      ],
+      "profiles": [
+        "rk4-explicit",
+        "adaptive-rk23",
+        "adaptive-rk78"
+      ],
+      "coverage": "MATLAB-authored model continuation compared with the matching MATLAB integration policy."
+    },
+    {
+      "id": "boussinesq-cfl",
+      "path": "UnitTests/TestPortableBoussinesq.m",
+      "symbol": "cflAndDefaultSteppingMatchMatlab",
+      "configurations": [
+        "boussinesq"
+      ],
+      "profiles": [
+        "rk4-cfl"
+      ],
+      "coverage": "MATLAB-authored model continuation compared with the matching MATLAB integration policy."
+    }
+  ],
+  "cases": [
+    {
+      "id": "forward-constant-hydrostatic-cfl-rk4",
+      "configuration": "constant-hydrostatic",
+      "profile": "rk4-cfl",
+      "path": "UnitTests/TestPortableForwardIntegration.m",
+      "symbol": "representativeLifecycleMatchesMatlab",
+      "parameter": "constantHydrostatic"
+    },
+    {
+      "id": "forward-constant-nonhydrostatic-rk23",
+      "configuration": "constant-nonhydrostatic",
+      "profile": "adaptive-rk23",
+      "path": "UnitTests/TestPortableForwardIntegration.m",
+      "symbol": "representativeLifecycleMatchesMatlab",
+      "parameter": "constantNonhydrostatic"
+    },
+    {
+      "id": "forward-barotropic-qg-rk45",
+      "configuration": "barotropic-qg",
+      "profile": "adaptive-rk45",
+      "path": "UnitTests/TestPortableForwardIntegration.m",
+      "symbol": "representativeLifecycleMatchesMatlab",
+      "parameter": "barotropic"
+    },
+    {
+      "id": "forward-stratified-qg-rk45",
+      "configuration": "stratified-qg",
+      "profile": "adaptive-rk45",
+      "path": "UnitTests/TestPortableForwardIntegration.m",
+      "symbol": "representativeLifecycleMatchesMatlab",
+      "parameter": "stratifiedQG"
+    },
+    {
+      "id": "forward-hydrostatic-rk45",
+      "configuration": "hydrostatic",
+      "profile": "adaptive-rk45",
+      "path": "UnitTests/TestPortableForwardIntegration.m",
+      "symbol": "representativeLifecycleMatchesMatlab",
+      "parameter": "hydrostatic"
+    },
+    {
+      "id": "forward-boussinesq-rk45",
+      "configuration": "boussinesq",
+      "profile": "adaptive-rk45",
+      "path": "UnitTests/TestPortableForwardIntegration.m",
+      "symbol": "representativeLifecycleMatchesMatlab",
+      "parameter": "boussinesq"
+    }
+  ],
+  "rows": [
+    {
+      "id": "constant-hydrostatic/rk4-explicit",
+      "configuration": "constant-hydrostatic",
+      "profile": "rk4-explicit",
+      "support": "supported",
+      "witnesses": [
+        "constant-linear",
+        "forcing-continuation"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "constant-hydrostatic/rk4-cfl",
+      "configuration": "constant-hydrostatic",
+      "profile": "rk4-cfl",
+      "support": "supported",
+      "witnesses": [
+        "constant-hydrostatic-cfl-request"
+      ],
+      "representativeCases": [
+        "forward-constant-hydrostatic-cfl-rk4"
+      ]
+    },
+    {
+      "id": "constant-hydrostatic/adaptive-rk23",
+      "configuration": "constant-hydrostatic",
+      "profile": "adaptive-rk23",
+      "support": "supported",
+      "witnesses": [
+        "constant-linear"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "constant-hydrostatic/adaptive-rk45",
+      "configuration": "constant-hydrostatic",
+      "profile": "adaptive-rk45",
+      "support": "supported",
+      "witnesses": [
+        "constant-linear",
+        "forcing-continuation"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "constant-hydrostatic/adaptive-rk78",
+      "configuration": "constant-hydrostatic",
+      "profile": "adaptive-rk78",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "constant-nonhydrostatic/rk4-explicit",
+      "configuration": "constant-nonhydrostatic",
+      "profile": "rk4-explicit",
+      "support": "supported",
+      "witnesses": [
+        "constant-linear",
+        "forcing-continuation"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "constant-nonhydrostatic/rk4-cfl",
+      "configuration": "constant-nonhydrostatic",
+      "profile": "rk4-cfl",
+      "support": "supported",
+      "witnesses": [
+        "constant-cfl"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "constant-nonhydrostatic/adaptive-rk23",
+      "configuration": "constant-nonhydrostatic",
+      "profile": "adaptive-rk23",
+      "support": "supported",
+      "witnesses": [
+        "constant-linear"
+      ],
+      "representativeCases": [
+        "forward-constant-nonhydrostatic-rk23"
+      ]
+    },
+    {
+      "id": "constant-nonhydrostatic/adaptive-rk45",
+      "configuration": "constant-nonhydrostatic",
+      "profile": "adaptive-rk45",
+      "support": "supported",
+      "witnesses": [
+        "constant-linear",
+        "forcing-continuation"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "constant-nonhydrostatic/adaptive-rk78",
+      "configuration": "constant-nonhydrostatic",
+      "profile": "adaptive-rk78",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "barotropic-qg/rk4-explicit",
+      "configuration": "barotropic-qg",
+      "profile": "rk4-explicit",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation",
+        "barotropic-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "barotropic-qg/rk4-cfl",
+      "configuration": "barotropic-qg",
+      "profile": "rk4-cfl",
+      "support": "supported",
+      "witnesses": [
+        "barotropic-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "barotropic-qg/adaptive-rk23",
+      "configuration": "barotropic-qg",
+      "profile": "adaptive-rk23",
+      "support": "supported",
+      "witnesses": [
+        "barotropic-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "barotropic-qg/adaptive-rk45",
+      "configuration": "barotropic-qg",
+      "profile": "adaptive-rk45",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation",
+        "barotropic-methods"
+      ],
+      "representativeCases": [
+        "forward-barotropic-qg-rk45"
+      ]
+    },
+    {
+      "id": "barotropic-qg/adaptive-rk78",
+      "configuration": "barotropic-qg",
+      "profile": "adaptive-rk78",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation",
+        "barotropic-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "stratified-qg/rk4-explicit",
+      "configuration": "stratified-qg",
+      "profile": "rk4-explicit",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation",
+        "stratified-qg-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "stratified-qg/rk4-cfl",
+      "configuration": "stratified-qg",
+      "profile": "rk4-cfl",
+      "support": "supported",
+      "witnesses": [
+        "stratified-qg-cfl"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "stratified-qg/adaptive-rk23",
+      "configuration": "stratified-qg",
+      "profile": "adaptive-rk23",
+      "support": "supported",
+      "witnesses": [
+        "stratified-qg-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "stratified-qg/adaptive-rk45",
+      "configuration": "stratified-qg",
+      "profile": "adaptive-rk45",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation"
+      ],
+      "representativeCases": [
+        "forward-stratified-qg-rk45"
+      ]
+    },
+    {
+      "id": "stratified-qg/adaptive-rk78",
+      "configuration": "stratified-qg",
+      "profile": "adaptive-rk78",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation",
+        "stratified-qg-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "hydrostatic/rk4-explicit",
+      "configuration": "hydrostatic",
+      "profile": "rk4-explicit",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation",
+        "hydrostatic-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "hydrostatic/rk4-cfl",
+      "configuration": "hydrostatic",
+      "profile": "rk4-cfl",
+      "support": "supported",
+      "witnesses": [
+        "hydrostatic-cfl"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "hydrostatic/adaptive-rk23",
+      "configuration": "hydrostatic",
+      "profile": "adaptive-rk23",
+      "support": "supported",
+      "witnesses": [
+        "hydrostatic-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "hydrostatic/adaptive-rk45",
+      "configuration": "hydrostatic",
+      "profile": "adaptive-rk45",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation"
+      ],
+      "representativeCases": [
+        "forward-hydrostatic-rk45"
+      ]
+    },
+    {
+      "id": "hydrostatic/adaptive-rk78",
+      "configuration": "hydrostatic",
+      "profile": "adaptive-rk78",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation",
+        "hydrostatic-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "boussinesq/rk4-explicit",
+      "configuration": "boussinesq",
+      "profile": "rk4-explicit",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation",
+        "boussinesq-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "boussinesq/rk4-cfl",
+      "configuration": "boussinesq",
+      "profile": "rk4-cfl",
+      "support": "supported",
+      "witnesses": [
+        "boussinesq-cfl"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "boussinesq/adaptive-rk23",
+      "configuration": "boussinesq",
+      "profile": "adaptive-rk23",
+      "support": "supported",
+      "witnesses": [
+        "boussinesq-methods"
+      ],
+      "representativeCases": []
+    },
+    {
+      "id": "boussinesq/adaptive-rk45",
+      "configuration": "boussinesq",
+      "profile": "adaptive-rk45",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation"
+      ],
+      "representativeCases": [
+        "forward-boussinesq-rk45"
+      ]
+    },
+    {
+      "id": "boussinesq/adaptive-rk78",
+      "configuration": "boussinesq",
+      "profile": "adaptive-rk78",
+      "support": "supported",
+      "witnesses": [
+        "forcing-continuation",
+        "boussinesq-methods"
+      ],
+      "representativeCases": []
+    }
+  ],
+  "relatedCatalogs": [
+    "PortableRuntime/contracts/portable-forcing-compatibility-v1.json",
+    "PortableRuntime/contracts/portable-variable-catalog-v1.json"
+  ],
+  "historicalEvidence": [
+    {
+      "path": "PortableRuntime/qualification/stratified-qg-apple-silicon-v1.json",
+      "classification": "historical-workload-coverage"
+    },
+    {
+      "path": "PortableRuntime/qualification/hydrostatic-apple-silicon-v1.json",
+      "classification": "historical-workload-coverage"
+    },
+    {
+      "path": "PortableRuntime/qualification/boussinesq-apple-silicon-v1.json",
+      "classification": "historical-workload-coverage"
+    }
+  ],
+  "acceptance": {
+    "relativeErrorMaximum": 2E-7,
+    "particlePositionErrorMaximum": 0.02,
+    "heldAmplitudeErrorMaximum": 1E-18,
+    "coefficientEvolutionMinimum": 1E-6,
+    "particleEvolutionMinimum": 0.0001,
+    "tracerEvolutionMinimum": 1E-8
+  },
+  "evidencePolicy": "Source witnesses identify existing tests; they do not assert execution. Separate qualification receipts bind six representative cases per provider to source and artifact hashes. Historical reports retain their original workloads, methods, providers and source provenance. No exhaustive method-by-feature cross-product or final #307 parity decision is implied."
+}

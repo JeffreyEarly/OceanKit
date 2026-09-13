@@ -1,0 +1,784 @@
+{
+  "schema": "wave-vortex-forward-integration-qualification-v1",
+  "schemaVersion": 1,
+  "scope": "forward-integration",
+  "status": "complete",
+  "sourceCommit": "ed6049a2504dad833e93c9221b66ea68db1ac404",
+  "provider": "native-fftw",
+  "matlabRelease": "2025b",
+  "platform": "MACA64",
+  "cases": {
+    "id": "forward-stratified-qg-rk45",
+    "configuration": "stratified-qg",
+    "profile": "adaptive-rk45",
+    "testName": "TestPortableForwardIntegration/representativeLifecycleMatchesMatlab(configuration=stratifiedQG)",
+    "passed": true,
+    "failed": false,
+    "incomplete": false,
+    "provider": "native-fftw",
+    "scope": "forward-integration",
+    "controls": {
+      "id": "forward-stratified-qg-rk45",
+      "configuration": "stratified-qg",
+      "parameter": "stratifiedQG",
+      "profile": "adaptive-rk45",
+      "method": "adaptive-rk45",
+      "initialTime": 17,
+      "splitTime": 77,
+      "finalTime": 137,
+      "initialStep": 4,
+      "maximumStep": 4,
+      "relativeTolerance": 1E-9,
+      "absoluteTolerance": 1E-10,
+      "stopBoundary": "output-occurrence",
+      "heldIndex": 6,
+      "heldReal": -4.3578788620679385E-7,
+      "heldImag": -1.1360104734654344E-7
+    },
+    "evolution": {
+      "coefficients": 0.18320901374309845,
+      "particlePosition": 0.49115864147984212,
+      "tracer": 0.0001011004941788296
+    },
+    "outcomes": {
+      "whole": [
+        {
+          "coefficients": 1.1593156239287051E-15,
+          "fields": 1.1229037321661902E-15,
+          "tracer": 1.4432625275453682E-15,
+          "particlePosition": 3.979039320256561E-13,
+          "savedOutput": 1.9197105382685439E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 1.1593156239287051E-15,
+          "fields": 1.1229037321661902E-15,
+          "tracer": 1.4432625275453682E-15,
+          "particlePosition": 3.979039320256561E-13,
+          "savedOutput": 1.6943054076486255E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ],
+      "split": [
+        {
+          "coefficients": 1.1593156239287051E-15,
+          "fields": 1.1229037321661902E-15,
+          "tracer": 1.4432625275453682E-15,
+          "particlePosition": 3.979039320256561E-13,
+          "savedOutput": 1.9197105382685439E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 1.1593156239287051E-15,
+          "fields": 1.1229037321661902E-15,
+          "tracer": 1.4432625275453682E-15,
+          "particlePosition": 3.979039320256561E-13,
+          "savedOutput": 1.6943054076486255E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ],
+      "matlabToCpp": [
+        {
+          "coefficients": 7.070411365072039E-16,
+          "fields": 7.145751022875756E-16,
+          "tracer": 7.7714136098596756E-16,
+          "particlePosition": 1.1368683772161603E-13,
+          "savedOutput": 1.7064093673498166E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 7.070411365072039E-16,
+          "fields": 7.145751022875756E-16,
+          "tracer": 7.7714136098596756E-16,
+          "particlePosition": 1.1368683772161603E-13,
+          "savedOutput": 1.0665058545936355E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ],
+      "cppToMatlab": [
+        {
+          "coefficients": 6.3239681764752642E-16,
+          "fields": 5.10931992600757E-16,
+          "tracer": 1.1102019442656679E-15,
+          "particlePosition": 2.8421709430404007E-13,
+          "savedOutput": 1.3322423331188015E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 6.3239681764752642E-16,
+          "fields": 5.10931992600757E-16,
+          "tracer": 1.1102019442656679E-15,
+          "particlePosition": 2.8421709430404007E-13,
+          "savedOutput": 1.1102019442656679E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ],
+      "stoppedCpp": [
+        {
+          "coefficients": 1.1593156239287051E-15,
+          "fields": 1.1229037321661902E-15,
+          "tracer": 1.4432625275453682E-15,
+          "particlePosition": 3.979039320256561E-13,
+          "savedOutput": 1.9197105382685439E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 1.1593156239287051E-15,
+          "fields": 1.1229037321661902E-15,
+          "tracer": 1.4432625275453682E-15,
+          "particlePosition": 3.979039320256561E-13,
+          "savedOutput": 1.6943054076486255E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ],
+      "stoppedMatlab": [
+        {
+          "coefficients": 5.1209997421143914E-16,
+          "fields": 4.0832862987861464E-16,
+          "tracer": 4.4408077770626718E-16,
+          "particlePosition": 0,
+          "savedOutput": 6.3536452786823456E-16,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 5.1209997421143914E-16,
+          "fields": 4.0832862987861464E-16,
+          "tracer": 4.4408077770626718E-16,
+          "particlePosition": 0,
+          "savedOutput": 6.3536452786823456E-16,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ]
+    },
+    "denseHeld": {
+      "recordCount": 18,
+      "firstRecordTime": 22,
+      "maximumHeldError": 0
+    },
+    "stop": {
+      "reason": "stop-requested",
+      "requestedBoundary": "output-occurrence",
+      "requestedAtAcceptedTime": 29,
+      "requestedAtOutputTime": 27,
+      "finalAcceptedTime": 37,
+      "callbackEvaluationCount": 5,
+      "stopWorkspaceMaximumLiveBytes": 17272
+    },
+    "checks": [
+      {
+        "name": "nontrivialEvolution",
+        "passed": true
+      },
+      {
+        "name": "heldAmplitudes",
+        "passed": true
+      },
+      {
+        "name": "completeRestartState",
+        "passed": true
+      },
+      {
+        "name": "allContinuationDirections",
+        "passed": true
+      },
+      {
+        "name": "twoOutputDestinations",
+        "passed": true
+      },
+      {
+        "name": "controlledStopResume",
+        "passed": true
+      },
+      {
+        "name": "denseOutputParity",
+        "passed": true
+      }
+    ],
+    "timingSeconds": {
+      "sharedMatlabPreparation": 5.352138125,
+      "providerLifecycle": 15.474450791666667
+    },
+    "runs": {
+      "whole": {
+        "status": "complete",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "reached-final-time",
+          "requestedBoundary": [],
+          "requestedAtAcceptedTime": [],
+          "requestedAtOutputTime": [],
+          "finalAcceptedTime": 137,
+          "callbackEvaluationCount": 55,
+          "stopWorkspaceMaximumLiveBytes": 0
+        },
+        "state": {
+          "initialTime": 17,
+          "finalTime": 137,
+          "deltaT": 4,
+          "stepCount": 30,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 210,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 30,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 18,
+        "variableKernelPolicy": {
+          "buildEnabled": true,
+          "variableTransform": true,
+          "transformKind": "stratified-qg",
+          "selection": "compact-native-accelerate",
+          "compact": true,
+          "matrixBackend": "accelerate",
+          "spectralSchedule": "compact-split-fused-views",
+          "horizontalSchedule": "streaming-pruned-tile16",
+          "streamedNonlinear": true,
+          "horizontalWorkers": 12,
+          "fusedDerivativeAdvection": false,
+          "tiledNonlinear": false,
+          "pointwiseWorkers": 8,
+          "verticalGroupWorkers": 1,
+          "inertialOnlyProjection": true,
+          "requestedFFTThreads": [],
+          "effectiveFFTThreads": 1,
+          "hostLogicalWorkers": 16,
+          "hostPerformanceWorkers": 12,
+          "noFallback": true
+        }
+      },
+      "firstSegment": {
+        "status": "complete",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "reached-final-time",
+          "requestedBoundary": [],
+          "requestedAtAcceptedTime": [],
+          "requestedAtOutputTime": [],
+          "finalAcceptedTime": 77,
+          "callbackEvaluationCount": 28,
+          "stopWorkspaceMaximumLiveBytes": 0
+        },
+        "state": {
+          "initialTime": 17,
+          "finalTime": 77,
+          "deltaT": 4,
+          "stepCount": 15,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 105,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 15,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 9,
+        "variableKernelPolicy": {
+          "buildEnabled": true,
+          "variableTransform": true,
+          "transformKind": "stratified-qg",
+          "selection": "compact-native-accelerate",
+          "compact": true,
+          "matrixBackend": "accelerate",
+          "spectralSchedule": "compact-split-fused-views",
+          "horizontalSchedule": "streaming-pruned-tile16",
+          "streamedNonlinear": true,
+          "horizontalWorkers": 12,
+          "fusedDerivativeAdvection": false,
+          "tiledNonlinear": false,
+          "pointwiseWorkers": 8,
+          "verticalGroupWorkers": 1,
+          "inertialOnlyProjection": true,
+          "requestedFFTThreads": [],
+          "effectiveFFTThreads": 1,
+          "hostLogicalWorkers": 16,
+          "hostPerformanceWorkers": 12,
+          "noFallback": true
+        }
+      },
+      "secondSegment": {
+        "status": "complete",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "reached-final-time",
+          "requestedBoundary": [],
+          "requestedAtAcceptedTime": [],
+          "requestedAtOutputTime": [],
+          "finalAcceptedTime": 137,
+          "callbackEvaluationCount": 28,
+          "stopWorkspaceMaximumLiveBytes": 0
+        },
+        "state": {
+          "initialTime": 77,
+          "finalTime": 137,
+          "deltaT": 4,
+          "stepCount": 15,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 105,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 15,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 9,
+        "variableKernelPolicy": {
+          "buildEnabled": true,
+          "variableTransform": true,
+          "transformKind": "stratified-qg",
+          "selection": "compact-native-accelerate",
+          "compact": true,
+          "matrixBackend": "accelerate",
+          "spectralSchedule": "compact-split-fused-views",
+          "horizontalSchedule": "streaming-pruned-tile16",
+          "streamedNonlinear": true,
+          "horizontalWorkers": 12,
+          "fusedDerivativeAdvection": false,
+          "tiledNonlinear": false,
+          "pointwiseWorkers": 8,
+          "verticalGroupWorkers": 1,
+          "inertialOnlyProjection": true,
+          "requestedFFTThreads": [],
+          "effectiveFFTThreads": 1,
+          "hostLogicalWorkers": 16,
+          "hostPerformanceWorkers": 12,
+          "noFallback": true
+        }
+      },
+      "matlabToCpp": {
+        "status": "complete",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "reached-final-time",
+          "requestedBoundary": [],
+          "requestedAtAcceptedTime": [],
+          "requestedAtOutputTime": [],
+          "finalAcceptedTime": 137,
+          "callbackEvaluationCount": 28,
+          "stopWorkspaceMaximumLiveBytes": 0
+        },
+        "state": {
+          "initialTime": 77,
+          "finalTime": 137,
+          "deltaT": 4,
+          "stepCount": 15,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 105,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 15,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 9,
+        "variableKernelPolicy": {
+          "buildEnabled": true,
+          "variableTransform": true,
+          "transformKind": "stratified-qg",
+          "selection": "compact-native-accelerate",
+          "compact": true,
+          "matrixBackend": "accelerate",
+          "spectralSchedule": "compact-split-fused-views",
+          "horizontalSchedule": "streaming-pruned-tile16",
+          "streamedNonlinear": true,
+          "horizontalWorkers": 12,
+          "fusedDerivativeAdvection": false,
+          "tiledNonlinear": false,
+          "pointwiseWorkers": 8,
+          "verticalGroupWorkers": 1,
+          "inertialOnlyProjection": true,
+          "requestedFFTThreads": [],
+          "effectiveFFTThreads": 1,
+          "hostLogicalWorkers": 16,
+          "hostPerformanceWorkers": 12,
+          "noFallback": true
+        }
+      },
+      "stopped": {
+        "status": "stopped",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "stop-requested",
+          "requestedBoundary": "output-occurrence",
+          "requestedAtAcceptedTime": 29,
+          "requestedAtOutputTime": 27,
+          "finalAcceptedTime": 37,
+          "callbackEvaluationCount": 5,
+          "stopWorkspaceMaximumLiveBytes": 17272
+        },
+        "state": {
+          "initialTime": 17,
+          "finalTime": 37,
+          "deltaT": 4,
+          "stepCount": 5,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 35,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 5,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 3,
+        "variableKernelPolicy": {
+          "buildEnabled": true,
+          "variableTransform": true,
+          "transformKind": "stratified-qg",
+          "selection": "compact-native-accelerate",
+          "compact": true,
+          "matrixBackend": "accelerate",
+          "spectralSchedule": "compact-split-fused-views",
+          "horizontalSchedule": "streaming-pruned-tile16",
+          "streamedNonlinear": true,
+          "horizontalWorkers": 12,
+          "fusedDerivativeAdvection": false,
+          "tiledNonlinear": false,
+          "pointwiseWorkers": 8,
+          "verticalGroupWorkers": 1,
+          "inertialOnlyProjection": true,
+          "requestedFFTThreads": [],
+          "effectiveFFTThreads": 1,
+          "hostLogicalWorkers": 16,
+          "hostPerformanceWorkers": 12,
+          "noFallback": true
+        }
+      },
+      "stoppedResume": {
+        "status": "complete",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "reached-final-time",
+          "requestedBoundary": [],
+          "requestedAtAcceptedTime": [],
+          "requestedAtOutputTime": [],
+          "finalAcceptedTime": 137,
+          "callbackEvaluationCount": 46,
+          "stopWorkspaceMaximumLiveBytes": 0
+        },
+        "state": {
+          "initialTime": 37,
+          "finalTime": 137,
+          "deltaT": 4,
+          "stepCount": 25,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 175,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 25,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 15,
+        "variableKernelPolicy": {
+          "buildEnabled": true,
+          "variableTransform": true,
+          "transformKind": "stratified-qg",
+          "selection": "compact-native-accelerate",
+          "compact": true,
+          "matrixBackend": "accelerate",
+          "spectralSchedule": "compact-split-fused-views",
+          "horizontalSchedule": "streaming-pruned-tile16",
+          "streamedNonlinear": true,
+          "horizontalWorkers": 12,
+          "fusedDerivativeAdvection": false,
+          "tiledNonlinear": false,
+          "pointwiseWorkers": 8,
+          "verticalGroupWorkers": 1,
+          "inertialOnlyProjection": true,
+          "requestedFFTThreads": [],
+          "effectiveFFTThreads": 1,
+          "hostLogicalWorkers": 16,
+          "hostPerformanceWorkers": 12,
+          "noFallback": true
+        }
+      }
+    }
+  },
+  "sourceSHA256": [
+    {
+      "path": "PortableRuntime/include/WaveVortexRuntime/WVRungeKutta.hpp",
+      "sha256": "24e5494ee76993439a364f9f3dac868c19756ed781e9077e80d16241b2149405"
+    },
+    {
+      "path": "PortableRuntime/include/WaveVortexRuntime/WVIntegrationContracts.hpp",
+      "sha256": "649f29e05fdcd821920435686f4bd09c654e400e0d0504c9ffdea3c648b4e4e5"
+    },
+    {
+      "path": "PortableRuntime/src/WVRungeKutta.cpp",
+      "sha256": "a7fffb91955e3a0c4db03b651507a022b8a5aeb7e72b422c39a80271da06616c"
+    },
+    {
+      "path": "PortableRuntime/src/WVOrderedRKCombination.hpp",
+      "sha256": "d6f42e0f9ed7c014b477bd8835dc28aca32209ebb7e2c14589cfcc3784ff7816"
+    },
+    {
+      "path": "PortableRuntime/src/WVModel.cpp",
+      "sha256": "18f5b76db361e0388a76a65945e2dc1f6d390ed14079f6de6ce6c1589327b99c"
+    },
+    {
+      "path": "PortableRuntime/src/WVOutputOrchestration.cpp",
+      "sha256": "03a3ad962ba28cc466a850b028a4664aae9ec58e7c3487e85e75407c8af4864b"
+    },
+    {
+      "path": "PortableRuntime/src/WVModelOutputNetCDFWriter.cpp",
+      "sha256": "63fd048d8dc124808259f6ac6d9480bf76b74fcf9864565743d9f970257e46e2"
+    },
+    {
+      "path": "PortableRuntime/app/WaveVortexRun.cpp",
+      "sha256": "23cbd8ceb9c6ba9244808c46e1e7db21a45d2b39c2081099db223e5e4daa2843"
+    },
+    {
+      "path": "PortableRuntime/src/WVFieldEvaluationService.cpp",
+      "sha256": "fd0fe2c6b24dbc3ab3ad01ed8f00361635323e1a7f07903998d229d84397971c"
+    },
+    {
+      "path": "PortableRuntime/src/WVStratifiedFieldEvaluationAdapter.cpp",
+      "sha256": "feef1a8eba7429fec715da67401e4ea3593514fa6f956a263b4c050dda05cd7a"
+    },
+    {
+      "path": "PortableRuntime/src/WVBarotropicQGFieldEvaluationAdapter.cpp",
+      "sha256": "da36644f53ad785c7b88789be6034ea95f2c28c43b1316bd0aa422829a06e0d6"
+    },
+    {
+      "path": "CompiledKernel/src/WVTransformConstantStratificationKernel.cpp",
+      "sha256": "a07893470f3c9b27a2fe297473660b718f65947424ba879f2a7a91083c644681"
+    },
+    {
+      "path": "PortableRuntime/tests/WVForwardIntegrationProbe.cpp",
+      "sha256": "8a7b800a5cf6140e89242d4989a0a1ec81bc8e496737cb4dafe830a52068de3a"
+    },
+    {
+      "path": "UnitTests/TestPortableForwardIntegration.m",
+      "sha256": "f40aafd055afd2d8ef3131d444b5f1e571ff0521fb70a1f6f2c66183b4a403b6"
+    },
+    {
+      "path": "PortableRuntime/CMakeLists.txt",
+      "sha256": "9264482f46a3ef3ccbe852ed2adb87892de9a3c463444abf65f88007b48fb9d9"
+    },
+    {
+      "path": "CompiledKernel/CMakeLists.txt",
+      "sha256": "e133b74121e699325e539f6ba5c424e9bb2739200cb86c54d8077cace2c3b2ea"
+    },
+    {
+      "path": "PortableRuntime/app/WVRunnerVariablePolicy.cpp",
+      "sha256": "efeaedeca270f76b1b9f96c6176b10389f770d38e9869b6d456270280c339de2"
+    },
+    {
+      "path": "PortableRuntime/app/WVRunnerVariablePolicy.hpp",
+      "sha256": "c16796f29a84789a37fdf4927bfd03892796d683eb796aef75a0b5c5207d6c94"
+    }
+  ],
+  "buildSource": {
+    "root": "/Users/jearly/Documents/OceanKitRepositories/wvm-v4-prepared-pipeline",
+    "commit": "ed6049a2504dad833e93c9221b66ea68db1ac404"
+  },
+  "executionBinaries": [
+    {
+      "role": "runner",
+      "path": "/private/tmp/wvm495-prepared-build/runtime/wave-vortex-run",
+      "sha256": "87595fd5abf22c459b245e5f9eb3da66321a882da7dcd8987ebff2301970733e",
+      "sourceCommit": "ed6049a2504dad833e93c9221b66ea68db1ac404"
+    },
+    {
+      "role": "probe",
+      "path": "/private/tmp/wvm495-prepared-build/runtime/WVForwardIntegrationProbe",
+      "sha256": "bcbddae7463f56f02734c945ad36aa39447dd02ccfcc369837c2e03f91a1507d",
+      "sourceCommit": "ed6049a2504dad833e93c9221b66ea68db1ac404"
+    }
+  ],
+  "artifacts": [],
+  "catalogSHA256": "c9b669fa92d5556526ce9cefac8b9847f52c1ea15c8ab3b00db0f3454adfaef9"
+}

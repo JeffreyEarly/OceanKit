@@ -1,0 +1,565 @@
+{
+  "schema": "portable-variable-catalog-v1",
+  "semanticContract": "wave-vortex-portable-pair-v1",
+  "authoritativeType": "WVVariableAnnotation",
+  "portabilitySupplement": "PortableRuntime/contracts/portable-variable-supplement-v1.json",
+  "variables": [
+    {
+      "ordinal": 0,
+      "name": "Ap",
+      "cppIdentifier": "Ap",
+      "dimensions": [
+        "j",
+        "kl"
+      ],
+      "units": "m s-1",
+      "description": "positive wave coefficients at reference time t0",
+      "isComplex": true,
+      "isVariableWithLinearTimeStep": false,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "coefficient",
+      "naturalRank": "coefficient",
+      "samplingModes": "coefficients",
+      "primitiveDependencyMask": 0,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 1,
+      "name": "Am",
+      "cppIdentifier": "Am",
+      "dimensions": [
+        "j",
+        "kl"
+      ],
+      "units": "m s-1",
+      "description": "negative wave coefficients at reference time t0",
+      "isComplex": true,
+      "isVariableWithLinearTimeStep": false,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "coefficient",
+      "naturalRank": "coefficient",
+      "samplingModes": "coefficients",
+      "primitiveDependencyMask": 0,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 2,
+      "name": "A0",
+      "cppIdentifier": "A0",
+      "dimensions": [
+        "j",
+        "kl"
+      ],
+      "units": "m2 s-1",
+      "description": "geostrophic coefficients at reference time t0",
+      "isComplex": true,
+      "isVariableWithLinearTimeStep": false,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "coefficient",
+      "naturalRank": "coefficient",
+      "samplingModes": "coefficients",
+      "primitiveDependencyMask": 0,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 3,
+      "name": "u",
+      "cppIdentifier": "u",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "m s-1",
+      "description": "x-component of the fluid velocity",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 1,
+      "movingPrimitiveChannel": 0,
+      "netCDFAttributes": {
+        "name": "standard_name",
+        "value": "eastward_sea_water_velocity"
+      }
+    },
+    {
+      "ordinal": 4,
+      "name": "v",
+      "cppIdentifier": "v",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "m s-1",
+      "description": "y-component of the fluid velocity",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 1,
+      "movingPrimitiveChannel": 1,
+      "netCDFAttributes": {
+        "name": "standard_name",
+        "value": "northward_sea_water_velocity"
+      }
+    },
+    {
+      "ordinal": 5,
+      "name": "w",
+      "cppIdentifier": "w",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "m s-1",
+      "description": "z-component of the fluid velocity",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 1,
+      "movingPrimitiveChannel": 2,
+      "netCDFAttributes": {
+        "name": "standard_name",
+        "value": "upwardward_sea_water_velocity"
+      }
+    },
+    {
+      "ordinal": 6,
+      "name": "eta",
+      "cppIdentifier": "eta",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "m",
+      "description": "approximate isopycnal deviation",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 1,
+      "movingPrimitiveChannel": 3,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 7,
+      "name": "pi",
+      "cppIdentifier": "pi",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "m",
+      "description": "height anomaly",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 2,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 8,
+      "name": "p",
+      "cppIdentifier": "p",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "kg m-1 s-2",
+      "description": "pressure anomaly",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 2,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 9,
+      "name": "psi",
+      "cppIdentifier": "psi",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "m2 s-1",
+      "description": "geostrophic streamfunction",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": false,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 4,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 10,
+      "name": "qgpv",
+      "cppIdentifier": "qgpv",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "s-1",
+      "description": "quasigeostrophic potential vorticity",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": false,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 8,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 11,
+      "name": "rho_e",
+      "cppIdentifier": "rhoE",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "kg m-3",
+      "description": "excess density",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 1,
+      "movingPrimitiveChannel": 4,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 12,
+      "name": "rho_total",
+      "cppIdentifier": "rhoTotal",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "kg m-3",
+      "description": "total potential density",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 1,
+      "movingPrimitiveChannel": 5,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 13,
+      "name": "rho_bar",
+      "cppIdentifier": "rhoBar",
+      "dimensions": "z",
+      "units": "kg m-3",
+      "description": "mean density",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "vertical",
+      "samplingModes": "fullGrid",
+      "primitiveDependencyMask": 1,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 14,
+      "name": "zeta_x",
+      "cppIdentifier": "zetaX",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "s-1",
+      "description": "x-component component of relative vorticity",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 96,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 15,
+      "name": "zeta_y",
+      "cppIdentifier": "zetaY",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "s-1",
+      "description": "y-component component of relative vorticity",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 80,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 16,
+      "name": "zeta_z",
+      "cppIdentifier": "zetaZ",
+      "dimensions": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "s-1",
+      "description": "vertical component of relative vorticity",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "volume",
+      "samplingModes": [
+        "fullGrid",
+        "fixedVerticalProfiles",
+        "positions"
+      ],
+      "primitiveDependencyMask": 48,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": {
+        "name": "short_name",
+        "value": "ocean_relative_vorticity"
+      }
+    },
+    {
+      "ordinal": 17,
+      "name": "ssu",
+      "cppIdentifier": "ssu",
+      "dimensions": [
+        "x",
+        "y"
+      ],
+      "units": "m s-1",
+      "description": "x-component of the fluid velocity at the surface",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencyMask": 1,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 18,
+      "name": "ssv",
+      "cppIdentifier": "ssv",
+      "dimensions": [
+        "x",
+        "y"
+      ],
+      "units": "m s-1",
+      "description": "y-component of the fluid velocity at the surface",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencyMask": 1,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 19,
+      "name": "ssh",
+      "cppIdentifier": "ssh",
+      "dimensions": [
+        "x",
+        "y"
+      ],
+      "units": "m",
+      "description": "sea-surface height",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "horizontal",
+      "samplingModes": [
+        "fullGrid",
+        "positions"
+      ],
+      "primitiveDependencyMask": 2,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 20,
+      "name": "energy",
+      "cppIdentifier": "energy",
+      "dimensions": [],
+      "units": "m3 s-2",
+      "description": "horizontally-averaged depth-integrated energy computed spectrally from wave-vortex coefficients",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": false,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "scalar",
+      "samplingModes": "fullGrid",
+      "primitiveDependencyMask": 128,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 21,
+      "name": "uvMax",
+      "cppIdentifier": "uvMax",
+      "dimensions": [],
+      "units": "m s-1",
+      "description": "max horizontal fluid speed",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "scalar",
+      "samplingModes": "fullGrid",
+      "primitiveDependencyMask": 1,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    },
+    {
+      "ordinal": 22,
+      "name": "wMax",
+      "cppIdentifier": "wMax",
+      "dimensions": [],
+      "units": "m s-1",
+      "description": "max vertical fluid speed",
+      "isComplex": false,
+      "isVariableWithLinearTimeStep": true,
+      "isVariableWithNonlinearTimeStep": true,
+      "isDependentOnApAmA0": true,
+      "portableKind": "field",
+      "naturalRank": "scalar",
+      "samplingModes": "fullGrid",
+      "primitiveDependencyMask": 1,
+      "movingPrimitiveChannel": -1,
+      "netCDFAttributes": []
+    }
+  ]
+}

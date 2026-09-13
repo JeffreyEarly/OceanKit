@@ -1,0 +1,602 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Portable compatibility matrix v1",
+  "description": "MATLAB-authoritative forcing slice and standard assembly. Fixture coverage is distinct from executed parity qualification.",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "schemaVersion",
+        "slice",
+        "completion",
+        "inventory",
+        "configurations",
+        "evidence",
+        "rows"
+      ],
+      "properties": {
+        "schema": {
+          "const": "portable-compatibility-matrix-v1"
+        },
+        "schemaVersion": {
+          "const": 1
+        },
+        "slice": {
+          "const": "forcing"
+        },
+        "completion": {
+          "enum": [
+            "incomplete",
+            "complete"
+          ]
+        },
+        "inventory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source",
+            "stable",
+            "excluded"
+          ],
+          "properties": {
+            "source": {
+              "type": "string"
+            },
+            "stable": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "excluded": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "identity",
+                  "reason"
+                ],
+                "properties": {
+                  "identity": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "const": "under-development"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "configurations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/configuration"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/forcingRow"
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "schemaVersion",
+        "slice",
+        "completion",
+        "readiness",
+        "sources",
+        "inventory",
+        "versions",
+        "witnesses",
+        "rows",
+        "exclusions"
+      ],
+      "properties": {
+        "schema": {
+          "const": "portable-compatibility-matrix-v1"
+        },
+        "schemaVersion": {
+          "const": 1
+        },
+        "slice": {
+          "const": "standard"
+        },
+        "completion": {
+          "enum": [
+            "complete",
+            "incomplete"
+          ]
+        },
+        "readiness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "standardParityReady",
+            "decision",
+            "meaning"
+          ],
+          "properties": {
+            "standardParityReady": {
+              "const": true
+            },
+            "decision": {
+              "const": "STANDARD-PORTABLE-PARITY"
+            },
+            "meaning": {
+              "type": "string"
+            }
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "path",
+              "schema",
+              "sha256"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "schema": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          }
+        },
+        "inventory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "forcing",
+            "observers",
+            "variables",
+            "configurations",
+            "integrationProfiles"
+          ],
+          "properties": {
+            "forcing": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "observers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "variables": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "configurations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "integrationProfiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "versions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "version",
+              "source"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "version": {
+                "type": [
+                  "string",
+                  "number"
+                ]
+              },
+              "source": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "witnesses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "kind",
+              "path",
+              "symbol",
+              "coverage"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "symbol": {
+                "type": "string"
+              },
+              "coverage": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "description",
+                  "rowIds"
+                ],
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "rowIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "slice",
+              "sourceId",
+              "sourceRow",
+              "axes",
+              "status",
+              "reason",
+              "fixtures"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "slice": {
+                "type": "string"
+              },
+              "sourceId": {
+                "type": "string"
+              },
+              "sourceRow": {
+                "type": "string"
+              },
+              "axes": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "configuration",
+                  "feature",
+                  "sampling",
+                  "profile",
+                  "provider",
+                  "platform"
+                ],
+                "properties": {
+                  "configuration": {
+                    "type": "string"
+                  },
+                  "feature": {
+                    "type": "string"
+                  },
+                  "sampling": {
+                    "type": "string"
+                  },
+                  "profile": {
+                    "type": "string"
+                  },
+                  "provider": {
+                    "type": "string"
+                  },
+                  "platform": {
+                    "type": "string"
+                  },
+                  "outputLayout": {
+                    "type": "string"
+                  },
+                  "restartState": {
+                    "type": "string"
+                  },
+                  "stage": {
+                    "type": "string"
+                  }
+                }
+              },
+              "status": {
+                "enum": [
+                  "supported",
+                  "intentional-incompatibility",
+                  "unqualified"
+                ]
+              },
+              "reason": {
+                "type": "string"
+              },
+              "fixtures": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "issue": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "status": {
+                      "const": "unqualified"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "issue"
+                  ],
+                  "properties": {
+                    "issue": {
+                      "minimum": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "reason",
+              "source",
+              "fixtures"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string"
+              },
+              "fixtures": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "transform",
+        "isHydrostatic",
+        "shouldAntialias"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "transform": {
+          "enum": [
+            "WVTransformConstantStratification",
+            "WVTransformBarotropicQG",
+            "WVTransformStratifiedQG",
+            "WVTransformHydrostatic",
+            "WVTransformBoussinesq"
+          ]
+        },
+        "isHydrostatic": {
+          "type": "boolean"
+        },
+        "shouldAntialias": {
+          "type": "boolean"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "path",
+        "symbol"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "cpp-unit",
+            "matlab-runtime-parity",
+            "matlab-contract"
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        }
+      }
+    },
+    "forcingRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "forcing",
+        "contractVersion",
+        "configuration",
+        "matlab",
+        "implementation",
+        "acceptance",
+        "evidence",
+        "barotropicCase"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "forcing": {
+          "type": "string"
+        },
+        "contractVersion": {
+          "const": 1
+        },
+        "configuration": {
+          "type": "string"
+        },
+        "matlab": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "applicability",
+            "forcingTypes",
+            "activeTypes",
+            "priority",
+            "rejection"
+          ],
+          "properties": {
+            "applicability": {
+              "enum": [
+                "applicable",
+                "incompatible"
+              ]
+            },
+            "forcingTypes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "activeTypes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "priority": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "rejection": {
+              "enum": [
+                "",
+                "double-antialias",
+                "forcing-stage-unavailable",
+                "wave-transform-required"
+              ]
+            }
+          }
+        },
+        "implementation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "factoryAvailable",
+            "issue"
+          ],
+          "properties": {
+            "factoryAvailable": {
+              "type": "boolean"
+            },
+            "issue": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "acceptance": {
+          "enum": [
+            "pending",
+            "supported",
+            "incompatible"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "barotropicCase": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

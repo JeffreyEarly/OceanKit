@@ -1,0 +1,171 @@
+{
+  "schemaIdentifier": "wave-vortex-hydrostatic-qualification-cases-v1",
+  "cases": [
+    {
+      "id": "hydro-continuation-1",
+      "grid": [
+        9,
+        7,
+        9
+      ],
+      "Nj": 4,
+      "shouldAntialias": false,
+      "method": "fixed-rk4",
+      "stepPolicy": "explicit",
+      "linear": false,
+      "duration": 600,
+      "profile": "exponential",
+      "xyOnly": false
+    },
+    {
+      "id": "hydro-continuation-2",
+      "grid": [
+        12,
+        10,
+        13
+      ],
+      "Nj": 4,
+      "shouldAntialias": true,
+      "method": "adaptive-rk23",
+      "stepPolicy": "explicit",
+      "linear": false,
+      "duration": 600,
+      "profile": "tanh",
+      "xyOnly": false
+    },
+    {
+      "id": "hydro-continuation-3",
+      "grid": [
+        11,
+        9,
+        11
+      ],
+      "Nj": 5,
+      "shouldAntialias": false,
+      "method": "adaptive-rk78",
+      "stepPolicy": "explicit",
+      "linear": false,
+      "duration": 600,
+      "profile": "exponential",
+      "xyOnly": true
+    },
+    {
+      "id": "hydro-continuation-4",
+      "grid": [
+        16,
+        12,
+        13
+      ],
+      "Nj": 6,
+      "shouldAntialias": true,
+      "method": "fixed-rk4",
+      "stepPolicy": "cfl",
+      "linear": false,
+      "duration": 600,
+      "profile": "tanh",
+      "xyOnly": false
+    },
+    {
+      "id": "hydro-continuation-5",
+      "grid": [
+        9,
+        7,
+        9
+      ],
+      "Nj": 4,
+      "shouldAntialias": false,
+      "method": "adaptive-rk23",
+      "stepPolicy": "default",
+      "linear": true,
+      "duration": 600,
+      "profile": "exponential",
+      "xyOnly": true
+    },
+    {
+      "id": "hydro-continuation-6",
+      "grid": [
+        12,
+        10,
+        13
+      ],
+      "Nj": 4,
+      "shouldAntialias": true,
+      "method": "adaptive-rk78",
+      "stepPolicy": "default",
+      "linear": false,
+      "duration": 600,
+      "profile": "tanh",
+      "xyOnly": false
+    }
+  ],
+  "lifecycleCases": [
+    {
+      "id": "lifecycle-8",
+      "grid": [
+        8,
+        6,
+        9
+      ],
+      "Nj": 4,
+      "nativeOnly": false,
+      "profile": "tanh",
+      "xyOnly": false,
+      "shouldAntialias": false,
+      "linear": false
+    },
+    {
+      "id": "lifecycle-20",
+      "grid": [
+        20,
+        16,
+        17
+      ],
+      "Nj": 8,
+      "nativeOnly": false,
+      "profile": "tanh",
+      "xyOnly": false,
+      "shouldAntialias": false,
+      "linear": false
+    },
+    {
+      "id": "lifecycle-12",
+      "grid": [
+        12,
+        10,
+        13
+      ],
+      "Nj": 6,
+      "nativeOnly": false,
+      "profile": "tanh",
+      "xyOnly": false,
+      "shouldAntialias": false,
+      "linear": false
+    },
+    {
+      "id": "lifecycle-64",
+      "grid": [
+        64,
+        48,
+        49
+      ],
+      "Nj": 24,
+      "nativeOnly": true,
+      "profile": "tanh",
+      "xyOnly": false,
+      "shouldAntialias": false,
+      "linear": false
+    }
+  ],
+  "referenceOnlyLifecycleGrids": [
+    [
+      8,
+      6,
+      9
+    ],
+    [
+      12,
+      10,
+      13
+    ]
+  ]
+}

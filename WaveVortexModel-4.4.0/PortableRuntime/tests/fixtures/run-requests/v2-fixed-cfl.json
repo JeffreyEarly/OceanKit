@@ -1,0 +1,14 @@
+{
+  "schemaIdentifier": "wave-vortex-run-request-v2",
+  "schemaVersion": 2,
+  "modelFiles": ["../forcing-nonlinear.nc"],
+  "integration": {
+    "method": "fixed-rk4",
+    "finalTime": 12,
+    "cfl": 0.25,
+    "timeStepConstraint": "min"
+  },
+  "output": {"policy": "append", "destinations": {}},
+  "execution": {"fftProvider": "reference", "threads": 1},
+  "report": "v2-fixed-cfl-report.json"
+}

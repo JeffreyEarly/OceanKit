@@ -1,0 +1,287 @@
+{
+  "schemaVersion": "1.0.0",
+  "integrationBase": "836508bdccd67f57f853d1602a2233ae93f8d90f",
+  "selectedFeatureSnapshot": "8d0b49236c703dfa7230a8875022fdb3e30283b0",
+  "preparation": {
+    "sharedCoefficientFormulas": "97e28a892f55877a9267b2c4e3ca399b85596a34",
+    "nativeFFTWProvider": "1854d72ec07b0fb58c2b2aa972250d91629e669d"
+  },
+  "postSelectionExtensions": {
+    "sharedRightHandSideEvaluation": "bcbf315dc46d2becc5964300ccf252452a9768d5",
+    "fullGridTracerVerticalDifferentiation": "2704ca5a2d3f495745d4bb1ce4642423adc663fe",
+    "portableCompilerTestInjection": "1946c47ff70db06cb36d2622a2d094861ea4686c",
+    "eagerScalarAdvectionPlanning": "issue-218",
+    "adaptiveRK23MatlabParity": "issue-240",
+    "wvModelRuntimeFacade": "issue-248",
+    "wvModelRuntimeFacadeSHA256": "fdefaee9d72f64f9972d95d56c725b94937963bbdd132f33fe2446b5e8abdc42",
+    "resolvedObservingSystems": "issue-258",
+    "observationBatches": "issue-260",
+    "resolvedForcings": "issue-261",
+    "linearBottomFriction": "issue-262",
+    "explicitExtensionCatalog": "issue-271",
+    "eventDependentObservationGeometry": "issue-272",
+    "losslessOutputGraphs": "issue-273",
+    "stableSourceAPI": "issue-249",
+    "barotropicQGKernel": "issue-280",
+    "preparedSpectralExecution": "issue-356",
+    "sourceAPIVersion": "1.0",
+    "preFacadeBaseline": "5940f4e4e206fbfb9a6cb4760af2ba2347e3571f",
+    "preGeneralizationBaseline": "900f98eb28629a56b7a2d26da38c597c7a709a96",
+    "externalConsumerBaseline": "satmapkit/AlongTrackSimulator",
+    "externalConsumerBaselineCommit": "ba57981f336ad5bbbc0907dcd74fcd4fcd137708",
+    "externalConsumerBaselineWaveVortexCommit": "84dc1b53093650fdbc9be62b637cf298c46a95d3",
+    "description": "Shared per-RHS advection fields, core-owned F-grid scalar differentiation, construction-time preparation of required scalar and event-sampling plans, MATLAB-compatible adaptive tolerances for integrated observers, one thin WVModel owner shared by the CLI and production MEX RHS path, source-linked observing-system and forcing implementations resolved through an explicit immutable typed catalog, generic event-scoped observation batches and geometry, linear bottom friction, and stable source API v1 with runtime-only access to WVModel internals.",
+    "kernelTypesSHA256": "4b7cf55649b02eaae224bfaf618f756122a81c1caaff92c751b4e35f827ea1cc",
+    "kernelInterfaceSHA256": "6e9c5e6d58982c99704336eeb0068ff8fb7ef24e77c429469a04ab3b5ae6f50e",
+    "integrationSystemSHA256": "1bb9d96106e698b6ecdd3066ab7a237052d1bf6e2ba9eefd4bbd87ee0dbdbd69",
+    "forcingEngineSHA256": "4fff3f0ee23564e6ece00081287b61099796962597e7b46df593e8293e89a1d3",
+    "forcingInterfaceSHA256": "811e219f426ce91e843717cec8561f4fb294ef4e0d70626e636f7533697fc33e",
+    "preparedSpectralOperators": "issue-357",
+    "stableForcingCompatibility": "issues-290-294",
+    "stratifiedQGRuntime": "issue-297",
+    "hydrostaticKernel": "issue-299",
+    "hydrostaticRuntime": "issue-300",
+    "boussinesqKernel": "issue-302",
+    "resolvedForcingTendencyDiagnostics": "issue-315",
+    "controlledEarlyTermination": "issue-288",
+    "standardForwardIntegrationQualification": "issue-289",
+    "adaptiveDampingEffectiveResolution": "issue-409",
+    "tiledHorizontalAdvection": "issue-489",
+    "tiledScratchAndArithmetic": "issue-491",
+    "matlabOwnedModalBridge": "issue-503",
+    "matlabAllFamilyEvaluation": "issues-504-507"
+  },
+  "contract": {
+    "version": 4,
+    "coefficientShape": "[Nj,Nkl]",
+    "planCount": 17,
+    "knownScratch": "4C+6R",
+    "coefficientWorkers": 2,
+    "coefficientExecution": "prepared-persistent-workers",
+    "persistentFullHermitianSpectrum": false,
+    "planCountMeaning": "logical-prepared-operation-slots"
+  },
+  "barotropicQGContract": {
+    "version": 4,
+    "coefficientFamilies": [
+      "A0"
+    ],
+    "coefficientShape": "[Nkl]",
+    "normalization": "QGPV",
+    "planCount": 3,
+    "knownScratch": "4H+5R",
+    "persistentFullHermitianSpectrum": false,
+    "portableProvider": "reference-direct",
+    "nativeProvider": "fftw-3.3.11-neon-pthreads"
+  },
+  "selectedSourceSHA256": "f338eedfd6295d22b5cf563c270b8e5037dd7295db2f90c39b9c915a63715369",
+  "keySourceSHA256": {
+    "preparedModeExecutor": "817d2a3cd791b51a38e0e427a1d6800d376aaa976ca7100f438599841fabce93",
+    "coefficientFormulas": "78d647608d8919b33c278c280eb6d2b253dfb0acd8d3330141fbdc845e00864a",
+    "kernel": "b0ed568518f3a5c2a96ac01f241336d100b22047312f86984ea03f9d1fc6f038",
+    "integrationSystem": "21d00e8a75de899425ff991896d9d9dedff2201228835d0f97e01bc9dab569eb",
+    "nativeEngine": "886c726807375097579a61468092ad33e54b4fa57e5bf18a7e6b1694e5a7aac0",
+    "mexGateway": "bb20d65a113c25bf31ddca66ae14c92f46f5d83815f114e5fd3abfb74bf067bd",
+    "buildOrchestrator": "fba3361d36d43b43f88149b6856fe888dbeaa3b9a6c9601c14c07d0c67c70c92"
+  },
+  "excluded": [
+    "historical benchmark harnesses and canonical engineering artifacts",
+    "provider sweeps and alternative FFT engines",
+    "rejected arena, layout, and workspace schedules",
+    "preparation-branch verification artifacts",
+    "public computationalBackend selection"
+  ],
+  "spectralOperatorContract": {
+    "identity": "wave-vortex-spectral-operators-v1",
+    "horizontalSchedule": "full-fft-gather-embed",
+    "complexRepresentations": [
+      "interleaved",
+      "split"
+    ],
+    "verticalActions": [
+      "reconstruction",
+      "projection",
+      "crossFamily"
+    ],
+    "matrixIdentity": "exact-source-and-name",
+    "placement": "out-of-place",
+    "sourceSHA256": {
+      "interface": "86d5fb2a286a1f94aef1280db2a4a607fed4344d390efe47c0c501f409f53228",
+      "horizontal": "eb41647f87da5a4959eb3a5ee5f06979f94cae51df20dc066077e80d9e830a16",
+      "vertical": "8db94258b976e3ce3a0e45fc84646e7745b2b274d729e2ebba09ef79b0741031",
+      "validation": "eb416d6abc47d97d506b4c4fa65e8006b951d07d013c5d96db0f8043b417cc79",
+      "referenceFFT": "703724883edd3c05f583c7e68bad46830b1a92e22524a10906d3da366ad64c49",
+      "accelerate": "1a79f66611d315e85d23446268de2125f0cd20d9866542881414152162289dd5"
+    },
+    "optionalHorizontalSchedule": "fftw-streaming-pruned-tile16"
+  },
+  "stratifiedQGKernel": {
+    "identity": "wave-vortex-stratified-qg-kernel-v1",
+    "scientificSource": "wave-vortex-stratified-modal-record-v1",
+    "preparedOperators": "wave-vortex-spectral-operators-v1",
+    "coefficientLayout": "canonical-interleaved-Nj-Nkl",
+    "normalization": "A0-is-F-projected-QGPV",
+    "runtimeExecutionCapabilityAdded": false,
+    "sourceSHA256": {
+      "CompiledKernel/include/WaveVortexKernel/WVStratifiedModalSource.hpp": "2577060312de3d9255b34d5398ce881c568216d622ac946627657f76fe982ff6",
+      "CompiledKernel/include/WaveVortexKernel/WVTransformStratifiedQGKernel.hpp": "0970bc8c8c27cf6e00f8e6557030d1b828be6a312edc2232b7ea4b8a7f6a495f",
+      "CompiledKernel/src/WVTransformStratifiedQGKernel.cpp": "5c1930910de14b9f86238692a52a2f5324643b4a2b3f8c6a30f845547a62b48d"
+    }
+  },
+  "boussinesqKernel": {
+    "identity": "wave-vortex-boussinesq-kernel-v1",
+    "scientificSource": "wave-vortex-stratified-modal-record-v1",
+    "groupIdentity": "persisted-K2unique-and-iK2unique",
+    "coefficientLayout": "canonical-interleaved-Nj-Nkl",
+    "runtimeExecutionCapabilityAdded": false,
+    "qualification": "UnitTests/TestBoussinesqCompiledKernel.m"
+  },
+  "constantSpectralSchedule": {
+    "issue": 358,
+    "identity": "retained-compact-streamed-target-three-channel-v1",
+    "executionScheduleVersion": 1,
+    "productionDefault": true,
+    "frozenControl": "8d08ba48b554a84b9920e349e6d4c69dccd6c0dd",
+    "baseNumericalScratch": "4C+6R",
+    "configuredScalarNumericalScratch": "max(4C,H)+6R",
+    "definitions": {
+      "C": "Nz*Nkl complex values",
+      "H": "(floor(Nx/2)+1)*Ny*Nz complex values",
+      "R": "Nx*Ny*Nz real values"
+    },
+    "workerPolicy": {
+      "identity": "constant-stage-workers-v1",
+      "horizontalOuter": 12,
+      "horizontalFFTWInternal": 1,
+      "typeIFFTWInternal": "requested provider thread count; 16 in the recorded campaign",
+      "coefficient": 2,
+      "pointwise": 12,
+      "pointwiseSerialBelowRealElements": 4096
+    },
+    "sourceSHA256": {
+      "CompiledKernel/include/WaveVortexKernel/WVFFTEngine.hpp": "49fae3f70ccf492312c3bd5d52d713f9b38a8f3e7f1791275bbf0e2fa9ffdb4f",
+      "CompiledKernel/include/WaveVortexKernel/WVTransformConstantStratificationKernel.hpp": "805b5b58fb6943b23f5301af3fb94c0790577b113b4636f163e34297dc969903",
+      "CompiledKernel/adapters/native-fftw/WVNativeFFTWEngine.hpp": "7285f9989e604d2056a36eec275b95389bf386c3a5c7f5140086206f6ecf251b",
+      "@WVCompiledBackend/private/wvCompiledBackendConstants.m": "6b8833c89efb0d55dca397bc752194e18c9cd7128aff4a9959b8dad12300ae78",
+      "@WVCompiledBackend/private/wvCompiledBackendCapabilities.m": "aaca34c95c35db79977d9c157a06d5a649f163b6ca71ffaa5c06f9f9c8cdb9c1"
+    },
+    "adoptionDecision": "accepted-large-grid-qualification-with-owner-accepted-small-grid-cost",
+    "evidence": ".github/ci-evidence/issue-455-large-grid-adoption/decision.json",
+    "historicalAdoptionEvidence": ".github/ci-evidence/issue-358-adoption/decision.json",
+    "qualificationIssue": 455,
+    "acceptedSmallGridTimingException": {
+      "grid": [
+        32,
+        24,
+        33
+      ],
+      "observedIntegrationPenaltyPercent": [
+        18.6,
+        20.7
+      ],
+      "reason": "Owner accepts this cost and declined small-grid optimization; large-grid timing gates passed."
+    }
+  },
+  "variableSpectralSchedule": {
+    "issue": 455,
+    "status": "qualified-native-runner-default",
+    "productionDefault": false,
+    "optionsHeader": "CompiledKernel/include/WaveVortexKernel/WVVariableExecutionOptions.hpp",
+    "defaultHorizontalSchedule": "full-fft-gather",
+    "nativeCandidateHorizontalSchedule": "fftw-streaming-pruned-tile16",
+    "matrixRepresentation": "Compact split fused views in the eligible native runner; established interleaved control remains available. Exact persisted groups and contiguous subsegments are preserved.",
+    "streamedHydrostaticRealScratch": "6R (frozen 10R); spectral scratch unchanged",
+    "qualification": ".github/ci-evidence/issue-455-variable-final-adoption/decision.json",
+    "streamedBoussinesqRealScratch": "6R (frozen 11R); preserves four target spectra",
+    "boundedDerivativeResources": "Pruned execution prepares one full-frequency derivative plane pair instead of duplicate full-volume resources (#463)",
+    "pointwiseWorkers": "Prepared contiguous-cell executor: native runner up to 8 performance-core workers; portable service default 1.",
+    "sourceSHA256": {
+      "CompiledKernel/include/WaveVortexKernel/WVVariableExecutionOptions.hpp": "75af8244b15fc5a81236f0faa372c73624e4607d516e6a974a1ab3e19d34e553",
+      "CompiledKernel/src/WVVariableComplexBuffer.hpp": "53a81ca2c48811b39f62a59104cafea2330fd1a121f746ab06a14a1eea85aaf2",
+      "CompiledKernel/src/WVTransformStratifiedQGKernel.cpp": "5c1930910de14b9f86238692a52a2f5324643b4a2b3f8c6a30f845547a62b48d",
+      "CompiledKernel/src/WVTransformHydrostaticKernel.cpp": "970e938d5e0eefa295409e1fc7896a7a4cdca68c7aa2419386df20b55157d12c",
+      "CompiledKernel/src/WVTransformBoussinesqKernel.cpp": "6edf409320c2005e328d5be498dc36363d18d913436ffab7dbc145ff66944321",
+      "CompiledKernel/include/WaveVortexKernel/WVTransformStratifiedQGKernel.hpp": "0970bc8c8c27cf6e00f8e6557030d1b828be6a312edc2232b7ea4b8a7f6a495f",
+      "CompiledKernel/include/WaveVortexKernel/WVTransformHydrostaticKernel.hpp": "3feb167709f463e522c38cc7b7d66cae582cd9571447f7ac25cdc1ec60da20bf",
+      "CompiledKernel/include/WaveVortexKernel/WVTransformBoussinesqKernel.hpp": "05166c3b2b0975a7018073054ad579cbe68f4ea730b9436972414dd30b6e93ab",
+      "CompiledKernel/src/WVPreparedFieldCache.hpp": "22777b3b45f6403a0c1761901e5b7e30193ce2b226e8bacde31ece73aae4b94b",
+      "CompiledKernel/src/WVAdvectionConsumer.hpp": "f47c9b9454d83f8bf4c9affae8151dd89d809ba2c2e5553185c336c2ffbe20b4"
+    },
+    "fullGridDerivativeScratch": "one horizontal real/half-spectrum plane when retained provider is active; all resolved frequencies preserved",
+    "productionDefaultScope": "Portable kernel constructors retain their established defaults; eligible native runners select the qualified services.",
+    "nativeRunnerDefault": true,
+    "postMeasurementCommentOnlyChange": {
+      "path": "CompiledKernel/include/WaveVortexKernel/WVVariableExecutionOptions.hpp",
+      "measuredSHA256": "df319684fd1a980acadc723b53bfc75e0e0b8d545ef830859eea52626ab7a281",
+      "adoptedSHA256": "84b08b4bfc568807182645d03da46fe2fe0e739e700e67049fdd3b23cdd10924",
+      "scope": "Comments only; enum values, aggregate layout and constructor defaults are unchanged."
+    },
+    "matrixAdvectionQualification": ".github/ci-evidence/matrix-advection-adoption/decision.json"
+  },
+  "matrixAdvectionExploration": {
+    "status": "qualified-native-runner-default",
+    "report": "Benchmarks/MATRIX-ADVECTION-PIPELINE.md",
+    "frozenRuntimeCommit": "e8806710",
+    "scope": "Immediate inverse derivative consumption for compact Hydrostatic/Boussinesq; exact inertial-column projection and persistent matrix-group workers for Boussinesq.",
+    "issue": 477,
+    "qualifiedRuntimeCommit": "400ed1f1213795c95b04875dd54b0564d299545d",
+    "qualification": ".github/ci-evidence/matrix-advection-adoption/decision.json"
+  },
+  "tiledScratchAndArithmetic": {
+    "issue": 491,
+    "scope": "Provider-owned base tile reuse, last-use target-z overwrite and private disjoint ordinary/density accumulation loops.",
+    "packedComplexCapacity": "T*W*D*M; four base tiles use existing 16*W*M capacity, D<=4",
+    "sourceSHA256": {
+      "CompiledKernel/adapters/native-fftw/WVNativeFFTWEngine.cpp": "76fe16ed98a7a4022663e2bbe1c42f10ad1638603a75d7584f58f7303fef3315",
+      "CompiledKernel/adapters/native-fftw/WVNativeAdvectionArithmetic.hpp": "432e0cd3b6958166a8c68788fa1e13d8283e330f0ba9a8abc5255517fdfafa35"
+    }
+  },
+  "preparedAssemblyProjection": {
+    "issue": 495,
+    "scope": "Existing pointwise executor for Hydrostatic projection and Boussinesq assembly/projection; fuse Boussinesq vertical-velocity divergence consumption; skip unused has-W balanced divergence.",
+    "sourceSHA256": {
+      "CompiledKernel/src/WVTransformHydrostaticKernel.cpp": "3eb002fce3671081ccbd778d135959b8aff5482fdd3a812bd93189288802b31c",
+      "CompiledKernel/src/WVTransformBoussinesqKernel.cpp": "4a8ae972beb4e8fd47811c640f27aa927e762a59a2d84532e1eb10c26e9ede35"
+    }
+  },
+  "matlabOwnedModalBridge": {
+    "issue": 503,
+    "status": "all-six-implemented-qualification-in-progress",
+    "ownedScientificSource": "wave-vortex-owned-stratified-modal-source-v1",
+    "matlabSchema": "wv-matlab-stratified-modal-source-v1",
+    "supportedTransformFamilies": [
+      "WVTransformConstantStratification",
+      "WVTransformHydrostatic",
+      "WVTransformBoussinesq",
+      "WVTransformStratifiedQG",
+      "WVTransformBarotropicQG"
+    ],
+    "ownedSourceInputFamilies": [
+      "WVTransformStratifiedQG",
+      "WVTransformHydrostatic",
+      "WVTransformBoussinesq"
+    ],
+    "nativeVariablePolicy": "compact-native-variable-v1",
+    "matrixBackend": "accelerate-gemm-v1",
+    "stateOwnership": "Modal geometry and matrices are copied into an immutable native source; each outer evaluation owns one coefficient snapshot shared by its consumers. MATLAB source configuration is leased until the last native owner is released.",
+    "moduleSourceManifestBinding": true,
+    "sourceSHA256": {
+      "CompiledKernel/include/WaveVortexKernel/WVOwnedStratifiedModalSource.hpp": "9eb131d10eb8fa968ded995edd0ecbf484aae69ef2f7860c39da735e516462e4",
+      "CompiledKernel/src/WVOwnedStratifiedModalSource.cpp": "1467a3916dfa52094eba3f64d8e48f329d7e7028a36478cda21814f189e157b3",
+      "CompiledKernel/adapters/native-fftw/WVMatlabTransformHost.hpp": "eeacdf24a60049504da25c639a8da0d934714beab3b8a7b963aa215f1f26fc30",
+      "CompiledKernel/adapters/native-fftw/WVMatlabTransformHost.cpp": "91b9e237205ec1b088fc09d2a83d68fe5fa202568fe60718db051d0903050c5f",
+      "CompiledKernel/adapters/native-fftw/wv_compiled_backend_mex.cpp": "a6ee61d41e25d2b0e784977ca3f1cd1a7bf3bf65a4f9963b8e2079a9c96fd782",
+      "@WVCompiledTransformBackend/WVCompiledTransformBackend.m": "fcb5e23d7eb8da428951805b33d3be97f7947105346c1da631ae3ae4fa69837d",
+      "@WVCompiledTransformBackend/private/wvCompiledStratifiedModalConfiguration.m": "399781a80267b8af504a332e57415d96caa5ebf2d36b8c95e51e7b6ed30d52d1",
+      "@WVTransform/WVTransform.m": "c9da0fdba44e8461b9fe77b680dcb45475fb9b8961c9217924975584a0b7be6b",
+      "@WVCompiledBackend/private/wvCompiledBackendCapabilities.m": "1a4b11c3d2c77bd93761a2acca7c2266c69ee21734eded64029d663ec96aab1f",
+      "@WVCompiledSourceIdentity/WVCompiledSourceIdentity.m": "587520e7c53381e92fc84e3fa0c4c44ac9d4bce445da91375851368d888c215f",
+      "CompiledKernel/src/WVStratifiedVerticalCalculus.hpp": "1018d71e2defe0c2de4a784ef553dd361fb6b4f978dadbfcb17e9a9e95eff660",
+      "@WVCompiledBackend/private/wvCompiledBackendNewSourceManifest.m": "b15917b68fad2586cd50437ad515678509bdcbf3ffcd4646a5ea3db91148b872",
+      "@WVCompiledBackend/qualifySourceIdentity.m": "b15a6733d284148d56f5a5c5db0c869ebd734f404d922da9baa25888a59e25c3",
+      "@WVCompiledTransformBackend/private/wvCompiledConstantConfiguration.m": "0b144e9fa8ec8cc5d563f5a9e9a9fa5727f96928040685bc9d6ddb5439f8ef0c"
+    },
+    "supportedConfigurations": 6,
+    "matlabTransformBridgeVersion": 6
+  }
+}

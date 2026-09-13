@@ -1,0 +1,16 @@
+{
+  "schemaIdentifier": "wave-vortex-run-request-v1",
+  "schemaVersion": 1,
+  "modelFiles": ["../forcing-nonlinear.nc"],
+  "integration": {
+    "method": "adaptive-rk23",
+    "finalTime": 12,
+    "initialStep": 0.25,
+    "maximumStep": 1,
+    "relativeTolerance": 0.001,
+    "absoluteToleranceScale": 0.000001
+  },
+  "output": {"policy": "append", "destinations": {}},
+  "execution": {"fftProvider": "reference", "threads": 1},
+  "report": "v1-adaptive-rk23-report.json"
+}
