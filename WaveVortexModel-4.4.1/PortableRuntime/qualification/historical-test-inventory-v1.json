@@ -1,0 +1,405 @@
+{
+  "schema": "wave-vortex-historical-qualification-inventory-v1",
+  "schemaVersion": 1,
+  "scope": "historical-workload",
+  "derivation": "Literal Test methods from clean recorded source commits; no current class discovery or report-derived inventory.",
+  "entries": [
+    {
+      "family": "stratified-qg",
+      "sourceCommit": "93d84d4faba2c47bfe0b5203ef38abb0c6b33ffd",
+      "sourceTree": "22692ba2ef1e222d97af420fc3d393c601b54ba6",
+      "reportPath": "PortableRuntime/qualification/stratified-qg-apple-silicon-v1.json",
+      "reportSHA256": "081dd3988ce245e7e15c89ab7734b1a101375e588dc33f776780b32fbc887760",
+      "sources": [
+        {
+          "path": "UnitTests/TestPortableStratifiedQG.m",
+          "sha256": "0f75bcadf5603c9939944ad49f26796ba7aa467d147e21190ac43417fb304162",
+          "testNames": [
+            "TestPortableStratifiedQG/linearPassiveObserversMatchMatlab",
+            "TestPortableStratifiedQG/cflAndDefaultSteppingMatchMatlab",
+            "TestPortableStratifiedQG/multiFileOutputPoliciesAndRestart",
+            "TestPortableStratifiedQG/incompatibleModelGraphsAreTransactional",
+            "TestPortableStratifiedQG/modelIntegrationRoundTripsThroughMatlab",
+            "TestPortableStratifiedQG/fieldSamplingMatchesMatlab",
+            "TestPortableStratifiedQG/applicableForcingTendenciesMatchMatlab",
+            "TestPortableStratifiedQG/orderedForcingTendenciesMatchMatlab"
+          ]
+        },
+        {
+          "path": "UnitTests/TestPortableStratifiedQGQualification.m",
+          "sha256": "7fb7067b15ad73bb0b31429338eebc2985da26a4dc40936f256f80c0188871f3",
+          "testNames": [
+            "TestPortableStratifiedQGQualification/longerContinuationMatchesMatlab",
+            "TestPortableStratifiedQGQualification/lifecycleAndStorageRemainBounded"
+          ]
+        },
+        {
+          "path": "UnitTests/TestPortableStableForcing.m",
+          "sha256": "cda4ee023ea4c6326f89f527b32ed107ea358c4c0aeb96847e28d8618a190166",
+          "testNames": [
+            "TestPortableStableForcing/explicitAntialiasingMatchesMatlab",
+            "TestPortableStableForcing/explicitFilterPreservesOrderingAndFixedAmplitudes",
+            "TestPortableStableForcing/adaptiveClosuresUseMatlabEffectiveResolution",
+            "TestPortableStableForcing/malformedClosuresLeaveAppendTargetsUnchanged",
+            "TestPortableStableForcing/catalogPairsMatchMatlabAndAppend",
+            "TestPortableStableForcing/orderedClosureGraphsRestartAndConvertResolution",
+            "TestPortableStableForcing/laplacianDampingMatchesMatlab",
+            "TestPortableStableForcing/verticalDiffusivityMatchesMatlab",
+            "TestPortableStableForcing/constantNarrowBandAndOrderedClosuresMatchMatlab"
+          ]
+        },
+        {
+          "path": "UnitTests/TestPortableForcingCompatibility.m",
+          "sha256": "844cc1ed2b93da8a8ad4795cf62a7745abb775217274899d0197195c9f520a6c",
+          "testNames": [
+            "TestPortableForcingCompatibility/matlabRegenerationMatchesCommittedArtifacts",
+            "TestPortableForcingCompatibility/incompleteEvidenceCannotClaimReadiness",
+            "TestPortableForcingCompatibility/invalidIdentitiesAndEvidenceAreRejected",
+            "TestPortableForcingCompatibility/implementedPairsAndScientificRejectionsStayDistinct"
+          ]
+        },
+        {
+          "path": "UnitTests/TestCompiledKernelIntegration.m",
+          "sha256": "f0b2a6860b68bfc82e0097e24bbd81a3fac30376ad58185867ebe4678a86f133",
+          "testNames": [
+            "TestCompiledKernelIntegration/selectionRecordsTheAcceptedContract",
+            "TestCompiledKernelIntegration/runtimeSelectionRecordsStableSourceAPI",
+            "TestCompiledKernelIntegration/keyRuntimeHashesMatchTheSelection",
+            "TestCompiledKernelIntegration/portableCoreHasNoHostOrVendorDependency",
+            "TestCompiledKernelIntegration/repositoryTracksOnlySourceProducts"
+          ]
+        },
+        {
+          "path": "UnitTests/TestStratifiedModalRecord.m",
+          "sha256": "842a4ee6565159a26069022532ad7319deab62b7926f1779dca1d4230c3b630f",
+          "testNames": [
+            "TestStratifiedModalRecord/olderFilesRemainMatlabCompatible",
+            "TestStratifiedModalRecord/defaultModelOutputContainsScientificRecords",
+            "TestStratifiedModalRecord/explicitPropertyOnlySavesRemainUnchanged",
+            "TestStratifiedModalRecord/nonprefixModalSubsetPreservesScientificKeys",
+            "TestStratifiedModalRecord/sharedRecordsRoundTripThroughMatlab",
+            "TestStratifiedModalRecord/scientificRecordsAndPreparedOperatorsMatchMatlab"
+          ]
+        }
+      ],
+      "testNames": [
+        "TestPortableStratifiedQG/linearPassiveObserversMatchMatlab",
+        "TestPortableStratifiedQG/cflAndDefaultSteppingMatchMatlab",
+        "TestPortableStratifiedQG/multiFileOutputPoliciesAndRestart",
+        "TestPortableStratifiedQG/incompatibleModelGraphsAreTransactional",
+        "TestPortableStratifiedQG/modelIntegrationRoundTripsThroughMatlab",
+        "TestPortableStratifiedQG/fieldSamplingMatchesMatlab",
+        "TestPortableStratifiedQG/applicableForcingTendenciesMatchMatlab",
+        "TestPortableStratifiedQG/orderedForcingTendenciesMatchMatlab",
+        "TestPortableStratifiedQGQualification/longerContinuationMatchesMatlab",
+        "TestPortableStratifiedQGQualification/lifecycleAndStorageRemainBounded",
+        "TestPortableStableForcing/explicitAntialiasingMatchesMatlab",
+        "TestPortableStableForcing/explicitFilterPreservesOrderingAndFixedAmplitudes",
+        "TestPortableStableForcing/adaptiveClosuresUseMatlabEffectiveResolution",
+        "TestPortableStableForcing/malformedClosuresLeaveAppendTargetsUnchanged",
+        "TestPortableStableForcing/catalogPairsMatchMatlabAndAppend",
+        "TestPortableStableForcing/orderedClosureGraphsRestartAndConvertResolution",
+        "TestPortableStableForcing/laplacianDampingMatchesMatlab",
+        "TestPortableStableForcing/verticalDiffusivityMatchesMatlab",
+        "TestPortableStableForcing/constantNarrowBandAndOrderedClosuresMatchMatlab",
+        "TestPortableForcingCompatibility/matlabRegenerationMatchesCommittedArtifacts",
+        "TestPortableForcingCompatibility/incompleteEvidenceCannotClaimReadiness",
+        "TestPortableForcingCompatibility/invalidIdentitiesAndEvidenceAreRejected",
+        "TestPortableForcingCompatibility/implementedPairsAndScientificRejectionsStayDistinct",
+        "TestCompiledKernelIntegration/selectionRecordsTheAcceptedContract",
+        "TestCompiledKernelIntegration/runtimeSelectionRecordsStableSourceAPI",
+        "TestCompiledKernelIntegration/keyRuntimeHashesMatchTheSelection",
+        "TestCompiledKernelIntegration/portableCoreHasNoHostOrVendorDependency",
+        "TestCompiledKernelIntegration/repositoryTracksOnlySourceProducts",
+        "TestStratifiedModalRecord/olderFilesRemainMatlabCompatible",
+        "TestStratifiedModalRecord/defaultModelOutputContainsScientificRecords",
+        "TestStratifiedModalRecord/explicitPropertyOnlySavesRemainUnchanged",
+        "TestStratifiedModalRecord/nonprefixModalSubsetPreservesScientificKeys",
+        "TestStratifiedModalRecord/sharedRecordsRoundTripThroughMatlab",
+        "TestStratifiedModalRecord/scientificRecordsAndPreparedOperatorsMatchMatlab"
+      ]
+    },
+    {
+      "family": "hydrostatic",
+      "sourceCommit": "93d84d4faba2c47bfe0b5203ef38abb0c6b33ffd",
+      "sourceTree": "22692ba2ef1e222d97af420fc3d393c601b54ba6",
+      "reportPath": "PortableRuntime/qualification/hydrostatic-apple-silicon-v1.json",
+      "reportSHA256": "09d340c5845ab9fb11e50f1ad463534774734710155b5f654d02c9d1845503a3",
+      "sources": [
+        {
+          "path": "UnitTests/TestPortableHydrostatic.m",
+          "sha256": "cc4c11086c3d7724c54fd70b58310536260d8196d223341e7cd4eaeaf284ceef",
+          "testNames": [
+            "TestPortableHydrostatic/linearPassiveObserversMatchMatlab",
+            "TestPortableHydrostatic/horizontalOnlyObserversMatchMatlab",
+            "TestPortableHydrostatic/cflAndDefaultSteppingMatchMatlab",
+            "TestPortableHydrostatic/multiFileOutputPoliciesAndRestart",
+            "TestPortableHydrostatic/incompatibleModelGraphsAreTransactional",
+            "TestPortableHydrostatic/modelIntegrationRoundTripsThroughMatlab",
+            "TestPortableHydrostatic/fieldSamplingMatchesMatlab",
+            "TestPortableHydrostatic/retainedSubsetAndNonuniformGrid",
+            "TestPortableHydrostatic/malformedModelsLeaveAppendTargetsUnchanged",
+            "TestPortableHydrostatic/applicableForcingTendenciesMatchMatlab",
+            "TestPortableHydrostatic/applicableForcingContinuationsMatchMatlab",
+            "TestPortableHydrostatic/orderedForcingTendenciesMatchMatlab"
+          ]
+        },
+        {
+          "path": "UnitTests/TestPortableHydrostaticQualification.m",
+          "sha256": "c1739e49f8e1c977f7dc54e50754d178e8f4ffa838d1564e102106b43996fbc0",
+          "testNames": [
+            "TestPortableHydrostaticQualification/longerContinuationMatchesMatlab",
+            "TestPortableHydrostaticQualification/lifecycleAndStorageRemainBounded"
+          ]
+        },
+        {
+          "path": "UnitTests/TestPortableStableForcing.m",
+          "sha256": "cda4ee023ea4c6326f89f527b32ed107ea358c4c0aeb96847e28d8618a190166",
+          "testNames": [
+            "TestPortableStableForcing/explicitAntialiasingMatchesMatlab",
+            "TestPortableStableForcing/explicitFilterPreservesOrderingAndFixedAmplitudes",
+            "TestPortableStableForcing/adaptiveClosuresUseMatlabEffectiveResolution",
+            "TestPortableStableForcing/malformedClosuresLeaveAppendTargetsUnchanged",
+            "TestPortableStableForcing/catalogPairsMatchMatlabAndAppend",
+            "TestPortableStableForcing/orderedClosureGraphsRestartAndConvertResolution",
+            "TestPortableStableForcing/laplacianDampingMatchesMatlab",
+            "TestPortableStableForcing/verticalDiffusivityMatchesMatlab",
+            "TestPortableStableForcing/constantNarrowBandAndOrderedClosuresMatchMatlab"
+          ]
+        },
+        {
+          "path": "UnitTests/TestPortableForcingCompatibility.m",
+          "sha256": "844cc1ed2b93da8a8ad4795cf62a7745abb775217274899d0197195c9f520a6c",
+          "testNames": [
+            "TestPortableForcingCompatibility/matlabRegenerationMatchesCommittedArtifacts",
+            "TestPortableForcingCompatibility/incompleteEvidenceCannotClaimReadiness",
+            "TestPortableForcingCompatibility/invalidIdentitiesAndEvidenceAreRejected",
+            "TestPortableForcingCompatibility/implementedPairsAndScientificRejectionsStayDistinct"
+          ]
+        },
+        {
+          "path": "UnitTests/TestCompiledKernelIntegration.m",
+          "sha256": "f0b2a6860b68bfc82e0097e24bbd81a3fac30376ad58185867ebe4678a86f133",
+          "testNames": [
+            "TestCompiledKernelIntegration/selectionRecordsTheAcceptedContract",
+            "TestCompiledKernelIntegration/runtimeSelectionRecordsStableSourceAPI",
+            "TestCompiledKernelIntegration/keyRuntimeHashesMatchTheSelection",
+            "TestCompiledKernelIntegration/portableCoreHasNoHostOrVendorDependency",
+            "TestCompiledKernelIntegration/repositoryTracksOnlySourceProducts"
+          ]
+        },
+        {
+          "path": "UnitTests/TestStratifiedModalRecord.m",
+          "sha256": "842a4ee6565159a26069022532ad7319deab62b7926f1779dca1d4230c3b630f",
+          "testNames": [
+            "TestStratifiedModalRecord/olderFilesRemainMatlabCompatible",
+            "TestStratifiedModalRecord/defaultModelOutputContainsScientificRecords",
+            "TestStratifiedModalRecord/explicitPropertyOnlySavesRemainUnchanged",
+            "TestStratifiedModalRecord/nonprefixModalSubsetPreservesScientificKeys",
+            "TestStratifiedModalRecord/sharedRecordsRoundTripThroughMatlab",
+            "TestStratifiedModalRecord/scientificRecordsAndPreparedOperatorsMatchMatlab"
+          ]
+        },
+        {
+          "path": "UnitTests/TestHydrostaticCompiledKernel.m",
+          "sha256": "6620138ce1b1e13072c87903eb52f3cc4d2904eb222a35c0d78cf349e4f5c3c0",
+          "testNames": [
+            "TestHydrostaticCompiledKernel/variableStratificationMatchesMatlab",
+            "TestHydrostaticCompiledKernel/retainedSubsetAndSouthernLatitude"
+          ]
+        },
+        {
+          "path": "UnitTests/TestPortableStratifiedQGQualification.m",
+          "sha256": "7fb7067b15ad73bb0b31429338eebc2985da26a4dc40936f256f80c0188871f3",
+          "testNames": [
+            "TestPortableStratifiedQGQualification/lifecycleAndStorageRemainBounded"
+          ]
+        }
+      ],
+      "testNames": [
+        "TestPortableHydrostatic/linearPassiveObserversMatchMatlab",
+        "TestPortableHydrostatic/horizontalOnlyObserversMatchMatlab",
+        "TestPortableHydrostatic/cflAndDefaultSteppingMatchMatlab",
+        "TestPortableHydrostatic/multiFileOutputPoliciesAndRestart",
+        "TestPortableHydrostatic/incompatibleModelGraphsAreTransactional",
+        "TestPortableHydrostatic/modelIntegrationRoundTripsThroughMatlab",
+        "TestPortableHydrostatic/fieldSamplingMatchesMatlab",
+        "TestPortableHydrostatic/retainedSubsetAndNonuniformGrid",
+        "TestPortableHydrostatic/malformedModelsLeaveAppendTargetsUnchanged",
+        "TestPortableHydrostatic/applicableForcingTendenciesMatchMatlab",
+        "TestPortableHydrostatic/applicableForcingContinuationsMatchMatlab",
+        "TestPortableHydrostatic/orderedForcingTendenciesMatchMatlab",
+        "TestPortableHydrostaticQualification/longerContinuationMatchesMatlab",
+        "TestPortableHydrostaticQualification/lifecycleAndStorageRemainBounded",
+        "TestPortableStableForcing/explicitAntialiasingMatchesMatlab",
+        "TestPortableStableForcing/explicitFilterPreservesOrderingAndFixedAmplitudes",
+        "TestPortableStableForcing/adaptiveClosuresUseMatlabEffectiveResolution",
+        "TestPortableStableForcing/malformedClosuresLeaveAppendTargetsUnchanged",
+        "TestPortableStableForcing/catalogPairsMatchMatlabAndAppend",
+        "TestPortableStableForcing/orderedClosureGraphsRestartAndConvertResolution",
+        "TestPortableStableForcing/laplacianDampingMatchesMatlab",
+        "TestPortableStableForcing/verticalDiffusivityMatchesMatlab",
+        "TestPortableStableForcing/constantNarrowBandAndOrderedClosuresMatchMatlab",
+        "TestPortableForcingCompatibility/matlabRegenerationMatchesCommittedArtifacts",
+        "TestPortableForcingCompatibility/incompleteEvidenceCannotClaimReadiness",
+        "TestPortableForcingCompatibility/invalidIdentitiesAndEvidenceAreRejected",
+        "TestPortableForcingCompatibility/implementedPairsAndScientificRejectionsStayDistinct",
+        "TestCompiledKernelIntegration/selectionRecordsTheAcceptedContract",
+        "TestCompiledKernelIntegration/runtimeSelectionRecordsStableSourceAPI",
+        "TestCompiledKernelIntegration/keyRuntimeHashesMatchTheSelection",
+        "TestCompiledKernelIntegration/portableCoreHasNoHostOrVendorDependency",
+        "TestCompiledKernelIntegration/repositoryTracksOnlySourceProducts",
+        "TestStratifiedModalRecord/olderFilesRemainMatlabCompatible",
+        "TestStratifiedModalRecord/defaultModelOutputContainsScientificRecords",
+        "TestStratifiedModalRecord/explicitPropertyOnlySavesRemainUnchanged",
+        "TestStratifiedModalRecord/nonprefixModalSubsetPreservesScientificKeys",
+        "TestStratifiedModalRecord/sharedRecordsRoundTripThroughMatlab",
+        "TestStratifiedModalRecord/scientificRecordsAndPreparedOperatorsMatchMatlab",
+        "TestHydrostaticCompiledKernel/variableStratificationMatchesMatlab",
+        "TestHydrostaticCompiledKernel/retainedSubsetAndSouthernLatitude",
+        "TestPortableStratifiedQGQualification/lifecycleAndStorageRemainBounded"
+      ]
+    },
+    {
+      "family": "boussinesq",
+      "sourceCommit": "ffc3818c064e779bfd3f92b7604e05f29a56c6f8",
+      "sourceTree": "3944b7437c10f4a78e20fa1290fff147044bfb42",
+      "reportPath": "PortableRuntime/qualification/boussinesq-apple-silicon-v1.json",
+      "reportSHA256": "ac6f6bd4d7a34547bf13a880648f67359db7b58cf3887014377f1b656fc8bbe4",
+      "sources": [
+        {
+          "path": "UnitTests/TestPortableBoussinesq.m",
+          "sha256": "85d0d21d41e04a257c3612039b375a805a16ec8619c420add11db9c80618cf5f",
+          "testNames": [
+            "TestPortableBoussinesq/linearPassiveObserversMatchMatlab",
+            "TestPortableBoussinesq/horizontalOnlyObserversMatchMatlab",
+            "TestPortableBoussinesq/cflAndDefaultSteppingMatchMatlab",
+            "TestPortableBoussinesq/multiFileOutputPoliciesAndRestart",
+            "TestPortableBoussinesq/incompatibleModelGraphsAreTransactional",
+            "TestPortableBoussinesq/modelIntegrationRoundTripsThroughMatlab",
+            "TestPortableBoussinesq/fieldSamplingMatchesMatlab",
+            "TestPortableBoussinesq/retainedSubsetAndNonuniformGrid",
+            "TestPortableBoussinesq/malformedModelsLeaveAppendTargetsUnchanged",
+            "TestPortableBoussinesq/waveMismatchIsTransactional",
+            "TestPortableBoussinesq/applicableForcingTendenciesMatchMatlab",
+            "TestPortableBoussinesq/applicableForcingContinuationsMatchMatlab",
+            "TestPortableBoussinesq/orderedForcingTendenciesMatchMatlab"
+          ]
+        },
+        {
+          "path": "UnitTests/TestPortableBoussinesqQualification.m",
+          "sha256": "744d9948282d84f4a075026113c3b0874ef0192c2f9ae292949ee01056836ef7",
+          "testNames": [
+            "TestPortableBoussinesqQualification/longerContinuationMatchesMatlab",
+            "TestPortableBoussinesqQualification/lifecycleAndStorageRemainBounded"
+          ]
+        },
+        {
+          "path": "UnitTests/TestPortableStableForcing.m",
+          "sha256": "cda4ee023ea4c6326f89f527b32ed107ea358c4c0aeb96847e28d8618a190166",
+          "testNames": [
+            "TestPortableStableForcing/explicitAntialiasingMatchesMatlab",
+            "TestPortableStableForcing/explicitFilterPreservesOrderingAndFixedAmplitudes",
+            "TestPortableStableForcing/adaptiveClosuresUseMatlabEffectiveResolution",
+            "TestPortableStableForcing/malformedClosuresLeaveAppendTargetsUnchanged",
+            "TestPortableStableForcing/catalogPairsMatchMatlabAndAppend",
+            "TestPortableStableForcing/orderedClosureGraphsRestartAndConvertResolution",
+            "TestPortableStableForcing/laplacianDampingMatchesMatlab",
+            "TestPortableStableForcing/verticalDiffusivityMatchesMatlab",
+            "TestPortableStableForcing/constantNarrowBandAndOrderedClosuresMatchMatlab"
+          ]
+        },
+        {
+          "path": "UnitTests/TestPortableForcingCompatibility.m",
+          "sha256": "dfab7e5886e9987d6ea5c56a014e4293be9c5de4e82d330f8be82d4df2430d93",
+          "testNames": [
+            "TestPortableForcingCompatibility/matlabRegenerationMatchesCommittedArtifacts",
+            "TestPortableForcingCompatibility/incompleteEvidenceCannotClaimReadiness",
+            "TestPortableForcingCompatibility/invalidIdentitiesAndEvidenceAreRejected",
+            "TestPortableForcingCompatibility/implementedPairsAndScientificRejectionsStayDistinct"
+          ]
+        },
+        {
+          "path": "UnitTests/TestCompiledKernelIntegration.m",
+          "sha256": "f0b2a6860b68bfc82e0097e24bbd81a3fac30376ad58185867ebe4678a86f133",
+          "testNames": [
+            "TestCompiledKernelIntegration/selectionRecordsTheAcceptedContract",
+            "TestCompiledKernelIntegration/runtimeSelectionRecordsStableSourceAPI",
+            "TestCompiledKernelIntegration/keyRuntimeHashesMatchTheSelection",
+            "TestCompiledKernelIntegration/portableCoreHasNoHostOrVendorDependency",
+            "TestCompiledKernelIntegration/repositoryTracksOnlySourceProducts"
+          ]
+        },
+        {
+          "path": "UnitTests/TestStratifiedModalRecord.m",
+          "sha256": "842a4ee6565159a26069022532ad7319deab62b7926f1779dca1d4230c3b630f",
+          "testNames": [
+            "TestStratifiedModalRecord/olderFilesRemainMatlabCompatible",
+            "TestStratifiedModalRecord/defaultModelOutputContainsScientificRecords",
+            "TestStratifiedModalRecord/explicitPropertyOnlySavesRemainUnchanged",
+            "TestStratifiedModalRecord/nonprefixModalSubsetPreservesScientificKeys",
+            "TestStratifiedModalRecord/sharedRecordsRoundTripThroughMatlab",
+            "TestStratifiedModalRecord/scientificRecordsAndPreparedOperatorsMatchMatlab"
+          ]
+        },
+        {
+          "path": "UnitTests/TestBoussinesqCompiledKernel.m",
+          "sha256": "c499f7eaa783eb9aa4b9bc27424e45951e68cc9ecc1e914b8aacda79aec13095",
+          "testNames": [
+            "TestBoussinesqCompiledKernel/variableStratificationMatchesMatlab",
+            "TestBoussinesqCompiledKernel/weakSurfaceStratificationMatchesMatlab",
+            "TestBoussinesqCompiledKernel/discontiguousGroupsAndNonuniformGrid",
+            "TestBoussinesqCompiledKernel/approachesHydrostaticLimit",
+            "TestBoussinesqCompiledKernel/retainedSubsetAndSouthernLatitude"
+          ]
+        }
+      ],
+      "testNames": [
+        "TestPortableBoussinesq/linearPassiveObserversMatchMatlab",
+        "TestPortableBoussinesq/horizontalOnlyObserversMatchMatlab",
+        "TestPortableBoussinesq/cflAndDefaultSteppingMatchMatlab",
+        "TestPortableBoussinesq/multiFileOutputPoliciesAndRestart",
+        "TestPortableBoussinesq/incompatibleModelGraphsAreTransactional",
+        "TestPortableBoussinesq/modelIntegrationRoundTripsThroughMatlab",
+        "TestPortableBoussinesq/fieldSamplingMatchesMatlab",
+        "TestPortableBoussinesq/retainedSubsetAndNonuniformGrid",
+        "TestPortableBoussinesq/malformedModelsLeaveAppendTargetsUnchanged",
+        "TestPortableBoussinesq/waveMismatchIsTransactional",
+        "TestPortableBoussinesq/applicableForcingTendenciesMatchMatlab",
+        "TestPortableBoussinesq/applicableForcingContinuationsMatchMatlab",
+        "TestPortableBoussinesq/orderedForcingTendenciesMatchMatlab",
+        "TestPortableBoussinesqQualification/longerContinuationMatchesMatlab",
+        "TestPortableBoussinesqQualification/lifecycleAndStorageRemainBounded",
+        "TestPortableStableForcing/explicitAntialiasingMatchesMatlab",
+        "TestPortableStableForcing/explicitFilterPreservesOrderingAndFixedAmplitudes",
+        "TestPortableStableForcing/adaptiveClosuresUseMatlabEffectiveResolution",
+        "TestPortableStableForcing/malformedClosuresLeaveAppendTargetsUnchanged",
+        "TestPortableStableForcing/catalogPairsMatchMatlabAndAppend",
+        "TestPortableStableForcing/orderedClosureGraphsRestartAndConvertResolution",
+        "TestPortableStableForcing/laplacianDampingMatchesMatlab",
+        "TestPortableStableForcing/verticalDiffusivityMatchesMatlab",
+        "TestPortableStableForcing/constantNarrowBandAndOrderedClosuresMatchMatlab",
+        "TestPortableForcingCompatibility/matlabRegenerationMatchesCommittedArtifacts",
+        "TestPortableForcingCompatibility/incompleteEvidenceCannotClaimReadiness",
+        "TestPortableForcingCompatibility/invalidIdentitiesAndEvidenceAreRejected",
+        "TestPortableForcingCompatibility/implementedPairsAndScientificRejectionsStayDistinct",
+        "TestCompiledKernelIntegration/selectionRecordsTheAcceptedContract",
+        "TestCompiledKernelIntegration/runtimeSelectionRecordsStableSourceAPI",
+        "TestCompiledKernelIntegration/keyRuntimeHashesMatchTheSelection",
+        "TestCompiledKernelIntegration/portableCoreHasNoHostOrVendorDependency",
+        "TestCompiledKernelIntegration/repositoryTracksOnlySourceProducts",
+        "TestStratifiedModalRecord/olderFilesRemainMatlabCompatible",
+        "TestStratifiedModalRecord/defaultModelOutputContainsScientificRecords",
+        "TestStratifiedModalRecord/explicitPropertyOnlySavesRemainUnchanged",
+        "TestStratifiedModalRecord/nonprefixModalSubsetPreservesScientificKeys",
+        "TestStratifiedModalRecord/sharedRecordsRoundTripThroughMatlab",
+        "TestStratifiedModalRecord/scientificRecordsAndPreparedOperatorsMatchMatlab",
+        "TestBoussinesqCompiledKernel/variableStratificationMatchesMatlab",
+        "TestBoussinesqCompiledKernel/weakSurfaceStratificationMatchesMatlab",
+        "TestBoussinesqCompiledKernel/discontiguousGroupsAndNonuniformGrid",
+        "TestBoussinesqCompiledKernel/approachesHydrostaticLimit",
+        "TestBoussinesqCompiledKernel/retainedSubsetAndSouthernLatitude"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,662 @@
+{
+  "schema": "portable-forcing-evidence-v1",
+  "inventorySource": "Documentation/WebsiteDocumentation/users-guide/supported-features.md",
+  "excluded": [
+    {
+      "identity": "WVThermalDamping",
+      "reason": "under-development"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "barotropic-matlab-continuation",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableRuntimeCompatibility.m",
+      "symbol": "matlabWriterBarotropicQGForcingMatrixMatchesMatlab"
+    },
+    {
+      "id": "barotropic-testFixedAmplitudeAndNarrowBand",
+      "kind": "cpp-unit",
+      "path": "PortableRuntime/tests/TestWVBarotropicQGForcing.cpp",
+      "symbol": "testFixedAmplitudeAndNarrowBand"
+    },
+    {
+      "id": "barotropic-testNumericalForcingMatrix",
+      "kind": "cpp-unit",
+      "path": "PortableRuntime/tests/TestWVBarotropicQGForcing.cpp",
+      "symbol": "testNumericalForcingMatrix"
+    },
+    {
+      "id": "constant-testFixedAmplitudeAndRK4",
+      "kind": "cpp-unit",
+      "path": "PortableRuntime/tests/TestWVForcingAndRK4.cpp",
+      "symbol": "testFixedAmplitudeAndRK4"
+    },
+    {
+      "id": "constant-testLinearBottomFrictionFormula",
+      "kind": "cpp-unit",
+      "path": "PortableRuntime/tests/TestWVForcingAndRK4.cpp",
+      "symbol": "testLinearBottomFrictionFormula"
+    },
+    {
+      "id": "constant-testNonlinearCompatibility",
+      "kind": "cpp-unit",
+      "path": "PortableRuntime/tests/TestWVForcingAndRK4.cpp",
+      "symbol": "testNonlinearCompatibility"
+    },
+    {
+      "id": "constant-testQuadraticAndPseudo",
+      "kind": "cpp-unit",
+      "path": "PortableRuntime/tests/TestWVForcingAndRK4.cpp",
+      "symbol": "testQuadraticAndPseudo"
+    },
+    {
+      "id": "constant-testSpectralForcing",
+      "kind": "cpp-unit",
+      "path": "PortableRuntime/tests/TestWVForcingAndRK4.cpp",
+      "symbol": "testSpectralForcing"
+    },
+    {
+      "id": "matlab-contracts",
+      "kind": "matlab-contract",
+      "path": "UnitTests/TestPortableForcingContracts.m",
+      "symbol": "supportedForcingsReturnExactVersionedContracts"
+    },
+    {
+      "id": "matlab-narrow-contract",
+      "kind": "matlab-contract",
+      "path": "UnitTests/TestPortableForcingContracts.m",
+      "symbol": "narrowBandUsesInheritedFixedAmplitudeContract"
+    },
+    {
+      "id": "baseline-pairs",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStableForcing.m",
+      "symbol": "catalogPairsMatchMatlabAndAppend"
+    },
+    {
+      "id": "baseline-compositions",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStableForcing.m",
+      "symbol": "orderedClosureGraphsRestartAndConvertResolution"
+    },
+    {
+      "id": "malformed-append",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStableForcing.m",
+      "symbol": "malformedClosuresLeaveAppendTargetsUnchanged"
+    },
+    {
+      "id": "baseline-rejections",
+      "kind": "cpp-unit",
+      "path": "PortableRuntime/tests/TestWVForcingCompatibility.cpp",
+      "symbol": "testForcingIncompatibilities"
+    },
+    {
+      "id": "matlab-attachment",
+      "kind": "matlab-contract",
+      "path": "tools/generatePortableForcingCompatibility.m",
+      "symbol": "probeForcing"
+    },
+    {
+      "id": "closure-preflight-decay",
+      "kind": "cpp-unit",
+      "path": "PortableRuntime/tests/TestWVForcingAndRK4.cpp",
+      "symbol": "testStableClosurePreflightAndDecay"
+    },
+    {
+      "id": "explicit-antialiasing",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStableForcing.m",
+      "symbol": "explicitAntialiasingMatchesMatlab"
+    },
+    {
+      "id": "laplacian-damping",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStableForcing.m",
+      "symbol": "laplacianDampingMatchesMatlab"
+    },
+    {
+      "id": "vertical-diffusivity",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStableForcing.m",
+      "symbol": "verticalDiffusivityMatchesMatlab"
+    },
+    {
+      "id": "adaptive-cfl",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStableForcing.m",
+      "symbol": "adaptiveClosuresUseMatlabEffectiveResolution"
+    },
+    {
+      "id": "constant-narrow-composition",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStableForcing.m",
+      "symbol": "constantNarrowBandAndOrderedClosuresMatchMatlab"
+    },
+    {
+      "id": "sqg-pairs",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStratifiedQG.m",
+      "symbol": "applicableForcingTendenciesMatchMatlab"
+    },
+    {
+      "id": "sqg-compositions",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStratifiedQG.m",
+      "symbol": "modelIntegrationRoundTripsThroughMatlab"
+    },
+    {
+      "id": "sqg-rejections",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStratifiedQG.m",
+      "symbol": "incompatibleModelGraphsAreTransactional"
+    },
+    {
+      "id": "sqg-continuation",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStratifiedQGQualification.m",
+      "symbol": "longerContinuationMatchesMatlab"
+    },
+    {
+      "id": "sqg-lifecycle",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableStratifiedQGQualification.m",
+      "symbol": "lifecycleAndStorageRemainBounded"
+    },
+    {
+      "id": "hydro-pairs",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableHydrostatic.m",
+      "symbol": "applicableForcingTendenciesMatchMatlab"
+    },
+    {
+      "id": "hydro-compositions",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableHydrostatic.m",
+      "symbol": "orderedForcingTendenciesMatchMatlab"
+    },
+    {
+      "id": "hydro-rejections",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableHydrostatic.m",
+      "symbol": "incompatibleModelGraphsAreTransactional"
+    },
+    {
+      "id": "hydro-continuations",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableHydrostatic.m",
+      "symbol": "applicableForcingContinuationsMatchMatlab"
+    },
+    {
+      "id": "bouss-pairs",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableBoussinesq.m",
+      "symbol": "applicableForcingTendenciesMatchMatlab"
+    },
+    {
+      "id": "bouss-compositions",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableBoussinesq.m",
+      "symbol": "orderedForcingTendenciesMatchMatlab"
+    },
+    {
+      "id": "bouss-rejections",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableBoussinesq.m",
+      "symbol": "incompatibleModelGraphsAreTransactional"
+    },
+    {
+      "id": "bouss-continuations",
+      "kind": "matlab-runtime-parity",
+      "path": "UnitTests/TestPortableBoussinesq.m",
+      "symbol": "applicableForcingContinuationsMatchMatlab"
+    }
+  ],
+  "forcings": [
+    {
+      "identity": "WVAdaptiveDamping",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": true,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "constant-testSpectralForcing",
+        "matlab-contracts",
+        "baseline-pairs",
+        "baseline-compositions",
+        "adaptive-cfl"
+      ],
+      "barotropicEvidence": [
+        "barotropic-testNumericalForcingMatrix",
+        "barotropic-matlab-continuation",
+        "baseline-pairs",
+        "baseline-compositions",
+        "adaptive-cfl"
+      ],
+      "barotropicCase": "adaptive",
+      "stratifiedQGFactory": true,
+      "stratifiedQGEvidence": [
+        "sqg-pairs",
+        "sqg-compositions",
+        "sqg-continuation",
+        "sqg-lifecycle"
+      ],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    },
+    {
+      "identity": "WVAntialiasing",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": true,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "baseline-pairs",
+        "baseline-compositions",
+        "closure-preflight-decay",
+        "malformed-append",
+        "explicit-antialiasing",
+        "adaptive-cfl"
+      ],
+      "barotropicEvidence": [
+        "baseline-pairs",
+        "baseline-compositions",
+        "adaptive-cfl"
+      ],
+      "barotropicCase": "",
+      "stratifiedQGFactory": true,
+      "stratifiedQGEvidence": [
+        "sqg-pairs",
+        "sqg-compositions",
+        "sqg-continuation",
+        "sqg-lifecycle"
+      ],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    },
+    {
+      "identity": "WVBetaPlanePVAdvection",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": true,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "constant-testSpectralForcing",
+        "matlab-contracts",
+        "baseline-pairs",
+        "baseline-compositions"
+      ],
+      "barotropicEvidence": [
+        "barotropic-testNumericalForcingMatrix",
+        "barotropic-matlab-continuation",
+        "baseline-pairs",
+        "baseline-compositions"
+      ],
+      "barotropicCase": "beta",
+      "stratifiedQGFactory": true,
+      "stratifiedQGEvidence": [
+        "sqg-pairs",
+        "sqg-compositions",
+        "sqg-continuation",
+        "sqg-lifecycle"
+      ],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    },
+    {
+      "identity": "WVBottomFrictionLinear",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": true,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "constant-testLinearBottomFrictionFormula",
+        "matlab-contracts",
+        "baseline-pairs",
+        "baseline-compositions"
+      ],
+      "barotropicEvidence": [
+        "barotropic-testNumericalForcingMatrix",
+        "barotropic-matlab-continuation",
+        "baseline-pairs",
+        "baseline-compositions"
+      ],
+      "barotropicCase": "linear",
+      "stratifiedQGFactory": true,
+      "stratifiedQGEvidence": [
+        "sqg-pairs",
+        "sqg-compositions",
+        "sqg-continuation",
+        "sqg-lifecycle"
+      ],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    },
+    {
+      "identity": "WVBottomFrictionQuadratic",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": true,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "constant-testQuadraticAndPseudo",
+        "matlab-contracts",
+        "baseline-pairs",
+        "baseline-compositions"
+      ],
+      "barotropicEvidence": [
+        "barotropic-testNumericalForcingMatrix",
+        "barotropic-matlab-continuation",
+        "baseline-pairs",
+        "baseline-compositions"
+      ],
+      "barotropicCase": "quadratic",
+      "stratifiedQGFactory": true,
+      "stratifiedQGEvidence": [
+        "sqg-pairs",
+        "sqg-compositions",
+        "sqg-continuation",
+        "sqg-lifecycle"
+      ],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    },
+    {
+      "identity": "WVFixedAmplitudeForcing",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": true,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "constant-testFixedAmplitudeAndRK4",
+        "matlab-contracts",
+        "baseline-pairs",
+        "baseline-compositions",
+        "adaptive-cfl"
+      ],
+      "barotropicEvidence": [
+        "barotropic-testFixedAmplitudeAndNarrowBand",
+        "barotropic-matlab-continuation",
+        "baseline-pairs",
+        "baseline-compositions",
+        "adaptive-cfl"
+      ],
+      "barotropicCase": "fixed",
+      "stratifiedQGFactory": true,
+      "stratifiedQGEvidence": [
+        "sqg-pairs",
+        "sqg-compositions",
+        "sqg-continuation",
+        "sqg-lifecycle"
+      ],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    },
+    {
+      "identity": "WVHorizontalDamping",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": false,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "baseline-pairs",
+        "baseline-compositions",
+        "closure-preflight-decay",
+        "malformed-append",
+        "laplacian-damping",
+        "adaptive-cfl"
+      ],
+      "barotropicEvidence": [],
+      "barotropicCase": "",
+      "stratifiedQGFactory": false,
+      "stratifiedQGEvidence": [],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    },
+    {
+      "identity": "WVNarrowBandGeostrophicForcing",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": true,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "baseline-pairs",
+        "baseline-compositions",
+        "constant-narrow-composition"
+      ],
+      "barotropicEvidence": [
+        "barotropic-testFixedAmplitudeAndNarrowBand",
+        "barotropic-matlab-continuation",
+        "baseline-pairs",
+        "baseline-compositions"
+      ],
+      "barotropicCase": "narrow",
+      "stratifiedQGFactory": true,
+      "stratifiedQGEvidence": [
+        "sqg-pairs",
+        "sqg-compositions"
+      ],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    },
+    {
+      "identity": "WVNonlinearAdvection",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": true,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "constant-testNonlinearCompatibility",
+        "matlab-contracts",
+        "baseline-pairs",
+        "baseline-compositions",
+        "adaptive-cfl"
+      ],
+      "barotropicEvidence": [
+        "barotropic-testNumericalForcingMatrix",
+        "barotropic-matlab-continuation",
+        "baseline-pairs",
+        "baseline-compositions",
+        "adaptive-cfl"
+      ],
+      "barotropicCase": "nonlinear",
+      "stratifiedQGFactory": true,
+      "stratifiedQGEvidence": [
+        "sqg-pairs",
+        "sqg-compositions",
+        "sqg-continuation",
+        "sqg-lifecycle"
+      ],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    },
+    {
+      "identity": "WVPseudoTopographicWaveGeneration",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": false,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "constant-testQuadraticAndPseudo",
+        "matlab-contracts",
+        "baseline-pairs",
+        "baseline-compositions"
+      ],
+      "barotropicEvidence": [],
+      "barotropicCase": "",
+      "stratifiedQGFactory": false,
+      "stratifiedQGEvidence": [],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    },
+    {
+      "identity": "WVVerticalDamping",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": false,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "baseline-pairs",
+        "baseline-compositions",
+        "closure-preflight-decay",
+        "malformed-append",
+        "laplacian-damping",
+        "adaptive-cfl"
+      ],
+      "barotropicEvidence": [],
+      "barotropicCase": "",
+      "stratifiedQGFactory": false,
+      "stratifiedQGEvidence": [],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    },
+    {
+      "identity": "WVVerticalDiffusivity",
+      "contractVersion": 1,
+      "constantFactory": true,
+      "barotropicFactory": false,
+      "implementationIssue": 0,
+      "constantEvidence": [
+        "baseline-pairs",
+        "baseline-compositions",
+        "closure-preflight-decay",
+        "malformed-append",
+        "vertical-diffusivity",
+        "adaptive-cfl"
+      ],
+      "barotropicEvidence": [],
+      "barotropicCase": "",
+      "stratifiedQGFactory": true,
+      "stratifiedQGEvidence": [
+        "sqg-pairs",
+        "sqg-compositions",
+        "sqg-continuation",
+        "sqg-lifecycle"
+      ],
+      "hydrostaticFactory": true,
+      "hydrostaticEvidence": [
+        "hydro-pairs",
+        "hydro-compositions",
+        "hydro-continuations"
+      ],
+      "boussinesqFactory": true,
+      "boussinesqEvidence": [
+        "bouss-pairs",
+        "bouss-compositions",
+        "bouss-continuations"
+      ]
+    }
+  ],
+  "qualification": "baseline-v1"
+}

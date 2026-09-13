@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "1.0.0",
+  "integrationBase": "9dcb7c93e703bd2541fa94f00f1ac41b2b8b8529",
+  "testedFeatureCommit": "005ac7e24fa069fea0d2f825cc1e9913c3e23f11",
+  "sourceAPI": {
+    "identifier": "wave-vortex-portable-source-api-v1",
+    "major": 1,
+    "minor": 0,
+    "compatibility": "source-only",
+    "publicHeaders": [
+      "PortableRuntime/include/WaveVortexRuntime/WVPortableImplementationContract.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVPortableTypedRecord.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVExtensionCatalog.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVObservingSystem.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVObserverOutputProvider.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVObservation.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVOutputSchedule.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVForcing.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVForcingContracts.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVModelOutputConfiguration.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVModel.hpp",
+      "PortableRuntime/include/WaveVortexRuntime/WVRunner.hpp"
+    ]
+  },
+  "retained": {
+    "compiledCore": "CompiledKernel",
+    "portableRuntime": "PortableRuntime/CMakeLists.txt, PortableRuntime/README.md, PortableRuntime/QUALIFICATION.md, PortableRuntime/INTEGRATION.md, PortableRuntime/COMPATIBILITY.md, PortableRuntime/buildWaveVortexRun.sh, PortableRuntime/source-selection.json, PortableRuntime/include, PortableRuntime/src, PortableRuntime/app, PortableRuntime/contracts, PortableRuntime/examples, PortableRuntime/third_party/nlohmann",
+    "portableRuntimeInputs": [
+      "PortableRuntime/CMakeLists.txt",
+      "PortableRuntime/README.md",
+      "PortableRuntime/QUALIFICATION.md",
+      "PortableRuntime/INTEGRATION.md",
+      "PortableRuntime/COMPATIBILITY.md",
+      "PortableRuntime/buildWaveVortexRun.sh",
+      "PortableRuntime/source-selection.json",
+      "PortableRuntime/include",
+      "PortableRuntime/src",
+      "PortableRuntime/app",
+      "PortableRuntime/contracts",
+      "PortableRuntime/examples",
+      "PortableRuntime/third_party/nlohmann"
+    ],
+    "contracts": "PortableRuntime/tests",
+    "buildAndExport": ".github/workflows, tools/prepareWaveVortexModelReleaseCandidate.m"
+  },
+  "postSelectionExtensions": {
+    "explicitExtensionCatalog": "issue-271",
+    "eventDependentObservationGeometry": "issue-272",
+    "losslessOutputGraphs": "issue-273",
+    "stableSourceAPI": "issue-249",
+    "barotropicQGKernel": "issue-280",
+    "barotropicQGForcing": "issue-281",
+    "barotropicQGModelOutputRestart": "issue-282",
+    "sourceAPIVersion": "1.0",
+    "preFacadeBaseline": "5940f4e4e206fbfb9a6cb4760af2ba2347e3571f",
+    "preGeneralizationBaseline": "900f98eb28629a56b7a2d26da38c597c7a709a96",
+    "externalConsumerBaseline": "satmapkit/AlongTrackSimulator",
+    "externalConsumerBaselineCommit": "ba57981f336ad5bbbc0907dcd74fcd4fcd137708",
+    "externalConsumerBaselineWaveVortexCommit": "84dc1b53093650fdbc9be62b637cf298c46a95d3",
+    "description": "Source-linked observer, output-schedule, and forcing implementations are resolved through an explicitly owned immutable typed catalog. Observation occurrences use construction-resolved schedule payloads, evaluator-owned event geometry, central resolved-field evaluation, and destination-independent retry identity. Source API v1 exposes no legacy persistence callbacks or WVModel internals.",
+    "stratifiedModalRecords": "issue-295",
+    "stableForcingCompatibility": "issues-290-294",
+    "stratifiedQGRuntime": "issue-297",
+    "stratifiedQGQualification": "issue-298",
+    "hydrostaticKernel": "issue-299",
+    "hydrostaticRuntime": "issue-300",
+    "boussinesqKernel": "issue-302",
+    "boussinesqRuntime": "issue-303",
+    "resolvedForcingTendencyDiagnostics": "issue-315",
+    "controlledEarlyTermination": "issue-288",
+    "standardForwardIntegrationQualification": "issue-289",
+    "adaptiveDampingEffectiveResolution": "issue-409",
+    "tiledHorizontalAdvection": "issue-489",
+    "ownedStratifiedModalSource": "issue-503",
+    "nativeVariablePolicyExtraction": "issue-503"
+  },
+  "excluded": [
+    "benchmark harnesses and payloads",
+    "planning and audit artifacts",
+    "standalone inspector programs",
+    "experimental and rejected implementations",
+    "downloaded or compiled products"
+  ],
+  "stratifiedModalRecord": {
+    "identity": "wave-vortex-stratified-modal-record-v1",
+    "header": "PortableRuntime/include/WaveVortexRuntime/WVStratifiedModalRecord.hpp",
+    "preparedOperatorContract": "wave-vortex-spectral-operators-v1",
+    "transformClasses": [
+      "WVTransformStratifiedQG",
+      "WVTransformHydrostatic"
+    ],
+    "executionCapabilityAdded": false,
+    "matrixScanBytes": 32768,
+    "scientificInputs": "MATLAB-persisted numeric geometry and preconditioned F/G operators",
+    "sourceSHA256": {
+      "PortableRuntime/include/WaveVortexRuntime/WVStratifiedModalRecord.hpp": "f70601422f499ea0e2df1379468d7cba9e9c64c5a03bb14e2cb4ff19dde22ca6",
+      "PortableRuntime/src/WVStratifiedModalRecord.cpp": "af33628758b911bb43700a6f0af5c6268079b6359864d5edf8e219a613e17307",
+      "@WVGeometryDoublyPeriodicStratified/WVGeometryDoublyPeriodicStratified.m": "4d6df4bb82feb550a20da25a8e34ae9370272f2268ea3660d571dfeddaa06cc8",
+      "@WVTransform/writeToFile.m": "b362676f63e681327ed04708e99927aca07c0b602bf573840a4bb365d0694a0a",
+      "WVModelOutputFile.m": "b1b546df8bc6c1a33c9c0ee75267d21a5104a2451250a94b222e97f3a83ba43f",
+      "CompiledKernel/include/WaveVortexKernel/WVStratifiedModalSource.hpp": "e82dc0193e48edeae4b41ff8b9ef7cd3f8e74a38b024e019ecae6afffea65a22"
+    },
+    "numericalSourceInterface": "WaveVortexKernel/WVStratifiedModalSource.hpp",
+    "sharedPreparationImplementation": "wave-vortex-owned-stratified-modal-source-v1"
+  },
+  "ownedStratifiedModalSource": {
+    "issue": 503,
+    "identity": "wave-vortex-owned-stratified-modal-source-v1",
+    "interface": "wave-vortex-stratified-modal-source-v1",
+    "ownership": "by-value geometry and modal arrays retained by immutable shared ownership",
+    "transformClasses": [
+      "WVTransformStratifiedQG",
+      "WVTransformHydrostatic",
+      "WVTransformBoussinesq"
+    ],
+    "netCDFRecordDelegatesPreparation": true,
+    "sourceSHA256": {
+      "CompiledKernel/include/WaveVortexKernel/WVOwnedStratifiedModalSource.hpp": "9eb131d10eb8fa968ded995edd0ecbf484aae69ef2f7860c39da735e516462e4",
+      "CompiledKernel/src/WVOwnedStratifiedModalSource.cpp": "1467a3916dfa52094eba3f64d8e48f329d7e7028a36478cda21814f189e157b3",
+      "PortableRuntime/include/WaveVortexRuntime/WVStratifiedModalRecord.hpp": "f70601422f499ea0e2df1379468d7cba9e9c64c5a03bb14e2cb4ff19dde22ca6",
+      "PortableRuntime/src/WVStratifiedModalRecord.cpp": "af33628758b911bb43700a6f0af5c6268079b6359864d5edf8e219a613e17307"
+    }
+  },
+  "nativeVariablePolicyExtraction": {
+    "issue": 503,
+    "identity": "compact-native-variable-v1",
+    "scope": "The qualified issue-455 selection algorithm is shared by native runner and MATLAB host entry points; historical qualification hashes remain recorded in runnerVariablePolicy.",
+    "sourceSHA256": {
+      "PortableRuntime/include/WaveVortexRuntime/WVNativeVariablePolicy.hpp": "a9eb979e73d606ed55945e5add677c4901efc8a5263fe87fa24b798035c5c851",
+      "PortableRuntime/src/WVNativeVariablePolicy.cpp": "7c34a145e60c89471e3e8633aa9f0a73897379a32bb6fa5f44ce3150860405ba",
+      "PortableRuntime/app/WVRunnerVariablePolicy.hpp": "ca791ce09f743a0e298ce582e62a9e54fcdcdbff0042e92a1ca85b2c03e246c8",
+      "PortableRuntime/app/WVRunnerVariablePolicy.cpp": "ab79a0ab2e492645b14b980425c5187e1726128e103778b0ce2a5979ec02cfff"
+    }
+  },
+  "stratifiedQGRuntime": {
+    "transform": "WVTransformStratifiedQG",
+    "executionCapabilityAdded": true,
+    "coefficientFamilies": [
+      "A0"
+    ],
+    "spectralDimensions": [
+      "j",
+      "kl"
+    ],
+    "spatialDimensions": [
+      "x",
+      "y",
+      "z"
+    ],
+    "matlabTracerAdvection": "XY-only on a rank-three grid",
+    "qualification": "UnitTests/TestPortableStratifiedQG.m",
+    "sourceSHA256": {
+      "PortableRuntime/include/WaveVortexRuntime/WVStratifiedQGForcingEngine.hpp": "67a97a2c8c7502336b5fe0a403987623168c78c71c33a05e3440b4b9eab4f7e6",
+      "PortableRuntime/include/WaveVortexRuntime/WVStratifiedQGIntegrationSystem.hpp": "f42f36b0323fdeb352f546d485f870862f0198c802f51f036800da2b588f6f72",
+      "PortableRuntime/src/WVStratifiedQGForcingEngine.cpp": "7a352c8e08c473211e87cfb848975e5891f4a48a5bc44caa1b151fb36ddc1e51",
+      "PortableRuntime/src/WVStratifiedQGIntegrationSystem.cpp": "62fd748f58ef2c63685e7b4bf23aed0a840e63258308ab8f0655088d281654ca",
+      "PortableRuntime/src/WVStratifiedQGFieldEvaluationAdapter.hpp": "e282d83f41765ff8389c942ed78014c2e40e160e127dfc30b01328649959fd42",
+      "PortableRuntime/src/WVStratifiedQGFieldEvaluationAdapter.cpp": "9a84c399834f96bfe4de5405ea9102da9fc60d2a34300237bb45662921f9fba3"
+    },
+    "readinessQualification": "tools/qualifyPortableStratifiedQG.m"
+  },
+  "hydrostaticRuntime": {
+    "transform": "WVTransformHydrostatic",
+    "executionCapabilityAdded": true,
+    "issue": 300,
+    "scientificSource": "wave-vortex-stratified-modal-record-v1",
+    "forcingCatalog": "portable-forcing-compatibility-v1.json",
+    "numericalParity": "UnitTests/TestPortableHydrostatic.m",
+    "performanceQualificationIssue": 301
+  },
+  "boussinesqKernel": {
+    "identity": "wave-vortex-boussinesq-kernel-v1",
+    "scientificSource": "wave-vortex-stratified-modal-record-v1",
+    "groupIdentity": "persisted-K2unique-and-iK2unique",
+    "coefficientLayout": "canonical-interleaved-Nj-Nkl",
+    "runtimeExecutionCapabilityAdded": false,
+    "qualification": "UnitTests/TestBoussinesqCompiledKernel.m"
+  },
+  "boussinesqRuntime": {
+    "transform": "WVTransformBoussinesq",
+    "executionCapabilityAdded": true,
+    "issue": 303,
+    "scientificSource": "wave-vortex-stratified-modal-record-v1",
+    "forcingCatalog": "portable-forcing-compatibility-v1.json",
+    "numericalParity": "UnitTests/TestPortableBoussinesq.m",
+    "performanceQualificationIssue": 304
+  },
+  "variableKernelServices": {
+    "issue": 455,
+    "status": "qualified-explicit-services-with-native-runner-default",
+    "defaultBackend": "scalar-reference-v1",
+    "defaultHorizontalSchedule": "full-fft-gather",
+    "qualification": ".github/ci-evidence/issue-455-variable-final-adoption/decision.json",
+    "sourceSHA256": {
+      "PortableRuntime/include/WaveVortexRuntime/WVVariableKernelServices.hpp": "b759568cbe85ec5e6550f3335ab7200acd6deb2b31730bc99a485cfa19315b67",
+      "PortableRuntime/include/WaveVortexRuntime/WVModel.hpp": "18478fa5f4423988de8ef7f45bc186f2963c74b4e9576fc69615980dfb4d3cd7",
+      "PortableRuntime/src/WVModel.cpp": "6aab778f71f4723da3ad25db2961f1c461ec00dff4aff414015dd91d927b0f4c",
+      "PortableRuntime/src/WVModelTransformAdapters.cpp": "f518920a8d0db74b2d6a25be3380d680e0b94a6164c306fe47cf431e1d33f2a9"
+    }
+  },
+  "runnerVariablePolicy": {
+    "issue": 455,
+    "identity": "compact-native-variable-v1",
+    "eligibleFreshBuildDefault": true,
+    "nativeAppEntryActualDefault": true,
+    "eligibility": "Apple silicon with native FFTW and Accelerate enabled; explicit CMake cache values remain authoritative.",
+    "transformFamilies": [
+      "stratified-qg",
+      "hydrostatic",
+      "boussinesq"
+    ],
+    "matrixBackend": "accelerate",
+    "matrixBackendImplementation": "accelerate-gemm-v1",
+    "spectralSchedule": "compact-split-fused-views",
+    "horizontalSchedule": "streaming-pruned-tile16",
+    "horizontalWorkers": "min(available performance cores, 12)",
+    "pointwiseWorkers": "min(available performance cores, 8)",
+    "fftwInternalThreads": 1,
+    "generalVerticalOuterWorkers": "1; eligible compact Boussinesq selects min(available performance cores, 8).",
+    "blasInternalThreads": "Vendor controlled; process environment is not mutated.",
+    "explicitParallelFFTRequest": "Retains the requested FFTW thread count and selects established full FFT/interleaved execution with Accelerate matrices.",
+    "portableAndNonVariableDefaults": "unchanged",
+    "publicMatlabPreviewFamilies": "unchanged; variable service injection is not exposed",
+    "measurementEvidence": ".github/ci-evidence/issue-455-variable-final-adoption/decision.json",
+    "sourceSHA256": {
+      "PortableRuntime/CMakeLists.txt": "0783a3519eea4eb0bf1a39f0c23b13e87f2c54510736d6d82f32f1aa7dc56a27",
+      "CompiledKernel/CMakeLists.txt": "e133b74121e699325e539f6ba5c424e9bb2739200cb86c54d8077cace2c3b2ea",
+      "PortableRuntime/app/WaveVortexRun.cpp": "751169a10aa191d88ff705f808d6b15b34723cea788ab99adf82a65df45457b4",
+      "PortableRuntime/app/WVRunnerVariablePolicy.cpp": "de780aaa1947c4094f21f46f466eee2402f1fc33309e0a2e8bee32961efb9af0",
+      "PortableRuntime/app/WVRunnerVariablePolicy.hpp": "c16796f29a84789a37fdf4927bfd03892796d683eb796aef75a0b5c5207d6c94"
+    },
+    "matrixAdvectionQualification": ".github/ci-evidence/matrix-advection-adoption/decision.json"
+  },
+  "matrixAdvectionExploration": {
+    "status": "qualified-native-runner-default",
+    "report": "Benchmarks/MATRIX-ADVECTION-PIPELINE.md",
+    "frozenRuntimeCommit": "e8806710",
+    "scope": "Immediate inverse derivative consumption for compact Hydrostatic/Boussinesq; exact inertial-column projection and persistent matrix-group workers for Boussinesq.",
+    "issue": 477,
+    "qualifiedRuntimeCommit": "400ed1f1213795c95b04875dd54b0564d299545d",
+    "qualification": ".github/ci-evidence/matrix-advection-adoption/decision.json"
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "runtimeCommit": "72fc2bdd2ff02bbc431ed36fcdf6dab2e5015c0c",
+  "receiptSourceCommit": "66ce4599b8ece72cb6ad092e96040e894ebffa83",
+  "plannedMeasuredPairsPerProfile": 8,
+  "retainedMeasuredPairsPerProfile": 6,
+  "excludedMeasuredPairs": [
+    6,
+    7
+  ],
+  "exclusionReason": "The final counterbalanced block contains pair 7 with unrelated CPU above 10% in sampled integration windows. Remove the complete block to preserve three runs of each order. A targeted repeat could not pass the idle preflight because antivirus scanning persisted. This is a declared reduction in valid timing samples; all numerical evidence is retained.",
+  "allNumericalComparisonsPassed": true,
+  "actualProducerCountsIdentical": true,
+  "profiles": [
+    {
+      "profile": "eddytide-256x256x28",
+      "integrationRatio": 0.9734239831121357,
+      "pairedBootstrap95": [
+        0.961169972129401,
+        0.9842824609909645
+      ],
+      "baselineGeometricMeanSeconds": 17.299231348784833,
+      "candidateGeometricMeanSeconds": 16.83948668431245,
+      "maximumLiveRatio": 1.0,
+      "orderedPairs": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "profile": "boussinesq-256x256x129-rk78",
+      "integrationRatio": 0.9738353919397464,
+      "pairedBootstrap95": [
+        0.9276393444192701,
+        1.0222785329979085
+      ],
+      "baselineGeometricMeanSeconds": 4.422300193610574,
+      "candidateGeometricMeanSeconds": 4.30659244231997,
+      "maximumLiveRatio": 1.0,
+      "orderedPairs": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "decision": "Adopt: EddyTide improvement persists in both full and retained balanced samples. The Boussinesq point estimate passes the 3% investigation gate, but its interval permits 2.2% regression and establishes neither speedup nor statistical absence of regression.",
+  "bootstrap": {
+    "samples": 10000,
+    "seed": 493,
+    "statistic": "mean paired log ratio, exponentiated"
+  },
+  "allEightPairCampaign": {
+    "qualified": true,
+    "finishedAtUTC": "2026-09-12T19:04:58.090311+00:00",
+    "allNumericalComparisonsPassed": true,
+    "allIntegrationDecisionsIdentical": true,
+    "postflightUnchanged": true,
+    "profiles": [
+      {
+        "profile": "eddytide-256x256x28",
+        "policies": {
+          "reuse": {
+            "completeLifetimeRatio": 0.9774760194992753,
+            "completeLifetimeBootstrap95": [
+              0.9657323979613054,
+              0.9901998822384419
+            ],
+            "integrationRatio": 0.9774111489715244,
+            "pairedBootstrap95": [
+              0.965591476755502,
+              0.9902305956372112
+            ],
+            "ratios": [
+              0.9810072458704233,
+              0.9673161962204276,
+              0.9643030066612563,
+              0.9968054950962587,
+              0.9811836200321897,
+              0.9505989811127011,
+              0.9690111376774789,
+              1.0103626582047878
+            ],
+            "maximumRetainedRatio": 1.0,
+            "maximumLiveRatio": 1.0,
+            "maximumPeakRSSBytes": 667648000
+          }
+        },
+        "runtimePassed": true,
+        "requiresRuntimeInvestigation": false,
+        "lowMemoryPassed": null
+      },
+      {
+        "profile": "boussinesq-256x256x129-rk78",
+        "policies": {
+          "reuse": {
+            "completeLifetimeRatio": 0.9958153545344836,
+            "completeLifetimeBootstrap95": [
+              0.9889771438909923,
+              1.0029738177745673
+            ],
+            "integrationRatio": 0.979043727089147,
+            "pairedBootstrap95": [
+              0.927444589457656,
+              1.0325524365146277
+            ],
+            "ratios": [
+              1.0205146786303585,
+              0.9169098097683336,
+              1.0516166089361594,
+              0.9141768187537814,
+              1.0488110676014795,
+              0.9040293830902487,
+              1.0925934899203444,
+              0.9058259972946835
+            ],
+            "maximumRetainedRatio": 1.0,
+            "maximumLiveRatio": 1.0,
+            "maximumPeakRSSBytes": 7661993984
+          }
+        },
+        "runtimePassed": true,
+        "requiresRuntimeInvestigation": false,
+        "lowMemoryPassed": null
+      }
+    ],
+    "actualProducerCountsIdentical": true,
+    "forwardBinariesAndNewHeaderVerified": true,
+    "maximumAbsoluteScientificDifference": {
+      "boussinesq": 2.0816681711721685e-17,
+      "eddytide": 1.0950441942103595e-17
+    }
+  },
+  "binarySHA256": {
+    "/Users/jearly/Documents/OceanKitRepositories/wave-vortex-model-benchmark-artifacts/rk78-combinations-20260912/qualified-candidate-wave-vortex-run": "ba1e490f98a4c54e33f0ffaec1e8f207b1557e899e907c0ffba68207cbd46ebd",
+    "/Users/jearly/Documents/OceanKitRepositories/wave-vortex-model-benchmark-artifacts/tiled-scratch-simd-20260912/qualified-candidate-wave-vortex-run": "c9da6aff33d46560a5bb545d1add21a0d37aa0382c93f67dc7bc53c5e5d092ee",
+    "/Users/jearly/Documents/OceanKitRepositories/wave-vortex-model/.compiled-backend-cache/provider/native-neon-pthreads/lib/libfftw3.3.dylib": "b0dec1a21815db76726d48fe9b49cc34502b8fd7f4cccdfb0a54d50e39abef2c",
+    "/Users/jearly/Documents/OceanKitRepositories/wave-vortex-model/.compiled-backend-cache/provider/native-neon-pthreads/lib/libfftw3_threads.3.dylib": "064e6e17ca492204cb41aaf6ef739f6d5d22cc774699760e25166f5f8dffc359"
+  },
+  "artifactArchive": "OceanKitRepositories/wave-vortex-model-benchmark-artifacts/rk78-combinations-20260912",
+  "artifactsSHA256": {
+    "qualification/protocol.json": "6a1c0f3860a9eb0e1790d7f948870caeae3b54f7950983e14d4565cbfa13139e",
+    "qualification/pairs.json": "6d972696393a645e9a2c20f88068f93c691999bccc9799308845f4deea7d0b7b",
+    "qualification/summary.json": "738043e937e5c0d8c8d20afb1b1cf221bf0907170fb72381a738478e9b74b56e",
+    "retained-timing-summary.json": "1b4a97be1ef140030b2876ff4c23a512b1c79a8ea9f042b0dac1eb4e30416a18",
+    "integration-host-attribution.json": "f3e048d28cbfdadd3cd01df1a7410aae32bae46d0e5725e39546f339920ca7cb",
+    "isolated-final/summary.json": "02fa895780c286fa580f2c38699deb00d35e759f15e80d2fed3503fab80d011d",
+    "run-campaign.py": "f2d8e09c2e2a9af834bf53095b53d40415c6ae3335c620ad41b4d3523bd5c262",
+    "qualify.py": "f021444c9950ff7feccc04be8b68a5d9ab70ff817acf77ba78135e25144f0aef",
+    "repeat-console.log": "b11bc7d31962b3597372d1a29b880c2cd61c4f423048ecc116a9cf65976fc83e"
+  },
+  "memoryPolicy": "reuse",
+  "lowMemoryQualified": false
+}

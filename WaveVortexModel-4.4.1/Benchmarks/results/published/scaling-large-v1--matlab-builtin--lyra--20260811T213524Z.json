@@ -1,0 +1,837 @@
+{
+  "schemaVersion": "published-benchmark-v1",
+  "datasetId": "scaling-large-v1--matlab-builtin--lyra--20260811T213524Z",
+  "collectedAt": "2026-08-11T21:35:24Z",
+  "benchmark": {
+    "suiteId": "scaling-large-v1",
+    "suiteVersion": 1,
+    "operation": "nonlinearFlux",
+    "correctnessTolerance": 1E-12
+  },
+  "implementation": {
+    "id": "matlab",
+    "displayName": "WaveVortexModel MATLAB",
+    "version": "4.2.1",
+    "repository": "https://github.com/JeffreyEarly/wave-vortex-model",
+    "commit": "9652b116b3ffd4ee3372cc5cdeea9700cd6cbc32",
+    "backend": "builtin",
+    "sourceDirty": false
+  },
+  "platform": {
+    "id": "lyra",
+    "displayName": "Lyra (Apple M4 Max)",
+    "processor": "Apple M4 Max",
+    "physicalMemoryBytes": 1.37438953472E+11,
+    "os": "Darwin 25.5.0 Darwin Kernel Version 25.5.0: Tue Jun  9 22:28:34 PDT 2026; root:xnu-12377.121.10~1/RELEASE_ARM64_T6041 arm64",
+    "architecture": "maca64",
+    "threadCount": 16
+  },
+  "toolchain": {
+    "kind": "matlab",
+    "name": "MATLAB",
+    "version": "25.2.0.3150157 (R2025b) Update 4",
+    "details": {
+      "matlabRelease": "2025b"
+    }
+  },
+  "provenance": {
+    "rawArtifact": "Benchmarks/results/published/raw/scaling-large-v1--matlab-builtin--lyra--20260811T213524Z.json",
+    "rawSchemaVersion": "1.0.0"
+  },
+  "cases": [
+    {
+      "id": "constant-nonhydrostatic-256x256x129",
+      "transformId": "constant-nonhydrostatic",
+      "scoreFamily": "constant-nonhydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          129
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4001,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.20101904166666668,
+        "samplesSeconds": [
+          0.19567620833333332,
+          0.20101904166666668,
+          0.20451070833333335
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.18692608E+8,
+        "peakProcessBytes": 3.076243456E+9,
+        "peakIncrementBytes": 2.457550848E+9
+      }
+    },
+    {
+      "id": "constant-nonhydrostatic-512x512x129",
+      "transformId": "constant-nonhydrostatic",
+      "scoreFamily": "constant-nonhydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4002,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.721706375,
+        "samplesSeconds": [
+          0.72004791666666668,
+          0.721706375,
+          0.76952275
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.15923712E+8,
+        "peakProcessBytes": 9.844391936E+9,
+        "peakIncrementBytes": 9.228468224E+9
+      }
+    },
+    {
+      "id": "constant-nonhydrostatic-512x512x257",
+      "transformId": "constant-nonhydrostatic",
+      "scoreFamily": "constant-nonhydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4003,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 1.7279965,
+        "samplesSeconds": [
+          1.7513874166666668,
+          1.7268025,
+          1.7279965
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.12745216E+8,
+        "peakProcessBytes": 1.8863538176E+10,
+        "peakIncrementBytes": 1.825079296E+10
+      }
+    },
+    {
+      "id": "constant-nonhydrostatic-1024x1024x129",
+      "transformId": "constant-nonhydrostatic",
+      "scoreFamily": "constant-nonhydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          1024,
+          1024,
+          129
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4004,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 3.4354535,
+        "samplesSeconds": [
+          3.4302778333333332,
+          3.4354535,
+          3.4584988333333335
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.17168896E+8,
+        "peakProcessBytes": 3.7101273088E+10,
+        "peakIncrementBytes": 3.6484104192E+10
+      }
+    },
+    {
+      "id": "constant-hydrostatic-256x256x129",
+      "transformId": "constant-hydrostatic",
+      "scoreFamily": "constant-hydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4005,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.17630716666666665,
+        "samplesSeconds": [
+          0.176659625,
+          0.17630716666666665,
+          0.17436408333333334
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.19692032E+8,
+        "peakProcessBytes": 2.955558912E+9,
+        "peakIncrementBytes": 2.33586688E+9
+      }
+    },
+    {
+      "id": "constant-hydrostatic-512x512x129",
+      "transformId": "constant-hydrostatic",
+      "scoreFamily": "constant-hydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4006,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.685910375,
+        "samplesSeconds": [
+          0.685910375,
+          0.68764675,
+          0.67904533333333328
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.19905024E+8,
+        "peakProcessBytes": 9.383297024E+9,
+        "peakIncrementBytes": 8.763392E+9
+      }
+    },
+    {
+      "id": "constant-hydrostatic-512x512x257",
+      "transformId": "constant-hydrostatic",
+      "scoreFamily": "constant-hydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4007,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 1.430309,
+        "samplesSeconds": [
+          1.429609,
+          1.430309,
+          1.4540161666666667
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.13957632E+8,
+        "peakProcessBytes": 1.7949507584E+10,
+        "peakIncrementBytes": 1.7335549952E+10
+      }
+    },
+    {
+      "id": "constant-hydrostatic-1024x1024x129",
+      "transformId": "constant-hydrostatic",
+      "scoreFamily": "constant-hydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          1024,
+          1024,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4008,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 2.854353,
+        "samplesSeconds": [
+          2.8721743333333332,
+          2.854353,
+          2.8487349583333335
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.16513536E+8,
+        "peakProcessBytes": 3.5258679296E+10,
+        "peakIncrementBytes": 3.464216576E+10
+      }
+    },
+    {
+      "id": "hydrostatic-256x256x129",
+      "transformId": "hydrostatic",
+      "scoreFamily": "hydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4009,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.17751833333333333,
+        "samplesSeconds": [
+          0.1779905,
+          0.17751833333333333,
+          0.17410495833333334
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.17316352E+8,
+        "peakProcessBytes": 2.910060544E+9,
+        "peakIncrementBytes": 2.292744192E+9
+      }
+    },
+    {
+      "id": "hydrostatic-512x512x129",
+      "transformId": "hydrostatic",
+      "scoreFamily": "hydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4010,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.660003625,
+        "samplesSeconds": [
+          0.648576125,
+          0.6619185,
+          0.660003625
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.16300544E+8,
+        "peakProcessBytes": 9.084502016E+9,
+        "peakIncrementBytes": 8.468201472E+9
+      }
+    },
+    {
+      "id": "hydrostatic-512x512x257",
+      "transformId": "hydrostatic",
+      "scoreFamily": "hydrostatic",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4011,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 1.3557150416666666,
+        "samplesSeconds": [
+          1.3524134583333334,
+          1.3602544166666666,
+          1.3557150416666666
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.12663296E+8,
+        "peakProcessBytes": 1.7407295488E+10,
+        "peakIncrementBytes": 1.6794632192E+10
+      }
+    },
+    {
+      "id": "boussinesq-256x256x129",
+      "transformId": "boussinesq",
+      "scoreFamily": "boussinesq",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          129
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4012,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.43976708333333331,
+        "samplesSeconds": [
+          0.44157895833333333,
+          0.43976708333333331,
+          0.435603125
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.20511232E+8,
+        "peakProcessBytes": 4.021501952E+9,
+        "peakIncrementBytes": 3.40099072E+9
+      }
+    },
+    {
+      "id": "boussinesq-512x512x129",
+      "transformId": "boussinesq",
+      "scoreFamily": "boussinesq",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4013,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 1.596905375,
+        "samplesSeconds": [
+          1.5995174166666666,
+          1.596905375,
+          1.5871105
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.18070016E+8,
+        "peakProcessBytes": 1.3222117376E+10,
+        "peakIncrementBytes": 1.260404736E+10
+      }
+    },
+    {
+      "id": "boussinesq-512x512x257",
+      "transformId": "boussinesq",
+      "scoreFamily": "boussinesq",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "isHydrostatic": false,
+        "shouldAntialias": true,
+        "seed": 4014,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 3.5083414166666667,
+        "samplesSeconds": [
+          3.505668,
+          3.508713125,
+          3.5083414166666667
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.16513536E+8,
+        "peakProcessBytes": 3.2922304512E+10,
+        "peakIncrementBytes": 3.2305790976E+10
+      }
+    },
+    {
+      "id": "stratified-qg-256x256x129",
+      "transformId": "stratified-qg",
+      "scoreFamily": "stratified-qg",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          256,
+          256,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4015,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.06139525,
+        "samplesSeconds": [
+          0.061583625,
+          0.060652708333333333,
+          0.06139525
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.2758912E+8,
+        "peakProcessBytes": 1.87940864E+9,
+        "peakIncrementBytes": 1.25181952E+9
+      }
+    },
+    {
+      "id": "stratified-qg-512x512x129",
+      "transformId": "stratified-qg",
+      "scoreFamily": "stratified-qg",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          129
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4016,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.22914358333333334,
+        "samplesSeconds": [
+          0.22914358333333334,
+          0.233946625,
+          0.22688975
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.17070592E+8,
+        "peakProcessBytes": 5.078155264E+9,
+        "peakIncrementBytes": 4.461084672E+9
+      }
+    },
+    {
+      "id": "stratified-qg-512x512x257",
+      "transformId": "stratified-qg",
+      "scoreFamily": "stratified-qg",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4017,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.48442108333333334,
+        "samplesSeconds": [
+          0.48442108333333334,
+          0.48639533333333335,
+          0.48176233333333335
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.20609536E+8,
+        "peakProcessBytes": 9.317957632E+9,
+        "peakIncrementBytes": 8.697348096E+9
+      }
+    },
+    {
+      "id": "barotropic-qg-2048x2048",
+      "transformId": "barotropic-qg",
+      "scoreFamily": "barotropic-qg",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000
+        ],
+        "Nxyz": [
+          2048,
+          2048
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4018,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.039722791666666667,
+        "samplesSeconds": [
+          0.04240625,
+          0.039722791666666667,
+          0.037822583333333333
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.1816832E+8,
+        "peakProcessBytes": 1.66273024E+9,
+        "peakIncrementBytes": 1.04456192E+9
+      }
+    },
+    {
+      "id": "barotropic-qg-4096x4096",
+      "transformId": "barotropic-qg",
+      "scoreFamily": "barotropic-qg",
+      "configuration": {
+        "Lxyz": [
+          15000,
+          15000
+        ],
+        "Nxyz": [
+          4096,
+          4096
+        ],
+        "isHydrostatic": true,
+        "shouldAntialias": true,
+        "seed": 4019,
+        "warmupCount": 2,
+        "sampleCount": 3
+      },
+      "status": "complete",
+      "timing": {
+        "medianSeconds": 0.14394620833333333,
+        "samplesSeconds": [
+          0.14394620833333333,
+          0.14503004166666666,
+          0.14222341666666666
+        ]
+      },
+      "correctness": {
+        "passed": true,
+        "relativeError": 0
+      },
+      "memory": {
+        "status": "complete",
+        "provider": "macos-ps-rss",
+        "baselineProcessBytes": 6.14744064E+8,
+        "peakProcessBytes": 4.254990336E+9,
+        "peakIncrementBytes": 3.640246272E+9
+      }
+    }
+  ]
+}

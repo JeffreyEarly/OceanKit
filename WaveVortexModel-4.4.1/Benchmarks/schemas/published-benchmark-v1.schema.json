@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wavevortexmodel.org/schemas/published-benchmark-v1.schema.json",
+  "title": "WaveVortexModel published benchmark v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "datasetId",
+    "collectedAt",
+    "benchmark",
+    "implementation",
+    "platform",
+    "toolchain",
+    "provenance",
+    "cases"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "published-benchmark-v1"},
+    "datasetId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*--(?:matlab|cpp)-[a-z0-9][a-z0-9-]*--[a-z0-9][a-z0-9-]*--[0-9]{8}T[0-9]{6}Z$"},
+    "collectedAt": {"type": "string", "format": "date-time", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "benchmark": {"$ref": "#/$defs/benchmark"},
+    "implementation": {"$ref": "#/$defs/implementation"},
+    "platform": {"$ref": "#/$defs/platform"},
+    "toolchain": {"$ref": "#/$defs/toolchain"},
+    "provenance": {"$ref": "#/$defs/provenance"},
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/case"}
+    }
+  },
+  "$defs": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "positiveInteger": {"type": "integer", "minimum": 1},
+    "nonnegativeNumber": {"type": "number", "minimum": 0},
+    "positiveNumber": {"type": "number", "exclusiveMinimum": 0},
+    "benchmark": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["suiteId", "suiteVersion", "operation", "correctnessTolerance"],
+      "properties": {
+        "suiteId": {"$ref": "#/$defs/slug"},
+        "suiteVersion": {"$ref": "#/$defs/positiveInteger"},
+        "operation": {"const": "nonlinearFlux"},
+        "correctnessTolerance": {"$ref": "#/$defs/positiveNumber"}
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "displayName", "version", "repository", "commit", "backend", "sourceDirty"],
+      "properties": {
+        "id": {"enum": ["matlab", "cpp"]},
+        "displayName": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "repository": {"type": "string", "format": "uri"},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "backend": {"$ref": "#/$defs/slug"},
+        "sourceDirty": {"const": false}
+      }
+    },
+    "platform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "displayName", "processor", "physicalMemoryBytes", "os", "architecture", "threadCount"],
+      "properties": {
+        "id": {"$ref": "#/$defs/slug"},
+        "displayName": {"type": "string", "minLength": 1},
+        "processor": {"type": "string", "minLength": 1},
+        "physicalMemoryBytes": {"$ref": "#/$defs/positiveInteger"},
+        "os": {"type": "string", "minLength": 1},
+        "architecture": {"type": "string", "minLength": 1},
+        "threadCount": {"$ref": "#/$defs/positiveInteger"}
+      }
+    },
+    "toolchain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "name", "version", "details"],
+      "properties": {
+        "kind": {"enum": ["matlab", "cpp"]},
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "details": {
+          "type": "object",
+          "additionalProperties": {"type": "string"}
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rawArtifact", "rawSchemaVersion"],
+      "properties": {
+        "rawArtifact": {"type": "string", "minLength": 1, "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*//).+$"},
+        "rawSchemaVersion": {"type": "string", "minLength": 1}
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Lxyz", "Nxyz", "isHydrostatic", "shouldAntialias", "seed", "warmupCount", "sampleCount"],
+      "properties": {
+        "Lxyz": {"type": "array", "minItems": 2, "maxItems": 3, "items": {"$ref": "#/$defs/positiveNumber"}},
+        "Nxyz": {"type": "array", "minItems": 2, "maxItems": 3, "items": {"$ref": "#/$defs/positiveInteger"}},
+        "isHydrostatic": {"type": "boolean"},
+        "shouldAntialias": {"type": "boolean"},
+        "seed": {"type": "integer", "minimum": 0},
+        "warmupCount": {"type": "integer", "minimum": 0},
+        "sampleCount": {"$ref": "#/$defs/positiveInteger"}
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["medianSeconds", "samplesSeconds"],
+      "properties": {
+        "medianSeconds": {"$ref": "#/$defs/positiveNumber"},
+        "samplesSeconds": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/positiveNumber"}}
+      }
+    },
+    "correctness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passed", "relativeError"],
+      "properties": {
+        "passed": {"const": true},
+        "relativeError": {"$ref": "#/$defs/nonnegativeNumber"}
+      }
+    },
+    "memory": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "provider", "baselineProcessBytes", "peakProcessBytes", "peakIncrementBytes"],
+          "properties": {
+            "status": {"const": "complete"},
+            "provider": {"type": "string", "minLength": 1},
+            "baselineProcessBytes": {"$ref": "#/$defs/nonnegativeNumber"},
+            "peakProcessBytes": {"$ref": "#/$defs/nonnegativeNumber"},
+            "peakIncrementBytes": {"$ref": "#/$defs/nonnegativeNumber"},
+            "exactRetainedBytes": {"$ref": "#/$defs/nonnegativeNumber"},
+            "exactRetainedDefinition": {"type": "string", "minLength": 1}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "reason"],
+          "properties": {
+            "status": {"const": "unavailable"},
+            "reason": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "case": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "transformId", "scoreFamily", "configuration", "status", "timing", "correctness", "memory"],
+          "properties": {
+            "id": {"$ref": "#/$defs/slug"},
+            "transformId": {"$ref": "#/$defs/slug"},
+            "scoreFamily": {"$ref": "#/$defs/slug"},
+            "configuration": {"$ref": "#/$defs/configuration"},
+            "status": {"const": "complete"},
+            "timing": {"$ref": "#/$defs/timing"},
+            "correctness": {"$ref": "#/$defs/correctness"},
+            "memory": {"$ref": "#/$defs/memory"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "transformId", "scoreFamily", "configuration", "status", "unavailableReason"],
+          "properties": {
+            "id": {"$ref": "#/$defs/slug"},
+            "transformId": {"$ref": "#/$defs/slug"},
+            "scoreFamily": {"$ref": "#/$defs/slug"},
+            "configuration": {"$ref": "#/$defs/configuration"},
+            "status": {"const": "unavailable"},
+            "unavailableReason": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    }
+  }
+}

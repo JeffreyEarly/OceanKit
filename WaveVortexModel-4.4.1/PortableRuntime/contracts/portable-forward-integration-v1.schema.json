@@ -1,0 +1,391 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Forward integration compatibility slice v1",
+  "description": "Only an integration assembly input for issue306. Source references are not executed qualification or a final parity decision.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schemaVersion",
+    "slice",
+    "assemblyTarget",
+    "scope",
+    "configurations",
+    "profiles",
+    "exclusions",
+    "witnesses",
+    "cases",
+    "rows",
+    "relatedCatalogs",
+    "historicalEvidence",
+    "evidencePolicy",
+    "acceptance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "wave-vortex-forward-integration-v1"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "slice": {
+      "const": "forward-integration"
+    },
+    "assemblyTarget": {
+      "const": 306
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "configurations": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "transform"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "constant-hydrostatic",
+              "constant-nonhydrostatic",
+              "barotropic-qg",
+              "stratified-qg",
+              "hydrostatic",
+              "boussinesq"
+            ]
+          },
+          "transform": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "maxItems": 6
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "method",
+          "stepPolicy"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "rk4-explicit",
+              "rk4-cfl",
+              "adaptive-rk23",
+              "adaptive-rk45",
+              "adaptive-rk78"
+            ]
+          },
+          "method": {
+            "enum": [
+              "fixed-rk4",
+              "adaptive-rk23",
+              "adaptive-rk45",
+              "adaptive-rk78"
+            ]
+          },
+          "stepPolicy": {
+            "enum": [
+              "explicit",
+              "cfl",
+              "adaptive"
+            ]
+          }
+        }
+      },
+      "maxItems": 5
+    },
+    "exclusions": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "reason",
+          "detail"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "backward-integration",
+              "matlab-function-handle-execution",
+              "experimental-adaptive-cell"
+            ]
+          },
+          "reason": {
+            "enum": [
+              "unsupported",
+              "under-development"
+            ]
+          },
+          "detail": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "maxItems": 3
+    },
+    "witnesses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "path",
+          "symbol",
+          "configurations",
+          "profiles",
+          "coverage"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "symbol": {
+            "type": "string",
+            "minLength": 1
+          },
+          "configurations": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "constant-hydrostatic",
+                "constant-nonhydrostatic",
+                "barotropic-qg",
+                "stratified-qg",
+                "hydrostatic",
+                "boussinesq"
+              ]
+            }
+          },
+          "profiles": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "rk4-explicit",
+                "rk4-cfl",
+                "adaptive-rk23",
+                "adaptive-rk45",
+                "adaptive-rk78"
+              ]
+            }
+          },
+          "coverage": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "configuration",
+          "profile",
+          "path",
+          "symbol",
+          "parameter"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "configuration": {
+            "enum": [
+              "constant-hydrostatic",
+              "constant-nonhydrostatic",
+              "barotropic-qg",
+              "stratified-qg",
+              "hydrostatic",
+              "boussinesq"
+            ]
+          },
+          "profile": {
+            "enum": [
+              "rk4-explicit",
+              "rk4-cfl",
+              "adaptive-rk23",
+              "adaptive-rk45",
+              "adaptive-rk78"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "symbol": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parameter": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "maxItems": 6
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "configuration",
+          "profile",
+          "support",
+          "witnesses",
+          "representativeCases"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "configuration": {
+            "enum": [
+              "constant-hydrostatic",
+              "constant-nonhydrostatic",
+              "barotropic-qg",
+              "stratified-qg",
+              "hydrostatic",
+              "boussinesq"
+            ]
+          },
+          "profile": {
+            "enum": [
+              "rk4-explicit",
+              "rk4-cfl",
+              "adaptive-rk23",
+              "adaptive-rk45",
+              "adaptive-rk78"
+            ]
+          },
+          "support": {
+            "const": "supported"
+          },
+          "witnesses": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "representativeCases": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "maxItems": 30
+    },
+    "relatedCatalogs": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "historicalEvidence": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "classification"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "classification": {
+            "const": "historical-workload-coverage"
+          }
+        }
+      }
+    },
+    "evidencePolicy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relativeErrorMaximum",
+        "particlePositionErrorMaximum",
+        "heldAmplitudeErrorMaximum",
+        "coefficientEvolutionMinimum",
+        "particleEvolutionMinimum",
+        "tracerEvolutionMinimum"
+      ],
+      "properties": {
+        "relativeErrorMaximum": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "particlePositionErrorMaximum": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "heldAmplitudeErrorMaximum": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "coefficientEvolutionMinimum": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "particleEvolutionMinimum": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "tracerEvolutionMinimum": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    }
+  }
+}

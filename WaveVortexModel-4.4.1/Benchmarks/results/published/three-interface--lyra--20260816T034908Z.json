@@ -1,0 +1,646 @@
+{
+  "schemaVersion": "published-three-interface-v2",
+  "datasetId": "three-interface--lyra--20260816T034908Z",
+  "collectedAt": "2026-08-16T03:49:08Z",
+  "source": {
+    "repository": "https://github.com/JeffreyEarly/wave-vortex-model",
+    "commit": "f8962a135974d7532202a72eb07752363a0068be",
+    "tree": "103dd87af237caa5e6b30759d1f9fcad39d4da8d",
+    "sourceDirty": false,
+    "version": "unreleased-preview"
+  },
+  "platform": {
+    "id": "lyra",
+    "displayName": "Lyra (Apple M4 Max)",
+    "processor": "Apple M4 Max",
+    "physicalMemoryBytes": 1.37438953472E+11,
+    "os": "Darwin 25.5.0 Darwin Kernel Version 25.5.0: Tue Jun  9 22:28:34 PDT 2026; root:xnu-12377.121.10~1/RELEASE_ARM64_T6041 arm64",
+    "architecture": "maca64",
+    "matlabVersion": "25.2.0.3150157 (R2025b) Update 4",
+    "threadCount": 16
+  },
+  "provider": {
+    "id": "native-neon-pthreads",
+    "version": "3.3.11",
+    "threadBackend": "pthreads",
+    "scope": "compiled-interfaces-only",
+    "moduleSHA256": "per-case-evidence",
+    "identityValidated": true,
+    "openMPDetected": false,
+    "moduleIdentityScope": "case-evidence"
+  },
+  "provenance": {
+    "composition": "frozen-valid-v1-plus-corrected-adaptive",
+    "sourceDatasets": [
+      {
+        "datasetId": "three-interface--lyra--20260815T230743Z",
+        "collectedAt": "2026-08-15T23:07:43Z",
+        "source": {
+          "repository": "https://github.com/JeffreyEarly/wave-vortex-model",
+          "commit": "2f0e794c7a75254dfe90eacbbda75283e4383625",
+          "tree": "d8decc57b4e46a0b99b9d9e5680fc380227175e4",
+          "sourceDirty": false,
+          "version": "unreleased-preview"
+        },
+        "provider": {
+          "id": "native-neon-pthreads",
+          "version": "3.3.11",
+          "threadBackend": "pthreads",
+          "scope": "compiled-interfaces-only",
+          "moduleSHA256": "bea39aded7d7e24795fe45963a64f69acefd23b57f430b76e04633b4e3ab6ad4",
+          "identityValidated": true,
+          "openMPDetected": false
+        },
+        "externalArchive": {
+          "fileName": "20260815T230743268Z-three-interface-benchmark.json.gz",
+          "sha256": "e2f05927488d7effcff0f19d42f55a4ee30f601c1a4a513b3759f2202e0b689c",
+          "compressedBytes": 505787
+        }
+      },
+      {
+        "datasetId": "three-interface--lyra--20260816T034908Z",
+        "collectedAt": "2026-08-16T03:49:08Z",
+        "source": {
+          "repository": "https://github.com/JeffreyEarly/wave-vortex-model",
+          "commit": "f8962a135974d7532202a72eb07752363a0068be",
+          "tree": "103dd87af237caa5e6b30759d1f9fcad39d4da8d",
+          "sourceDirty": false,
+          "version": "unreleased-preview"
+        },
+        "provider": {
+          "id": "native-neon-pthreads",
+          "version": "3.3.11",
+          "threadBackend": "pthreads",
+          "scope": "compiled-interfaces-only",
+          "moduleSHA256": "085e056d1bc41535fe0dbeb751ca0534bb96fb450c34d58bb505e60bda18d6dd",
+          "identityValidated": true,
+          "openMPDetected": false
+        },
+        "externalArchive": {
+          "fileName": "20260816T034908293Z-three-interface-benchmark.json.gz",
+          "sha256": "e8f480484b363cd803424ae2460b192a399d50e3a3c3accc75aae0ee5b75da97",
+          "compressedBytes": 528909
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "nonlinear-flux",
+      "operation": "nonlinearFlux",
+      "contract": {
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "forcing": "default WVNonlinearAdvection",
+        "shouldAntialias": true,
+        "integrator": "none",
+        "deltaT": 0.001,
+        "finalTime": 0.002,
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1E-6,
+        "outputInterval": 0.0005,
+        "observerGraph": "cross-group Eulerian u, one mooring, two 3-D particles with tracked u, and one 3-D tracer",
+        "processRunCount": 3,
+        "warmupCount": 0,
+        "samplesPerProcess": 1
+      },
+      "interfaces": [
+        {
+          "id": "matlab-builtin",
+          "providerId": "matlab-builtin",
+          "processWallSeconds": 8.015529166666667,
+          "interfaceTotalSeconds": 5.1220913333333336,
+          "integrationSeconds": 1.846415875,
+          "totalPeakRSSBytes": 1.736564736E+10,
+          "incrementalPeakRSSBytes": 2.745106432E+9,
+          "finalRSSBytes": 7.89151744E+8,
+          "processWallRatio": 1,
+          "integrationRatio": 1,
+          "totalRSSRatio": 1,
+          "incrementalRSSRatio": 1,
+          "processWallSamplesSeconds": [
+            8.015529166666667,
+            7.99982275,
+            8.0715299583333326
+          ],
+          "integrationSamplesSeconds": [
+            1.8791715416666666,
+            1.846415875,
+            1.8371170833333332
+          ]
+        },
+        {
+          "id": "matlab-compiled",
+          "providerId": "native-neon-pthreads",
+          "processWallSeconds": 50.090452166666665,
+          "interfaceTotalSeconds": 47.186327208333331,
+          "integrationSeconds": 1.4450220833333334,
+          "totalPeakRSSBytes": 2.251317248E+10,
+          "incrementalPeakRSSBytes": 2.58883584E+8,
+          "finalRSSBytes": 7.91412736E+8,
+          "processWallRatio": 6.2491759589588334,
+          "integrationRatio": 0.78260921761915281,
+          "totalRSSRatio": 1.2964199959430709,
+          "incrementalRSSRatio": 0.09430730298183207,
+          "processWallSamplesSeconds": [
+            50.090452166666665,
+            49.88364775,
+            50.112553958333336
+          ],
+          "integrationSamplesSeconds": [
+            1.4450220833333334,
+            1.1050933333333333,
+            1.587277875
+          ]
+        },
+        {
+          "id": "standalone-compiled",
+          "providerId": "native-neon-pthreads",
+          "processWallSeconds": 42.236472708333331,
+          "interfaceTotalSeconds": 42.236472708333331,
+          "integrationSeconds": 1.133884,
+          "totalPeakRSSBytes": 1.4986395648E+10,
+          "incrementalPeakRSSBytes": 3.88448256E+8,
+          "finalRSSBytes": 1.4599274496E+10,
+          "processWallRatio": 5.2693305495010465,
+          "integrationRatio": 0.61410000604549608,
+          "totalRSSRatio": 0.8629909002136964,
+          "incrementalRSSRatio": 0.14150571776446152,
+          "processWallSamplesSeconds": [
+            41.851791041666665,
+            42.236472708333331,
+            42.26874375
+          ],
+          "integrationSamplesSeconds": [
+            1.133884,
+            1.123840667,
+            1.209108166
+          ]
+        }
+      ],
+      "correctness": {
+        "passed": true,
+        "maximumRelativeError": 3.344047411460333E-14,
+        "outputAgreementPassed": true,
+        "completeOutputGraph": {
+          "passed": true,
+          "variableCount": 3,
+          "recordCount": 0,
+          "maximumAbsoluteError": 4.0874193209799694E-20,
+          "maximumRelativeError": 3.344047411460333E-14,
+          "categories": {
+            "name": "coefficients",
+            "variableCount": 3,
+            "maximumAbsoluteError": 4.0874193209799694E-20,
+            "maximumRelativeError": 3.344047411460333E-14,
+            "passed": true
+          }
+        }
+      },
+      "evidence": {
+        "datasetId": "three-interface--lyra--20260815T230743Z",
+        "collectedAt": "2026-08-15T23:07:43Z",
+        "source": {
+          "repository": "https://github.com/JeffreyEarly/wave-vortex-model",
+          "commit": "2f0e794c7a75254dfe90eacbbda75283e4383625",
+          "tree": "d8decc57b4e46a0b99b9d9e5680fc380227175e4",
+          "sourceDirty": false,
+          "version": "unreleased-preview"
+        },
+        "provider": {
+          "id": "native-neon-pthreads",
+          "version": "3.3.11",
+          "threadBackend": "pthreads",
+          "scope": "compiled-interfaces-only",
+          "moduleSHA256": "bea39aded7d7e24795fe45963a64f69acefd23b57f430b76e04633b4e3ab6ad4",
+          "identityValidated": true,
+          "openMPDetected": false
+        },
+        "externalArchive": {
+          "fileName": "20260815T230743268Z-three-interface-benchmark.json.gz",
+          "sha256": "e2f05927488d7effcff0f19d42f55a4ee30f601c1a4a513b3759f2202e0b689c",
+          "compressedBytes": 505787
+        }
+      }
+    },
+    {
+      "id": "fixed-rk4-continuation",
+      "operation": "model-continuation",
+      "contract": {
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "forcing": "default WVNonlinearAdvection",
+        "shouldAntialias": true,
+        "integrator": "fixed-rk4",
+        "deltaT": 0.001,
+        "finalTime": 0.002,
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1E-6,
+        "outputInterval": 0.0005,
+        "observerGraph": "cross-group Eulerian u, one mooring, two 3-D particles with tracked u, and one 3-D tracer",
+        "processRunCount": 3,
+        "warmupCount": 0,
+        "samplesPerProcess": 1
+      },
+      "interfaces": [
+        {
+          "id": "matlab-builtin",
+          "providerId": "matlab-builtin",
+          "processWallSeconds": 19.90171775,
+          "interfaceTotalSeconds": 16.93838525,
+          "integrationSeconds": 12.78994175,
+          "totalPeakRSSBytes": 2.5717997568E+10,
+          "incrementalPeakRSSBytes": 3.819372544E+9,
+          "finalRSSBytes": 8.179712E+8,
+          "processWallRatio": 1,
+          "integrationRatio": 1,
+          "totalRSSRatio": 1,
+          "incrementalRSSRatio": 1,
+          "processWallSamplesSeconds": [
+            19.90171775,
+            19.845100833333333,
+            20.34158375
+          ],
+          "integrationSamplesSeconds": [
+            12.763433708333332,
+            12.78994175,
+            13.10442175
+          ]
+        },
+        {
+          "id": "matlab-compiled",
+          "providerId": "native-neon-pthreads",
+          "processWallSeconds": 62.220177166666666,
+          "interfaceTotalSeconds": 59.172674666666666,
+          "integrationSeconds": 12.361873916666667,
+          "totalPeakRSSBytes": 3.5794337792E+10,
+          "incrementalPeakRSSBytes": 4.077912064E+9,
+          "finalRSSBytes": 8.26851328E+8,
+          "processWallRatio": 3.1263722030560235,
+          "integrationRatio": 0.96653090047627988,
+          "totalRSSRatio": 1.3918011189384991,
+          "incrementalRSSRatio": 1.0676916213387326,
+          "processWallSamplesSeconds": [
+            61.689839166666665,
+            62.710698458333333,
+            62.220177166666666
+          ],
+          "integrationSamplesSeconds": [
+            12.073462125,
+            13.007098708333332,
+            12.361873916666667
+          ]
+        },
+        {
+          "id": "standalone-compiled",
+          "providerId": "native-neon-pthreads",
+          "processWallSeconds": 55.236368625,
+          "interfaceTotalSeconds": 55.070684333,
+          "integrationSeconds": 7.473571208,
+          "totalPeakRSSBytes": 3.1107825664E+10,
+          "incrementalPeakRSSBytes": 2.130313216E+9,
+          "finalRSSBytes": 1.9573129216E+10,
+          "processWallRatio": 2.7754573408619465,
+          "integrationRatio": 0.58433191910354088,
+          "totalRSSRatio": 1.2095741739514889,
+          "incrementalRSSRatio": 0.55776523275965617,
+          "processWallSamplesSeconds": [
+            54.99900125,
+            55.236368625,
+            55.310164666666665
+          ],
+          "integrationSamplesSeconds": [
+            7.389795459,
+            7.583362417,
+            7.473571208
+          ]
+        }
+      ],
+      "correctness": {
+        "passed": true,
+        "maximumRelativeError": 3.6580888282489932E-13,
+        "outputAgreementPassed": true,
+        "completeOutputGraph": {
+          "passed": true,
+          "variableCount": 54,
+          "recordCount": 80,
+          "maximumAbsoluteError": 2.4654757402320371E-16,
+          "maximumRelativeError": 3.6580888282489932E-13,
+          "categories": [
+            {
+              "name": "metadata",
+              "variableCount": 33,
+              "maximumAbsoluteError": 0,
+              "maximumRelativeError": 0,
+              "passed": true
+            },
+            {
+              "name": "times",
+              "variableCount": 3,
+              "maximumAbsoluteError": 0,
+              "maximumRelativeError": 0,
+              "passed": true
+            },
+            {
+              "name": "coefficients",
+              "variableCount": 6,
+              "maximumAbsoluteError": 4.3368086899420177E-19,
+              "maximumRelativeError": 3.9671841202071567E-17,
+              "passed": true
+            },
+            {
+              "name": "eulerianFields",
+              "variableCount": 1,
+              "maximumAbsoluteError": 2.4654757402320371E-16,
+              "maximumRelativeError": 2.5792614927805039E-14,
+              "passed": true
+            },
+            {
+              "name": "moorings",
+              "variableCount": 5,
+              "maximumAbsoluteError": 7.8929918156944723E-17,
+              "maximumRelativeError": 1.4191370866360923E-14,
+              "passed": true
+            },
+            {
+              "name": "particles",
+              "variableCount": 5,
+              "maximumAbsoluteError": 5.8113236445223038E-17,
+              "maximumRelativeError": 3.6580888282489932E-13,
+              "passed": true
+            },
+            {
+              "name": "tracers",
+              "variableCount": 1,
+              "maximumAbsoluteError": 1.1102230246251565E-16,
+              "maximumRelativeError": 1.1102230244648166E-16,
+              "passed": true
+            }
+          ]
+        }
+      },
+      "evidence": {
+        "datasetId": "three-interface--lyra--20260815T230743Z",
+        "collectedAt": "2026-08-15T23:07:43Z",
+        "source": {
+          "repository": "https://github.com/JeffreyEarly/wave-vortex-model",
+          "commit": "2f0e794c7a75254dfe90eacbbda75283e4383625",
+          "tree": "d8decc57b4e46a0b99b9d9e5680fc380227175e4",
+          "sourceDirty": false,
+          "version": "unreleased-preview"
+        },
+        "provider": {
+          "id": "native-neon-pthreads",
+          "version": "3.3.11",
+          "threadBackend": "pthreads",
+          "scope": "compiled-interfaces-only",
+          "moduleSHA256": "bea39aded7d7e24795fe45963a64f69acefd23b57f430b76e04633b4e3ab6ad4",
+          "identityValidated": true,
+          "openMPDetected": false
+        },
+        "externalArchive": {
+          "fileName": "20260815T230743268Z-three-interface-benchmark.json.gz",
+          "sha256": "e2f05927488d7effcff0f19d42f55a4ee30f601c1a4a513b3759f2202e0b689c",
+          "compressedBytes": 505787
+        }
+      }
+    },
+    {
+      "id": "adaptive-rk23-observer-output",
+      "operation": "model-continuation",
+      "contract": {
+        "Nxyz": [
+          512,
+          512,
+          257
+        ],
+        "Lxyz": [
+          15000,
+          15000,
+          1300
+        ],
+        "forcing": "default WVNonlinearAdvection",
+        "shouldAntialias": true,
+        "integrator": "adaptive-rk23",
+        "deltaT": 0.001,
+        "finalTime": 0.011,
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1E-6,
+        "outputInterval": 0.005,
+        "observerGraph": "cross-group Eulerian u, one mooring, two 3-D particles with tracked u, and one 3-D tracer",
+        "processRunCount": 3,
+        "warmupCount": 0,
+        "samplesPerProcess": 1
+      },
+      "adaptiveWork": {
+        "controller": "matlab-ode23-v1",
+        "relativeTolerance": 0.001,
+        "absoluteToleranceHash": "10060788287821377235",
+        "absoluteToleranceHashClearedMantissaBits": 20,
+        "absoluteToleranceComponentHashes": [
+          "7843758491958524091",
+          "7843758491958524091",
+          "3425131563094128827",
+          "3713629807952050427",
+          "3713629807952050427",
+          "3713629807952050427",
+          "2950469012251542403"
+        ],
+        "requestedInitialStep": 0.001,
+        "effectiveInitialStep": 0.001,
+        "requestedMaximumStep": 0.001,
+        "effectiveMaximumStep": 0.001,
+        "initialTime": 0.001,
+        "finalTime": 0.011,
+        "acceptedStepCount": 10,
+        "rejectedStepCount": 0,
+        "rhsEvaluationCount": 31,
+        "denseOutputEvaluationCount": 0,
+        "outputRecordCounts": {
+          "waveVortex": 3,
+          "particles": 3,
+          "tracers": 3
+        },
+        "absoluteToleranceFingerprintAgreementPassed": false
+      },
+      "interfaces": [
+        {
+          "id": "matlab-builtin",
+          "providerId": "matlab-builtin",
+          "processWallSeconds": 307.742825625,
+          "interfaceTotalSeconds": 304.761758375,
+          "integrationSeconds": 91.465710416666667,
+          "totalPeakRSSBytes": 4.1397927936E+10,
+          "incrementalPeakRSSBytes": 3.027156992E+9,
+          "finalRSSBytes": 8.19593216E+8,
+          "processWallRatio": 1,
+          "integrationRatio": 1,
+          "totalRSSRatio": 1,
+          "incrementalRSSRatio": 1,
+          "processWallSamplesSeconds": [
+            303.4778645,
+            307.742825625,
+            310.56791520833332
+          ],
+          "integrationSamplesSeconds": [
+            91.477952375,
+            91.430493416666664,
+            91.465710416666667
+          ]
+        },
+        {
+          "id": "matlab-compiled",
+          "providerId": "native-neon-pthreads",
+          "processWallSeconds": 339.16856108333332,
+          "interfaceTotalSeconds": 336.06357595833333,
+          "integrationSeconds": 81.30300879166667,
+          "totalPeakRSSBytes": 4.4397707264E+10,
+          "incrementalPeakRSSBytes": 3.010035712E+9,
+          "finalRSSBytes": 8.3124224E+8,
+          "processWallRatio": 1.1021168743560805,
+          "integrationRatio": 0.8888905844747238,
+          "totalRSSRatio": 1.0724620645902272,
+          "incrementalRSSRatio": 0.994344105692157,
+          "processWallSamplesSeconds": [
+            336.91424166666667,
+            339.16856108333332,
+            341.19302945833334
+          ],
+          "integrationSamplesSeconds": [
+            84.521291166666671,
+            79.755716416666672,
+            81.30300879166667
+          ]
+        },
+        {
+          "id": "standalone-compiled",
+          "providerId": "native-neon-pthreads",
+          "processWallSeconds": 99.2041345,
+          "interfaceTotalSeconds": 99.034331708,
+          "integrationSeconds": 52.123027417,
+          "totalPeakRSSBytes": 3.2153092096E+10,
+          "incrementalPeakRSSBytes": 1.742340096E+9,
+          "finalRSSBytes": 2.2089547776E+10,
+          "processWallRatio": 0.32236051091857193,
+          "integrationRatio": 0.56986412918629958,
+          "totalRSSRatio": 0.77668360952045112,
+          "incrementalRSSRatio": 0.57556978399354852,
+          "processWallSamplesSeconds": [
+            99.048473083333334,
+            100.19025891666666,
+            99.2041345
+          ],
+          "integrationSamplesSeconds": [
+            51.955609458,
+            53.017775541,
+            52.123027417
+          ]
+        }
+      ],
+      "correctness": {
+        "passed": true,
+        "maximumRelativeError": 2.3972113275753082E-13,
+        "outputAgreementPassed": true,
+        "completeOutputGraph": {
+          "passed": true,
+          "variableCount": 54,
+          "recordCount": 48,
+          "maximumAbsoluteError": 9.0949470177292824E-13,
+          "maximumRelativeError": 2.3972113275753082E-13,
+          "categories": [
+            {
+              "name": "metadata",
+              "variableCount": 33,
+              "maximumAbsoluteError": 0,
+              "maximumRelativeError": 0,
+              "passed": true
+            },
+            {
+              "name": "times",
+              "variableCount": 3,
+              "maximumAbsoluteError": 0,
+              "maximumRelativeError": 0,
+              "passed": true
+            },
+            {
+              "name": "coefficients",
+              "variableCount": 6,
+              "maximumAbsoluteError": 3.4694469519536142E-17,
+              "maximumRelativeError": 7.9343683001510748E-16,
+              "passed": true
+            },
+            {
+              "name": "eulerianFields",
+              "variableCount": 1,
+              "maximumAbsoluteError": 2.4741493576119211E-16,
+              "maximumRelativeError": 2.5883332579376398E-14,
+              "passed": true
+            },
+            {
+              "name": "moorings",
+              "variableCount": 5,
+              "maximumAbsoluteError": 7.9146758591441824E-17,
+              "maximumRelativeError": 1.423034723687536E-14,
+              "passed": true
+            },
+            {
+              "name": "particles",
+              "variableCount": 5,
+              "maximumAbsoluteError": 9.0949470177292824E-13,
+              "maximumRelativeError": 2.3972113275753082E-13,
+              "passed": true
+            },
+            {
+              "name": "tracers",
+              "variableCount": 1,
+              "maximumAbsoluteError": 2.2204460492503131E-15,
+              "maximumRelativeError": 2.2204460474865739E-15,
+              "passed": true
+            }
+          ]
+        }
+      },
+      "evidence": {
+        "datasetId": "three-interface--lyra--20260816T034908Z",
+        "collectedAt": "2026-08-16T03:49:08Z",
+        "source": {
+          "repository": "https://github.com/JeffreyEarly/wave-vortex-model",
+          "commit": "f8962a135974d7532202a72eb07752363a0068be",
+          "tree": "103dd87af237caa5e6b30759d1f9fcad39d4da8d",
+          "sourceDirty": false,
+          "version": "unreleased-preview"
+        },
+        "provider": {
+          "id": "native-neon-pthreads",
+          "version": "3.3.11",
+          "threadBackend": "pthreads",
+          "scope": "compiled-interfaces-only",
+          "moduleSHA256": "085e056d1bc41535fe0dbeb751ca0534bb96fb450c34d58bb505e60bda18d6dd",
+          "identityValidated": true,
+          "openMPDetected": false
+        },
+        "externalArchive": {
+          "fileName": "20260816T034908293Z-three-interface-benchmark.json.gz",
+          "sha256": "e8f480484b363cd803424ae2460b192a399d50e3a3c3accc75aae0ee5b75da97",
+          "compressedBytes": 528909
+        }
+      }
+    }
+  ]
+}

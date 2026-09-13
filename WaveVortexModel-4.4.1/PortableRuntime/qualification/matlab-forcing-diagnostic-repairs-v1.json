@@ -1,0 +1,1001 @@
+{
+  "schema": "matlab-forcing-diagnostic-repairs-v1",
+  "status": "locally-qualified",
+  "issues": [
+    404,
+    406,
+    408,
+    410
+  ],
+  "baseCommit": "e799c6bc8e90ad6f64ed6e653563a5683fcdb631",
+  "matlabRelease": "R2025b",
+  "cppNumericalSourceChanged": false,
+  "matlabAPIsAndFileFormatsUnchanged": true,
+  "sourceSHA256": {
+    "+WVInternal/writePortableRunRequest.m": "33410238e0a4cb2e0b24b43acedc53e293de6b6ddf795818e60e855d002f1b15",
+    "ObservingSystems/WVEulerianFields.m": "4181a72391885c5306201d7a018592be8aa17fc92405808c7387b1b224f8d392",
+    "Operations/SpatialForcingOperation.m": "554c28e21ddb174ca577dc9bbde6aceae9495c5a07c1968c1ec09dbf123a7d82",
+    "UnitTests/TestForcingMathematicalContracts.m": "b248cb48f4c511d3c82540311e15d5a87a956d0a5da47ba8ccb4fbf25ac75dc5",
+    "UnitTests/TestObservingSystems.m": "5b0eecdb4305157b10fd8dff39c128ceff9c4117dd8eea2b046ac81028f6ad39",
+    "UnitTests/TestPortableRunRequestWriter.m": "a1ae7a902b141aa4f77177ae9d34e7b3b2faf56dd4830e8bbf0419860c54f202",
+    "UnitTests/TestPortableStableForcing.m": "08b325e1c36397a5546f91fe49876dcf4dac559c1d33bbf0ce9e435fab45c479",
+    "UnitTests/TestWVModelOutputPersistence.m": "959f1ccf4eec435ed9d2edd985053825984844ade1f5a62f79f98d7bcbd83356"
+  },
+  "focusedTests": [
+    {
+      "name": "TestPortableStableForcing/isolatedWaveDiagnosticsHaveSpatialShapes",
+      "passed": true,
+      "seconds": 4.360918291666667
+    },
+    {
+      "name": "TestPortableStableForcing/isolatedQGDiagnosticsPreserveOutputIdentity",
+      "passed": true,
+      "seconds": 0.163959
+    },
+    {
+      "name": "TestPortableStableForcing/isolatedTendenciesMatchMatlab",
+      "passed": true,
+      "seconds": 24.514695083333333
+    },
+    {
+      "name": "TestPortableStableForcing/fullGridStratifiedTendenciesMatchMatlab",
+      "passed": true,
+      "seconds": 2.433079833333333
+    },
+    {
+      "name": "TestPortableRunRequestWriter/acceptsLinearBarotropicInitialState",
+      "passed": true,
+      "seconds": 2.9622205416666665
+    },
+    {
+      "name": "TestPortableRunRequestWriter/rejectsInvalidBarotropicQGMetadataAndStateOwnership",
+      "passed": true,
+      "seconds": 1.6920112083333334
+    },
+    {
+      "name": "TestObservingSystems/restoresForcingDiagnosticsWithoutReplacingOperations",
+      "passed": true,
+      "seconds": 1.9964216666666668
+    },
+    {
+      "name": "TestObservingSystems/ordinaryObserverDoesNotRegisterForcingDiagnostics",
+      "passed": true,
+      "seconds": 0.28075075
+    },
+    {
+      "name": "TestForcingMathematicalContracts/stratifiedForcingDiagnosticsUseTheModalBasis",
+      "passed": true,
+      "seconds": 2.70413675
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=constantHydrostatic,outputDynamics=linear)",
+      "passed": true,
+      "seconds": 25.932141833333333
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=constantHydrostatic,outputDynamics=nonlinear)",
+      "passed": true,
+      "seconds": 28.827842458333333
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=constantNonhydrostatic,outputDynamics=linear)",
+      "passed": true,
+      "seconds": 36.04776225
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=constantNonhydrostatic,outputDynamics=nonlinear)",
+      "passed": true,
+      "seconds": 35.986092541666665
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=barotropic,outputDynamics=linear)",
+      "passed": true,
+      "seconds": 6.419448916666667
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=barotropic,outputDynamics=nonlinear)",
+      "passed": true,
+      "seconds": 8.474767791666666
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=stratifiedQG,outputDynamics=linear)",
+      "passed": true,
+      "seconds": 9.475817
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=stratifiedQG,outputDynamics=nonlinear)",
+      "passed": true,
+      "seconds": 13.721005333333334
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=hydrostatic,outputDynamics=linear)",
+      "passed": true,
+      "seconds": 25.93839291666667
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=hydrostatic,outputDynamics=nonlinear)",
+      "passed": true,
+      "seconds": 32.32836579166667
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=boussinesq,outputDynamics=linear)",
+      "passed": true,
+      "seconds": 37.21475566666667
+    },
+    {
+      "name": "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=boussinesq,outputDynamics=nonlinear)",
+      "passed": true,
+      "seconds": 45.225827875
+    },
+    {
+      "name": "TestPortableRunRequestWriter/rejectsMalformedLinearBarotropicStateTransactionally",
+      "passed": true,
+      "seconds": 2.9317515416666664
+    },
+    {
+      "name": "TestWVModelOutputPersistence/forcingDiagnosticsSurviveSegmentedMatlabContinuation",
+      "passed": true,
+      "seconds": 7.908031958333334
+    },
+    {
+      "name": "TestPortableVariableCatalog/testGeneratedCatalogMatchesCommittedFiles",
+      "passed": true,
+      "seconds": 18.723597791666666
+    },
+    {
+      "name": "TestPortableVariableCatalog/testCatalogIdentityAndAnnotationMetadata",
+      "passed": true,
+      "seconds": 0.046549
+    },
+    {
+      "name": "TestPortableVariableCatalog/testLegacyMetadataAndGraphFailures",
+      "passed": true,
+      "seconds": 0.32416325
+    },
+    {
+      "name": "TestPortableVariableCatalog/testConfigurationAndConditionalDependencies",
+      "passed": true,
+      "seconds": 0.03676379166666666
+    },
+    {
+      "name": "TestPortableVariableCatalog/testEvaluationLoopsDoNotCompareFieldNames",
+      "passed": true,
+      "seconds": 0.011957916666666667
+    },
+    {
+      "name": "TestPortableVariableCatalog/testHydrostaticAndNonhydrostaticAnnotationsAgree",
+      "passed": true,
+      "seconds": 0.21294420833333333
+    },
+    {
+      "name": "TestPortableRunRequestWriter/everyInjectedFailurePreservesOldRequest",
+      "passed": true,
+      "seconds": 1.027492375
+    }
+  ],
+  "directOutput": {
+    "scenarioCount": 96,
+    "comparisons": 35520,
+    "maximumNormalizedError": 3.795171116634729e-13,
+    "rows": [
+      {
+        "family": "constant-hydrostatic",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.1685411674361618e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.1685411674361618e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.1685411674361618e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.1685411674361618e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.1685411674361618e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.1685411674361618e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.1685411674361618e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.1685411674361618e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.336712296465642e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.336712296465642e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.336712296465642e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.336712296465642e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.336712296465642e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.336712296465642e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.336712296465642e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-hydrostatic",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.336712296465642e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.2315309671473967e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.2315309671473967e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.2315309671473967e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.2315309671473967e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.231908485445978e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.231908485445978e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.231908485445978e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.231908485445978e-13,
+        "linear": true
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.2316373001467463e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.2316373001467463e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.2316373001467463e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.2316373001467463e-13,
+        "linear": false
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 576,
+        "maximumNormalizedError": 6.160027167363293e-14,
+        "linear": false
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 576,
+        "maximumNormalizedError": 6.160027167363293e-14,
+        "linear": false
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 576,
+        "maximumNormalizedError": 6.160027167363293e-14,
+        "linear": false
+      },
+      {
+        "family": "constant-nonhydrostatic",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 576,
+        "maximumNormalizedError": 6.188015229950724e-14,
+        "linear": false
+      },
+      {
+        "family": "barotropic",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 96,
+        "maximumNormalizedError": 2.0486092476685436e-14,
+        "linear": true
+      },
+      {
+        "family": "barotropic",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 96,
+        "maximumNormalizedError": 2.0486092476685436e-14,
+        "linear": true
+      },
+      {
+        "family": "barotropic",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 96,
+        "maximumNormalizedError": 2.0486092476685436e-14,
+        "linear": true
+      },
+      {
+        "family": "barotropic",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 96,
+        "maximumNormalizedError": 2.0486092476685436e-14,
+        "linear": true
+      },
+      {
+        "family": "barotropic",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 96,
+        "maximumNormalizedError": 5.121523119171359e-15,
+        "linear": true
+      },
+      {
+        "family": "barotropic",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 96,
+        "maximumNormalizedError": 5.121523119171359e-15,
+        "linear": true
+      },
+      {
+        "family": "barotropic",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 96,
+        "maximumNormalizedError": 5.121523119171359e-15,
+        "linear": true
+      },
+      {
+        "family": "barotropic",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 96,
+        "maximumNormalizedError": 5.121523119171359e-15,
+        "linear": true
+      },
+      {
+        "family": "barotropic",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 96,
+        "maximumNormalizedError": 3.6347502227754916e-14,
+        "linear": false
+      },
+      {
+        "family": "barotropic",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 96,
+        "maximumNormalizedError": 3.6347502227754916e-14,
+        "linear": false
+      },
+      {
+        "family": "barotropic",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 96,
+        "maximumNormalizedError": 3.6347502227754916e-14,
+        "linear": false
+      },
+      {
+        "family": "barotropic",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 96,
+        "maximumNormalizedError": 3.6347502227754916e-14,
+        "linear": false
+      },
+      {
+        "family": "barotropic",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 96,
+        "maximumNormalizedError": 2.0486141741195367e-14,
+        "linear": false
+      },
+      {
+        "family": "barotropic",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 96,
+        "maximumNormalizedError": 2.0486141741195367e-14,
+        "linear": false
+      },
+      {
+        "family": "barotropic",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 96,
+        "maximumNormalizedError": 2.0486141741195367e-14,
+        "linear": false
+      },
+      {
+        "family": "barotropic",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 96,
+        "maximumNormalizedError": 2.0486141741195367e-14,
+        "linear": false
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 108,
+        "maximumNormalizedError": 2.6557748038782344e-14,
+        "linear": true
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 108,
+        "maximumNormalizedError": 2.6557748038782344e-14,
+        "linear": true
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 108,
+        "maximumNormalizedError": 2.6557748038782344e-14,
+        "linear": true
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 108,
+        "maximumNormalizedError": 2.6557748038782344e-14,
+        "linear": true
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 108,
+        "maximumNormalizedError": 2.6557748038782344e-14,
+        "linear": true
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 108,
+        "maximumNormalizedError": 2.6557748038782344e-14,
+        "linear": true
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 108,
+        "maximumNormalizedError": 2.6557748038782344e-14,
+        "linear": true
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 108,
+        "maximumNormalizedError": 2.6557748038782344e-14,
+        "linear": true
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 108,
+        "maximumNormalizedError": 3.795171116634729e-13,
+        "linear": false
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 108,
+        "maximumNormalizedError": 3.795171116634729e-13,
+        "linear": false
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 108,
+        "maximumNormalizedError": 3.795171116634729e-13,
+        "linear": false
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 108,
+        "maximumNormalizedError": 3.795171116634729e-13,
+        "linear": false
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 108,
+        "maximumNormalizedError": 2.655776043026854e-14,
+        "linear": false
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 108,
+        "maximumNormalizedError": 2.655776043026854e-14,
+        "linear": false
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 108,
+        "maximumNormalizedError": 3.795171116634729e-13,
+        "linear": false
+      },
+      {
+        "family": "stratified-qg",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 108,
+        "maximumNormalizedError": 2.6557776952224427e-14,
+        "linear": false
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.0717484589710766e-13,
+        "linear": true
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.0717484589710766e-13,
+        "linear": true
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.0717484589710766e-13,
+        "linear": true
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 432,
+        "maximumNormalizedError": 2.0717484589710766e-13,
+        "linear": true
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 432,
+        "maximumNormalizedError": 5.180376870171569e-14,
+        "linear": true
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 432,
+        "maximumNormalizedError": 5.180376870171569e-14,
+        "linear": true
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 432,
+        "maximumNormalizedError": 5.180376870171569e-14,
+        "linear": true
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 432,
+        "maximumNormalizedError": 5.180376870171569e-14,
+        "linear": true
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.0362792683025491e-13,
+        "linear": false
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.0362792683025491e-13,
+        "linear": false
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.0362792683025491e-13,
+        "linear": false
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.0362792683025491e-13,
+        "linear": false
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.0363793476973846e-13,
+        "linear": false
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.0363793476973846e-13,
+        "linear": false
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.0363793476973846e-13,
+        "linear": false
+      },
+      {
+        "family": "hydrostatic",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 432,
+        "maximumNormalizedError": 1.0363793476973846e-13,
+        "linear": false
+      },
+      {
+        "family": "boussinesq",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1122102104150342e-13,
+        "linear": true
+      },
+      {
+        "family": "boussinesq",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1122102104150342e-13,
+        "linear": true
+      },
+      {
+        "family": "boussinesq",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1122102104150342e-13,
+        "linear": true
+      },
+      {
+        "family": "boussinesq",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1122102104150342e-13,
+        "linear": true
+      },
+      {
+        "family": "boussinesq",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1122102104150342e-13,
+        "linear": true
+      },
+      {
+        "family": "boussinesq",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1122102104150342e-13,
+        "linear": true
+      },
+      {
+        "family": "boussinesq",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1122102104150342e-13,
+        "linear": true
+      },
+      {
+        "family": "boussinesq",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1122102104150342e-13,
+        "linear": true
+      },
+      {
+        "family": "boussinesq",
+        "provider": "reference",
+        "scenario": 1,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1119318091087578e-13,
+        "linear": false
+      },
+      {
+        "family": "boussinesq",
+        "provider": "reference",
+        "scenario": 2,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1119318091087578e-13,
+        "linear": false
+      },
+      {
+        "family": "boussinesq",
+        "provider": "reference",
+        "scenario": 3,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.112212394509526e-13,
+        "linear": false
+      },
+      {
+        "family": "boussinesq",
+        "provider": "reference",
+        "scenario": 4,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1119318091087578e-13,
+        "linear": false
+      },
+      {
+        "family": "boussinesq",
+        "provider": "native",
+        "scenario": 1,
+        "comparisons": 576,
+        "maximumNormalizedError": 5.559659045543789e-14,
+        "linear": false
+      },
+      {
+        "family": "boussinesq",
+        "provider": "native",
+        "scenario": 2,
+        "comparisons": 576,
+        "maximumNormalizedError": 5.559659045543789e-14,
+        "linear": false
+      },
+      {
+        "family": "boussinesq",
+        "provider": "native",
+        "scenario": 3,
+        "comparisons": 576,
+        "maximumNormalizedError": 1.1116524953787815e-13,
+        "linear": false
+      },
+      {
+        "family": "boussinesq",
+        "provider": "native",
+        "scenario": 4,
+        "comparisons": 576,
+        "maximumNormalizedError": 5.559659045543789e-14,
+        "linear": false
+      }
+    ]
+  },
+  "scopeNotes": [
+    "All output references use SpatialForcingOperation and WVModel.modelFromFile; all C++ runs use WVModel.writePortableRunRequest.",
+    "The nonlinear matrix retains exact accepted-state, accepted/rejected-step and RHS-count comparisons against ordinary-output controls.",
+    "Supported modal counts include Nj=4 and Nj=Nz-1 on odd/even grids; the horizontal mean contribution remains nonzero. Equal Nz/Nj construction is not qualified because of separate issue #412.",
+    "Previous #315 qualification evidence remains historical; these direct-reference results supersede its #404/#406/#408/#410 test workarounds.",
+    "No C++ numerical changes: previous performance evidence remains applicable.",
+    "The existing #409 nonfinite-MATLAB exception remains explicitly tested; #407 empty-band persistence remains separate."
+  ],
+  "analyzer": {
+    "initialFiles": 8,
+    "initialBlockingFindings": 2,
+    "corrections": [
+      "isscalar for the single-output constructor check",
+      "Remove an unused post-fclose descriptor assignment"
+    ],
+    "correctedFilesReport": {
+      "Release": "R2025b",
+      "Files": [
+        "+WVInternal/writePortableRunRequest.m",
+        "Operations/SpatialForcingOperation.m"
+      ],
+      "Findings": [],
+      "BlockingFindings": [],
+      "NonblockingFindings": []
+    }
+  },
+  "documentation": {
+    "files": 2026,
+    "routes": 4145,
+    "failures": 0,
+    "generatedChanges": 0
+  },
+  "integrationTracking": "https://github.com/JeffreyEarly/wave-vortex-model/issues/404",
+  "remaining": [
+    "Required hosted CI and integration"
+  ],
+  "finalConstructorAndWarningAssertionChecks": {
+    "names": [
+      "TestPortableStableForcing/forcingOutputContinuationMatchesMatlab(outputFamily=barotropic,outputDynamics=nonlinear)",
+      "TestPortableStableForcing/isolatedQGDiagnosticsPreserveOutputIdentity"
+    ],
+    "passed": [
+      true,
+      true
+    ],
+    "duration": [
+      11.720334,
+      0.16265866666666667
+    ]
+  }
+}

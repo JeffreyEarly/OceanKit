@@ -1,0 +1,14 @@
+{
+  "schemaIdentifier": "wave-vortex-run-request-v2",
+  "schemaVersion": 2,
+  "modelFiles": ["model-output.nc"],
+  "integration": {
+    "finalTime": 86400
+  },
+  "output": {
+    "policy": "append",
+    "destinations": {}
+  },
+  "execution": {},
+  "report": "wave-vortex-run-report.json"
+}

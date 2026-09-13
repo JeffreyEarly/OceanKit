@@ -1,0 +1,224 @@
+#pragma once
+#include "WVStratifiedModalSource.hpp"
+#include "WVVariableExecutionOptions.hpp"
+#include <array>
+#include <atomic>
+#include <functional>
+
+namespace wavevortex {
+namespace spectral_detail { class WVVariableComplexBuffer; }
+namespace kernel_detail { class WVPreparedFieldCache; class WVPreparedModeExecutor; }
+inline constexpr const char* WVBoussinesqKernelContract = "wave-vortex-boussinesq-kernel-v1";
+enum class WVBoussinesqField { u, v, w, eta, pi, p, psi, qgpv, rhoE, rhoTotal, zetaX, zetaY, zetaZ, ssh, ssu, ssv };
+enum class WVBoussinesqDerivative { value, x, y, z };
+enum class WVBoussinesqComponent { all, wave, inertial, geostrophic, meanDensityAnomaly };
+enum class WVBoussinesqFamily { F, G, Fw, Gw };
+
+struct WVBoussinesqModeFactors {
+    double omega = 0;
+    WVComplex64 UAp{}, VAp{}, WAp{}, UA0{}, VA0{}, ApmD{};
+    double NAp = 0, NA0 = 0, PA0 = 0, ApmN = 0, A0Z = 0, A0N = 0;
+    double waveEnergy = 0, balancedEnergy = 0, psi = 0, qgpv = 0, enstrophy = 0;
+    bool wave = false, inertial = false, geostrophic = false, meanDensityAnomaly = false;
+};
+struct WVBoussinesqStorage {
+    std::size_t sharedScientificBytes = 0, preparedBytes = 0, workspaceBytes = 0;
+    std::size_t spectralScratchBytes = 0, realScratchBytes = 0, factorBytes = 0;
+    std::size_t providerBytesLowerBound = 0, planBytesLowerBound = 0;
+};
+struct WVBoussinesqKernelMetrics {
+    std::size_t stateValidationCount = 0;
+    std::size_t derivedValidationCount = 0;
+    std::size_t phasePreparationCount = 0;
+    std::size_t coefficientAssemblyCount = 0;
+    std::size_t verticalPreparationCount = 0;
+    std::size_t derivativeAdvectionConsumerCount = 0;
+    std::size_t tiledNonlinearCount = 0, tiledColumnInverseCount = 0;
+    std::size_t tiledRowInverseCount = 0, tiledReusedColumnCount = 0;
+    std::size_t horizontalSpectrumReuseCount = 0;
+    std::size_t preparedVerticalDerivativeCount = 0;
+    std::size_t verticalOperatorExecutionCount = 0;
+    std::size_t verticalMatrixGroupExecutionCount = 0;
+    std::array<std::size_t,4> tendencyReconstructionCount{};
+    std::array<std::size_t,16> fieldReconstructionCount{};
+    std::array<std::array<std::array<std::size_t,5>,4>,16> reconstructionCount{};
+};
+
+// Immutable scientific source plus one owned mutable workspace. Coefficients
+// are interleaved [Nj,Nkl]; fields are column-major [Nx,Ny,Nz]. Separate kernel
+// instances are required for concurrent calls. No eigensolver or persistence I/O.
+class WVTransformBoussinesqKernel final {
+public:
+    ~WVTransformBoussinesqKernel();
+    using MatrixBackendFactory = std::function<WVKernelStatus(std::unique_ptr<WVVerticalMatrixBackend>&)>;
+    static WVKernelStatus create(std::shared_ptr<const WVStratifiedModalSource>,
+        std::unique_ptr<WVFFTEngine>, std::unique_ptr<WVTransformBoussinesqKernel>&,
+        MatrixBackendFactory = WVCreateScalarMatrixBackend, WVVariableExecutionOptions = {});
+    const WVVariableExecutionOptions& executionOptions() const noexcept { return executionOptions_; }
+    const char* horizontalScheduleIdentifier() const noexcept { return horizontalWorkspace_->scheduleIdentifier(); }
+    const WVStratifiedModalGeometry& geometry() const noexcept { return source_->geometry(); }
+    const std::vector<WVBoussinesqModeFactors>& factors() const noexcept { return factors_; }
+    const WVBoussinesqStorage& storage() const noexcept;
+    const WVBoussinesqKernelMetrics& metrics() const noexcept { return metrics_; }
+    void resetMetrics() noexcept { metrics_ = {}; }
+    const std::string& engineIdentifier() const noexcept { return engineIdentifier_; }
+    const std::string& engineLibraryIdentity() const noexcept { return engineLibraryIdentity_; }
+    const char* matrixBackendIdentifier() const noexcept { return vertical_[0]->backendIdentifier(); }
+    WVShape2D spectralShape() const noexcept { return {geometry().Nj,geometry().Nkl}; }
+    WVShape3D spatialShape() const noexcept { return {geometry().Nx,geometry().Ny,geometry().Nz}; }
+    std::size_t persistentBytes() const noexcept;
+
+    // Begin an explicit evaluation of one immutable borrowed state. State
+    // validation and phase preparation are reused until endStateEvaluation().
+    // The coefficient arrays and state identity must remain unchanged.
+    WVKernelStatus beginStateEvaluation(const WVState&);
+    WVKernelStatus beginStateEvaluation(const WVState&, const void* evaluationOwner);
+    // Register another immutable coefficient view at the same evaluation
+    // times, retaining the already prepared phase factors.
+    WVKernelStatus addStateEvaluationView(const WVState&, const void* evaluationOwner,
+        std::size_t componentIdentity = 0);
+    WVKernelStatus removeStateEvaluationView(const WVState&, const void* evaluationOwner,
+        std::size_t componentIdentity);
+    WVKernelStatus endStateEvaluation();
+    bool stateEvaluationActive() const noexcept { return stateEvaluationActive_; }
+    WVKernelStatus validateStateEvaluation(const WVState&) const noexcept;
+    // Validate a flux target against the active (or standalone) state without
+    // executing coefficient evolution or projection.
+    WVKernelStatus validateFluxOutput(const WVState&, const WVFlux&);
+    // Borrowed until the next kernel operation; scoped calls reuse the active phase.
+    WVKernelStatus preparedPhase(const WVState&, WVComplexConstView&);
+
+    WVKernelStatus transformToSpatial(WVComplexConstView, WVBoussinesqFamily, WVRealVolumeView);
+    WVKernelStatus transformFromSpatial(WVRealVolumeConstView, WVBoussinesqFamily, WVComplexView);
+    WVKernelStatus applyVertical(WVStratifiedModalOperator, WVComplexConstView, WVComplexView);
+    WVKernelStatus applyVerticalColumn(WVStratifiedModalOperator, std::size_t retainedColumn,
+        WVComplexConstView inputColumn, WVComplexView outputColumn);
+    WVKernelStatus horizontalForward(WVRealVolumeConstView, WVComplexView);
+    WVKernelStatus horizontalInverse(WVComplexConstView, WVRealVolumeView);
+    WVKernelStatus transformUVEtaToWaveVortex(WVRealVolumeConstView u, WVRealVolumeConstView v,
+        WVRealVolumeConstView eta, double t, double t0, WVMutableCoefficients);
+    WVKernelStatus transformUVWEtaToWaveVortex(WVRealVolumeConstView u, WVRealVolumeConstView v,
+        WVRealVolumeConstView w, WVRealVolumeConstView eta, double t, double t0, WVMutableCoefficients);
+    // Surface fields use [Nx,Ny,1]. Horizontal vorticity supports value only;
+    // other fields support first derivatives. rhoTotal belongs to the full flow.
+    WVKernelStatus transformStateField(const WVState&, WVBoussinesqField, WVRealVolumeView,
+        WVBoussinesqDerivative = WVBoussinesqDerivative::value,
+        WVBoussinesqComponent = WVBoussinesqComponent::all);
+    // Reconstruct derived [u,v,w,eta] coefficient tendencies while retaining
+    // the active primary state's matching phase and foreign-state protection.
+    WVKernelStatus transformCoefficientTendencyToUVWEta(
+        const WVState& tendency, WVRealFieldBundleView& fields);
+    // Combine exact prepared derivative operands without another reconstruction.
+    // zetaX expects (w_y,v_z); zetaY expects (u_z,w_x). Either input may be
+    // the exact output view; partial overlap remains invalid.
+    WVKernelStatus combinePreparedHorizontalVorticity(WVBoussinesqField,
+        WVRealVolumeConstView firstDerivative, WVRealVolumeConstView secondDerivative,
+        WVRealVolumeView output,
+        WVBoussinesqComponent = WVBoussinesqComponent::all);
+    // Convert exact prepared eta_z and eta operands to rho_e,z or rho_total,z.
+    WVKernelStatus combinePreparedDensityZDerivative(WVBoussinesqField,
+        WVRealVolumeConstView etaZ, WVRealVolumeConstView eta,
+        WVRealVolumeView output,
+        WVBoussinesqComponent = WVBoussinesqComponent::all);
+    // Linear phase evolution gives current-time coefficients; stored amplitudes
+    // are stationary under the f-plane linear dynamics. Exact in-place allowed.
+    WVKernelStatus evolveCoefficients(const WVState&, WVMutableCoefficients);
+    // Remove inactive modes and enforce real A0 means / conjugate inertial Am.
+    WVKernelStatus constrainCoefficients(WVMutableCoefficients) const;
+    // Caller-owned observation output captures the raw spatial contribution.
+    // Prepared [u,v,w,eta] fields may be shared within one observation event.
+    // With projectFlux=false, spatialTendency is required and flux is untouched.
+    // Produces the complete physical bundle and projected flux together. Caller
+    // publishes evaluator nodes only after success; requires prepared native support.
+    bool supportsTiledNonlinear() const noexcept { return tiledNonlinearPrepared_; }
+    WVKernelStatus nonlinearFluxAndFields(const WVState&, WVFlux&, WVRealFieldBundleView,
+        WVRealFieldBundleView* spatialTendency = nullptr);
+    WVKernelStatus nonlinearFlux(const WVState&, WVFlux&,
+        WVRealFieldBundleView* spatialTendency = nullptr,
+        const WVRealFieldBundleConstView* preparedFields = nullptr, bool projectFlux = true,
+        WVStateDerivativeAccess* derivativeAccess = nullptr);
+    WVKernelStatus totalEnergy(const WVCoefficients&, double&,
+        WVBoussinesqComponent = WVBoussinesqComponent::all) const;
+    WVKernelStatus totalEnstrophy(const WVCoefficients&, double&) const;
+    WVKernelStatus totalEnergySpatiallyIntegrated(const WVState&, double&,
+        WVBoussinesqComponent = WVBoussinesqComponent::all);
+    WVKernelStatus applyVerticalCalculus(WVRealConstView input,bool inputIsF,
+        unsigned order,bool integral,WVRealView output);
+    // F/G identify the balanced basis; Fw/Gw identify the grouped wave basis.
+    // MATLAB diffZF/diffZG orders 1..4 and intZF/intZG order 1. These preserve
+    // all horizontal grid columns rather than truncating through a Fourier map.
+    WVKernelStatus differentiateVertical(WVRealVolumeConstView, WVBoussinesqFamily,
+        unsigned order, WVRealVolumeView);
+    // Full-grid horizontal derivatives retain modes outside the compact map.
+    WVKernelStatus differentiateHorizontal(WVRealVolumeConstView, bool xDerivative, WVRealVolumeView);
+    WVKernelStatus differentiateHorizontal(WVRealVolumeConstView, bool xDerivative,
+        unsigned order, WVRealVolumeView);
+    WVKernelStatus integrateVertical(WVRealVolumeConstView, WVBoussinesqFamily, WVRealVolumeView);
+    // Unpreconditioned wave F values at one vertical index, [Nj,Nkl].
+    WVKernelStatus waveModeVerticalStructureAtIndex(std::size_t, WVRealView);
+    // Advect a scalar with supplied u/v/w, optionally filtering horizontal modes.
+    WVKernelStatus advectScalarWithAdvectionFields(WVRealVolumeConstView, WVRealFieldBundleConstView, bool antialias, WVRealVolumeView, bool xyOnly = false);
+private:
+    WVTransformBoussinesqKernel() = default;
+    WVKernelStatus spectral(WVComplexConstView) const;
+    WVKernelStatus volume(WVRealVolumeConstView, bool surface = false) const;
+    WVKernelStatus coefficients(const WVCoefficients&) const;
+    WVKernelStatus outputs(WVMutableCoefficients) const;
+    WVKernelStatus mutableOutputOutsidePreparedState(WVMutableCoefficients) const;
+    WVKernelStatus mutableOutputOutsidePreparedState(const void*,std::size_t) const;
+    WVKernelStatus stateContents(const WVState&) const;
+    WVKernelStatus state(const WVState&);
+    bool matchesStateEvaluation(const WVState&) const noexcept;
+    std::size_t stateEvaluationComponent(const WVState&) const noexcept;
+    std::size_t fieldPreparationView(const WVCoefficients&) const noexcept;
+    WVKernelStatus validateStateForCall(const WVState&);
+    WVKernelStatus preparePhaseForCall(const WVState&);
+    WVKernelStatus prepareProjectionPhaseForCall(double t,double t0);
+    WVKernelStatus disjoint(const void*,std::size_t,const void*,std::size_t) const;
+    WVKernelStatus preparePhase(double t,double t0,const WVState* validatedState = nullptr);
+    WVComplexOutput modalView(std::size_t slot = 0);
+    WVComplexOutput gridView(std::size_t slot = 0);
+    WVKernelStatus vertical(std::size_t,WVComplexInput,WVComplexOutput);
+    WVKernelStatus verticalColumn(std::size_t,WVComplexInput,WVComplexOutput,std::size_t);
+    WVKernelStatus project(const double*,WVComplexOutput,WVBoussinesqFamily);
+    WVKernelStatus reconstruct(const WVCoefficients&,WVBoussinesqField,
+        WVBoussinesqDerivative,WVBoussinesqComponent,double*,bool countPrimary = true,
+        std::size_t metricComponent = 5,const WVRealOutputConsumer* consumer = nullptr,
+        WVComplexInput* preparedSpectrum = nullptr,const WVComplexOutput* destination = nullptr);
+    WVKernelStatus projectFields(const double*,const double*,const double*,const double*,WVMutableCoefficients);
+    WVKernelStatus projectSpectralFields(WVComplexInput,WVComplexInput,WVComplexInput,WVComplexInput,
+        WVComplexOutput,bool,WVMutableCoefficients);
+    WVKernelStatus prepareRealVerticalCalculus(MatrixBackendFactory);
+    WVKernelStatus verticalCalculus(const double*,WVBoussinesqFamily,unsigned,bool,double*,
+        std::size_t columns,bool verticalFirst);
+    bool tiledNonlinearPrepared_ = false;
+    WVVariableExecutionOptions executionOptions_;
+    std::shared_ptr<const WVStratifiedModalSource> source_;
+    std::vector<WVBoussinesqModeFactors> factors_;
+    mutable WVBoussinesqStorage storage_;
+    WVBoussinesqKernelMetrics metrics_;
+    std::string engineIdentifier_,engineLibraryIdentity_;
+    std::unique_ptr<WVRetainedHorizontalOperator> horizontal_;
+    std::unique_ptr<WVRetainedHorizontalWorkspace> horizontalWorkspace_;
+    std::array<std::unique_ptr<WVPreparedVerticalOperator>,11> vertical_;
+    std::array<std::unique_ptr<WVVerticalWorkspace>,11> verticalWorkspace_;
+    std::unique_ptr<WVVerticalMatrixBackend> realVerticalBackend_;
+    std::array<std::vector<double>,5> realVerticalMatrices_;
+    std::unique_ptr<WVVerticalGroupExecutor> verticalGroups_;
+    std::unique_ptr<spectral_detail::WVVariableComplexBuffer> spectralStorage_;
+    std::unique_ptr<kernel_detail::WVPreparedFieldCache> fieldCache_;
+    std::unique_ptr<kernel_detail::WVPreparedModeExecutor> pointwise_;
+    std::vector<WVComplex64> phase_;
+    std::vector<double> real_;
+    WVState preparedState_{};
+    std::array<WVState,5> preparedStateViews_{};
+    std::array<std::size_t,5> preparedStateComponents_{};
+    std::array<std::size_t,5> preparedStateViewIds_{};
+    std::size_t preparedStateViewCount_ = 0;
+    std::size_t nextStateViewId_ = 1;
+    const void* preparedStateOwner_ = nullptr;
+    bool stateEvaluationActive_ = false;
+    std::size_t S_ = 0,R_ = 0,H_ = 0,inertialMode_ = 0,baseSpectralScratchBytes_ = 0;
+    std::atomic<bool> active_{false};
+};
+} // namespace wavevortex

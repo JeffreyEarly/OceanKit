@@ -1,0 +1,13 @@
+{
+  "schemaIdentifier": "wave-vortex-run-request-v1",
+  "schemaVersion": 1,
+  "modelFiles": ["../forcing-nonlinear.nc"],
+  "integration": {
+    "method": "fixed-rk4",
+    "finalTime": 12,
+    "initialStep": 0.25
+  },
+  "output": {"policy": "append", "destinations": {}},
+  "execution": {"fftProvider": "reference", "threads": 1},
+  "report": "v1-fixed-report.json"
+}

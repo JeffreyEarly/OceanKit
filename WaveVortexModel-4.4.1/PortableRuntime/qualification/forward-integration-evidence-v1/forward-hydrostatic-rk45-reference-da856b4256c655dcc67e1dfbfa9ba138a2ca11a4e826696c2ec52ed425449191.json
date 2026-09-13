@@ -1,0 +1,632 @@
+{
+  "schema": "wave-vortex-forward-integration-qualification-v1",
+  "schemaVersion": 1,
+  "scope": "forward-integration",
+  "status": "complete",
+  "sourceCommit": "8d6248c0273d603e29e6e5ca904a40cf339a5261",
+  "provider": "reference",
+  "matlabRelease": "2025b",
+  "platform": "MACA64",
+  "cases": {
+    "id": "forward-hydrostatic-rk45",
+    "configuration": "hydrostatic",
+    "profile": "adaptive-rk45",
+    "testName": "TestPortableForwardIntegration/representativeLifecycleMatchesMatlab(configuration=hydrostatic)",
+    "passed": true,
+    "failed": false,
+    "incomplete": false,
+    "provider": "reference",
+    "scope": "forward-integration",
+    "controls": {
+      "id": "forward-hydrostatic-rk45",
+      "configuration": "hydrostatic",
+      "parameter": "hydrostatic",
+      "profile": "adaptive-rk45",
+      "method": "adaptive-rk45",
+      "initialTime": 17,
+      "splitTime": 77,
+      "finalTime": 137,
+      "initialStep": 4,
+      "maximumStep": 4,
+      "relativeTolerance": 1E-9,
+      "absoluteTolerance": 1E-10,
+      "stopBoundary": "accepted-step",
+      "heldIndex": 6,
+      "heldReal": -4.3578788620679385E-7,
+      "heldImag": -1.1360104734654344E-7
+    },
+    "evolution": {
+      "coefficients": 0.0771949333895197,
+      "particlePosition": 0.63820751311033064,
+      "tracer": 0.00014087915215243996
+    },
+    "outcomes": {
+      "whole": [
+        {
+          "coefficients": 2.0667429354137469E-15,
+          "fields": 1.0609520656446633E-15,
+          "tracer": 1.5542843854036618E-15,
+          "particlePosition": 6.8212102632969618E-13,
+          "savedOutput": 2.0667426412961928E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 2.0667429354137469E-15,
+          "fields": 1.0609520656446633E-15,
+          "tracer": 1.5542843854036618E-15,
+          "particlePosition": 6.8212102632969618E-13,
+          "savedOutput": 2.0667426412961928E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ],
+      "split": [
+        {
+          "coefficients": 2.0667429354137469E-15,
+          "fields": 1.0609520656446633E-15,
+          "tracer": 1.5542843854036618E-15,
+          "particlePosition": 6.8212102632969618E-13,
+          "savedOutput": 2.0667426412961928E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 2.0667429354137469E-15,
+          "fields": 1.0609520656446633E-15,
+          "tracer": 1.5542843854036618E-15,
+          "particlePosition": 6.8212102632969618E-13,
+          "savedOutput": 2.0667426412961928E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ],
+      "matlabToCpp": [
+        {
+          "coefficients": 1.2173507614064242E-15,
+          "fields": 6.4319328990530386E-16,
+          "tracer": 9.9918281918806835E-16,
+          "particlePosition": 2.8421709430404007E-13,
+          "savedOutput": 1.6010131165645184E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 1.2173507614064242E-15,
+          "fields": 6.4319328990530386E-16,
+          "tracer": 9.9918281918806835E-16,
+          "particlePosition": 2.8421709430404007E-13,
+          "savedOutput": 1.6010131165645184E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ],
+      "cppToMatlab": [
+        {
+          "coefficients": 1.430822032209517E-15,
+          "fields": 6.8961884266903116E-16,
+          "tracer": 6.6612187945871226E-16,
+          "particlePosition": 4.5474735088646412E-13,
+          "savedOutput": 1.76111442822097E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 1.430822032209517E-15,
+          "fields": 6.8961884266903116E-16,
+          "tracer": 6.6612187945871226E-16,
+          "particlePosition": 4.5474735088646412E-13,
+          "savedOutput": 1.76111442822097E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ],
+      "stoppedCpp": [
+        {
+          "coefficients": 2.0667429354137469E-15,
+          "fields": 1.0609520656446633E-15,
+          "tracer": 1.5542843854036618E-15,
+          "particlePosition": 6.8212102632969618E-13,
+          "savedOutput": 2.0667426412961928E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 2.0667429354137469E-15,
+          "fields": 1.0609520656446633E-15,
+          "tracer": 1.5542843854036618E-15,
+          "particlePosition": 6.8212102632969618E-13,
+          "savedOutput": 2.0667426412961928E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ],
+      "stoppedMatlab": [
+        {
+          "coefficients": 7.9490112900528727E-16,
+          "fields": 5.3047603282233164E-16,
+          "tracer": 4.4408125297247481E-16,
+          "particlePosition": 2.2737367544323206E-13,
+          "savedOutput": 1.7077473243354861E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        },
+        {
+          "coefficients": 7.9490112900528727E-16,
+          "fields": 5.3047603282233164E-16,
+          "tracer": 4.4408125297247481E-16,
+          "particlePosition": 2.2737367544323206E-13,
+          "savedOutput": 1.7077473243354861E-15,
+          "heldAmplitude": 0,
+          "restoredStateExact": true
+        }
+      ]
+    },
+    "denseHeld": {
+      "recordCount": 18,
+      "firstRecordTime": 22,
+      "maximumHeldError": 0
+    },
+    "stop": {
+      "reason": "stop-requested",
+      "requestedBoundary": "accepted-step",
+      "requestedAtAcceptedTime": 21,
+      "requestedAtOutputTime": [],
+      "finalAcceptedTime": 37,
+      "callbackEvaluationCount": 2,
+      "stopWorkspaceMaximumLiveBytes": 17272
+    },
+    "checks": [
+      {
+        "name": "nontrivialEvolution",
+        "passed": true
+      },
+      {
+        "name": "heldAmplitudes",
+        "passed": true
+      },
+      {
+        "name": "completeRestartState",
+        "passed": true
+      },
+      {
+        "name": "allContinuationDirections",
+        "passed": true
+      },
+      {
+        "name": "twoOutputDestinations",
+        "passed": true
+      },
+      {
+        "name": "controlledStopResume",
+        "passed": true
+      },
+      {
+        "name": "denseOutputParity",
+        "passed": true
+      }
+    ],
+    "timingSeconds": {
+      "sharedMatlabPreparation": 7.1885392916666664,
+      "providerLifecycle": 21.773931041666668
+    },
+    "runs": {
+      "whole": {
+        "status": "complete",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "reached-final-time",
+          "requestedBoundary": [],
+          "requestedAtAcceptedTime": [],
+          "requestedAtOutputTime": [],
+          "finalAcceptedTime": 137,
+          "callbackEvaluationCount": 55,
+          "stopWorkspaceMaximumLiveBytes": 0
+        },
+        "state": {
+          "initialTime": 17,
+          "finalTime": 137,
+          "deltaT": 4,
+          "stepCount": 30,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 210,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 30,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 18
+      },
+      "firstSegment": {
+        "status": "complete",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "reached-final-time",
+          "requestedBoundary": [],
+          "requestedAtAcceptedTime": [],
+          "requestedAtOutputTime": [],
+          "finalAcceptedTime": 77,
+          "callbackEvaluationCount": 28,
+          "stopWorkspaceMaximumLiveBytes": 0
+        },
+        "state": {
+          "initialTime": 17,
+          "finalTime": 77,
+          "deltaT": 4,
+          "stepCount": 15,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 105,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 15,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 9
+      },
+      "secondSegment": {
+        "status": "complete",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "reached-final-time",
+          "requestedBoundary": [],
+          "requestedAtAcceptedTime": [],
+          "requestedAtOutputTime": [],
+          "finalAcceptedTime": 137,
+          "callbackEvaluationCount": 28,
+          "stopWorkspaceMaximumLiveBytes": 0
+        },
+        "state": {
+          "initialTime": 77,
+          "finalTime": 137,
+          "deltaT": 4,
+          "stepCount": 15,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 105,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 15,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 9
+      },
+      "matlabToCpp": {
+        "status": "complete",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "reached-final-time",
+          "requestedBoundary": [],
+          "requestedAtAcceptedTime": [],
+          "requestedAtOutputTime": [],
+          "finalAcceptedTime": 137,
+          "callbackEvaluationCount": 28,
+          "stopWorkspaceMaximumLiveBytes": 0
+        },
+        "state": {
+          "initialTime": 77,
+          "finalTime": 137,
+          "deltaT": 4,
+          "stepCount": 15,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 105,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 15,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 9
+      },
+      "stopped": {
+        "status": "stopped",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "stop-requested",
+          "requestedBoundary": "accepted-step",
+          "requestedAtAcceptedTime": 21,
+          "requestedAtOutputTime": [],
+          "finalAcceptedTime": 37,
+          "callbackEvaluationCount": 2,
+          "stopWorkspaceMaximumLiveBytes": 17272
+        },
+        "state": {
+          "initialTime": 17,
+          "finalTime": 37,
+          "deltaT": 4,
+          "stepCount": 5,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 35,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 5,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 3
+      },
+      "stoppedResume": {
+        "status": "complete",
+        "integrationRequest": {
+          "requestedMethod": "adaptive-rk45",
+          "activeMethod": "adaptive-rk45",
+          "controller": "matlab-ode45-v1",
+          "requestedInitialStep": 4,
+          "requestedMaximumStep": 4,
+          "requestedRelativeTolerance": 1E-9,
+          "requestedAbsoluteToleranceScale": 1E-10,
+          "activeRelativeTolerance": 1E-9,
+          "activeAbsoluteToleranceScale": 1E-10,
+          "effectiveMaximumStep": 4,
+          "stepPolicy": "adaptive",
+          "timeStepConstraint": "not-applicable",
+          "cfl": [],
+          "initialStepPolicy": "explicit",
+          "candidates": {
+            "horizontalAdvective": [],
+            "verticalAdvective": [],
+            "advective": [],
+            "oscillatory": [],
+            "effectiveHorizontalGridResolution": [],
+            "maximumHorizontalSpeed": [],
+            "highestActiveWaveFrequency": []
+          },
+          "selectedStep": [],
+          "effectiveIntegrationStep": 4,
+          "transientWorkspaceMaximumLiveBytes": 0,
+          "candidateEvaluationSeconds": 0,
+          "noFallback": true
+        },
+        "termination": {
+          "reason": "reached-final-time",
+          "requestedBoundary": [],
+          "requestedAtAcceptedTime": [],
+          "requestedAtOutputTime": [],
+          "finalAcceptedTime": 137,
+          "callbackEvaluationCount": 46,
+          "stopWorkspaceMaximumLiveBytes": 0
+        },
+        "state": {
+          "initialTime": 37,
+          "finalTime": 137,
+          "deltaT": 4,
+          "stepCount": 25,
+          "rejectedStepCount": 0,
+          "rhsEvaluationCount": 175,
+          "shape": [
+            4,
+            8
+          ]
+        },
+        "acceptedStepCount": 25,
+        "rejectedStepCount": 0,
+        "denseOutputEvaluationCount": 15
+      }
+    }
+  },
+  "sourceSHA256": [
+    {
+      "path": "PortableRuntime/include/WaveVortexRuntime/WVRungeKutta.hpp",
+      "sha256": "24e5494ee76993439a364f9f3dac868c19756ed781e9077e80d16241b2149405"
+    },
+    {
+      "path": "PortableRuntime/include/WaveVortexRuntime/WVIntegrationContracts.hpp",
+      "sha256": "649f29e05fdcd821920435686f4bd09c654e400e0d0504c9ffdea3c648b4e4e5"
+    },
+    {
+      "path": "PortableRuntime/src/WVRungeKutta.cpp",
+      "sha256": "b5c57a5632a1211835d3801dc02c05bfbb0102d4f760c30ae5a65e30008028d9"
+    },
+    {
+      "path": "PortableRuntime/src/WVModel.cpp",
+      "sha256": "5cee6731ebdd271e694011322b868c1d0040499fad6e85bcb0079f90114dc55d"
+    },
+    {
+      "path": "PortableRuntime/src/WVOutputOrchestration.cpp",
+      "sha256": "03a3ad962ba28cc466a850b028a4664aae9ec58e7c3487e85e75407c8af4864b"
+    },
+    {
+      "path": "PortableRuntime/src/WVModelOutputNetCDFWriter.cpp",
+      "sha256": "63fd048d8dc124808259f6ac6d9480bf76b74fcf9864565743d9f970257e46e2"
+    },
+    {
+      "path": "PortableRuntime/app/WaveVortexRun.cpp",
+      "sha256": "d012da962b42155935b48968c617a5702b78097bf15f76b7d2da595a99e98cd8"
+    },
+    {
+      "path": "PortableRuntime/src/WVFieldEvaluationService.cpp",
+      "sha256": "7e3977c816164eaa88ee527adb99c87657bfbba4406c5eb78db3ad781a68b54b"
+    },
+    {
+      "path": "PortableRuntime/src/WVStratifiedFieldEvaluationAdapter.cpp",
+      "sha256": "07d60940074708686a36c85ddc1d27377b3bd1c531b1f4c1dc8be7a26a1fc31f"
+    },
+    {
+      "path": "PortableRuntime/src/WVBarotropicQGFieldEvaluationAdapter.cpp",
+      "sha256": "8f46646ef2bf0773d3468940976edcb97852b217080b4d11ac927039cd080dfc"
+    },
+    {
+      "path": "CompiledKernel/src/WVTransformConstantStratificationKernel.cpp",
+      "sha256": "2aed16e2b0c2edf6157a3085ac809852f01e80f9d35a73cbac4d71e5065236d4"
+    },
+    {
+      "path": "PortableRuntime/tests/WVForwardIntegrationProbe.cpp",
+      "sha256": "8a7b800a5cf6140e89242d4989a0a1ec81bc8e496737cb4dafe830a52068de3a"
+    },
+    {
+      "path": "UnitTests/TestPortableForwardIntegration.m",
+      "sha256": "485a4600d74e5c71d903cfe545726852877359b299bfaedd5811d011ccd88895"
+    }
+  ],
+  "buildSource": {
+    "root": "/Users/jearly/Documents/OceanKitRepositories/wvm-v4-cpp-adoption-audit",
+    "commit": "8d6248c0273d603e29e6e5ca904a40cf339a5261"
+  },
+  "executionBinaries": [
+    {
+      "role": "runner",
+      "path": "/private/tmp/wvm-v4-audit-runtime/wave-vortex-run",
+      "sha256": "6f57eba3d803c79898a63856d9e6c91b7a0b7907ae045fcd3c8ff1473de2f8d1",
+      "sourceCommit": "8d6248c0273d603e29e6e5ca904a40cf339a5261"
+    },
+    {
+      "role": "probe",
+      "path": "/private/tmp/wvm-v4-audit-runtime/WVForwardIntegrationProbe",
+      "sha256": "1f4fe1cf38782c89d010ae57d455d86998e4be396a6a8226f52d03b8e98dd7ad",
+      "sourceCommit": "8d6248c0273d603e29e6e5ca904a40cf339a5261"
+    }
+  ],
+  "artifacts": [],
+  "catalogSHA256": "c9b669fa92d5556526ce9cefac8b9847f52c1ea15c8ab3b00db0f3454adfaef9"
+}
