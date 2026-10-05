@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OceanKit branding preview</title>
+  <style>
+    :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #052f60; background: #f7fafb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 40px 24px; }
+    main { max-width: 1120px; margin: auto; }
+    h1 { margin: 0 0 8px; font-size: 36px; font-weight: 600; }
+    h2 { margin: 32px 0 16px; font-size: 20px; font-weight: 600; }
+    p { color: #4b6475; line-height: 1.6; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; }
+    figure { margin: 0; background: white; border: 1px solid #d8e5eb; border-radius: 16px; padding: 24px; text-align: center; }
+    figure img { max-width: 100%; height: 180px; object-fit: contain; }
+    figcaption { margin-top: 16px; font-size: 14px; color: #4b6475; }
+    .wordmark img { width: 325px; height: 100px; }
+    .dark { background: #052f60; border-color: #052f60; }
+    .dark figcaption { color: #b0e6e6; }
+    .sizes { display: flex; align-items: end; justify-content: center; gap: 28px; flex-wrap: wrap; padding: 32px; }
+    .sizes figure { padding: 16px; border: 0; border-radius: 0; }
+    .sizes img { width: auto; height: auto; image-rendering: auto; }
+    .social img { width: 100%; height: auto; }
+    .swatches { display: flex; flex-wrap: wrap; gap: 16px; }
+    .swatch { display: flex; gap: 12px; align-items: center; font-size: 14px; }
+    .swatch span { width: 40px; height: 40px; border-radius: 10px; border: 1px solid #d8e5eb; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>OceanKit branding</h1>
+    <p>A circular navy O, one broad teal wave, and clear space that keeps the shape readable.</p>
+    <h2>Marks and icons</h2>
+    <div class="grid">
+      <figure><img src="ocean-mark.svg" alt="Colored OceanKit mark"><figcaption>Transparent mark</figcaption></figure>
+      <figure><img src="ocean-mark-monochrome.svg" alt="Black monochrome OceanKit mark"><figcaption>Monochrome mark</figcaption></figure>
+      <figure><img src="icon-rounded.svg" alt="OceanKit rounded icon"><figcaption>Rounded icon</figcaption></figure>
+      <figure><img src="icon-square.svg" alt="OceanKit square icon"><figcaption>Square shortcut icon</figcaption></figure>
+    </div>
+    <h2>Horizontal wordmarks</h2>
+    <div class="grid">
+      <figure class="wordmark"><img src="logo-horizontal-light.svg" alt="OceanKit wordmark on white"><figcaption>For light surfaces</figcaption></figure>
+      <figure class="wordmark dark"><img src="logo-horizontal-dark.svg" alt="OceanKit wordmark on navy"><figcaption>For dark surfaces</figcaption></figure>
+    </div>
+    <h2>Browser icons at actual display sizes</h2>
+    <div class="sizes">
+      <figure><img src="../WebsiteDocumentation/assets/branding/favicon-16.png" width="16" height="16" alt="16-pixel OceanKit favicon"><figcaption>16 px</figcaption></figure>
+      <figure><img src="../WebsiteDocumentation/assets/branding/favicon-32.png" width="32" height="32" alt="32-pixel OceanKit favicon"><figcaption>32 px</figcaption></figure>
+      <figure><img src="../WebsiteDocumentation/assets/branding/favicon-48.png" width="48" height="48" alt="48-pixel OceanKit favicon"><figcaption>48 px</figcaption></figure>
+      <figure><img src="../WebsiteDocumentation/assets/branding/favicon-96.png" width="96" height="96" alt="96-pixel OceanKit favicon"><figcaption>96 px</figcaption></figure>
+      <figure><img src="../WebsiteDocumentation/assets/branding/apple-touch-icon.png" width="180" height="180" alt="180-pixel OceanKit Apple-touch icon"><figcaption>180 px</figcaption></figure>
+    </div>
+    <h2>Sharing card</h2>
+    <figure class="social"><img src="../WebsiteDocumentation/assets/branding/social-card.png" alt="OceanKit — MATLAB tools for ocean science"><figcaption>1200 × 630 social preview</figcaption></figure>
+    <h2>Palette</h2>
+    <div class="swatches">
+      <div class="swatch"><span style="background: #052f60"></span>Navy #052f60</div>
+      <div class="swatch"><span style="background: #119ba0"></span>Teal #119ba0</div>
+      <div class="swatch"><span style="background: #edf7fa"></span>Pale #edf7fa</div>
+    </div>
+  </main>
+</body>
+</html>

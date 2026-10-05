@@ -1,10 +1,16 @@
 ---
 layout: default
 title: Installation
-nav_order: 2
+nav_order: 3
 ---
 
 # Installation
+
+## Requirements
+
+[MATLAB Package Manager](https://www.mathworks.com/help/matlab/matlab-package-manager.html) is available in MATLAB R2024b and newer. Package requirements can be more specific: the current WaveVortexModel release requires R2025b or newer, and FFTWTransforms currently provides a validated backend for R2026a on Apple silicon. Check the package's source documentation in the [package catalog]({{ '/packages' | relative_url }}) for platform details.
+
+## Register the repository
 
 Clone the OceanKit repository and register it with MATLAB Package Manager.
 

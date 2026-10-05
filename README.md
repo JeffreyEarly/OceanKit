@@ -1,5 +1,9 @@
 # OceanKit
+<img src="Documentation/WebsiteDocumentation/assets/branding/logo-horizontal-light.svg" width="320" alt="OceanKit">
+
 A MATLAB package repository for a wide variety of oceanography related tools.
+
+[Website and installation guide](https://jeffreyearly.github.io/OceanKit/) · [Package catalog](https://jeffreyearly.github.io/OceanKit/packages)
 
 Clone this repository, e.g., execute
 ```
@@ -53,9 +57,10 @@ with authoring enabled.
 - [advection-diffusion-models](https://github.com/JeffreyEarly/advection-diffusion-models) Integrate and estimate advection-diffusion models
 - [AlongTrackSimulator](https://github.com/satmapkit/AlongTrackSimulator) A ground track simulator for satellite altimetry missions
 - [chebfun](https://github.com/chebfun/chebfun) Chebfun: numerical computing with functions.
-- [class-docs](https://github.com/JeffreyEarly/class-annotations) Builds better website documentation for Matlab classes
+- [class-docs](https://github.com/JeffreyEarly/class-docs) Builds better website documentation for Matlab classes
 - [class-annotations](https://github.com/JeffreyEarly/class-annotations) Annotates Matlab class properties and methods to enable writing to NetCDF files and better class documentation
 - [distributions](https://github.com/JeffreyEarly/distributions) Class for distributions and stochastic modeling
+- [fftw-transforms](https://github.com/JeffreyEarly/fftw-transforms) Reusable FFTW transforms for Matlab
 - [geographic-projection](https://github.com/JeffreyEarly/geographic-projection) Tools for projecting geographic coordinates (latitude, longitude) onto transverse Mercator (x,y).
 - [internal-modes](https://github.com/JeffreyEarly/internal-modes) Quickly and accurately compute the vertical modes for arbitrary stratification.
 - [netcdf](https://github.com/JeffreyEarly/netcdf) A better NetCDF interface for Matlab

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">OceanKit monochrome ocean O mark</title>
+  <desc id="desc">A circular O surrounds an ocean wave, with a transparent gap preserving both shapes in a single color.</desc>
+  <g fill="currentColor">
+    <path fill-rule="evenodd" d="M 944 512 A 432 432 0 1 1 80 512 A 432 432 0 1 1 944 512 Z M 794 512 A 282 282 0 1 0 230 512 A 282 282 0 1 0 794 512 Z"/>
+    <path d="M 256 576 C 331 650 407 616 493 554 C 590 474 682 494 745 555 C 696 542 665 567 661 603 C 654 647 697 677 738 648 A 264 264 0 0 1 256 576 Z"/>
+  </g>
+</svg>

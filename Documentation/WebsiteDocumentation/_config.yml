@@ -1,8 +1,21 @@
 remote_theme: just-the-docs/just-the-docs
 title: OceanKit
-description: MATLAB package repository and developer guidance for OceanKit packages
+description: MATLAB tools for ocean science, from waves and vortices to numerical methods and scientific data.
+url: https://jeffreyearly.github.io
+baseurl: /OceanKit
+logo: /assets/branding/logo-horizontal-light.svg
+favicon_ico: /assets/branding/favicon.ico
 
-search_enabled: false
+search_enabled: true
+defaults:
+  - scope:
+      path: ""
+    values:
+      image:
+        path: /assets/branding/social-card.png
+        width: 1200
+        height: 630
+        alt: OceanKit, MATLAB tools for ocean science, with a navy O and teal wave
 
 aux_links:
   "OceanKit on GitHub":
@@ -11,4 +24,3 @@ aux_links:
 aux_links_new_tab: false
 
 color_scheme: light
-

@@ -1,3 +1,109 @@
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.site-title {
+  min-width: 0;
+}
+
+.site-logo {
+  height: 2.5rem;
+
+  @if lightness($sidebar-color) < 50% {
+    background-image: url("../branding/logo-horizontal-dark.svg");
+  }
+}
+
+.main-content {
+  line-height: 1.65;
+}
+
+.ocean-hero {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.ocean-hero-mark {
+  flex: 0 0 9rem;
+  width: 9rem;
+  height: 9rem;
+}
+
+.ocean-eyebrow {
+  margin: 0 0 0.5rem;
+  color: #08686e;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.main-content .ocean-hero h1 {
+  margin: 0 0 1rem;
+  color: #052f60;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.ocean-lede {
+  margin: 0;
+}
+
+.ocean-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.ocean-topics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.ocean-topics section {
+  border-top: 3px solid #119ba0;
+  padding-top: 1rem;
+}
+
+.main-content .ocean-topics h3 {
+  margin-top: 0;
+  color: #052f60;
+  font-size: 1.125rem;
+}
+
+.ocean-topics p {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 40rem) {
+  .ocean-hero {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .ocean-hero-mark {
+    flex-basis: auto;
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .ocean-topics {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (min-width: 66.5rem) {
   .site-nav,
   .site-header,
@@ -17,4 +123,3 @@ code {
 a:visited code {
   border-color: $border-color;
 }
-
