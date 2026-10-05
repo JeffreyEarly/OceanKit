@@ -7,6 +7,8 @@ Documentation
 
 The site is published at [jeffreyearly.github.io/OceanKit](https://jeffreyearly.github.io/OceanKit/) by GitHub Pages from `main:/docs`. Keep the project-site `url` and `baseurl` in the canonical `_config.yml` and use Liquid's `relative_url` filter for site assets and links.
 
+The custom `_includes/head.html` follows the Just the Docs head template and versions its theme asset URLs by build time. This refreshes cached styling and the search script when the layout, branding, or site configuration changes. Keep that template aligned with the theme when upgrading it.
+
 Editable branding lives in `Branding/`; its [README](Branding/README.md) describes the SVG masters and raster exports. Export the branding before building the documentation:
 
 ```matlab

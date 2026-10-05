@@ -10,7 +10,7 @@ permalink: /
   <img class="ocean-hero-mark" src="{{ '/assets/branding/ocean-mark.svg' | relative_url }}" width="144" height="144" alt="OceanKit: a navy O with a teal wave">
   <div>
     <p class="ocean-eyebrow">OceanKit</p>
-    <h1>MATLAB tools for ocean science.</h1>
+    <h1 id="matlab-tools-for-ocean-science">MATLAB tools for ocean science.</h1>
     <p class="ocean-lede">Explore waves and vortices, build numerical models, and work with scientific data. A collection of reusable packages, ready to install with MATLAB Package Manager.</p>
   </div>
 </div>
@@ -24,17 +24,17 @@ permalink: /
 
 <div class="ocean-topics">
   <section>
-    <h3>Ocean dynamics</h3>
+    <h3 id="ocean-dynamics">Ocean dynamics</h3>
     <p>Model rotating, stratified flows, compute internal modes, and estimate advection and diffusion.</p>
     <a href="{{ '/packages' | relative_url }}#ocean-models">Explore ocean models &rarr;</a>
   </section>
   <section>
-    <h3>Numerical methods</h3>
+    <h3 id="numerical-methods">Numerical methods</h3>
     <p>Interpolate with splines, compute Fourier transforms, and model probability distributions.</p>
     <a href="{{ '/packages' | relative_url }}#numerical-tools">Explore numerical tools &rarr;</a>
   </section>
   <section>
-    <h3>Data and geography</h3>
+    <h3 id="data-and-geography">Data and geography</h3>
     <p>Read and write NetCDF files, project coordinates, and simulate satellite ground tracks.</p>
     <a href="{{ '/packages' | relative_url }}#data-and-geography">Explore data tools &rarr;</a>
   </section>
