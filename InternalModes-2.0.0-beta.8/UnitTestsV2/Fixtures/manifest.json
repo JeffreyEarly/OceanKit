@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "fixture": "wvm-cal-constant-17-products.json",
+  "sha256": "c1f41e39525828bcb6ba4e28faf61520d4c897df1f178875abebebd6bc5627ae",
+  "bytes": 1481109,
+  "source": {
+    "repository": "JeffreyEarly/wave-vortex-model",
+    "studyIssue": 400,
+    "studyPR": 402,
+    "advisoryPR": 405,
+    "provider": "IMProductInventory",
+    "wvmRevision": "0118c1294ea36e2dbb5f06e1d129119b32eb24b6"
+  },
+  "scientificProvider": "InternalModes-2.0.0-beta.1",
+  "scientificWorkspace": "wvm400-oceankit",
+  "sourceCase": "cal-constant-17--fixed",
+  "controls": 6,
+  "prefixCounts": [
+    1,
+    2,
+    3
+  ],
+  "fullReplay": {
+    "caseId": "cal-constant-17",
+    "reservedProducts": 79968,
+    "nonzeroProducts": 43600,
+    "structuralZeros": 36368,
+    "comparisonCount": 639744,
+    "maximumSinglePrecisionErrorDifference": 5.684341886080802e-14,
+    "maximumPrefixDifference": 3.913238844077682e-09,
+    "referenceError": 2.0876637170228355e-06,
+    "costs": {
+      "planningSeconds": 0.8507099166666666,
+      "preparationSeconds": 0.2935844999999999,
+      "evaluationSeconds": 0.05290654166666667,
+      "assessmentSeconds": 3.6047980833333333,
+      "totalSeconds": 4.180370291666667,
+      "productBudget": 500000,
+      "reservedProducts": 79968,
+      "evaluatedProducts": 79968,
+      "nonzeroProducts": 43600,
+      "structuralZeros": 36368,
+      "evaluationCalls": 1716,
+      "evaluatedFactorColumns": 12012,
+      "cachedArrayBytes": 184650278.0,
+      "peakTemporaryArrayBytes": 1671367.0,
+      "memoryDescription": "MATLAB whos array payloads; excludes allocator/process overhead",
+      "minimumReciprocalCondition": 1e-13
+    }
+  },
+  "limitations": [
+    "Scientific source preparation time was not measured separately.",
+    "Array-payload memory counters are not process peak RSS.",
+    "Frozen error agreement is not reference acceptance or complete physical qualification.",
+    "Temporary physical export adapter is WVM-owned and not distributed by InternalModes."
+  ]
+}
